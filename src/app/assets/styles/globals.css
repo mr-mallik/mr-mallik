@@ -55,19 +55,20 @@ body {
 }
 
 .first-name {
-  font-size: 40px;
+  font-size: 50px;
   text-transform: uppercase;
+  line-height: 0.5;
 }
 
 .last-name {
-  font-size: 60px;
-  font-weight: 700;
+  font-size: 70px;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 4px;
 }
 
 .job-title {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 400;
   letter-spacing: 4px;
 }
@@ -79,6 +80,7 @@ body {
 }
 
 .intro-buttons a {
+  font-size: 18px;
   border-radius: 18px;
   border: 1px solid #fff;
   padding: 2px 30px;
@@ -94,3 +96,5 @@ body {
   flex-direction: row;
   gap: 10px;
 }
+
+/* About */
