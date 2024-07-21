@@ -6,11 +6,11 @@ import profile from "../assets/images/gm-1.jpeg"
 
 function About() {
     return (
-        <main className=''>
+        <div className='about-page h-screen overflow-hidden bg-black text-white bg-right bg-no-repeat'>
             <Navbar activeTab="about" />
-            <div class="container mx-auto">
-                <div className="flex w-6/12">
-                    <div className="flex flex-col gap-20">
+            <div class="container mx-auto h-screen">
+                <div className="flex">
+                    <div className="flex flex-col gap-20 w-2/4 mt-40">
                         <div>
                             <h1 class="text-3xl font-bold mb-2 uppercase tracking-wider underline underline-offset-8">About</h1>
                             <a href="mailto:gulgermallik@gmail.com">gulgermallik@gmail.com</a>
@@ -20,11 +20,11 @@ function About() {
                         </div>
                     </div>
                     <div className="">
-                     <Image src={profile} alt="Me" class="" />
+                        
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     )
 }
 
