@@ -7,6 +7,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        "60px": "60px",
+        "80px": "80px"
+      },
+      spacing: {
+        "50px": "50px"
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
