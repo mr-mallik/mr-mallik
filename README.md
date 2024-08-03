@@ -1,4 +1,4 @@
-<img src="https://mrmallik.com/icons/banner.png" alt="Banner" width="100%">
+![banner](https://mrmallik.com/icons/mrmallik-banner.png)
 
 # Hi there, I'm Gulger Mallik! 👋
 
@@ -20,7 +20,7 @@ I'm a software engineer with a knack for problem-solving and a love for coding. 
 
 I'm always on the lookout for exciting collaborations and new opportunities. Whether you want to chat about tech, share project ideas, or grab a virtual coffee, feel free to reach out!
 
-- **Email**: gulgermallik05@gmail.com
+- **Email**: [gulgermallik@gmail.com](gulgermallik@gmail.com)
 - **LinkedIn**: [linkedin.com/in/mrmallik](https://www.linkedin.com/in/mrmallik)
 - **Website**: [mrmallik.com](https://mrmallik.com)
 - **Medium**: [mrmallik.medium.com](https://mrmallik.medium.com)
