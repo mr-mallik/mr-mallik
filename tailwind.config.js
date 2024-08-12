@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'laptop': '1024px',
+        'desktop' : '1920px',
+      },
       fontSize: {
         "60px": "60px",
         "80px": "80px"
@@ -19,6 +23,16 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        'color-tertiary': '#00ffff',
+      },
+      minHeight: {
+        'ht-175': '175px',
+        'ht-190': '190px',
+      },
+      width: {
+        '49': '49%',
+      }
     },
   },
   plugins: [],

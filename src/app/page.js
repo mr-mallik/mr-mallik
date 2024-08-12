@@ -10,12 +10,14 @@ import {
   FaMediumM,
   FaTelegram,
   FaInstagram,
+  FaEnvelope,
 } from "react-icons/fa";
 
 
 export default function Home() {
   const[isLoading, setLoading] = useState(true);
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState([]);
+  const [fadeOut, setFadeOut] = useState(false);
 
   const fetchProfile = async () => {
       try {
@@ -29,7 +31,8 @@ export default function Home() {
           console.error('Fetch profile failed:', error);
       }
       finally {
-        setLoading(false)
+        setFadeOut(true);
+        setTimeout(() => setLoading(false), 500);
       }
   };
 
@@ -37,17 +40,12 @@ export default function Home() {
     fetchProfile();
   }, [])
 
-  if(isLoading) {
-    return (
-      <Loader />
-    )
-  }
-
   return (
     <>
+      {isLoading && <Loader hidden={fadeOut} />}
       <div className="home-page">
         <Navbar activeTab='home' />
-          <div className="container mx-auto section-intro-content justify-center sm:justify-start">
+          <div className="container mx-auto section-intro-content justify-center sm:justify-start max-w-screen-lg laptop:max-w-screen-xl desktop:max-w-screen-2xl">
             <div className="inner-container">
               <div className="flex flex-row justify-between -mt-40 sm:-mt-56">
                 <div className="intro-left">
@@ -82,6 +80,9 @@ export default function Home() {
                   </a>
                   <a target="_blank" href="https://www.instagram.com/_mrmallik_/">
                     <FaInstagram className="h-8 w-8" />
+                  </a>
+                  <a target="_blank" href="#">
+                    <FaEnvelope className="h-8 w-8" />
                   </a>
                 </div>
               </div>
