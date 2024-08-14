@@ -27,7 +27,7 @@ function Hobbies({hobbies}) {
                 {hobbies.map((hobby, idx) => {
 
                     return(
-                        <div className="w-28 text-center px-2 py-3 mb-3 mr-3" key={`hobby_${idx}`}>
+                        <div className="w-20 text-center py-3 mb-3 mr-5" key={`hobby_${idx}`}>
                             <DynamicIcon name={hobby.logo} className="p-3 w-16 h-16 m-auto rounded-b-full border rounded-full" />
                             <p className="pt-2">{hobby.title}</p>
                         </div> 

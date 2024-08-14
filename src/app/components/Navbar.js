@@ -14,6 +14,7 @@ export default function Navbar({activeTab}) {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [profile, setProfile] = useState();
+    const [scrolled, setScrolled] = useState(false);
 
     const fetchProfile = async () => {
         try {
@@ -27,11 +28,19 @@ export default function Navbar({activeTab}) {
             console.error('Fetch profile failed:', error);
         }
     };
-
     
     useEffect(() => {
         fetchProfile();
     }, [])
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20); 
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
     
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -46,7 +55,7 @@ export default function Navbar({activeTab}) {
     ];
     
     return(
-        <header>
+        <header className={clsx('sticky top-0 z-40', { 'bg-black': scrolled, 'bg-transparent': !scrolled })}>
             <div className="flex justify-between items-center py-4 px-6 bg-black sm:bg-transparent">
                 <div className="flex items-center">
                     <div className="pr-4">

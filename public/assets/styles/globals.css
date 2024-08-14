@@ -142,3 +142,29 @@ body {
   left: 15px;
   bottom: 3px;
 }
+
+
+.detailed-block:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.detailed-block:nth-child(even) .content-container {
+  margin-right: 0.75rem;
+  margin-left: 0;
+}
+
+.projects-banner {
+  background: url("../images/intro-banner.jpg") no-repeat;
+  background-size: cover;
+  background-position: right;
+  position: relative;
+  height: 300px;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+.authors:first-child {
+  left:0 !important;
+}

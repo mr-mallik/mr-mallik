@@ -1,13 +1,13 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-import Navbar from "../components/Navbar"
-import Loader from "../components/Loader"
-import Skills from "../components/Resume/Skills"
-import Education from "../components/Resume/Education"
-import Hobbies from "../components/Resume/Hobbies"
-import Work from "../components/Resume/Work"
-import Certificates from "../components/Resume/Certificates"
+import Navbar from "@/components/Navbar"
+import Loader from "@/components/Loader"
+import Skills from "@/components/Resume/Skills"
+import Education from "@/components/Resume/Education"
+import Hobbies from "@/components/Resume/Hobbies"
+import Work from "@/components/Resume/Work"
+import Certificates from "@/components/Resume/Certificates"
 
 export default function Resume() {
   const[isLoading, setLoading] = useState(true);
@@ -39,7 +39,7 @@ export default function Resume() {
   return (
       <>
       {isLoading && <Loader hidden={fadeOut} />}
-      <div className='overflow-hidden'>
+      <div className="resume">
           <Navbar activeTab="resume" />
           <div className="container mx-auto max-w-screen-lg laptop:max-w-screen-xl desktop:max-w-screen-2xl">
               <div className="grid grid-cols-12">
@@ -47,17 +47,25 @@ export default function Resume() {
                   <div className="col-span-6 pr-4">
                     {resume && <Skills skills={resume.skills} />}
                     {resume && <Education education={resume.education} />}
-                    {resume && <Hobbies hobbies={resume.hobbies} />}
                   </div>
 
                   {/* RIGHT SIDE */}
                   <div className="col-span-6 pl-8">
                       {resume && <Work work={resume.work} />}
-                      {resume && <Certificates certificates={resume.certifications} />}
                   </div>
+              </div>
+              <div className="grid grid-cols-12">
+                {/* Certificates */}
+                <div className="col-span-12">
+                  {resume && <Certificates certificates={resume.certifications} />}
+                </div>
+                {/* Hobbies */}
+                <div className="col-span-12">
+                  {resume && <Hobbies hobbies={resume.hobbies} />}
+                </div>
               </div>
           </div>
       </div>
       </>
   )
-}
+} 

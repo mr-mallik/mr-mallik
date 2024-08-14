@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import Navbar from "../components/Navbar"
-import Loader from "../components/Loader"
+import Navbar from "@/components/Navbar"
+import Loader from "@/components/Loader"
 
 export default function About() {
     const[isLoading, setLoading] = useState(true);

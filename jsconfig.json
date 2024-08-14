@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"],          // Maps '@/' to 'src/' directory
+      "@/lib/*": ["src/lib/*"],   // Maps '@/lib/' to 'src/lib/' directory
+      "@/components/*": ["src/app/components/*"],
+      "@/assets/*": ["public/assets/*"],
+      "@/projects/*": ["public/assets/projects/*"],
     }
-  }
+  },
+  "include": ["src/**/*"]
 }

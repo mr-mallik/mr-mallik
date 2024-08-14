@@ -1,4 +1,4 @@
-import { fetchData } from '../../../lib/mysql';
+import { fetchData } from '@/lib/mysql';
 
 export async function GET(request) {
   try {

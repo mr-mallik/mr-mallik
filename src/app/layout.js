@@ -1,5 +1,5 @@
 import { Marcellus } from "next/font/google";
-import "./assets/styles/globals.css";
+import "@/assets/styles/globals.css";
 
 const marcel = Marcellus({ weight: "400", subsets: ["latin"] });
 

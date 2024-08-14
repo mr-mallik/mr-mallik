@@ -16,9 +16,9 @@ function Work({work}) {
                                 <h5 className="-ml-14 mr-3 inline-block relative px-2 py-1 text-sm border rounded bg-gray-800 border-gray-500">{`${exp.start_my} - ${exp.end_my}`}</h5>
                                 
                                 <div className="pt-2"> 
-                                    <h4 className="text-2xl pb-1">{exp.title}</h4>
+                                    <h4 className="text-2xl pb-1 pt-2">{exp.title}</h4>
                                     <h6 className="text-sm mb-7">{exp.subtitle}</h6>
-                                    <div className="flex justify-start items-start">
+                                    <div className="flex flex-wrap justify-start items-start">
                                     {exp.skill_icons.map((icon, idx) => {
                                         return(
                                             <img className="mr-2 mb-2 rounded" src={icon} alt="" key={`icon_${idx}`} />

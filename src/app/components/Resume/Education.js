@@ -15,8 +15,8 @@ function Education({education}) {
                     {education.map((edu, index) => {
                         var classWidth = itemWidth[index];
                             return(
-                                <div className={`${classWidth} py-5 pr-5 pl-28 mb-4 mr-3 relative float-right bg-gray-900 rounded border-r-4 border-r-color-tertiary`} key={edu.id}> 
-                                    <h3 className="absolute text-gray-500 text-opacity-70 text-6xl font-extrabold -left-20 flex justify-center items-center top-1/2 -translate-y-1/2">{edu.end_year}</h3>
+                                <div className={`${classWidth} py-4 pr-5 pl-28 mb-4 mr-3 relative float-right bg-gray-900 rounded border-r-4 border-r-color-tertiary`} key={edu.id}> 
+                                    <h3 className="absolute text-gray-500 text-opacity-60 text-6xl font-extrabold -left-16 flex justify-center items-center top-1/2 -translate-y-1/2">{edu.end_year}</h3>
                                     <h6 className="text-2xl mb-3">{edu.title}</h6>
                                     <p className="text-lg pt-4 mb-1">{edu.subtitle}</p>
                                     <p className="text-lg">{edu.content} </p>
