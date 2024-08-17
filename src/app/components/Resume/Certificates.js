@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 function Certificates({certificates}) {
     return (
         <div className="flex flex-col gap-10 mt-10 desktop:mt-20">
@@ -8,7 +10,7 @@ function Certificates({certificates}) {
                         return(
                             <div className="flex flex-nowrap justify-center content-center px-2 p-2 bg-gray-800 border rounded border-transparent hover:border-color-tertiary" key={`certificate_${cert.id}`}>
                                 {cert.logo &&
-                                    <img className="w-16 h-16" alt={cert.title} title={cert.title} src={cert.logo} />
+                                    <Image className="w-16 h-16" alt={cert.title} title={cert.title} src={cert.logo} width={76} height={76} />
                                 }
                                 <div className="ml-3 my-1 w-3/4">
                                     <h3 className="text-base">{cert.title}</h3>

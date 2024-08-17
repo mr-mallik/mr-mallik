@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import logo from "../assets/images/logo/mallik_logo@0.5x.png"
+import logo from "@/assets/images/logo/mallik_logo@0.5x.png"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
@@ -51,8 +51,13 @@ export default function Navbar({activeTab}) {
         {name: 'About', href: '/about'},
         {name: 'Resume', href: '/resume'},
         {name: 'Projects', href: '/projects'},
-        {name: 'Stories', href: '/stories'}
+        // {name: 'Stories', href: '/stories'}
     ];
+
+    const isActive = (linkHref) => {
+        // Check if pathname is exactly equal to linkHref or if it starts with linkHref + '/'
+        return pathname === linkHref || pathname.startsWith(`${linkHref}/`);
+    };
     
     return(
         <header className={clsx('sticky top-0 z-40', { 'bg-black': scrolled, 'bg-transparent': !scrolled })}>
@@ -69,10 +74,12 @@ export default function Navbar({activeTab}) {
                         <nav className='space-x-8'>
                         {
                             links.map((link) => {
+                                const active = isActive(link.href);
+
                                 return (
                                     <Link key={link.name} href={link.href}
                                     className={clsx(
-                                        {'active': pathname === link.href}
+                                        {'active': active}
                                     )}>{link.name}
                                     </Link>
                                 )

@@ -35,7 +35,7 @@ export async function GET(request, { params }) {
       projectDetails: projectDetData
     };
 
-    console.log(data);
+    // console.log(data);
 
     return new Response(JSON.stringify(data), {
       status: 200,

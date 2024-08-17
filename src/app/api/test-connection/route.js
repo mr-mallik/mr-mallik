@@ -2,7 +2,7 @@ import { fetchData } from '@/lib/mysql';
 
 export async function GET(request) {
   try {
-    const query = "SELECT count FROM profile WHERE id=5";
+    const query = "SELECT * FROM profile WHERE id=5";
     const data = await fetchData(query);
     
     return new Response(JSON.stringify(data), {

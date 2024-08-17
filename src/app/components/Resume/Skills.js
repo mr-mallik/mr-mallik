@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const heading_arr = {
     'tech': 'Programming Languages',
     'frame': 'Framework and Technologies',
@@ -23,7 +25,7 @@ function Skills({skills}) {
                                 <div className="flex flex-row flex-wrap gap-0 justify-start content-center">
                                 {skillsList.map(skill => (
                                     <div className="w-20 text-center px-0 py-2 mb-3 mr-3 bg-gray-800 border rounded border-transparent hover:border-color-tertiary" key={skill.id}>
-                                        <img className="w-10 m-auto" alt={skill.title} title={skill.title} src={skill.icon} />
+                                        <Image className="w-10 m-auto" alt={skill.title} title={skill.title} src={skill.icon} width={76} height={76} />
                                         <p className="pt-2 text-xs">{skill.title}</p>
                                     </div> 
                                 ))}

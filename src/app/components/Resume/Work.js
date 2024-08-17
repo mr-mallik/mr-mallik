@@ -1,4 +1,5 @@
 import { calculateDateDifference } from '../../../lib/helper';
+import Image from 'next/image';
 
 function Work({work}) {
     

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import Navbar from "@/components/Navbar"
 import Loader from "@/components/Loader"
+import Image from 'next/image';
 
 export default function About() {
     const[isLoading, setLoading] = useState(true);
@@ -65,7 +66,7 @@ export default function About() {
                                         <div className="mr-4" key={idx}>
                                             <div className="diamond-card rounded overflow-hidden bg-gray-800 shadow-md">
                                                 <div className="icon-container overflow-hidden max-h-28 desktop:max-h-32">
-                                                    <img src={ser.image} alt="Website Icon" className="" />
+                                                    <Image src={ser.image} alt={ser.title} className="" width={256} height={200} />
                                                 </div>
                                                 <div className="content-container overflow-hidden laptop:min-h-ht-175 desktop:min-h-ht-190">
                                                     <h3 className="font-bold text-center mt-2 mb-2 text-base desktop:text-2xl desktop:mt-4">{ser.title}</h3>
