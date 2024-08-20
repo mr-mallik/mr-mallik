@@ -1,5 +1,7 @@
 import { Marcellus } from "next/font/google";
 import "@/assets/styles/globals.css";
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const marcel = Marcellus({ weight: "400", subsets: ["latin"] });
 
@@ -42,6 +44,8 @@ export default function RootLayout({ children }) {
       </head>
       <body className={marcel.className}>
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
