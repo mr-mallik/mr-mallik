@@ -1,69 +1,9 @@
 "use client";
 
-import { useRouter } from 'next/router';
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Loader from "@/components/Loader";
 import Image  from 'next/image';
-
-import { fetchData } from '@/lib/mysql';
-import { skillQuery, skillIcons } from '@/lib/helper';
-
-// This function gets called at build time
-export async function getStaticPaths() {
-  // Fetch all possible slugs
-  const allProjects = await fetchData('SELECT urlname FROM project');
-
-  // Create paths with `slug` param
-  const paths = allProjects.map((project) => ({
-    params: { slug: project.urlname }
-  }));
-
-  return {
-    paths,
-    fallback: false // or 'blocking' depending on your needs
-  };
-}
-
-// This function gets called at build time
-export async function getStaticProps({ params }) {
-  const { slug } = params;
-
-  try {
-    // Fetch necessary data for the project
-    const skills = await fetchData(skillQuery);
-    const projectQuery = "SELECT * FROM project WHERE urlname = ?";
-    const projectData = await fetchData(projectQuery, [slug]);
-
-    if (projectData.length === 0) {
-      return {
-        notFound: true
-      };
-    }
-
-    const project = projectData[0];
-    project.skill_icons = skillIcons(skills, project);
-
-    const projectDetQuery = "SELECT * FROM project_det WHERE project_id = ?";
-    const projectDetData = await fetchData(projectDetQuery, [project.project_id]);
-
-    const data = {
-      ...project,
-      projectDetails: projectDetData
-    };
-
-    return {
-      props: {
-        project: data
-      }
-    };
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return {
-      notFound: true
-    };
-  }
-}
 
 const Block = ({content, urlname}) => (
     <div key={`projectdetail-${urlname}`} className="detailed-block flex flex-row justify-between items-center mb-5 overflow-hidden">
