@@ -2,6 +2,7 @@ import { Marcellus } from "next/font/google";
 import "@/assets/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import AnimatedCursor from "react-animated-cursor"
 
 const marcel = Marcellus({ weight: "400", subsets: ["latin"] });
 
@@ -43,6 +44,20 @@ export default function RootLayout({ children }) {
         <meta name="twitter:url" content="https://www.mrmallik.com" />
       </head>
       <body className={marcel.className}>
+      <AnimatedCursor
+        innerSize={25}
+        outerSize={28}
+        innerScale={1}
+        outerScale={1.5}
+        outerAlpha={0}
+        hasBlendMode={true}
+        innerStyle={{
+          backgroundColor: '#fff'
+        }}
+        outerStyle={{
+          border: '3px solid #fff'
+        }}
+      />
         {children}
         <Analytics />
         <SpeedInsights />

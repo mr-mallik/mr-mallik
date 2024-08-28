@@ -46,7 +46,7 @@ function ProjectDetails({ params }) {
             }
             finally {
                 setFadeOut(true);
-                setTimeout(() => setLoading(false), 500);
+                setTimeout(() => setLoading(false), 300);
             }
         };
 
@@ -83,10 +83,10 @@ function ProjectDetails({ params }) {
                                     }
                                     </div>
                                     
-                                    <div className="mt-2 flex">
+                                    {/* <div className="mt-2 flex">
                                         <div className="authors w-10 h-10 rounded-full text-center px-0 py-2 bg-gray-400  relative -left-2"> VS</div> 
                                         <div className="authors w-10 h-10 rounded-full text-center px-0 py-2 bg-gray-600 relative -left-2"> GM</div> 
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className="">
                                     {project.github &&

@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { motion } from "framer-motion"
 
 import Navbar from "@/components/Navbar"
 import Loader from "@/components/Loader"
@@ -28,7 +29,7 @@ export default function Resume() {
     }
     finally {
       setFadeOut(true);
-      setTimeout(() => setLoading(false), 500);
+      setTimeout(() => setLoading(false), 300);
     }
   };
 
@@ -41,16 +42,16 @@ export default function Resume() {
       {isLoading && <Loader hidden={fadeOut} />}
       <div className="resume">
           <Navbar activeTab="resume" />
-          <div className="container mx-auto max-w-screen-lg laptop:max-w-screen-xl desktop:max-w-screen-2xl">
+          <div className="container mx-auto px-8 max-w-screen-sm tablet:px-0 tablet:max-w-screen-md laptop:max-w-screen-xl desktop:max-w-screen-2xl">
               <div className="grid grid-cols-12">
                   {/* LEFT SIDE */}
-                  <div className="col-span-6 pr-4">
+                  <div className="col-span-12 laptop:col-span-6 pr-4">
                     {resume && <Skills skills={resume.skills} />}
                     {resume && <Education education={resume.education} />}
                   </div>
 
                   {/* RIGHT SIDE */}
-                  <div className="col-span-6 pl-8">
+                  <div className="col-span-12 pl-0 laptop:col-span-6 laptop:pl-8">
                       {resume && <Work work={resume.work} />}
                   </div>
               </div>

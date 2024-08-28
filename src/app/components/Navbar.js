@@ -5,7 +5,7 @@ import logo from "@/assets/images/logo/mallik_logo@0.5x.png"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
-
+import { motion } from 'framer-motion';
 
 // Icon Set
 import { DevicePhoneMobileIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
@@ -64,10 +64,12 @@ export default function Navbar({activeTab}) {
             <div className="flex justify-between items-center py-4 px-6 bg-black sm:bg-transparent">
                 <div className="flex items-center">
                     <div className="pr-4">
-                        <Image src={logo} alt="Mallik Logo" width={50} height={50} />
+                        <Image src={logo} className="hover:animate-spin" alt="Mallik Logo" width={50} height={50} />
                     </div>
                     <div className="pr-8">
-                        <span className='brand-name'>MR. MALLIK</span>
+                        <span className='brand-name'>
+                            <Link href="/">MR. MALLIK</Link>
+                        </span>
                     </div>
                     {/* Desktop Nav */}
                     <div className="nav hidden sm:block">

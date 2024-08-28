@@ -10,6 +10,7 @@ module.exports = {
       screens: {
         'laptop': '1024px',
         'desktop' : '1920px',
+        'tablet': '768px'
       },
       fontSize: {
         "60px": "60px",

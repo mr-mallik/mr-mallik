@@ -2,10 +2,20 @@ import { fetchData } from '@/lib/mysql';
 
 export async function GET(request) {
   try {
-    const query = "SELECT * FROM profile";
-    const data = await fetchData(query);
+    const profileQuery = "SELECT * FROM profile";
+    const profileData = await fetchData(profileQuery);
+
+    const socialQuery = "SELECT * FROM social_links";
+    const socialData = await fetchData(socialQuery);
+
+    const profile = profileData[0]
+
+    const data = {
+      ...profile,
+      social_links: socialData
+    }
     
-    return new Response(JSON.stringify(data[0]), {
+    return new Response(JSON.stringify(data), {
       status: 200,
       headers: {
         'Content-Type': 'application/json'
