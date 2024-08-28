@@ -16,7 +16,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.30",
     "mysql2": "^3.10.2",
-    "next": "14.3.0-canary.9",
+    "next": "^14.2.7",
     "react": "^18",
     "react-animated-cursor": "^2.11.2",
     "react-dom": "^18",
