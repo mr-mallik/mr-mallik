@@ -42,6 +42,12 @@ export default function About() {
         fetchAbout();
     }, [])
 
+    if(isLoading) {
+        return (
+            <Loader hidden={fadeOut} />
+        )
+    }
+
     return (
         <>
         {isLoading && <Loader hidden={fadeOut} />}
@@ -50,9 +56,9 @@ export default function About() {
             <div className="container mx-auto px-8 max-w-screen-sm tablet:px-0 tablet:max-w-screen-md laptop:max-w-screen-xl desktop:max-w-screen-2xl">
                 <div className="flex flex-col">
                     <motion.div 
-                    initial={{ opacity: 0, y: 300 }}
+                    initial={{ opacity: 0, y: 700 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
                     className="flex flex-col gap-10 mt-10 laptop:w-2/3 desktop:mt-20 desktop:w-6/12">
                         <div className="flex flex-col gap-2">
                             <h1 className="font-bold mb-6 uppercase tracking-wider underline underline-offset-8 color-tertiary laptop:text-2xl desktop:text-4xl">About</h1>

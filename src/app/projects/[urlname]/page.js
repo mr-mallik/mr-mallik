@@ -4,28 +4,34 @@ import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Loader from "@/components/Loader";
 import Image  from 'next/image';
+import { convertToRoman } from "@/lib/helper";
+import SwipeHandler from '@/components/SwipeHandler';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
-const Block = ({content, urlname}) => (
+const Block = ({content, urlname, romanNum}) => (
     <div key={`projectdetail-${urlname}`} className="detailed-block flex flex-row justify-between items-center mb-5 overflow-hidden">
-        <div className="icon-container overflow-hidden desktop:h-full w-2/5">
-            {content.image && 
-                <Image src={`/assets/projects/${urlname}/${content.image}` || "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg"} alt={content.title} className="" width={256} height={200} />
-            }
-
-            {/* {content.video_link && 
-                <Image src={content.video_link} alt={content.title} className="" />
-            } */}
-        </div>
-        <div className="content-container text-justify p-5 ml-3 w-3/5">
-            <h5 className="mb-6 font-semibold tracking-widest laptop:text-lg desktop:text-lg">{content.title}</h5>
-            <p className="text-white text-sm mb-5 desktop:text-base">
-                {content.description}
-            </p>
-        </div>
+        {content.banner_image && content.banner_image !='' ?
+            <>
+                <div className="icon-container overflow-hidden desktop:h-full w-2/5">
+                    <Image src={`/assets/projects/${urlname}/${content.banner_image}` || "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg"} alt={content.title} className="" width={256} height={200} />
+                </div>
+                <div className="content-container text-justify p-5 w-3/5">
+                    <h5 className="mb-6 font-semibold tracking-widest laptop:text-lg desktop:text-lg">{`${romanNum}. ${content.title}`}</h5>
+                    <p className="text-white text-sm mb-5 desktop:text-base" dangerouslySetInnerHTML={{ __html: content.description }}></p>
+                </div>
+            </>
+            :
+            <div className="content-container text-justify p-5">
+                <h5 className="mb-6 font-semibold tracking-widest laptop:text-lg desktop:text-lg">{`${romanNum}. ${content.title}`}</h5>
+                <p className="text-white text-sm desktop:text-base" dangerouslySetInnerHTML={{ __html: content.description }}></p>
+            </div>
+        }
     </div>
 );
 
 function ProjectDetails({ params }) {
+    const router = useRouter();
     const { urlname } = params; // Capture the 'detail' parameter from the URL
 
     const [project, setProject] = useState([]);
@@ -52,14 +58,35 @@ function ProjectDetails({ params }) {
 
         fetchProject();
     }, [urlname]);
+
+    const handleSwipeLeft = (nextPageUrlname) => {
+        if(nextPageUrlname) {
+            router.push(nextPageUrlname); // Replace with your next page route
+        }
+    };
+    
+    const handleSwipeRight = (previousPageUrlname) => {
+        if(previousPageUrlname) {
+            router.push(previousPageUrlname); // Replace with your next page route
+        }
+    };
+
+    if(isLoading) {
+        return (
+            <Loader hidden={fadeOut} />
+        )
+    }
     
     return(
-        <>
-            {isLoading && <Loader hidden={fadeOut} />}
+        <SwipeHandler
+            onSwipeLeft={() => handleSwipeLeft(project && project.next ? project.next : '')}
+            onSwipeRight={() => handleSwipeRight(project && project.previous ? project.previous : '')}
+            >
+                
             <div className="projects">
                 <Navbar activeTab='project' />
                 {/* Banner */}
-                <div className="projects-banner" style={{ backgroundImage: (content.image) ? `url(/assets/projects/${project.urlname}/${project.banner_image})` : "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg" }}>
+                <div className="projects-banner" style={{ backgroundImage: (project.image) ? `url(/assets/projects/${project.urlname}/${project.banner_image})` : 'url("https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg")' }}>
                     <div className="container mx-auto max-w-screen-lg laptop:max-w-screen-xl desktop:max-w-screen-2xl">
                         <div className="mt-10 absolute bottom-24 w-2/5 desktop:mt-20">
                             <h1 className="font-bold mb-6 uppercase tracking-wider underline underline-offset-8 color-tertiary laptop:text-2xl desktop:text-4xl">{project.title}</h1>
@@ -67,7 +94,15 @@ function ProjectDetails({ params }) {
                     </div>
                 </div>
                 {/* Content */}
-                <div className="">
+                <motion.div
+                    initial={{ scale: 0, rotate: 180 }}
+                    animate={{ rotate: 0, scale: 1 }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 20
+                    }}
+                    >
                     <div className="container mx-auto max-w-screen-lg laptop:max-w-screen-xl desktop:max-w-screen-2xl">
                         <div className="relative -top-16 rounded-lg pb-10 pt-12 px-10 bg-gray-900">
                             {/* Minor Details */}
@@ -112,7 +147,7 @@ function ProjectDetails({ params }) {
                             
                             {/* Summary block */}
                             <div className="bg-gray-800 p-5 rounded mb-8 text-justify">
-                                <h3 className="font-bold mb-6 tracking-wider underline underline-offset-8 color-tertiary laptop:text-lg desktop:text-xl">Overview</h3>
+                                <h3 className="font-bold mb-6 tracking-wider underline underline-offset-8 color-tertiary laptop:text-lg desktop:text-xl">tl;dr</h3>
                                 <p className="text-white text-sm mb-5 desktop:text-base">
                                     {project.overview}
                                 </p>
@@ -121,13 +156,13 @@ function ProjectDetails({ params }) {
                             {/* Project Details */}
                             {project && project.projectDetails &&
                                 project.projectDetails.map((item, index) => (
-                                    <Block key={`block-${index}`} content={item} urlname={project.urlname} />
+                                    <Block key={`block-${index}`} content={item} urlname={project.urlname} romanNum={ convertToRoman( parseInt(index+1) ) } />
                             ))}
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
-        </>
+        </SwipeHandler>
     )
 }
 
