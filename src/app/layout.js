@@ -45,6 +45,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={marcel.className}>
       <AnimatedCursor
+        className="animated-cursor"
         innerSize={25}
         outerSize={28}
         innerScale={1}

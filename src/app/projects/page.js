@@ -11,11 +11,11 @@ const Block = ({ content }) => (
     <motion.a 
     initial={{ x: 100, opacity: 0 }}
     whileInView={{ x: 0, opacity: 1 }}
-    transition={{ type: 'tween', duration: 0.5, ease: 'easeInOut' }}
-    viewport={{ once: false, amount: 0.5 }} 
+    transition={{ type: 'tween', duration: 0.5, ease: 'easeIn' }}
+    viewport={{ once: true, amount: 0.5 }} 
     href={`/projects/${content.urlname}`} className="diamond-card rounded overflow-hidden bg-gray-900 bg-opacity-8 shadow-md">
         <div className="icon-container overflow-hidden max-h-44 desktop:max-h-52">
-            <Image src={`/assets/projects/${content.urlname}/${content.image}` || "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg"} alt={content.title} className="object-cover" width={640}  height={200} />
+            <Image src={ (content.image) ? `/assets/projects/${content.urlname}/${content.image}` : "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg" } alt={content.title} className="object-cover" width={640}  height={200} />
         </div>
         <div className="content-container overflow-hidden text-justify p-5 laptop:min-h-ht-175 desktop:min-h-ht-190">
             <h3 className="font-bold-300 mb-2 text-base desktop:text-xl desktop:mt-1">{content.title}</h3>
@@ -70,7 +70,7 @@ function Projects() {
                         <h1 className="font-bold mb-6 uppercase tracking-wider underline underline-offset-8 color-tertiary laptop:text-2xl desktop:text-4xl">Projects</h1>
                     </div>
                     <div className="grid grid-cols-1 tablet:grid-cols-2 gap-2 laptop:grid-cols-4 laptop:gap-4 mb-10 mt-10">
-                        {projects.map((project) => (
+                        {projects && projects.length > 0 && projects.map((project) => (
                             <Block key={project.project_id} content={project} />
                         ))}
                     </div>

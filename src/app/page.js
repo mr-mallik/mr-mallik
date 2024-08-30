@@ -76,9 +76,9 @@ export default function Home() {
                     
                     <div className="intro-buttons">
                       <motion.a 
-                      initial={{ x: -200, opacity: 0}}
-                      whileInView={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 1.5, ease: 'easeInOut' }}
+                      initial={{ y: 200, opacity: 0}}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 1, ease: 'easeInOut' }}
                       whileHover={{ 
                         borderRadius: '0px', // Sharp corners on hover
                         backgroundColor: '#ffffff', // Background color changes to white
@@ -92,7 +92,7 @@ export default function Home() {
                       <motion.a 
                       initial={{ x: -200, opacity: 0}}
                       whileInView={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 1.5, ease: 'easeInOut', delay: 1 }}
+                      transition={{ duration: 1, ease: 'easeInOut' }}
                       whileHover={{ 
                         borderRadius: '0px', // Sharp corners on hover
                         backgroundColor: '#ffffff', // Background color changes to white
@@ -100,7 +100,7 @@ export default function Home() {
                         scale: 1.1, // Scale up slightly
                       }}
                       
-                      className="bg-white text-black laptop:bg-black laptop:text-white" href="/portfolio">Projects
+                      className="bg-white text-black laptop:bg-black laptop:text-white" href="/projects">Projects
                       </motion.a>
                     </div>
                   </div>

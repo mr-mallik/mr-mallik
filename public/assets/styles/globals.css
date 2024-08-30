@@ -174,4 +174,7 @@ body {
   .about-page {
     background: none;
   }
+  .animated-cursor {
+    display: none;
+  }
 }

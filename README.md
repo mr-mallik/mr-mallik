@@ -1,4 +1,4 @@
-![banner](https://mrmallik.com/icons/mrmallik-banner.png)
+![banner](./public/assets/images/mr-mallik-banner.png)
 
 # Hi there, I'm Gulger Mallik! 👋
 

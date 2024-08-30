@@ -9,7 +9,7 @@ const Block = ({content, urlname}) => (
     <div key={`projectdetail-${urlname}`} className="detailed-block flex flex-row justify-between items-center mb-5 overflow-hidden">
         <div className="icon-container overflow-hidden desktop:h-full w-2/5">
             {content.image && 
-                <Image src={`/assets/projects/${urlname}/${content.image}`} alt={content.title} className="" width={256} height={200} />
+                <Image src={`/assets/projects/${urlname}/${content.image}` || "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg"} alt={content.title} className="" width={256} height={200} />
             }
 
             {/* {content.video_link && 
@@ -59,7 +59,7 @@ function ProjectDetails({ params }) {
             <div className="projects">
                 <Navbar activeTab='project' />
                 {/* Banner */}
-                <div className="projects-banner" style={{ backgroundImage: `url(/assets/projects/${project.urlname}/${project.banner_image})` }}>
+                <div className="projects-banner" style={{ backgroundImage: (content.image) ? `url(/assets/projects/${project.urlname}/${project.banner_image})` : "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg" }}>
                     <div className="container mx-auto max-w-screen-lg laptop:max-w-screen-xl desktop:max-w-screen-2xl">
                         <div className="mt-10 absolute bottom-24 w-2/5 desktop:mt-20">
                             <h1 className="font-bold mb-6 uppercase tracking-wider underline underline-offset-8 color-tertiary laptop:text-2xl desktop:text-4xl">{project.title}</h1>
