@@ -6,7 +6,7 @@ const Navbar = dynamic(() => import("@/components/Navbar"), {ssr: false});
 const ProjectDetail = dynamic(() => import("./ProjectDetail"), {ssr: false});
 
 async function fetchProjectData(urlname) {
-    const { data, error } = await fetchAPI(`/api/projects/${urlname}`);
+    const { data, error } = await fetchAPI(`${process.env.BASE_URL}/api/projects/${urlname}`);
     
     if (error) {
       console.error('Error fetching project data:', error);

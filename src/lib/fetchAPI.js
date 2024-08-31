@@ -1,8 +1,8 @@
 export async function fetchAPI(url, options = {}) {
     try {
-        const api_url = process.env.BASE_URL + url
+      
       // Perform the fetch request
-      const response = await fetch(api_url, options);
+      const response = await fetch(url, options);
   
       // Check if the response status is OK (status in the range 200-299)
       if (!response.ok) {

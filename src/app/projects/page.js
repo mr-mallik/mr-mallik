@@ -36,7 +36,7 @@ export const metadata = {
 async function Projects() {
 
     try {
-        const {data: projects, error} = await fetchAPI("/api/projects");
+        const {data: projects, error} = await fetchAPI( process.env.BASE_URL + "/api/projects");
 
         if(error) {
             throw new Error("An error occurred when fetching data for projects");

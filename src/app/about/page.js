@@ -37,8 +37,8 @@ export const metadata = {
 export default async function About() {
 
     try {
-        const {data: profile, error_profile} = await fetchAPI("/api/profile");
-        const {data: service, error_service} = await fetchAPI("/api/service");
+        const {data: profile, error_profile} = await fetchAPI( process.env.BASE_URL + "/api/profile");
+        const {data: service, error_service} = await fetchAPI( process.env.BASE_URL + "/api/service");
 
         if(error_profile || error_service) {
             throw new Error("An error occurred in fetching data");
