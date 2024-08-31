@@ -41,7 +41,7 @@ export const metadata = {
 export default async function Resume() {
   
   try {
-    const {data: resume, error} = await fetchAPI( process.env.BASE_URL + "/api/resume");
+    const {data: resume, error} = await fetchAPI("https://mrmallik.com/api/resume");
 
     if(error) {
       throw new Error(error);
