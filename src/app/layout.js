@@ -33,13 +33,13 @@ export default function RootLayout({ children }) {
         <meta property="og:description" content="Explore the portfolio and projects of Gulger Mallik, a talented Software Engineer and Full Stack Developer. Visit mrmallik.com for more details." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.mrmallik.com" />
-        <meta property="og:image" content="https://www.mrmallik.com/images/seo-image.png" />
+        <meta property="og:image" content="https://www.mrmallik.com/assets/images/seo-image.png" />
         <meta property="og:site_name" content="Gulger Mallik's Portfolio" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Gulger Mallik | Software Engineer | Full Stack Developer | mrmallik.com" />
         <meta name="twitter:description" content="Explore the portfolio and projects of Gulger Mallik, a talented Software Engineer and Full Stack Developer. Visit mrmallik.com for more details." />
-        <meta name="twitter:image" content="https://www.mrmallik.com/images/seo-image.png" />
+        <meta name="twitter:image" content="https://www.mrmallik.com/assets/images/seo-image.png" />
         <meta name="twitter:site" content="@its_mrmallik" />
         <meta name="twitter:creator" content="@its_mrmallik" />
         <meta name="twitter:url" content="https://www.mrmallik.com" />
