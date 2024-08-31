@@ -6,7 +6,7 @@ const Navbar = dynamic(() => import("@/components/Navbar"), {ssr: false});
 const ProjectDetail = dynamic(() => import("./ProjectDetail"), {ssr: false});
 
 async function fetchProjectData(urlname) {
-    const { data, error } = await fetchAPI(`${process.env.BASE_URL}/api/projects/${urlname}`);
+    const { data, error } = await fetchAPI(`https://mrmallik.com/api/projects/${urlname}`);
     
     if (error) {
       console.error('Error fetching project data:', error);
@@ -15,7 +15,7 @@ async function fetchProjectData(urlname) {
         name: 'Default Project',
         description: 'Default description',
         keywords: ['Default', 'Project'],
-        image: `${process.env.BASE_URL}/assets/images/seo-image.png`,
+        image: `https://mrmallik.com/assets/images/seo-image.png`,
       };
     }
     
@@ -28,16 +28,16 @@ export async function generateMetadata({ params }) {
     
     // Return metadata based on project data
     return {
-      title: `${projectData.title} | Projects | ${process.env.SEO_TITLE}`,
+      title: `${projectData.title} | Projects | Gulger Mallik`,
       description: projectData.seo_desc || "Explore projects developed by Gulger Mallik, including innovative solutions and advanced systems.",
       keywords: projectData.seo_keyword,
       openGraph: {
         title: `${projectData.title} | Projects`,
         description: projectData.short_description,
-        url: `${process.env.BASE_URL}/projects/${projectData.urlname}`,
+        url: `https://mrmallik.com/projects/${projectData.urlname}`,
         images: [
           {
-            url: `${process.env.BASE_URL}/assets/projects/${projectData.urlname}/${projectData.image || `${process.env.BASE_URL}/assets/images/seo-image.png`}`,
+            url: `https://mrmallik.com/assets/projects/${projectData.urlname}/${projectData.image || `https://mrmallik.com/assets/images/seo-image.png`}`,
             width: 800,
             height: 600,
           },
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }) {
         card: 'summary_large_image',
         title: `${projectData.title} | Projects`,
         description: projectData.short_description,
-        images: [`${process.env.BASE_URL}/assets/projects/${projectData.urlname}/${projectData.image || `${process.env.BASE_URL}/assets/images/seo-image.png`}`],
+        images: [`https://mrmallik.com/assets/projects/${projectData.urlname}/${projectData.image || `https://mrmallik.com/assets/images/seo-image.png`}`],
       },
     };
 }

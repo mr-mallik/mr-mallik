@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 const Navbar = dynamic(() => import("@/components/Navbar"), {ssr: false});
 const ProjectBox = dynamic(() => import("./ProjectBox"), {ssr: false});
 
-const title = `${process.env.SEO_TITLE} | Projects | Software Engineer | Full Stack Developer`;
+const title = `Gulger Mallik | Projects | Software Engineer | Full Stack Developer`;
 const description = "Explore the projects of Gulger Mallik, a skilled Software Engineer and Full Stack Developer. Discover innovative solutions, advanced systems, and custom software developed for various domains, showcasing expertise in web and software development.";
 const keywords = 'Gulger Mallik, Projects, Software Engineer, Full Stack Developer, Personal Portfolio, Crowther Audit Program, Automated Test Management System, Business Management Suite, Dashboard Screen Builder, Booking App, E-commerce Platform, Web Development, Software Development, AI Solutions, Data Visualization, Asset Management';
 
@@ -16,10 +16,10 @@ export const metadata = {
   openGraph: {
     title: title,
     description: description,
-    url: `${process.env.BASE_URL}/projects`,
+    url: `https://mrmallik.com/projects`,
     images: [
       {
-        url: `${process.env.BASE_URL}/assets/images/seo-image.png`,
+        url: `https://mrmallik.com/assets/images/seo-image.png`,
         width: 800,
         height: 600,
       },
@@ -29,7 +29,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: title,
     description: description,
-    images: [`${process.env.BASE_URL}/assets/images/seo-image.png`],
+    images: [`https://mrmallik.com/assets/images/seo-image.png`],
   },
 };
 

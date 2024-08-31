@@ -10,7 +10,7 @@ const Hobbies = dynamic(() => import("@/components/Resume/Hobbies"), {ssr: false
 const Work = dynamic(() => import("@/components/Resume/Work"), {ssr: false});
 const Certificates = dynamic(() => import("@/components/Resume/Certificates"), {ssr: false});
 
-const title = `${process.env.SEO_TITLE} | Resume | Software Engineer | Full Stack Developer`;
+const title = `Gulger Mallik | Resume | Software Engineer | Full Stack Developer`;
 const description = "Explore the resume of Gulger Mallik, a skilled Software Engineer and Full Stack Developer. View his education, experience, skills, and certifications.";
 const keywords = 'Gulger Mallik, Software Engineer, Full Stack Developer, Resume, Web Developer, Python, Java, PHP, Laravel, Django, React JS, Next JS, Tailwind CSS, MySQL, PostgreSQL, MongoDB, Git, Rest API, Machine Learning, AI, HTML, CSS, AJAX, GPT API';
 
@@ -21,10 +21,10 @@ export const metadata = {
   openGraph: {
     title: title,
     description: description,
-    url: `${process.env.BASE_URL}`,
+    url: `https://mrmallik.com`,
     images: [
       {
-        url: `${process.env.BASE_URL}/assets/images/seo-image.png`,
+        url: `https://mrmallik.com/assets/images/seo-image.png`,
         width: 800,
         height: 600,
       },
@@ -34,7 +34,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: title,
     description: description,
-    images: [`${process.env.BASE_URL}/assets/images/seo-image.png`],
+    images: [`https://mrmallik.com/assets/images/seo-image.png`],
   },
 };
 

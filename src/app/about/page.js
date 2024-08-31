@@ -6,7 +6,7 @@ import { fetchAPI } from "@/lib/fetchAPI";
 const Navbar = dynamic(() => import("@/components/Navbar"), {ssr: false});
 const AboutMe = dynamic(() => import("./AboutMe"), {ssr: false});
 
-const title = `${process.env.SEO_TITLE} | About Me | Software Engineer | Full Stack Developer`;
+const title = `Gulger Mallik | About Me | Software Engineer | Full Stack Developer`;
 const description = "Learn more about Gulger Mallik, a passionate Software Engineer and Full Stack Developer. Discover his professional journey, skills, and personal interests.";
 const keywords = 'Gulger Mallik, About Me, Software Engineer, Full Stack Developer, Web Developer, Professional Journey, Skills, Personal Interests, Python, Java, PHP, Laravel, Django, React JS, Next JS, Tailwind CSS, MySQL, PostgreSQL, MongoDB, Git, Rest API, Machine Learning, AI, HTML, CSS, AJAX, GPT API';
 
@@ -17,10 +17,10 @@ export const metadata = {
   openGraph: {
     title: title,
     description: description,
-    url: `${process.env.BASE_URL}/about`,
+    url: `https://mrmallik.com/about`,
     images: [
       {
-        url: `${process.env.BASE_URL}/assets/images/about-me.png`,
+        url: `https://mrmallik.com/assets/images/about-me.png`,
         width: 800,
         height: 600,
       },
@@ -30,7 +30,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: title,
     description: description,
-    images: [`${process.env.BASE_URL}/assets/images/about-me.png`],
+    images: [`https://mrmallik.com/assets/images/about-me.png`],
   },
 };
 
