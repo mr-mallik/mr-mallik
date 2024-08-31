@@ -1,72 +1,90 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { motion } from "framer-motion"
-
-import Navbar from "@/components/Navbar"
+import React from "react"
 import Loader from "@/components/Loader"
-import Skills from "@/components/Resume/Skills"
-import Education from "@/components/Resume/Education"
-import Hobbies from "@/components/Resume/Hobbies"
-import Work from "@/components/Resume/Work"
-import Certificates from "@/components/Resume/Certificates"
+import dynamic from "next/dynamic";
+import { fetchAPI } from "@/lib/fetchAPI";
 
-export default function Resume() {
-  const[isLoading, setLoading] = useState(true);
-  const [resume, setResume] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
+const Navbar = dynamic(() => import("@/components/Navbar"), {ssr: false});
+const Skills = dynamic(() => import("@/components/Resume/Skills"), {ssr: false});
+const Education = dynamic(() => import("@/components/Resume/Education"), {ssr: false});
+const Hobbies = dynamic(() => import("@/components/Resume/Hobbies"), {ssr: false});
+const Work = dynamic(() => import("@/components/Resume/Work"), {ssr: false});
+const Certificates = dynamic(() => import("@/components/Resume/Certificates"), {ssr: false});
 
-  const fetchResume = async () => {
-    try {
-        const response = await fetch('/api/resume');
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        // console.log(data.skills);
-        setResume(data);
-    } catch (error) {
-        console.error('Fetch profile failed:', error);
+const title = `${process.env.SEO_TITLE} | Resume | Software Engineer | Full Stack Developer`;
+const description = "Explore the resume of Gulger Mallik, a skilled Software Engineer and Full Stack Developer. View his education, experience, skills, and certifications.";
+const keywords = 'Gulger Mallik, Software Engineer, Full Stack Developer, Resume, Web Developer, Python, Java, PHP, Laravel, Django, React JS, Next JS, Tailwind CSS, MySQL, PostgreSQL, MongoDB, Git, Rest API, Machine Learning, AI, HTML, CSS, AJAX, GPT API';
+
+export const metadata = {
+  title: title,
+  description: description,
+  keywords: keywords,
+  openGraph: {
+    title: title,
+    description: description,
+    url: `${process.env.BASE_URL}`,
+    images: [
+      {
+        url: `${process.env.BASE_URL}/assets/images/seo-image.png`,
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: title,
+    description: description,
+    images: [`${process.env.BASE_URL}/assets/images/seo-image.png`],
+  },
+};
+
+export default async function Resume() {
+  
+  try {
+    const {data: resume, error} = await fetchAPI("/api/resume");
+
+    if(error) {
+      throw new Error(error);
     }
-    finally {
-      setFadeOut(true);
-      setTimeout(() => setLoading(false), 300);
+
+    if (!resume) {
+      return <Loader />;
     }
-  };
 
-  useEffect(() => {
-    fetchResume();
-  }, [])
-
-  return (
+    return (
       <>
-      {isLoading && <Loader hidden={fadeOut} />}
-      <div className="resume">
-          <Navbar activeTab="resume" />
+        <Navbar activeTab="resume" />
+        <div className="resume">
           <div className="container mx-auto px-8 max-w-screen-sm tablet:px-0 tablet:max-w-screen-md laptop:max-w-screen-xl desktop:max-w-screen-2xl">
               <div className="grid grid-cols-12">
                   {/* LEFT SIDE */}
                   <div className="col-span-12 laptop:col-span-6 pr-4">
-                    {resume && <Skills skills={resume.skills} />}
-                    {resume && <Education education={resume.education} />}
+                    {resume.skills && <Skills skills={resume.skills} />}
+                    {resume.education && <Education education={resume.education} />}
                   </div>
 
                   {/* RIGHT SIDE */}
                   <div className="col-span-12 pl-0 laptop:col-span-6 laptop:pl-8">
-                      {resume && <Work work={resume.work} />}
+                      {resume.work && <Work work={resume.work} />}
                   </div>
               </div>
               <div className="grid grid-cols-12">
                 {/* Certificates */}
                 <div className="col-span-12">
-                  {resume && <Certificates certificates={resume.certifications} />}
+                  {resume.certifications && <Certificates certificates={resume.certifications} />}
                 </div>
                 {/* Hobbies */}
                 <div className="col-span-12">
-                  {resume && <Hobbies hobbies={resume.hobbies} />}
+                  {resume.hobbies && <Hobbies hobbies={resume.hobbies} />}
                 </div>
               </div>
           </div>
-      </div>
+        </div>
       </>
-  )
-} 
+    )
+  }
+  catch (err)  {
+    console.error("Rendering error occurred: ", err);
+    throw err;
+  }
+}

@@ -108,10 +108,12 @@ export default function Navbar({activeTab}) {
                     <nav className='flex flex-col space-y-4 p-9 items-center bg-black min-h-screen text-lg'>
                         {
                             links.map((link) => {
+                                const active = isActive(link.href);
+                                
                                 return (
                                     <Link key={link.name} href={link.href}
                                     className={clsx(
-                                        {'active': pathname === link.href}
+                                        {'active': active}
                                     )}>{link.name}
                                     </Link>
                                 )

@@ -1,3 +1,4 @@
+"use client";
 import * as FaIcons from 'react-icons/fa';
 import { motion } from 'framer-motion';
 

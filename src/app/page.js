@@ -1,11 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Loader from "@/components/Loader";
 import * as FaIcons from 'react-icons/fa';
-import TrackVisibility from 'react-on-screen';
 import { motion } from 'framer-motion';
 
 

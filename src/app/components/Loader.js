@@ -1,4 +1,3 @@
-// components/Spinner.js
 import React from 'react';
 import Image from 'next/image';
 import logo from  "@/assets/images/logo/mallik_logo@0.5x.png"

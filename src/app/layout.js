@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
         <title>Gulger Mallik | Software Engineer | Full Stack Developer | mrmallik.com</title>
         <meta name="description" content="Gulger Mallik is a skilled Software Engineer and Full Stack Developer. Explore mrmallik.com for my portfolio, projects, and professional experience in web development, software engineering, and more." />
         <meta name="keywords" content="Gulger Mallik, Software Engineer, Full Stack Developer, Web Developer, mrmallik.com, portfolio, projects, JavaScript, Python, React, Node.js, AWS, cloud computing, software development" />
@@ -32,33 +33,26 @@ export default function RootLayout({ children }) {
         <meta property="og:description" content="Explore the portfolio and projects of Gulger Mallik, a talented Software Engineer and Full Stack Developer. Visit mrmallik.com for more details." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.mrmallik.com" />
-        <meta property="og:image" content="https://www.mrmallik.com/images/profile.jpg" />
+        <meta property="og:image" content="https://www.mrmallik.com/images/seo-image.png" />
         <meta property="og:site_name" content="Gulger Mallik's Portfolio" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Gulger Mallik | Software Engineer | Full Stack Developer | mrmallik.com" />
         <meta name="twitter:description" content="Explore the portfolio and projects of Gulger Mallik, a talented Software Engineer and Full Stack Developer. Visit mrmallik.com for more details." />
-        <meta name="twitter:image" content="https://www.mrmallik.com/images/profile.jpg" />
-        <meta name="twitter:site" content="@_mrmallik_" />
-        <meta name="twitter:creator" content="@_mrmallik_" />
+        <meta name="twitter:image" content="https://www.mrmallik.com/images/seo-image.png" />
+        <meta name="twitter:site" content="@its_mrmallik" />
+        <meta name="twitter:creator" content="@its_mrmallik" />
         <meta name="twitter:url" content="https://www.mrmallik.com" />
       </head>
       <body className={marcel.className}>
-      <AnimatedCursor
-        className="animated-cursor"
-        innerSize={25}
-        outerSize={28}
-        innerScale={1}
-        outerScale={1.5}
-        outerAlpha={0}
-        hasBlendMode={true}
-        innerStyle={{
-          backgroundColor: '#fff'
-        }}
-        outerStyle={{
-          border: '3px solid #fff'
-        }}
-      />
+        {/* <AnimatedCursor
+          innerSize={15}
+          outerSize={15}
+          color="255, 255 ,255"
+          outerAlpha={0.4}
+          innerScale={0.7}
+          outerScale={5}
+        /> */}
         {children}
         <Analytics />
         <SpeedInsights />

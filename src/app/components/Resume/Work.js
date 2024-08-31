@@ -1,4 +1,5 @@
-import { calculateDateDifference } from '../../../lib/helper';
+"use client";
+import { calculateDateDifference } from '@/lib/helper';
 import { motion } from "framer-motion"
 
 function Work({work}) {
