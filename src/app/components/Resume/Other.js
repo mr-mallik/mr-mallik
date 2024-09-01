@@ -11,7 +11,7 @@ function Other({other}) {
                 <div className="mb-2 grid grid-cols-1 gap-2 laptop:grid-cols-2 laptop:gap-3 justify-between content-center">
                     {other.map((oth, idx) => {
                         return(
-                            <div kye={`hna-${idx}`} className="flex flex-nowrap justify-center content-center px-2 p-2 bg-gray-800 border rounded border-transparent hover:border-color-tertiary">
+                            <div key={`hna-${idx}`} className="flex flex-nowrap justify-center content-center px-2 p-2 bg-gray-800 border rounded border-transparent hover:border-color-tertiary">
                                 <div class="rounded flex flex-col tablet:flex-row overflow-hidden shadow-md bg-gray-900">
                                     <div class="overflow-hidden bg-black  w-full tablet:w-2/5 flex justify-center items-center">
                                         <img alt="certificate" class="w-full desktop:h-32" src={(oth.logo) ? `/assets/other/${oth.logo}` : `/assets/other/trophy.png`} />

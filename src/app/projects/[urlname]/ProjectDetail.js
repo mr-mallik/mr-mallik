@@ -77,7 +77,7 @@ function ProjectDetail({ project }) {
                                     {project.skill_icons && 
                                         project.skill_icons.map((skill, index) => {
                                             return(
-                                                <img key={`skill-icon-${index}`} className="mr-2 mb-2 h-6 rounded" src={skill} />
+                                                <img key={`skill-icon-${index}`} alt="" className="mr-2 mb-2 h-6 rounded" src={skill} />
                                             )
                                         })
                                     }
