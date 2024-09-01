@@ -6,6 +6,38 @@ import AnimatedCursor from "react-animated-cursor"
 
 const marcel = Marcellus({ weight: "400", subsets: ["latin"] });
 
+const title = `Gulger Mallik | Software Engineer | Full Stack Developer | mrmallik.com`;
+const description = "Gulger Mallik is a skilled Software Engineer and Full Stack Developer. Explore mrmallik.com for my portfolio, projects, and professional experience in web development, software engineering, and more.";
+const keywords = 'Gulger Mallik, Software Engineer, Full Stack Developer, Web Developer, mrmallik.com, portfolio, projects, JavaScript, Python, React, Node.js, AWS, cloud computing, software development';
+
+export const metadata = {
+  title: title,
+  description: description,
+  keywords: keywords,
+  openGraph: {
+    title: title,
+    description: description,
+    url: `https://mrmallik.com`,
+    site_name: "Gulger Mallik's Portfolio",
+    images: [
+      {
+        url: `https://mrmallik.com/assets/images/seo-image.png`,
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: title,
+    description: description,
+    site: "@its_mrmallik",
+    url: "@its_mrmallik",
+    creator: "https://www.mrmallik.com",
+    images: [`https://mrmallik.com/assets/images/seo-image.png`],
+  },
+};
+
 export default function RootLayout({ children }) {
   
   return (
@@ -22,27 +54,8 @@ export default function RootLayout({ children }) {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        <title>Gulger Mallik | Software Engineer | Full Stack Developer | mrmallik.com</title>
-        <meta name="description" content="Gulger Mallik is a skilled Software Engineer and Full Stack Developer. Explore mrmallik.com for my portfolio, projects, and professional experience in web development, software engineering, and more." />
-        <meta name="keywords" content="Gulger Mallik, Software Engineer, Full Stack Developer, Web Developer, mrmallik.com, portfolio, projects, JavaScript, Python, React, Node.js, AWS, cloud computing, software development" />
         <meta name="author" content="Gulger Mallik" />
         <meta name="robots" content="index, follow" />
-
-        <meta property="og:title" content="Gulger Mallik | Software Engineer | Full Stack Developer | mrmallik.com" />
-        <meta property="og:description" content="Explore the portfolio and projects of Gulger Mallik, a talented Software Engineer and Full Stack Developer. Visit mrmallik.com for more details." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.mrmallik.com" />
-        <meta property="og:image" content="https://www.mrmallik.com/assets/images/seo-image.png" />
-        <meta property="og:site_name" content="Gulger Mallik's Portfolio" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Gulger Mallik | Software Engineer | Full Stack Developer | mrmallik.com" />
-        <meta name="twitter:description" content="Explore the portfolio and projects of Gulger Mallik, a talented Software Engineer and Full Stack Developer. Visit mrmallik.com for more details." />
-        <meta name="twitter:image" content="https://www.mrmallik.com/assets/images/seo-image.png" />
-        <meta name="twitter:site" content="@its_mrmallik" />
-        <meta name="twitter:creator" content="@its_mrmallik" />
-        <meta name="twitter:url" content="https://www.mrmallik.com" />
       </head>
       <body className={marcel.className}>
         {/* <AnimatedCursor

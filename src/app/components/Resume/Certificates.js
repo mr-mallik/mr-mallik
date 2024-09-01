@@ -20,9 +20,9 @@ function Certificates({certificates}) {
                                     <Image className="w-16 h-16" alt={cert.title} title={cert.title} src={cert.logo} width={76} height={76} />
                                 }
                                 <div className="ml-3 my-1 w-3/4">
-                                    <h3 className="text-base">{cert.title}</h3>
-                                    <h6 className="text-sm italic mb-2">Issued By: {cert.subtitle}</h6>
-                                    <p className="pt-2 text-xs">Date: {cert.end_my}</p>
+                                    <h3 className="text-sm tablet:text-base">{cert.title}</h3>
+                                    <h6 className="text-xs tablet:text-sm italic mb-2">Issued By: {cert.subtitle}</h6>
+                                    <p className="pt-2 text-8px tablet:text-xs">Date: {cert.end_my}</p>
                                 </div>
                             </motion.div>
                         )

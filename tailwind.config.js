@@ -13,6 +13,7 @@ module.exports = {
         'tablet': '768px'
       },
       fontSize: {
+        "8px": "8px",
         "60px": "60px",
         "80px": "80px"
       },

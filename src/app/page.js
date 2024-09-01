@@ -3,28 +3,8 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Loader from "@/components/Loader";
-import * as FaIcons from 'react-icons/fa';
+import SocialLinks from "@/components/SocialLinks";
 import { motion } from 'framer-motion';
-
-
-const iconMap = {
-  'FaGithub': FaIcons.FaGithub,
-  'FaLinkedin': FaIcons.FaLinkedin,
-  'FaMediumM': FaIcons.FaMediumM,
-  'FaTelegram': FaIcons.FaTelegram,
-  'FaInstagram': FaIcons.FaInstagram,
-  'FaEnvelope': FaIcons.FaEnvelope
-};
-
-const DynamicIcon = ({ name, className }) => {
-  const IconComponent = iconMap[name];
-
-  if (!IconComponent) {
-    return <span>Icon not found</span>;
-  }
-
-  return <IconComponent className={className} />;
-};
 
 export default function Home() {
   const[isLoading, setLoading] = useState(true);
@@ -57,7 +37,7 @@ export default function Home() {
       {isLoading && <Loader hidden={fadeOut} />}
       <div className="home-page">
         <Navbar activeTab='home' />
-          <div className="container mx-auto section-intro-content justify-center sm:justify-start tablet:max-w-screen-md laptop:max-w-screen-xl desktop:max-w-screen-2xl">
+          <div className="container mx-auto section-intro-content justify-center sm:justify-start laptop:max-w-screen-xl desktop:max-w-screen-2xl">
             <div className="inner-container">
               <div className="flex flex-row justify-between -mt-40 sm:-mt-56">
                 <div className="intro-left">
@@ -104,26 +84,9 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              {profile.social_links && profile.social_links.length && (
-                  <div className="social-media-section inset-x-0 z-40 sm:inset-x-auto bottom-20 sm:bottom-50px">
-                    <div className="social-media-links justify-center sm:justify-start ">
-                      {profile.social_links.map((social, index) => {  
-                          return(
-                            <motion.a 
-                            initial={{ x: '100vw', rotate: 360 }} // Start off screen to the right, with a full rotation
-                            animate={{ x: 0, rotate: 0 }} // End at original position with no rotation
-                            transition={{ duration: 1.5, ease: "easeInOut" }} // Animation settings
-                            whileHover={{ rotateY: 360 }} // 3D rotate along the Y-axis on hover
-                            target="_blank" href={social.link} key={`social-link-${social.title}`}>
-                              <DynamicIcon name={social.icon} className="h-8 w-8" />
-                            </motion.a>
-                          )
-                      })}
-                    </div>
-                  </div>
-                )
-              }
+              <div className="social-media-section bottom-20 inset-x-0 sm:inset-x-auto sm:bottom-50px">
+                  <SocialLinks profile={profile}/>  
+              </div>    
             </div>
           </div>
       </div>

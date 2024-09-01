@@ -7,6 +7,7 @@ const Navbar = dynamic(() => import("@/components/Navbar"), {ssr: false});
 const Skills = dynamic(() => import("@/components/Resume/Skills"), {ssr: false});
 const Education = dynamic(() => import("@/components/Resume/Education"), {ssr: false});
 const Hobbies = dynamic(() => import("@/components/Resume/Hobbies"), {ssr: false});
+const Other = dynamic(() => import("@/components/Resume/Other"), {ssr: false});
 const Work = dynamic(() => import("@/components/Resume/Work"), {ssr: false});
 const Certificates = dynamic(() => import("@/components/Resume/Certificates"), {ssr: false});
 
@@ -54,11 +55,11 @@ export default async function Resume() {
     return (
       <>
         <Navbar activeTab="resume" />
-        <div className="resume">
-          <div className="container mx-auto px-8 max-w-screen-sm tablet:px-0 tablet:max-w-screen-md laptop:max-w-screen-xl desktop:max-w-screen-2xl">
+        <div className="resume overflow-hidden">
+          <div className="container mx-auto px-8 max-w-screen-sm tablet:px-0 laptop:max-w-screen-xl desktop:max-w-screen-2xl">
               <div className="grid grid-cols-12">
                   {/* LEFT SIDE */}
-                  <div className="col-span-12 laptop:col-span-6 pr-4">
+                  <div className="col-span-12 laptop:col-span-6 pr=0 laptop:pr-4">
                     {resume.skills && <Skills skills={resume.skills} />}
                     {resume.education && <Education education={resume.education} />}
                   </div>
@@ -73,6 +74,12 @@ export default async function Resume() {
                 <div className="col-span-12">
                   {resume.certifications && <Certificates certificates={resume.certifications} />}
                 </div>
+                {/* Honours and Achievements */}
+                {resume.other && (
+                  <div className="col-span-12">
+                    <Other other={resume.other} />
+                </div>
+                )}
                 {/* Hobbies */}
                 <div className="col-span-12">
                   {resume.hobbies && <Hobbies hobbies={resume.hobbies} />}

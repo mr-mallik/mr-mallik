@@ -7,7 +7,7 @@ export async function GET(request) {
     const skills = await fetchData(skillQuery);
 
     // Query to fetch project details based on project ID
-    const query = "SELECT * FROM project";
+    const query = "SELECT * FROM project ORDER BY `published_date` DESC";
     const data = await fetchData(query);
 
     if (data.length === 0) {

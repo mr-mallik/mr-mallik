@@ -24,14 +24,14 @@ function Education({education}) {
                             return(
                                 <motion.div 
                                 whileHover={{
-                                    scale: 1.2,
+                                    scale: 1.1,
                                     transition: { duration: 0.5 },
                                 }}
-                                className={`${classWidth} py-4 pr-5 pl-8 mr-0 laptop:pl-28 mb-4 laptop:mr-3 relative float-right bg-gray-900 rounded border-r-4 border-r-color-tertiary`} key={edu.id}> 
-                                    <h3 className="absolute text-gray-500 -rotate-90 text-opacity-60 text-4xl -left-12 laptop:rotate-0 laptop:text-6xl font-extrabold laptop:-left-16 flex justify-center items-center top-1/2 -translate-y-1/2">{edu.end_year}</h3>
-                                    <h6 className="text-lg laptop:text-2xl mb-3">{edu.title}</h6>
-                                    <p className="text-base laptop:text-lg pt-4 mb-1">{edu.subtitle}</p>
-                                    <p className="text-base laptop:text-lg">{edu.content} </p>
+                                className={`laptop:${classWidth} py-4 pr-2  pl-10 tablet:pr-5 tablet:pl-8 mr-0 laptop:pl-28 mb-4 laptop:mr-3 relative floa-right laptop:float-right bg-gray-900 rounded border-r-4 border-r-color-tertiary`} key={edu.id}> 
+                                    <h3 className="absolute text-gray-500 -rotate-90 text-opacity-60 text-4xl -left-9 tablet:-left-12 laptop:rotate-0 laptop:text-6xl font-extrabold laptop:-left-16 flex justify-center items-center top-1/2 -translate-y-1/2">{edu.end_year}</h3>
+                                    <h6 className="text-base tablet:text-lg laptop:text-xl mb-3">{edu.title}</h6>
+                                    <p className="text-sm tablet:text-base pt-4 mb-1">{edu.subtitle}</p>
+                                    <p className="text-xs tablet:text-sm">{edu.content} </p>
                                 </motion.div> 
                             )
                         })

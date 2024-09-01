@@ -22,8 +22,8 @@ export async function GET(request, { params }) {
 
     const project = projectData[0];
 
-    const prevUrl = await fetchData("SELECT urlname FROM `project` WHERE `project_id` = ?", [(project.project_id - 1)] );
-    const nextUrl = await fetchData("SELECT urlname FROM `project` WHERE `project_id` = ?", [(project.project_id + 1)] );
+    const prevUrl = await fetchData("SELECT urlname FROM `project` WHERE `project_id` < ? ORDER BY `published_date` DESC LIMIT 1", [project.project_id] );
+    const nextUrl = await fetchData("SELECT urlname FROM `project` WHERE `project_id` > ? ORDER BY `published_date` DESC LIMIT 1", [project.project_id] );
 
     if(prevUrl && prevUrl[0]) project.previous = prevUrl[0]['urlname'];
     if(nextUrl && nextUrl[0]) project.next = nextUrl[0]['urlname'];

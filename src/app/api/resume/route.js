@@ -41,6 +41,7 @@ export async function GET(request) {
         'education': resume_set.edu,
         'hobbies': resume_set.hobby,
         'work': work_set,
+        'other': resume_set.other,
         'certifications': resume_set.cert
     };
     

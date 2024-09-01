@@ -5,7 +5,7 @@ import logo from "@/assets/images/logo/mallik_logo@0.5x.png"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
-import { motion } from 'framer-motion';
+import SocialLinks from "@/components/SocialLinks";
 
 // Icon Set
 import { DevicePhoneMobileIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
@@ -104,21 +104,27 @@ export default function Navbar({activeTab}) {
             </div>
             {/* Mobile Nav */}
             {isOpen && (
-                <div className="sm:hidden">
-                    <nav className='flex flex-col space-y-4 p-9 items-center bg-black min-h-screen text-lg'>
-                        {
-                            links.map((link) => {
-                                const active = isActive(link.href);
-                                
-                                return (
-                                    <Link key={link.name} href={link.href}
-                                    className={clsx(
-                                        {'active': active}
-                                    )}>{link.name}
-                                    </Link>
-                                )
-                            })
-                        }
+                <div className="sm:hidden bg-black h-screen">
+                    <nav className='p-9'>
+                        <div className='nav-links flex flex-col space-y-4 items-left text-lg'>
+                            {
+                                links.map((link) => {
+                                    const active = isActive(link.href);
+                                    
+                                    return (
+                                        <Link key={link.name} href={link.href}
+                                        className={clsx(
+                                            {'active': active}, 'text-3xl border-b border-gray-600 pb-2'
+                                        )}>{link.name}
+                                        </Link>
+                                    )
+                                })
+                            }
+                        </div>
+                        <div className="pt-12 mobile-social">
+                            <p className="text-base follow-me">Follow me</p>
+                            <SocialLinks profile={profile}/>  
+                        </div>
                     </nav>
                 </div>
             )}
