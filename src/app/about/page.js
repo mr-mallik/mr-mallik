@@ -17,10 +17,10 @@ export const metadata = {
   openGraph: {
     title: title,
     description: description,
-    url: `https://mrmallik.com/about`,
+    url: `${process.env.BASE_URL}/about`,
     images: [
       {
-        url: `https://mrmallik.com/assets/images/about-me.png`,
+        url: `${process.env.BASE_URL}/assets/images/about-me.png`,
         width: 800,
         height: 600,
       },
@@ -30,15 +30,15 @@ export const metadata = {
     card: 'summary_large_image',
     title: title,
     description: description,
-    images: [`https://mrmallik.com/assets/images/about-me.png`],
+    images: [`${process.env.BASE_URL}/assets/images/about-me.png`],
   },
 };
 
 export default async function About() {
 
     try {
-        const {data: profile, error_profile} = await fetchAPI("https://mrmallik.com/api/profile");
-        const {data: service, error_service} = await fetchAPI("https://mrmallik.com/api/service");
+        const {data: profile, error_profile} = await fetchAPI(`${process.env.BASE_URL}/api/profile`);
+        const {data: service, error_service} = await fetchAPI(`${process.env.BASE_URL}/api/service`);
 
         if(error_profile || error_service) {
             throw new Error("An error occurred in fetching data");

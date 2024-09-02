@@ -22,10 +22,10 @@ export const metadata = {
   openGraph: {
     title: title,
     description: description,
-    url: `https://mrmallik.com`,
+    url: `${process.env.BASE_URL}`,
     images: [
       {
-        url: `https://mrmallik.com/assets/images/seo-image.png`,
+        url: `${process.env.BASE_URL}/assets/images/seo-image.png`,
         width: 800,
         height: 600,
       },
@@ -35,14 +35,14 @@ export const metadata = {
     card: 'summary_large_image',
     title: title,
     description: description,
-    images: [`https://mrmallik.com/assets/images/seo-image.png`],
+    images: [`${process.env.BASE_URL}/assets/images/seo-image.png`],
   },
 };
 
 export default async function Resume() {
   
   try {
-    const {data: resume, error} = await fetchAPI("https://mrmallik.com/api/resume");
+    const {data: resume, error} = await fetchAPI(`${process.env.BASE_URL}/api/resume`);
 
     if(error) {
       throw new Error(error);
@@ -57,6 +57,11 @@ export default async function Resume() {
         <Navbar activeTab="resume" />
         <div className="resume overflow-hidden">
           <div className="container mx-auto px-8 max-w-screen-sm tablet:px-0 laptop:max-w-screen-xl desktop:max-w-screen-2xl">
+              <div className="download-reume fixed right-10 bottom-5 z-30">
+                <a className="bg-white text-black laptop:bg-white laptop:text-black text-base" href="https://drive.google.com/file/d/15GzZF8GuFEr4HIOSgwwt2PM7PL6chH89/view?usp=sharing" download="GULGER_MALLIK_RESUME.pdf">
+                  Download Resume
+                </a>
+              </div>
               <div className="grid grid-cols-12">
                   {/* LEFT SIDE */}
                   <div className="col-span-12 laptop:col-span-6 pr=0 laptop:pr-4">
@@ -75,11 +80,9 @@ export default async function Resume() {
                   {resume.certifications && <Certificates certificates={resume.certifications} />}
                 </div>
                 {/* Honours and Achievements */}
-                {resume.other && (
-                  <div className="col-span-12">
-                    <Other other={resume.other} />
+                <div className="col-span-12">
+                  {resume.other && <Other other={resume.other} />}
                 </div>
-                )}
                 {/* Hobbies */}
                 <div className="col-span-12">
                   {resume.hobbies && <Hobbies hobbies={resume.hobbies} />}

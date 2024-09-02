@@ -77,7 +77,7 @@ body {
   margin: 0 0 20px 0;
 }
 
-.intro-buttons {
+.intro-buttons, .download-reume {
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -88,8 +88,19 @@ body {
 .intro-buttons a {
   font-size: 18px;
   border-radius: 18px;
-  border: 1px solid #fff;
+  border: 1px solid #120d0d;
   padding: 5px 33px;
+}
+
+.download-reume a {
+  font-size: 14px;
+  border-radius: 18px;
+  font-weight: 600;
+  border: 0px solid #120d0d;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0,255,255,1);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(0,255,255,1);
+  box-shadow: 0px 0px 5px 1px rgba(0,255,255,1);
+  padding: 5px 11px !important;
 }
 
 .social-media-section {

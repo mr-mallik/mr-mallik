@@ -6,6 +6,10 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
+                hostname: 'drive.google.com',
+            },
+            {
+                protocol: 'https',
                 hostname: 'cdn.pixabay.com',
             },
             {

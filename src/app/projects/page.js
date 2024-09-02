@@ -16,10 +16,10 @@ export const metadata = {
   openGraph: {
     title: title,
     description: description,
-    url: `https://mrmallik.com/projects`,
+    url: `${process.env.BASE_URL}/projects`,
     images: [
       {
-        url: `https://mrmallik.com/assets/images/seo-image.png`,
+        url: `${process.env.BASE_URL}/assets/images/seo-image.png`,
         width: 800,
         height: 600,
       },
@@ -29,14 +29,14 @@ export const metadata = {
     card: 'summary_large_image',
     title: title,
     description: description,
-    images: [`https://mrmallik.com/assets/images/seo-image.png`],
+    images: [`${process.env.BASE_URL}/assets/images/seo-image.png`],
   },
 };
 
 async function Projects() {
 
     try {
-        const {data: projects, error} = await fetchAPI("https://mrmallik.com/api/projects");
+        const {data: projects, error} = await fetchAPI(`${process.env.BASE_URL}/api/projects`);
 
         if(error) {
             throw new Error("An error occurred when fetching data for projects");
@@ -49,7 +49,7 @@ async function Projects() {
         return (
             <>
                 <Navbar activeTab='projects' />
-                <div className="projects">
+                <div className="projects overflow-hidden">
                     <div className="container mx-auto px-8 max-w-screen-sm tablet:px-0 tablet:max-w-screen-md laptop:max-w-screen-xl desktop:max-w-screen-2xl">
                         <div className="mt-10 desktop:mt-20">
                             <h1 className="font-bold mb-6 uppercase tracking-wider underline underline-offset-8 color-tertiary laptop:text-2xl desktop:text-4xl">Projects</h1>

@@ -90,19 +90,19 @@ function ProjectDetail({ project }) {
                                 </div>
                                 <div className="flex">
                                     {project.github &&
-                                        <a target="_blank" title='View on GitHub' href={project.github} className="bg-black text-xs rounded-lg p-2 me-2 mb-2">
+                                        <a target="_blank" title='View on GitHub' href={project.github} className="bg-black h-9 text-xs rounded-lg p-2 me-2 mb-2">
                                             <FaGithub size={20} />
                                         </a>
                                     }
 
                                     {project.online &&                                        
-                                        <a target="_blank" title='View Demo' href={project.github} className="bg-black text-xs rounded-lg p-2 me-2 mb-2">
+                                        <a target="_blank" title='View Demo' href={project.github} className="bg-gray-600  h-9 text-xs rounded-lg p-2 me-2 mb-2">
                                             <FaLink size={20} />
                                         </a>
                                     }
 
                                     {project.user_guide &&
-                                        <a target="_blank" title='Read More' href={project.github} className="bg-black text-xs rounded-lg p-2 me-2 mb-2">
+                                        <a target="_blank" title='Read More' href={project.github} className="bg-yellow-700 h-9 text-xs rounded-lg p-2 me-2 mb-2">
                                             <FaBook size={20} />
                                         </a>
                                     }

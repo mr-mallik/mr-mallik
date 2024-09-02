@@ -2,7 +2,6 @@ import { Marcellus } from "next/font/google";
 import "@/assets/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import AnimatedCursor from "react-animated-cursor"
 
 const marcel = Marcellus({ weight: "400", subsets: ["latin"] });
 
@@ -17,11 +16,11 @@ export const metadata = {
   openGraph: {
     title: title,
     description: description,
-    url: `https://mrmallik.com`,
+    url: `${process.env.BASE_URL}`,
     site_name: "Gulger Mallik's Portfolio",
     images: [
       {
-        url: `https://mrmallik.com/assets/images/seo-image.png`,
+        url: `${process.env.BASE_URL}/assets/images/seo-image.png`,
         width: 800,
         height: 600,
       },
@@ -34,7 +33,7 @@ export const metadata = {
     site: "@its_mrmallik",
     url: "@its_mrmallik",
     creator: "https://www.mrmallik.com",
-    images: [`https://mrmallik.com/assets/images/seo-image.png`],
+    images: [`${process.env.BASE_URL}/assets/images/seo-image.png`],
   },
 };
 

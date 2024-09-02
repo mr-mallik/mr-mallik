@@ -6,7 +6,7 @@ const Navbar = dynamic(() => import("@/components/Navbar"), {ssr: false});
 const ProjectDetail = dynamic(() => import("./ProjectDetail"), {ssr: false});
 
 async function fetchProjectData(urlname) {
-    const { data, error } = await fetchAPI(`https://mrmallik.com/api/projects/${urlname}`);
+    const { data, error } = await fetchAPI(`${process.env.BASE_URL}/api/projects/${urlname}`);
     
     if (error) {
       console.error('Error fetching project data:', error);
@@ -15,7 +15,7 @@ async function fetchProjectData(urlname) {
         name: 'Default Project',
         description: 'Default description',
         keywords: ['Default', 'Project'],
-        image: `https://mrmallik.com/assets/images/seo-image.png`,
+        image: `${process.env.BASE_URL}/assets/images/seo-image.png`,
       };
     }
     
@@ -34,10 +34,10 @@ export async function generateMetadata({ params }) {
       openGraph: {
         title: `${projectData.title} | Projects`,
         description: projectData.short_description,
-        url: `https://mrmallik.com/projects/${projectData.urlname}`,
+        url: `${process.env.BASE_URL}/projects/${projectData.urlname}`,
         images: [
           {
-            url: `https://mrmallik.com/assets/projects/${projectData.urlname}/${projectData.image || `https://mrmallik.com/assets/images/seo-image.png`}`,
+            url: `${process.env.BASE_URL}/assets/projects/${projectData.urlname}/${projectData.image || `${process.env.BASE_URL}/assets/images/seo-image.png`}`,
             width: 800,
             height: 600,
           },
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }) {
         card: 'summary_large_image',
         title: `${projectData.title} | Projects`,
         description: projectData.short_description,
-        images: [`https://mrmallik.com/assets/projects/${projectData.urlname}/${projectData.image || `https://mrmallik.com/assets/images/seo-image.png`}`],
+        images: [`${process.env.BASE_URL}/assets/projects/${projectData.urlname}/${projectData.image || `${process.env.BASE_URL}/assets/images/seo-image.png`}`],
       },
     };
 }
