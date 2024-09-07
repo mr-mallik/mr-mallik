@@ -55,7 +55,7 @@ export default async function Resume() {
     return (
       <>
         <Navbar activeTab="resume" />
-        <div className="resume overflow-hidden">
+        <div className="resume bg-black text-white overflow-hidden">
           <div className="container mx-auto px-8 max-w-screen-sm tablet:px-0 laptop:max-w-screen-xl desktop:max-w-screen-2xl">
               <div className="download-reume fixed right-10 bottom-5 z-30">
                 <a className="bg-white text-black laptop:bg-white laptop:text-black text-base" href="https://drive.google.com/file/d/15GzZF8GuFEr4HIOSgwwt2PM7PL6chH89/view?usp=sharing" download="GULGER_MALLIK_RESUME.pdf">

@@ -49,7 +49,7 @@ async function Projects() {
         return (
             <>
                 <Navbar activeTab='projects' />
-                <div className="projects overflow-hidden">
+                <div className="projects overflow-hidden bg-black text-white">
                     <div className="container mx-auto px-8 max-w-screen-sm tablet:px-0 tablet:max-w-screen-md laptop:max-w-screen-xl desktop:max-w-screen-2xl">
                         <div className="mt-10 desktop:mt-20">
                             <h1 className="font-bold mb-6 uppercase tracking-wider underline underline-offset-8 color-tertiary laptop:text-2xl desktop:text-4xl">Projects</h1>

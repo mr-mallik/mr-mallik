@@ -56,7 +56,7 @@ export default function RootLayout({ children }) {
         <meta name="author" content="Gulger Mallik" />
         <meta name="robots" content="index, follow" />
       </head>
-      <body className={marcel.className}>
+      <body className={`${marcel.className}`}>
         {/* <AnimatedCursor
           innerSize={15}
           outerSize={15}

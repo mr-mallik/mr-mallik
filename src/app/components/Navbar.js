@@ -60,7 +60,8 @@ export default function Navbar({activeTab}) {
     };
     
     return(
-        <header className={clsx('sticky top-0 z-40', { 'bg-black': scrolled, 'bg-transparent': !scrolled })}>
+        // <header className={clsx('sticky top-0 z-40 bg-black', { 'bg-black': scrolled, 'bg-transparent': !scrolled })}>
+        <header className="sticky top-0 z-40 bg-black text-white">
             <div className="flex justify-between items-center py-4 px-6 bg-black sm:bg-transparent">
                 <div className="flex items-center">
                     <div className="pr-4">

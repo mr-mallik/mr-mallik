@@ -49,9 +49,9 @@ function ProjectDetail({ project }) {
             onSwipeRight={() => handleSwipeRight(project && project.previous ? project.previous : '')}
             >
 
-            <div className="projects">
+            <div className="projects bg-black text-white">
                 {/* Banner */}
-                <div className="projects-banner" style={{ backgroundImage: (project.image) ? `url(/assets/projects/${project.urlname}/${project.banner_image})` : 'url("https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg")' }}>
+                <div className="laptop:block projects-banner hidden" style={{ backgroundImage: (project.image) ? `url(/assets/projects/${project.urlname}/${project.banner_image})` : 'url("https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg")' }}>
                     <div className="container mx-auto max-w-screen-lg laptop:max-w-screen-xl desktop:max-w-screen-2xl">
                         <div className="mt-10 absolute px-5 tablet:px-0 z-20 bottom-24 w-full tablet:w-2/5 desktop:mt-20">
                             <h1 className="font-bold mb-6 uppercase tracking-wider underline underline-offset-8 color-tertiary laptop:text-2xl desktop:text-4xl">{project.title}</h1>
@@ -60,6 +60,7 @@ function ProjectDetail({ project }) {
                 </div>
                 {/* Content */}
                 <motion.div
+                    className='mt-10 p-5'
                     initial={{ scale: 0, rotate: 180 }}
                     animate={{ rotate: 0, scale: 1 }}
                     transition={{
@@ -70,6 +71,8 @@ function ProjectDetail({ project }) {
                     >
                     <div className="container mx-auto max-w-screen-lg laptop:max-w-screen-xl desktop:max-w-screen-2xl">
                         <div className="relative z-30 -top-16 rounded-lg pb-10 pt-12 px-4 tablet:px-10 bg-gray-900">
+                            <h1 className="laptop:hidden block font-bold mb-6 uppercase tracking-wider underline underline-offset-8 color-tertiary laptop:text-2xl desktop:text-4xl">{project.title}</h1>
+
                             {/* Minor Details */}
                             <div className="mb-8 flex justify-between items-start">
                                 <div>
