@@ -61,13 +61,9 @@ function ProjectDetail({ project }) {
                 {/* Content */}
                 <motion.div
                     className='mt-10 p-5'
-                    initial={{ scale: 0, rotate: 180 }}
-                    animate={{ rotate: 0, scale: 1 }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 260,
-                        damping: 20
-                    }}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
                     >
                     <div className="container mx-auto max-w-screen-lg laptop:max-w-screen-xl desktop:max-w-screen-2xl">
                         <div className="relative z-30 -top-16 rounded-lg pb-10 pt-12 px-4 tablet:px-10 bg-gray-900">
