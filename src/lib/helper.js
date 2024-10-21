@@ -1,6 +1,6 @@
 export function calculateDateDifference(startDate, endDate) {
     const start = new Date(startDate);
-    const end = new Date(endDate);
+    const end = (endDate == null) ? new Date() : new Date(endDate);
     
     let years = end.getFullYear() - start.getFullYear();
     let months = end.getMonth() - start.getMonth();

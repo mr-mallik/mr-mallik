@@ -4,7 +4,7 @@ import { skillQuery, skillIcons } from '@/lib/helper';
 export async function GET(request) {
   try {
     const skills = await fetchData(skillQuery);
-    const resume = await fetchData("SELECT *, date_format(end, '%Y') as end_year, date_format(start, '%Y') as start_year, date_format(start, '%b %Y') as start_my, date_format(end, '%b %Y') as end_my FROM resume WHERE status = 'A' ORDER BY type asc, end DESC");
+    const resume = await fetchData("SELECT *, date_format(end, '%Y') as end_year, date_format(start, '%Y') as start_year, date_format(start, '%b %Y') as start_my, date_format(end, '%b %Y') as end_my FROM resume WHERE status = 'A' ORDER BY type asc, (end IS NULL) DESC, end DESC");
 
     // Group skills by type using an object
     const skill_set = skills.reduce((acc, skill) => {
