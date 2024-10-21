@@ -47,9 +47,9 @@ export default function Home() {
                       whileInView={{ x: 0, opacity: 1 }}
                       transition={{ duration: 1, ease: 'easeInOut'}}
                       className="">
-                      <div className="first-name text-center text-5xl sm:text-left sm:text-60px">{profile.first_name}</div>
-                      <div className="last-name text-center text-7xl sm:text-left sm:text-80px">{profile.last_name}</div>
-                      <div className="job-title">{profile.designation}</div>
+                      <h1 className="first-name text-center text-5xl sm:text-left sm:text-60px">{profile.first_name}</h1>
+                      <h2 className="last-name text-center text-7xl sm:text-left sm:text-80px">{profile.last_name}</h2>
+                      <h3 className="job-title">{profile.designation}</h3>
                     </motion.div>
                     
                     <div className="intro-buttons">
