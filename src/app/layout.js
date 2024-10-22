@@ -34,62 +34,8 @@ export const metadata = {
     url: "@its_mrmallik",
     creator: "https://www.mrmallik.com",
     images: [`${process.env.BASE_URL}/assets/images/seo-image.png`],
-  },
-  jsonLd: 
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Gulger Mallik",
-      "jobTitle": "Software Engineer and Full Stack Developer",
-      "url": `${process.env.BASE_URL}`,
-      "image": `${process.env.BASE_URL}/assets/images/profile-image.jpg`,
-      "sameAs": [
-        "https://www.instagram.com/its_mrmallik",
-        "https://twitter.com/its_mrmallik",
-        "https://www.linkedin.com/in/mrmallik",
-        "https://www.github.com/mr-mallik",
-        "https://pure.hud.ac.uk/en/persons/gulger-mallik",
-        "https://medium.com/@mrmallik",
-        "https://mrmallik.medium.com",
-        "https://www.kaggle.com/itsmrmallik"
-      ],
-      "worksFor": {
-        "@type": "Organization",
-        "name": "University of Huddersfield",
-        "url": "https://pure.hud.ac.uk/en/persons/gulger-mallik"
-      },
-      "knowsAbout": [
-        "Software Engineering",
-        "Full Stack Development",
-        "Web Development",
-        "Cloud Computing",
-        "JavaScript",
-        "React",
-        "Node.js",
-        "AWS"
-      ],
-      "description": description
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": `${process.env.BASE_URL}`,
-      "name": "Gulger Mallik's Portfolio",
-      "description": description,
-      "publisher": {
-        "@type": "Person",
-        "name": "Gulger Mallik"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": `${process.env.BASE_URL}/?s={search_term_string}`,
-        "query-input": "required name=search_term_string"
-      }
-    }
-  ]
-};
-
+  }
+}
 export default function RootLayout({ children }) {
   
   return (

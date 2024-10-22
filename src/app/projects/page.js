@@ -33,6 +33,19 @@ export const metadata = {
   },
 };
 
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Project",
+    "url": `${process.env.BASE_URL}`,
+    "name": "Gulger Mallik's Projects",
+    "image": `${process.env.BASE_URL}/assets/images/seo-image.png`,
+    "description": description,
+    "publisher": {
+      "@type": "Person",
+      "name": "Gulger Mallik"
+    }
+}
+
 async function Projects() {
 
     try {
@@ -48,6 +61,10 @@ async function Projects() {
 
         return (
             <>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                />
                 <Navbar activeTab='projects' />
                 <div className="projects overflow-hidden bg-black text-white">
                     <div className="container mx-auto px-8 max-w-screen-sm tablet:px-0 tablet:max-w-screen-md laptop:max-w-screen-xl desktop:max-w-screen-2xl">

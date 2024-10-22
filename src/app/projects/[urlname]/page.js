@@ -28,11 +28,11 @@ export async function generateMetadata({ params }) {
     
     // Return metadata based on project data
     return {
-      title: `${projectData.title} | Projects | Gulger Mallik`,
+      title: `${projectData.title}`,
       description: projectData.seo_desc || "Explore projects developed by Gulger Mallik, including innovative solutions and advanced systems.",
       keywords: projectData.seo_keyword,
       openGraph: {
-        title: `${projectData.title} | Projects`,
+        title: `${projectData.title}`,
         description: projectData.short_description,
         url: `${process.env.BASE_URL}/projects/${projectData.urlname}`,
         images: [
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
       },
       twitter: {
         card: 'summary_large_image',
-        title: `${projectData.title} | Projects`,
+        title: `${projectData.title}`,
         description: projectData.short_description,
         images: [`${process.env.BASE_URL}/assets/projects/${projectData.urlname}/${projectData.image || `${process.env.BASE_URL}/assets/images/seo-image.png`}`],
       },
@@ -60,8 +60,25 @@ async function ProjectDetails({ params }) {
             return <Loader />
         }
 
+        const jsonLd = {
+          "@context": "https://schema.org",
+          "@type": "Project",
+          "url": `${process.env.BASE_URL}`,
+          "name": project.title,
+          "image": `${process.env.BASE_URL}/assets/projects/${project.urlname}/${project.image || `${process.env.BASE_URL}/assets/images/seo-image.png`}`,
+          "description": project.short_description,
+          "publisher": {
+            "@type": "Person",
+            "name": "Gulger Mallik"
+          }
+        }
+
         return (
             <>
+                <script
+                      type="application/ld+json"
+                      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                  />
                 <Navbar activeTab='project' />
                 <ProjectDetail project={project} />
             </>

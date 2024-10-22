@@ -32,8 +32,30 @@ export default function Home() {
     fetchProfile();
   }, [])
 
+  const description = "Gulger Mallik is a skilled Software Engineer and Full Stack Developer. Explore mrmallik.com for my portfolio, projects, and professional experience in web development, software engineering, and more.";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": `${process.env.BASE_URL}`,
+    "name": "Gulger Mallik's Portfolio",
+    "description": description,
+    "publisher": {
+      "@type": "Person",
+      "name": "Gulger Mallik"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${process.env.BASE_URL}/?s={search_term_string}`,
+      "query-input": "required name=search_term_string"
+    }
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {isLoading && <Loader hidden={fadeOut} />}
       <div className="home-page">
         <Navbar activeTab='home' />
