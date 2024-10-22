@@ -40,7 +40,7 @@ const jsonLd = {
     "name": "Gulger Mallik's Projects",
     "image": `${process.env.BASE_URL}/assets/images/seo-image.png`,
     "description": description,
-    "publisher": {
+    "owns": {
       "@type": "Person",
       "name": "Gulger Mallik"
     }

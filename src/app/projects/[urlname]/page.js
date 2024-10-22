@@ -67,7 +67,7 @@ async function ProjectDetails({ params }) {
           "name": project.title,
           "image": `${process.env.BASE_URL}/assets/projects/${project.urlname}/${project.image || `${process.env.BASE_URL}/assets/images/seo-image.png`}`,
           "description": project.short_description,
-          "publisher": {
+          "owns": {
             "@type": "Person",
             "name": "Gulger Mallik"
           }
