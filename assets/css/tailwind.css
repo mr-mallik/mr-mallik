@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+    --color-brand: #0ff;
+}
+
+.active {
+    color: var(--color-brand);
+}
+
+section {
+    min-height: 70vh;
+}
