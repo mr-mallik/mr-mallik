@@ -1,0 +1,1 @@
+<h1>You are now in projects <?php echo $_GET['slug']; ?></h1>
