@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+    --color-black-base: #07070e;
     --color-brand: #0ff;
 }
 
@@ -8,6 +9,18 @@
     color: var(--color-brand);
 }
 
-section {
-    min-height: 70vh;
+.card-bg-linear {
+    background: rgb(32,32,32);
+    background: -moz-linear-gradient(90deg, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
+    background: -webkit-linear-gradient(90deg, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
+    background: linear-gradient(90deg, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#202020",endColorstr="#07070e",GradientType=1);
+}
+
+.card-bg-radial {
+    background: rgb(32,32,32);
+    background: -moz-radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
+    background: -webkit-radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
+    background: radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#202020",endColorstr="#07070e",GradientType=1);
 }

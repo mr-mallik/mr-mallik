@@ -7,7 +7,7 @@ function siteMenu()
     $menu = [
         '' => 'Home',
         'about' => 'About',
-        'projects' => 'Works',
+        'projects' => 'Work',
         'stories' => 'Stories',
         'contact' => 'Contact',
     ];
