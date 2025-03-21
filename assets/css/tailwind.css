@@ -24,3 +24,19 @@
     background: radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#202020",endColorstr="#07070e",GradientType=1);
 }
+
+.experience {
+    h3 {
+        @apply font-semibold text-lg text-gray-600;
+    }
+    p {
+        @apply dark:text-white text-xl font-bold;
+
+        i {
+            @apply text-xl;
+        }
+        span {
+            @apply text-gray-500 text-lg font-normal;
+        }
+    }
+}

@@ -33,3 +33,14 @@ function activeUrl($url) {
 
     return basename($parts[1]) == $url ? "active" : "";
 }
+
+// cut words
+function cutWords($string, $length = 100, $append = '...') {
+    $string = strip_tags($string);
+    if (strlen($string) > $length) {
+        $string = substr($string, 0, $length);
+        $string = substr($string, 0, strrpos($string, ' '));
+        $string .= $append;
+    }
+    return $string;
+}

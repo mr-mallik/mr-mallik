@@ -116,18 +116,20 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 <div class="p-4 card-bg-linear rounded-xl">
                     <div class="flex flex-row gap-4 p-2 h-44">
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="text-white font-bold text-4xl">07</span>
+                            <span class="dark:text-white font-bold text-4xl">
+                                <?php echo str_pad(date('Y') - 2019, 2, 0, STR_PAD_LEFT); ?>
+                            </span>
                             <span class="text-gray-300">Years <br/>Experience</span>
                         </div>
 
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="text-white font-bold text-4xl">+100</span>
-                            <span class="text-gray-300">Happy <br/>Clients</span>
+                            <span class="dark:text-white font-bold text-4xl">100%</span>
+                            <span class="text-gray-300">Client <br/>Satisfaction</span>
                         </div>
 
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="text-white font-bold text-4xl">+100</span>
-                            <span class="text-gray-300">Projects <br/>Deployed</span>
+                            <span class="dark:text-white font-bold text-4xl">+100</span>
+                            <span class="text-gray-300">Hours <br/>Coded</span>
                         </div>
                     </div>
                 </div>
@@ -137,14 +139,18 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 <div class="p-4 bg-gray-900 rounded-xl">
                     <div class="flex flex-col gap-2">
                         <div class="h-44 px-4 py-2">
-                            <p class="text-sm text-gray-500 p-1">Enter your message with contact details</p>
+                            <!-- <p class="text-sm text-gray-500 p-1">Enter your message with contact details</p>
                             <form action="#" class="flex flex-row pb-4" method="POST" autocomplete="off">
                                 <input type="text" class="w-4/5 p-2 bg-gray-800 text-gray-200 rounded-l-xl" placeholder="Your Message, Email or Mobile Number" />
-                                <button type="button" class="w-1/5 py-2 px-6 bg-gray-800 text-white rounded-r-xl cursor-pointer border-l border-gray-600 font-semibold">Send</button>
-                            </form>
+                                <button type="button" class="w-1/5 py-2 px-6 bg-gray-800 dark:text-white rounded-r-xl cursor-pointer border-l border-gray-600 font-semibold">Send</button>
+                            </form> -->
                             <p class="text-gray-500 text-3xl font-bold">
                                 Let's <br/>
                                 talk about your <span class="text-brand">next</span> project.
+                                <br/> <br/>
+                                <span class="text-lg text-gray-400 font-mono font-light">
+                                    Send your ideas to <a href="mailto:gulgermallik@gmail.com" class="text-brand">gulgermallik@gmail.com</a>
+                                </span>
                             </p>
                         </div>
                     </div>

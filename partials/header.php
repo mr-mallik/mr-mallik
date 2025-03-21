@@ -13,8 +13,8 @@ require_once __DIR__ . '/../includes/common.php'; # config file
         <title></title>
     </head>
     <body class="bg-black-base text-gray-200">
-    <div id="outer-container" class="mx-auto container max-w-5xl">
-        <header class="p-8 text-center">
+    <div id="outer-container" class="mx-auto container">
+        <header class="py-8 text-center">
             <nav class="">
                 <!-- <div class="fixed"> -->
                     <div class="flex justify-between items-center">
@@ -28,7 +28,7 @@ require_once __DIR__ . '/../includes/common.php'; # config file
                             ?>
                         </ul>
                         <a href="mailto:gulgermallik@gmail.com" target="_blank"
-                            class="hover:cursor-pointer bg-gray-900 text-white font-bold py-2 px-4 rounded-lg">
+                            class="hover:cursor-pointer bg-gray-900 dark:text-white font-bold py-2 px-4 rounded-lg">
                             Let's Talk
                         </a>
                     </div>
