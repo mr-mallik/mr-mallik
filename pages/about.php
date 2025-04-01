@@ -42,7 +42,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
 <section id="about" class="container mx-auto">
     
-    <h1 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">About Me </h1>
+    <h1 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">The Blueprint </h1>
 
     <div class="flex flex-row card-bg-radial rounded-b-xl p-4 py-8 mb-4" data-aos="zoom-in">
 
@@ -236,7 +236,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                     <p>
                         <i class="fa fa-briefcase"></i>
                         Software Engineer and Fullstack developer <br/>
-                        <span>Self Employed, mr. mallik</span>
+                        <span>Self Employed</span>
                     </p>
 
                     <p>
