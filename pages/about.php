@@ -103,14 +103,30 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 <hr>
             </span>
 
-            <div class="text-left">
-                <span class="text-6xl font-bold pb-4 font-mono">2</span> <span class="uppercase text-xs text-gray-400">professionl degrees</span>
-                <br/>
-                <span class="text-6xl font-bold font-mono"><?= $experience['years']; ?></span> <span class="uppercase text-xs text-gray-400">years</span>
-                <span class="text-6xl font-bold font-mono"><?= $experience['months']; ?></span> <span class="uppercase text-xs text-gray-400">months</span>
-                <span class="text-6xl font-bold font-mono"><?= $experience['days']; ?></span> <span class="uppercase text-xs text-gray-400">days</span>
-                <br/>
+            <div class="flex flex-col gap-4 justify-center">
+
+                <div class="flex flex-row gap-2 justify-center">
+                    <div class="flex items-center">
+                        <span class="text-6xl font-bold font-mono">2</span> 
+                        <span class="uppercase text-xs px-4 text-left text-gray-400">professional degrees</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-6xl font-bold font-mono">4+</span> 
+                        <span class="uppercase text-xs px-4 text-left text-gray-400">professional certifications</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-row gap-2 items-center">
+                    <span class="text-6xl font-bold font-mono"><?= $experience['years']; ?></span> 
+                    <span class="uppercase text-xs text-gray-400">years</span>
+                    <span class="text-6xl font-bold font-mono"><?= $experience['months']; ?></span> 
+                    <span class="uppercase text-xs text-gray-400">months</span>
+                    <span class="text-6xl font-bold font-mono"><?= $experience['days']; ?></span> 
+                    <span class="uppercase text-xs text-gray-400">days</span>
+                </div>
+                
                 <span class="text-upper text-gray-400 text-sm">of professional experience</span>
+
             </div>
 
             <span class="text-left text-gray-500 text-lg font-semibold">

@@ -29,3 +29,20 @@ define('MAIL_USERNAME', $_ENV['MAIL_USERNAME'] ?? '');
 define('MAIL_PASSWORD', $_ENV['MAIL_PASSWORD'] ?? '');
 define('MAIL_FROM', $_ENV['MAIL_FROM'] ?? 'noreply@example.com');
 define('MAIL_FROM_NAME', $_ENV['MAIL_FROM_NAME'] ?? 'Example');
+
+// Constants for socials
+define('SOCIAL_LINKEDIN', $_ENV['SOCIAL_LINKEDIN'] ?? '');
+define('SOCIAL_GITHUB', $_ENV['SOCIAL_GITHUB'] ?? '');
+define('SOCIAL_MEDIUM', $_ENV['SOCIAL_MEDIUM'] ?? '');
+define('SOCIAL_INSTAGRAM', $_ENV['SOCIAL_INSTAGRAM'] ?? '');
+define('SOCIAL_FACEBOOK', $_ENV['SOCIAL_FACEBOOK'] ?? '');
+define('SOCIAL_TWITTER', $_ENV['SOCIAL_TWITTER'] ?? '');
+define('SOCIAL_YOUTUBE', $_ENV['SOCIAL_YOUTUBE'] ?? '');
+
+// Constants for contact details
+define('CONTACT_PHONE', $_ENV['CONTACT_PHONE'] ?? '');
+define('CONTACT_PHONE2', $_ENV['CONTACT_PHONE2'] ?? '');
+define('CONTACT_ADDRESS', $_ENV['CONTACT_ADDRESS'] ?? '');
+define('CONTACT_EMAIL', $_ENV['CONTACT_EMAIL'] ?? '');
+define('CONTACT_EMAIL2', $_ENV['CONTACT_EMAIL2'] ?? '');
+define('CONTACT_ADDRESS_2', $_ENV['CONTACT_ADDRESS_2'] ?? '');

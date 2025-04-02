@@ -10,8 +10,6 @@ require_once __DIR__ . '/../includes/common.php'; # config file
         <link rel="stylesheet" href="<?php url('assets/css/style.css'); ?>">
         <link rel="stylesheet" href="<?php url('assets/js/aos/aos.css'); ?>">
         <script src="<?php url('assets/js/aos/aos.js'); ?>"></script>
-        <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
         <title></title>
     </head>
     <body class="bg-black-base text-gray-200">

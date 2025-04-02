@@ -8,7 +8,7 @@
             <a href="<?php echo url(""); ?>" class="hover:underline">Home</a>
             <a href="<?php echo url("about"); ?>"  class="hover:underline">About</a>
             <a href="<?php echo url("projects"); ?>"  class="hover:underline">Projects</a>
-            <!-- <a href="<?php echo url("stories"); ?>"  class="hover:underline">Blog</a> -->
+            <a href="<?php echo url("stories"); ?>"  class="hover:underline">Blog</a>
             <a href="https://linkedin.com/in/mrmallik/" target="_blank" class="hover:underline">LinkedIn</a>
             <a href="https://github.com/mr-mallik/" target="_blank" class="hover:underline">GitHub</a>
             <a href="https://instagram.com/its_mrmallik/" target="_blank" class="hover:underline">Instagram</a>

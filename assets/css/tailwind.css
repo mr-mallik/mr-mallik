@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'BrittanySignature';
+    src: url('../fonts/BrittanySignature.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
     --color-black-base: #07070e;
     --color-brand: #0ff;
+    --font-brand: 'BrittanySignature', cursive;
 }
 
 .active {
@@ -39,4 +48,10 @@
             @apply text-gray-500 text-lg font-normal;
         }
     }
+}
+
+.signature {
+    font-family: var(--font-brand);
+    font-size: 6rem;
+    line-height: 1.2;
 }
