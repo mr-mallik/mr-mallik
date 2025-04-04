@@ -11,6 +11,7 @@ $dotenv->load();
 // Application configuration
 define('APP_NAME', $_ENV['APP_NAME'] ?? 'My App');
 define('APP_URL', $_ENV['APP_URL'] ?? 'http://localhost');
+define('BASE_URL', $_ENV['BASE_URL'] ?? __DIR__ . '/../' );
 define('APP_ENV', $env);
 define('APP_DEBUG', $_ENV['APP_DEBUG'] ?? true);
 define('URL_REWRITING', $_ENV['URL_REWRITING'] ?? false);

@@ -15,11 +15,11 @@ function siteMenu()
     return $menu;
 }
 
-function projectList($limit=null)
+function blogList($cond="", $limit=null)
 {
     global $CONN;
 
-    $sql = "SELECT * FROM project order by published_date desc";
+    $sql = "SELECT * FROM blog WHERE 1 $cond order by published_date desc";
 
     if($limit) {
         $sql .= " limit $limit";
@@ -112,4 +112,23 @@ function getMediumRssFeed($limit = 4)
     });
 
     return $articles;
+}
+
+function getResume($cond= '', $order=null, $limit=null)
+{
+    global $CONN;
+
+    $sql = "SELECT * FROM resume WHERE 1 $cond";
+
+    if($order) {
+        $sql .= " ORDER BY $order";
+    }
+
+    if($limit) {
+        $sql .= " LIMIT $limit";
+    }
+
+    $result = DBQuery($CONN, $sql);
+
+    return DBFetchAll($result);
 }

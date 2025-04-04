@@ -32,12 +32,9 @@ $clients = [
 
 $experience = dateDiff('2019-05-27', date('Y-m-d'));
 
-$projects = projectList(4);
-$stories = [];
+$projects = blogList("AND type='project'", 4);
+$stories = blogList("AND type='blog'", 4);
 $skills = getSkills($type=['tech', 'frame', 'db']);
-// $stories = getMediumRssFeed();
-// dfa($stories);
-// exit;
 ?>
 
 <section id="about" class="container mx-auto">
@@ -265,21 +262,33 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
             </div>
         </div>
 
-        <hr class="py-5" />
+        <!-- <hr class="py-5 w-sm items-center border-gray-600" /> -->
 
         <h2 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">Latest Work </h2>
 
         <div class="flex flex-col justify-center py-8">
             <div class="flex flex-row justify-center gap-8 py-6 my-4">
                 <?php foreach ($projects as $project) : ?>
-                    <div class="card-bg-radial flex flex-col w-1/4 p-4 rounded-3xl" data-aos="fade-up">
-                        <div class="">
-                            <img src="<?= url('assets/projects/'.$project['urlname'].'/'.$project['image']) ?>" alt="<?= $project['title'] ?>" class="object-cover rounded-xl w-full">
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-bg-radial rounded-lg">
+                            <img src="<?= image_src('assets/projects/'.$project['urlname'].'/'.$project['image']) ?>" 
+                                    alt="<?= $project['title'] ?>" 
+                                    class="h-auto max-w-full rounded-t-lg  object-cover w-full">
+                            <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($project['title']) ?></h3>
+                            
+                            <p class="px-4 text-sm text-gray-300">
+                                <span class="hidden lg:block"><?= $project['short_description'] ?></span>
+                                <span class="hidden md:block lg:hidden"><?= cutwords($project['short_description']) ?></span>
+                                <span class="block md:hidden"><?= cutwords($project['short_description'], 100) ?></span>
+                            </p>
+
+                            <a class="p-4 text-right block mt-2 text-gray-400 hover:text-brand" 
+                                href="<?php url('projects/'.$project['urlname']); ?>">
+                                Read more →
+                            </a>
                         </div>
-                        <h3 class="text-2xl font-semibold py-4"><?= $project['title'] ?></h3>
-                        <p class="text-justify font-light"><?= cutwords($project['short_description']) ?></p>
-                        <a class="text-right" href="<?php url('projects/'.$project['urlname']); ?>">Read more </a>
                     </div>
+
                 <?php endforeach; ?>
             </div>
             
@@ -288,34 +297,45 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
             </div>
 
         </div>
-        
-        <?php if (count($stories) > 0) : ?>
-            <hr class="py-5" />
-
-            <h2 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">Latest Stories </h2>
-
-            <div class="flex flex-col justify-center py-8">
-                <div class="flex flex-row justify-center gap-8 py-6 my-4">
-                    <?php foreach ($stories as $story) : ?>
-                        <div class="card-bg-radial flex flex-col w-1/4 p-4 rounded-3xl" data-aos="fade-up">
-                            <div class="">
-                                <img src="<?= url('assets/projects/'.$project['urlname'].'/'.$project['image']) ?>" alt="<?= $project['title'] ?>" class="object-cover rounded-xl w-full">
-                            </div>
-                            <h3 class="text-2xl font-semibold py-4"><?= $project['title'] ?></h3>
-                            <p class="text-justify font-light"><?= cutwords($project['short_description']) ?></p>
-                            <a class="text-right text-mono hover:underline" href="<?php url('projects/'.$project['urlname']); ?>">Read more </a>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-                
-                <div class="flex justify-center">
-                    <a href="<?php url('stories'); ?>" class="text-center font-mono text-2xl font-semibold py-4 underline transition ease-in-out">View all stories </a>
-                </div>
-
-            </div>
-        <?php endif; ?>
 
     </div>
+
+    <?php if (count($stories) > 0) : ?>
+        <!-- <hr class="py-5 border-gray-600" /> -->
+
+        <h2 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">Latest Stories </h2>
+
+        <div class="flex flex-col justify-center py-8">
+            <div class="flex flex-row justify-center gap-8 py-6 my-4">
+                <?php foreach ($stories as $story) : ?>
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-bg-radial rounded-lg">
+                            <img src="<?= image_src('assets/stories/'.$story['urlname'].'/'.$story['image']) ?>" 
+                                    alt="<?= $story['title'] ?>" 
+                                    class="h-auto max-w-full rounded-t-lg  object-cover w-full">
+                            <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($story['title']) ?></h3>
+                            
+                            <p class="px-4 text-sm text-gray-300">
+                                <span class="hidden lg:block"><?= $story['short_description'] ?></span>
+                                <span class="hidden md:block lg:hidden"><?= cutwords($story['short_description']) ?></span>
+                                <span class="block md:hidden"><?= cutwords($story['short_description'], 100) ?></span>
+                            </p>
+
+                            <a class="p-4 text-right block mt-2 text-gray-400 hover:text-brand" 
+                                href="<?php url('stories/'.$story['urlname']); ?>">
+                                Read more →
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            
+            <div class="flex justify-center">
+                <a href="<?php url('stories'); ?>" class="text-center font-mono text-2xl font-semibold py-4 underline transition ease-in-out">View all stories </a>
+            </div>
+
+        </div>
+    <?php endif; ?>
 
     <!-- <h2 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">Testimonials </h2> -->
 

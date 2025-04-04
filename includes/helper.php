@@ -74,3 +74,14 @@ function show_alert_message($session_key) {
         unset($_SESSION[$session_key]);
     }
 }
+
+function image_src($src)
+{
+    $filePath = BASE_URL . $src;
+
+    if (file_exists($filePath) && !is_dir($filePath)) {
+        return url($src);
+    } else {
+        return url('assets/images/default.jpg');
+    }
+}

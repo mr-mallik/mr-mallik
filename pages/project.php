@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../partials/header.php';
-$projects = projectList();
+$projects = blogList("AND type='project'");
 
 // Calculate number of columns based on screen size
 $columns = 4; // Default number of columns
