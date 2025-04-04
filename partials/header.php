@@ -27,7 +27,7 @@ require_once __DIR__ . '/../includes/common.php'; # config file
                             }
                             ?>
                         </ul>
-                        <a href="mailto:gulgermallik@gmail.com" target="_blank"
+                        <a href="mailto:<?= strtolower(CONTACT_EMAIL) ?>" target="_blank"
                             class="hover:cursor-pointer bg-gray-900 dark:text-white font-bold py-2 px-4 rounded-lg">
                             Let's Talk
                         </a>

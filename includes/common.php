@@ -6,4 +6,4 @@ include_once __DIR__ . '/helper.php'; # config file
 include_once __DIR__ . '/dynamic.php'; # config file
 
 // Start the session
-// session_start();
+session_start();

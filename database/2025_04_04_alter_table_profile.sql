@@ -1,0 +1,1 @@
+ALTER TABLE `profile` ADD `password` VARCHAR(255) NULL AFTER `about_me`;

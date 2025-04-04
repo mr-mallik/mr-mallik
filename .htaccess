@@ -13,3 +13,6 @@ RewriteRule ^projects?/?$ pages/project.php [L,QSA]
 RewriteRule ^contact?/?$ pages/contact.php [L,QSA]
 RewriteRule ^about?/?$ pages/about.php [L,QSA]
 RewriteRule ^stories?/?$ pages/blog.php [L,QSA]
+
+# Finance module
+RewriteRule ^finance/accounts?/?$ pages/finance/accounts.php [L,QSA]
