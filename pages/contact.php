@@ -50,8 +50,8 @@ require_once __DIR__ . '/../partials/header.php';
                 <button type="submit" class="bg-gray-600 text-white px-8 py-3 rounded hover:bg-brand hover:text-black hover:font-bold transition">Send Message</button>
             </form>
         </div>
-        <div class="hidden lg:block w-full lg:w-1/2" data-aos="fade-left">
-            <img src="/assets/images/contact-illustration.svg" alt="Contact Illustration" class="w-full h-auto">
+        <div class="card hidden lg:block w-full lg:w-1/2" data-aos="fade-left">
+            <img src="<?php url('assets/images/contact-me.jpg');?>" alt="Contact Illustration" class="w-full filter grayscale">
         </div>
     </div>
 </section>
@@ -86,7 +86,7 @@ require_once __DIR__ . '/../partials/header.php';
 <section class="container mx-auto py-16 px-4 text-center">
     <div class="relative inline-block">
         <span class="absolute -top-4 -left-4 text-4xl font-mono">The</span>
-        <span class="signature px-8 py-4">mr mallik</span>
+        <span class="signature px-8 py-4 ">mr mallik</span>
         <span class="absolute -bottom-4 -right-4 text-4xl font-mono">way</span>
     </div>
 </section>

@@ -128,7 +128,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
             <span class="text-left text-gray-500 text-lg font-semibold">
                 <i class="fa fa-chart-simple"></i>
-                Skills
+                Technical Skills
                 <hr>
             </span>
 

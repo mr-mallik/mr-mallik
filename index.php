@@ -29,6 +29,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                         <div class="p-4 bg-gray-900 rounded-xl">
                             <div class="flex flex-col gap-2">
                                 <div class="h-32">
+                                    <img src="<?= url('/assets/images/about-me.jpeg'); ?>" alt="About Me" class="h-full w-full object-cover">
                                 </div>
                                 <p class="text-gray-500 text-xs font uppercase"> More About Me </p>
                                 <h2 class="text-lg font-semibold tracking-wider" >About Me</h2>
@@ -40,6 +41,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                         <div class="p-4 bg-gray-900 rounded-xl">
                             <div class="flex flex-col gap-2">
                                 <div class="h-32">
+                                    <img src="<?= url('/assets/images/projects.jpeg'); ?>" alt="Projects" class="h-full w-full object-cover">
                                 </div>
                                 <p class="text-gray-500 text-xs uppercase"> Showcase </p>
                                 <h2 class="text-lg font-semibold tracking-wider" >Projects</h2>
@@ -57,6 +59,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 <div class="p-4 bg-gray-900 rounded-xl">
                     <div class="flex flex-col gap-2">
                         <div class="h-32">
+                            <img src="<?= url('/assets/images/stories.jpeg'); ?>" alt="Blogs" class="h-full w-full object-cover">
                         </div>
                         <p class="text-gray-500 text-xs uppercase"> Blog </p>
                         <h2 class="text-lg font-semibold tracking-wider" >Stories</h2>
@@ -67,7 +70,31 @@ require_once __DIR__ . '/partials/header.php'; # config file
             <div class="w-2/4">
                 <div class="p-4 bg-gray-900 rounded-xl">
                     <div class="flex flex-col gap-2">
-                        <div class="h-32">
+                        <div class="h-32 flex">
+                            <div class="flex flex-col justify-center items-center p-4">
+                                <img src="<?= url('/assets/images/coding.png'); ?>" alt="Web Development" class="dark:filter dark:invert h-full w-full object-cover">
+                                <span>Web Development</span>
+                            </div>
+
+                            <div class="flex flex-col justify-center items-center p-4">
+                                <img src="<?= url('/assets/images/mobile-development.png'); ?>" alt="Mobile Development" class="dark:filter dark:invert h-full w-full object-cover">
+                                <span>Mobile Development</span>
+                            </div>
+
+                            <div class="flex flex-col justify-center items-center p-4">
+                                <img src="<?= url('/assets/images/artificial-intelligence.png'); ?>" alt="AI and ML" class="dark:filter dark:invert h-full w-full object-cover">
+                                <span>AI &amp; ML</span>
+                            </div>
+
+                            <div class="flex flex-col justify-center items-center p-4">
+                                <img src="<?= url('/assets/images/research-and-development.png'); ?>" alt="Research and Development" class="dark:filter dark:invert h-full w-full object-cover">
+                                <span>Research &amp; Development</span>
+                            </div>
+
+                            <div class="flex flex-col justify-center items-center p-4">
+                                <img src="<?= url('/assets/images/software-development.png'); ?>" alt="Software Engineering" class="dark:filter dark:invert h-full w-full object-cover">
+                                <span>Software Engineering</span>
+                            </div>
                         </div>
                         <p class="text-gray-500 text-xs uppercase"> Services </p>
                         <h2 class="text-lg font-semibold tracking-wider" >Professional Servies Offered</h2>
