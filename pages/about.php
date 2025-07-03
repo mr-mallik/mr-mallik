@@ -27,6 +27,21 @@ $clients = [
         'name' => 'University of Huddersfield',
         'logo' => 'https://www.hud.ac.uk/media/universityofhuddersfield/styleassets/images/2016homepageimages/uoh-logo-2019-white.svg',
         'url' => 'https://www.hud.ac.uk/'
+    ],
+    [
+        'name' => 'Fitplanex',
+        'logo' => 'https://fitplanex.com/build/images/logo-light.png',
+        'url' => 'https://www.fitplanex.com/'
+    ],
+    [
+        'name' => 'CosmoKode',
+        'logo' => 'https://www.cosmokode.com/assets/images/logo.png',
+        'url' => 'https://www.cosmokode.com/'
+    ],
+    [
+        'name' => 'Personnel Skills Matrix',
+        'logo' => 'https://psm.cosmokode.com/build/assets/logo-light-2AacuztI.png',
+        'url' => 'https://www.psm.cosmokode.com/'
     ]
 ];
 
@@ -43,9 +58,9 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
     <div class="flex flex-row card-bg-radial rounded-b-xl p-4 py-8 mb-4" data-aos="zoom-in">
 
-        <div class="flex flex-col w-1/4 gap-4 text-left p-4">
+        <div class="flex flex-col w-1/3 gap-4 text-left p-4">
             <span class="text-gray-500 text-lg font-semibold">
-                <i class="fa fa-user"></i>
+                <i class="fa fa-user text-cyan-500"></i>
                 Biography
                 <hr>
             </span>
@@ -55,7 +70,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
             </p>
 
             <span class="text-gray-500 text-lg font-semibold text-right">
-                <i class="fa fa-envelope"></i>
+                <i class="fa fa-envelope text-blue-500"></i>
                 Contact
                 <hr>
             </span>
@@ -69,13 +84,10 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                     <a href="mailto:gulgermallik@gmail.com">gulgermallik@gmail.com</a>
                 </p>
 
-                <p>
-                    <a href="tel:07767924720">07767924720</a>
-                </p>
             </div>
 
             <span class="text-gray-500 text-lg font-semibold">
-                <i class="fa fa-gears"></i>
+                <i class="fa fa-gears text-orange-500"></i>
                 Services
                 <hr>
             </span>
@@ -89,13 +101,15 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
             </p>
         </div>
 
-        <div class="flex flex-col w-2/4 text-center">
-
+        <div class="flex flex-col w-1/3 text-center items-center justify-center">
+            <img src="<?= url('assets/images/about-me-grad.jpg'); ?>" 
+                alt="Gulger Mallik in graduation gown" 
+                class="max-h-[600px] rounded-full">
         </div>
 
-        <div class="flex flex-col w-1/4 gap-6 text-right">
+        <div class="flex flex-col w-1/3 gap-6 text-right">
             <span class="text-gray-500 text-lg font-semibold">
-                <i class="fa fa-clock"></i>
+                <i class="fa fa-clock text-green-500"></i>
                 Credibility
                 <hr>
             </span>
@@ -104,7 +118,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
                 <div class="flex flex-row gap-2 justify-center">
                     <div class="flex items-center">
-                        <span class="text-6xl font-bold font-mono">2</span> 
+                        <span class="text-6xl font-bold font-mono">02</span> 
                         <span class="uppercase text-xs px-4 text-left text-gray-400">professional degrees</span>
                     </div>
                     <div class="flex items-center">
@@ -114,12 +128,12 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 </div>
 
                 <div class="flex flex-row gap-2 items-center">
-                    <span class="text-6xl font-bold font-mono"><?= $experience['years']; ?></span> 
+                    <span class="text-6xl font-bold font-mono"><?= str_pad($experience['years'], 2, '0', STR_PAD_LEFT); ?></span> 
                     <span class="uppercase text-xs text-gray-400">years</span>
-                    <span class="text-6xl font-bold font-mono"><?= $experience['months']; ?></span> 
-                    <span class="uppercase text-xs text-gray-400">months</span>
-                    <span class="text-6xl font-bold font-mono"><?= $experience['days']; ?></span> 
-                    <span class="uppercase text-xs text-gray-400">days</span>
+                    <span class="text-6xl font-bold font-mono"><?= str_pad($experience['months'], 2, '0', STR_PAD_LEFT); ?></span> 
+                    <span class="uppercase text-xs text-gray-400"><?= $experience['months'] > 1 ? 'months' : 'month'; ?></span>
+                    <span class="text-6xl font-bold font-mono"><?= str_pad($experience['days'], 2, '0', STR_PAD_LEFT); ?></span> 
+                    <span class="uppercase text-xs text-gray-400"><?= $experience['days'] > 1 ? 'days' : 'day'; ?></span>
                 </div>
                 
                 <span class="text-upper text-gray-400 text-sm">of professional experience</span>
@@ -127,7 +141,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
             </div>
 
             <span class="text-left text-gray-500 text-lg font-semibold">
-                <i class="fa fa-chart-simple"></i>
+                <i class="fa fa-chart-simple text-yellow-500"></i>
                 Technical Skills
                 <hr>
             </span>
@@ -135,33 +149,48 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
             <div class="flex flex-row flex-wrap gap-4 text-left">
                 <?php foreach ($skills as $skill) : ?>
                     <div class="flex flex-col gap-2 text-center justify-center items-center">
-                        <img src="<?= $skill['icon']; ?>" alt="<?= $skill['title'] ?>" title="<?= $skill['title'] ?>" class="w-8 h-8 object-contain">
+                        <img src="<?= $skill['icon']; ?>" alt="<?= $skill['title'] ?>" title="<?= $skill['title'] ?>" 
+                            class="w-8 h-8 object-contain hover:cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out">
                         <span class="text-xs"><?= $skill['title'] ?></span>
                     </div>
                 <?php endforeach; ?>
             </div>
 
             <span class="text-gray-500 text-lg font-semibold">
-                <i class="fa fa-heart"></i>
+                <i class="fa fa-heart text-red-500"></i>
                 Interests
                 <hr>
             </span>
 
-            <div class="flex flex-col gap-2 text-left">
-                <p>
-                    <i class="fa fa-music"></i>
-                    Listening to music
-                </p>
-
-                <p>
-                    <i class="fa fa-dumbbell"></i>
-                    Health and fitness
-                </p>
-
-                <p>
-                    <i class="fa fa-plane"></i>
-                    Travelling
-                </p>
+            <div class="flex flex-row gap-6 justify-start text-left">
+                <div class="flex flex-col gap-2">
+                    <p>
+                        <i class="fa fa-music"></i>
+                        Listening to music
+                    </p>
+                    <p>
+                        <i class="fa fa-dumbbell"></i>
+                        Health and fitness  
+                    </p>
+                    <p>
+                        <i class="fa fa-plane"></i>
+                        Travelling
+                    </p>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <p>
+                        <i class="fa fa-code"></i>
+                        Programming
+                    </p>
+                    <p>
+                        <i class="fa fa-camera"></i>
+                        Photography
+                    </p>
+                    <p>
+                        <i class="fa fa-book"></i>
+                        Reading
+                    </p>
+                </div>
             </div>
 
 
@@ -172,12 +201,21 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
         
         <h2 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">Showcase </h2>
 
-        <div class="flex flex-row justify-center gap-8 py-6 my-4" data-aos="flip-down">
-            <?php foreach ($clients as $client) : ?>
-                <a href="javascript:;" title="<?= $client['name']; ?>" class="flex items-center justify-center filter grayscale <?php echo isset($client['invert']) ? 'invert' : '' ?> hover:grayscale-0 transition duration-300 ease-in-out">
-                    <img src="<?= $client['logo'] ?>" alt="<?= $client['name'] ?>" class="w-40 object-contain">
-                </a>
-            <?php endforeach; ?>
+        <div class="flex flex-row flex-wrap justify-center gap-8 py-6 my-4" data-aos="flip-down">
+            <?php 
+            $count = 0;
+            foreach ($clients as $client) : 
+            if ($count > 0 && $count % 5 == 0) {
+                echo '</div><div class="flex flex-row flex-wrap justify-center gap-8 py-6 my-4" data-aos="flip-down">';
+            }
+            ?>
+            <a href="javascript:;" title="<?= $client['name']; ?>" class="flex items-center justify-center filter grayscale <?php echo isset($client['invert']) ? 'invert' : '' ?> hover:grayscale-0 transition duration-300 ease-in-out">
+                <img src="<?= $client['logo'] ?>" alt="<?= $client['name'] ?>" class="w-40 object-contain">
+            </a>
+            <?php 
+            $count++;
+            endforeach; 
+            ?>
         </div>
     </div>
     
@@ -248,14 +286,14 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
                     <p>
                         <i class="fa fa-briefcase"></i>
-                        Software Engineer and Fullstack developer <br/>
-                        <span>Self Employed</span>
+                        Research Assistant in Applied AI <br/>
+                        <span>University of Huddersfield, UK</span>
                     </p>
 
                     <p>
                         <i class="fa fa-briefcase"></i>
-                        Research Assistant in Applied AI <br/>
-                        <span>University of Huddersfield, UK</span>
+                        Software Engineer <br/>
+                        <span>CosmoKode Ltd, UK</span>
                     </p>
                     
                 </div>

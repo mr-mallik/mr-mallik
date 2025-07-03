@@ -20,7 +20,7 @@
             &copy; <?php echo date("Y"); ?> All Rights Reserved.
         </p>
     </footer>
-    <div>
+</div>
     <!-- body ends -->
 </body>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

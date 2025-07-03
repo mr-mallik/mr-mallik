@@ -38,7 +38,9 @@ require_once __DIR__ . '/../includes/common.php'; # config file
                 <!-- <div class="fixed"> -->
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-4">
-                            <img src="<?php url('assets/images/logo/mallik_logo.png'); ?>" alt="Mr Mallik" class="w-12 h-12 rounded-full mx-auto">
+                            <img src="<?php url('assets/images/logo/mallik_logo.png'); ?>" alt="Mr Mallik" 
+                                class="w-12 h-12 rounded-full mx-auto transition-transform duration-800 hover:rotate-[360deg] hover:cursor-pointer" 
+                                onmouseout="this.style.transform='rotate(-360deg)'">
                             <a href="<?= url('') ?>" class="signature text-3xl">mr mallik</a>
                         </div>
                         <ul class="flex justify-between text-gray-400 gap-12">
