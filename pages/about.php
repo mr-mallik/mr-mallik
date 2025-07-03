@@ -356,7 +356,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                             <p class="px-4 text-sm text-gray-300">
                                 <span class="hidden lg:block"><?= $story['short_description'] ?></span>
                                 <span class="hidden md:block lg:hidden"><?= cutwords($story['short_description']) ?></span>
-                                <span class="block md:hidden"><?= cutwords($story['short_description'], 100) ?></span>
+                                <span class="block md:hidden"><?= cutwords($story['short_description']) ?></span>
                             </p>
 
                             <a class="p-4 text-right block mt-2 text-gray-400 hover:text-brand" 

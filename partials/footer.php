@@ -9,14 +9,14 @@
             <a href="<?php echo url("about"); ?>"  class="hover:underline">About</a>
             <a href="<?php echo url("projects"); ?>"  class="hover:underline">Projects</a>
             <a href="<?php echo url("stories"); ?>"  class="hover:underline">Blog</a>
-            <a href="https://linkedin.com/in/mrmallik/" target="_blank" class="hover:underline">LinkedIn</a>
-            <a href="https://github.com/mr-mallik/" target="_blank" class="hover:underline">GitHub</a>
-            <a href="https://instagram.com/its_mrmallik/" target="_blank" class="hover:underline">Instagram</a>
-            <a href="https://mrmallik.medium.com/" target="_blank" class="hover:underline">Medium</a>
+            <a href="<?= SOCIAL_LINKEDIN; ?>" target="_blank" class="hover:underline">LinkedIn</a>
+            <a href="<?= SOCIAL_GITHUB; ?>" target="_blank" class="hover:underline">GitHub</a>
+            <a href="<?= SOCIAL_INSTAGRAM; ?>" target="_blank" class="hover:underline">Instagram</a>
+            <a href="<?= SOCIAL_MEDIUM; ?>" target="_blank" class="hover:underline">Medium</a>
         </div>
 
         <p class="text-sm text-gray-600">Design and Develop by 
-            <a href="https://linkedin.com/in/mrmallik" target="_blank" class="font-bold hover:underline ">Gulger Mallik</a>. 
+            <a href="<?= SOCIAL_LINKEDIN; ?>" target="_blank" class="font-bold hover:underline ">Gulger Mallik</a>. 
             &copy; <?php echo date("Y"); ?> All Rights Reserved.
         </p>
     </footer>

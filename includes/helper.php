@@ -47,6 +47,7 @@ function cutWords($string, $length = 100, $append = '...') {
         $string = substr($string, 0, strrpos($string, ' '));
         $string .= $append;
     }
+    
     return $string;
 }
 
