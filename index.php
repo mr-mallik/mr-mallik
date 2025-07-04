@@ -26,12 +26,13 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 <div class="p-4 card-bg-linear rounded-xl">
                     <p class="text-gray-500 text-sm flex items-center gap-2"> 
                         <i class="fas fa-briefcase"></i>
-                        <a href="" class="hover:underline text-gray-200" target="_blank">University of Huddersfield</a>
+                        <a href="<?= url('about#edu-experience'); ?>" class="hover:underline text-gray-200">University of Huddersfield</a>
                         <span>England, United Kingdom</span>
                     </p>
                 </div>
                 <div class="flex gap-4">
                     <div class="w-1/2">
+                        <a href="<?= url('about'); ?>">
                         <div class="p-4 bg-gray-900 rounded-xl">
                             <div class="flex flex-col gap-2">
                                 <div class="h-32 overflow-hidden">
@@ -41,9 +42,11 @@ require_once __DIR__ . '/partials/header.php'; # config file
                                 <h2 class="text-lg font-semibold tracking-wider" >About Me</h2>
                             </div>
                         </div>
+                        </a>
                     </div>
 
                     <div class="w-1/2">
+                        <a href="<?= url('projects'); ?>">
                         <div class="p-4 bg-gray-900 rounded-xl">
                             <div class="flex flex-col gap-2">
                                 <div class="h-32 overflow-hidden">
@@ -53,6 +56,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                                 <h2 class="text-lg font-semibold tracking-wider" >Projects</h2>
                             </div>
                         </div>
+                        </a>
                     </div>
 
                 </div>
@@ -62,6 +66,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
         <div class="flex flex-row gap-4 mb-4">
             <!-- 2 divs below 20%, 60%, 20% -->
             <div class="w-1/4">
+                <a href="<?= url('stories'); ?>">
                 <div class="p-4 bg-gray-900 rounded-xl">
                     <div class="flex flex-col gap-2">
                         <div class="h-32 overflow-hidden">
@@ -71,6 +76,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                         <h2 class="text-lg font-semibold tracking-wider" >Stories</h2>
                     </div>
                 </div>
+                </a>
             </div>
 
             <div class="w-2/4">
@@ -114,24 +120,24 @@ require_once __DIR__ . '/partials/header.php'; # config file
                         <div class="h-32 flex flex-col justify-center items-center p-4">
                             <div class="flex flex-row gap-2">
                                 <div class="rounded-full bg-gray-800 w-12 h-12 flex justify-center items-center">
-                                    <a href="https://linkedin.com/in/mrmallik" title="LinkedIn" target="_blank" class="text-gray-200 text-3xl">
+                                    <a href="<?= SOCIAL_LINKEDIN ?>" title="LinkedIn" target="_blank" class="text-gray-200 text-3xl">
                                         <i class="fab fa-linkedin-in"></i>
                                     </a>
                                 </div>
 
                                 <div class="rounded-full bg-gray-800 w-12 h-12 flex justify-center items-center">
-                                    <a href="https://github.com/mr-mallik" title="GitHub" target="_blank" class="text-gray-200 text-3xl">
+                                    <a href="<?= SOCIAL_GITHUB ?>" title="GitHub" target="_blank" class="text-gray-200 text-3xl">
                                         <i class="fab fa-github"></i>
                                     </a>
                                 </div>
                             
                                 <div class="rounded-full bg-gray-800 w-12 h-12 flex justify-center items-center">
-                                    <a href="https://mrmallik.medium.com/" title="Instagram" target="_blank" class="text-gray-200 text-3xl">
+                                    <a href="<?= SOCIAL_MEDIUM ?>" title="Medium" target="_blank" class="text-gray-200 text-3xl">
                                         <i class="fab fa-medium"></i>
                                     </a>
                                 </div>
                                 <div class="rounded-full bg-gray-800 w-12 h-12 flex justify-center items-center">
-                                    <a href="https://instagram.com/its_mrmallik" title="Instagram" target="_blank" class="text-gray-200 text-3xl">
+                                    <a href="<?= SOCIAL_INSTAGRAM ?>" title="Instagram" target="_blank" class="text-gray-200 text-3xl">
                                         <i class="fab fa-instagram"></i>
                                     </a>
                                 </div>

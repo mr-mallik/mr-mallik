@@ -53,3 +53,11 @@
 .signature {
     font-family: var(--font-brand);
 }
+
+.article-footer-light {
+    background-image: url('../images/article-footer-light.png');
+}
+
+.article-footer-dark {
+    background-image: url('../images/article-footer-dark.png');
+}

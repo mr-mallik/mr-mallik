@@ -1,0 +1,126 @@
+<article class="min-h-screen">
+    <!-- Hero Banner Section -->
+    <section class="relative w-full h-96 md:h-[500px] overflow-hidden">
+        <img src="<?= url('assets/images/projects.jpeg'); ?>" 
+             alt="Project Banner" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center text-white px-4">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+                Revolutionary Web Application
+            </h1>
+            <p class="text-lg md:text-xl opacity-90 max-w-2xl">
+                A comprehensive look at modern web development practices and innovative solutions
+            </p>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Article Meta -->
+        <div class="flex items-center justify-between mb-8 pb-6 border-b border-gray-200">
+            <div class="flex items-center space-x-4">
+                <img src="<?= url('assets/images/gulger-mallik@1x1.jpg'); ?>" 
+                     alt="Gulger Mallik" 
+                     class="w-12 h-12 rounded-full object-cover">
+                <div>
+                    <p class="font-semibold text-gray-900">Gulger Mallik</p>
+                    <p class="text-sm text-gray-500">Software Engineer & AI Researcher</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-sm text-gray-500">Published on</p>
+                <p class="font-medium text-gray-900">March 15, 2024</p>
+            </div>
+        </div>
+
+        <!-- Article Body -->
+        <div class="prose prose-lg max-w-none">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                Project Overview
+            </h2>
+            
+            <p class="text-lg leading-relaxed mb-6 text-gray-700">
+                This project represents a significant milestone in modern web development, combining cutting-edge technologies with user-centered design principles. The application addresses real-world challenges while maintaining scalability and performance at its core.
+            </p>
+
+            <p class="text-lg leading-relaxed mb-8 text-gray-700">
+                Through careful planning and iterative development, we've created a solution that not only meets current requirements but also anticipates future needs. The architecture is built with flexibility in mind, allowing for seamless integration of new features and technologies.
+            </p>
+
+            <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gray-900">
+                Technical Implementation
+            </h3>
+
+            <p class="text-lg leading-relaxed mb-6 text-gray-700">
+                The technical foundation of this project leverages modern frameworks and best practices in software development. Key technologies include:
+            </p>
+
+            <ul class="list-disc list-inside mb-8 text-lg text-gray-700 dark:text-gray-400 space-y-2">
+                <li>Frontend: React.js with TypeScript for type safety</li>
+                <li>Backend: Node.js with Express.js framework</li>
+                <li>Database: PostgreSQL with Redis for caching</li>
+                <li>Deployment: Docker containers on AWS infrastructure</li>
+                <li>CI/CD: GitHub Actions for automated testing and deployment</li>
+            </ul>
+
+            <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gray-900">
+                Key Features & Innovation
+            </h3>
+
+            <p class="text-lg leading-relaxed mb-6 text-gray-700">
+                The application introduces several innovative features that set it apart from conventional solutions. These include real-time data synchronization, intelligent caching mechanisms, and an intuitive user interface that adapts to user behavior patterns.
+            </p>
+
+            <blockquote class="border-l-4 border-blue-500 pl-6 my-8 italic text-xl text-gray-600">
+                "Innovation distinguishes between a leader and a follower. This project exemplifies how thoughtful engineering can create meaningful impact."
+            </blockquote>
+
+            <p class="text-lg leading-relaxed mb-8 text-gray-700">
+                The development process emphasized collaboration, continuous integration, and user feedback. Each iteration brought us closer to a solution that not only works but excels in performance, usability, and maintainability.
+            </p>
+
+            <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gray-900">
+                Results & Impact
+            </h3>
+
+            <p class="text-lg leading-relaxed mb-6 text-gray-700">
+                The project has exceeded initial expectations in terms of user adoption and performance metrics. Key achievements include:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h4 class="font-semibold text-lg mb-2">Performance</h4>
+                    <p class="text-gray-600">40% improvement in load times and 60% reduction in server response time</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h4 class="font-semibold text-lg mb-2">User Engagement</h4>
+                    <p class="text-gray-600">Increased user retention by 35% and session duration by 50%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Image Section -->
+    <section class="w-full bg-gray-50 py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                Ready to Build Something Amazing?
+            </h3>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Let's collaborate on your next project and create solutions that make a difference.
+            </p>
+            <div class="relative inline-block">
+                <img src="<?= url('assets/images/coding.png'); ?>" 
+                     alt="Development Process" 
+                     class="w-full max-w-md h-auto rounded-lg shadow-lg">
+            </div>
+            <div class="mt-8">
+                <a href="<?= url('contact'); ?>" 
+                   class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
+</article>

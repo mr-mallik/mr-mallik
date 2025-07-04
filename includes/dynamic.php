@@ -132,3 +132,28 @@ function getResume($cond= '', $order=null, $limit=null)
 
     return DBFetchAll($result);
 }
+
+function blogGet($type, $slug)
+{
+    global $CONN;
+
+    $sql = "SELECT * FROM blog WHERE type = ? AND urlname = ? LIMIT 1";
+    $stmt = $CONN->prepare($sql);
+    $stmt->execute([$type, $slug]);
+
+    if ($stmt->rowCount() == 0) {
+        return null; // No article found
+    }
+
+    // Fetch the article
+    $article = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // fetch other details from blog_det
+    $sqlDetails = "SELECT * FROM blog_det WHERE project_id = ?";
+    $stmtDetails = $CONN->prepare($sqlDetails);
+    $stmtDetails->execute([$article['project_id']]);
+
+    $article['details'] = $stmtDetails->fetchAll(PDO::FETCH_ASSOC);
+
+    return $article;
+}

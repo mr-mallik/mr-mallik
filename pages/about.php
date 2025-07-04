@@ -219,7 +219,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
         </div>
     </div>
     
-    <div class="card-bg-radial rounded-t-xl p-8 mb-4">
+    <div class="card-bg-radial rounded-t-xl p-8 mb-4" id='edu-experience'>
 
         <h2 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">Education &amp; Experience </h2>
         
@@ -309,7 +309,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 <?php foreach ($projects as $project) : ?>
                     <div data-aos="fade-up" data-aos-delay="100">
                         <div class="card-bg-radial rounded-lg">
-                            <img src="<?= image_src('assets/projects/'.$project['urlname'].'/'.$project['image']) ?>" 
+                            <img src="<?= image_src($project['image']) ?>" 
                                     alt="<?= $project['title'] ?>" 
                                     class="h-auto max-w-full rounded-t-lg  object-cover w-full">
                             <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($project['title']) ?></h3>
@@ -348,7 +348,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 <?php foreach ($stories as $story) : ?>
                     <div data-aos="fade-up" data-aos-delay="100">
                         <div class="card-bg-radial rounded-lg">
-                            <img src="<?= image_src('assets/stories/'.$story['urlname'].'/'.$story['image'], true, 'assets/stories/default.png') ?>" 
+                            <img src="<?= image_src($story['image'], true, 'assets/stories/default.png') ?>" 
                                     alt="<?= $story['title'] ?>" 
                                     class="h-auto w-full max-w-[400px] rounded-t-lg object-cover">
                             <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($story['title']) ?></h3>
