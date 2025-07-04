@@ -1,4 +1,14 @@
 <?php
+require_once __DIR__ . '/../includes/common.php'; // Common functions and configurations
+
+// SEO configuration for the contact page
+$SEO = [
+    'title' => 'Contact Me | Gulger Mallik',
+    'description' => 'Get in touch with Gulger Mallik for collaborations, inquiries, or just to say hello!',
+    'keywords' => 'gulger mallik, contact, email, social media',
+    'url' => url('contact', false),
+];
+
 require_once __DIR__ . '/../partials/header.php';
 ?>
 

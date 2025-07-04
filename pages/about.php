@@ -1,4 +1,15 @@
 <?php
+require_once __DIR__ . '/../includes/common.php'; # config file
+// META TAGS
+$SEO = [
+    'title' => 'About Gulger Mallik',
+    'description' => 'Gulger Mallik is a Software Engineer and a Fullstack developer.',
+    'keywords' => 'gulger mallik, mr mallik, gulger, mallik, software engineer, fullstack developer',
+    'image' => url('assets/images/gulger-mallik@1x1.jpg', false),
+    'url' => url('about', false),
+];
+
+
 require_once __DIR__ . '/../partials/header.php'; # config file
 
 $clients = [

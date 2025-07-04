@@ -1,4 +1,14 @@
 <?php
+require_once __DIR__ . '/../includes/common.php'; // Common functions and configurations
+
+// SEO configuration for the blogs page
+$SEO = [
+    'title' => 'My Journey Log | Gulger Mallik',
+    'description' => 'Explore the journey of Gulger Mallik through various blogs and stories.',
+    'keywords' => 'gulger mallik, blogs, stories, journey log',
+    'url' => url('blogs', false),
+];
+
 require_once __DIR__ . '/../partials/header.php';
 
 $stories = [];

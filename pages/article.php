@@ -1,20 +1,40 @@
 <?php
-require_once __DIR__ . '/../partials/header.php'; # config file
+require_once __DIR__ . '/../includes/common.php'; // Common functions and configurations
 
 $type = isset($_GET['type']) ? $_GET['type'] : null;
 $slug = isset($_GET['slug']) ? $_GET['slug'] : null;
 
 if(!$type || !$slug) {
-    header('Location: ' . url('404'));
+    header('Location: ' . url('404', false));
     exit;
 }
 
 $article = blogGet($type, $slug);
 
 if(!$article) {
-    header('Location: ' . url('404'));
+    header('Location: ' . url('404', false));
     exit;
 }
+
+// SEO configuration for the article page
+$page_url = '';
+
+if($type === 'project') {
+    $page_url = url('projects/' . $article['urlname'], false);
+} elseif($type === 'blog') {
+    $page_url = url('stories/' . $article['urlname'], false);
+}
+
+$SEO = [
+    'title' =>  ($type === 'project' ? 'Project: ' : 'Story: ') . htmlspecialchars($article['title']) . ' | Gulger Mallik',
+    'description' => htmlspecialchars($article['seo_desc']),
+    'keywords' => $article['seo_keyword'] ? htmlspecialchars($article['seo_keyword']) : 'gulger mallik, mr mallik, gulger, mallik, software engineer, fullstack developer',
+    'image' => !empty($article['image']) ? url($article['image'], false) : url('assets/images/article-footer-light.png', false),
+    'image_alt' => htmlspecialchars($article['title']),
+    'url' => $page_url,
+];
+
+require_once __DIR__ . '/../partials/header.php'; # config file
 
 ?>
 <article class="min-h-screen">

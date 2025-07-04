@@ -1,4 +1,14 @@
 <?php
+require_once __DIR__ . '/../includes/common.php'; // Common functions and configurations
+
+// SEO configuration for the projects page
+$SEO = [
+    'title' => 'Projects | Gulger Mallik',
+    'description' => 'Explore the projects by Gulger Mallik, showcasing expertise in software development and design.',
+    'keywords' => 'gulger mallik, projects, software development, web design',
+    'url' => url('projects', false),
+];
+
 require_once __DIR__ . '/../partials/header.php';
 $projects = blogList("AND type='project'");
 

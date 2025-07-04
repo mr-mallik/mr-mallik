@@ -17,5 +17,5 @@ RewriteRule ^stories?/?$ pages/blogs.php [L,QSA]
 # Finance module
 RewriteRule ^finance/accounts?/?$ pages/finance/accounts.php [L,QSA]
 
-# show errors 404
-ErrorDocument 404 /errors/404.php
+# Custom error pages
+ErrorDocument 404 /mrmallik/errors/404.php
