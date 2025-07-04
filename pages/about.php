@@ -158,37 +158,37 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
             <span class="text-gray-500 text-lg font-semibold">
                 <i class="fa fa-heart text-red-500"></i>
-                Interests
+                Likes &amp; Interests
                 <hr>
             </span>
 
-            <div class="flex flex-row gap-6 justify-start text-left">
+            <div class="flex flex-row gap-6 justify-start text-left items-center">
                 <div class="flex flex-col gap-2">
                     <p>
                         <i class="fa fa-music"></i>
-                        Listening to music
+                        Music
                     </p>
                     <p>
                         <i class="fa fa-dumbbell"></i>
-                        Health and fitness  
+                        Health and Fitness
                     </p>
                     <p>
                         <i class="fa fa-plane"></i>
-                        Travelling
+                        Travel
                     </p>
                 </div>
                 <div class="flex flex-col gap-2">
                     <p>
                         <i class="fa fa-code"></i>
-                        Programming
+                        Code
                     </p>
                     <p>
                         <i class="fa fa-camera"></i>
                         Photography
                     </p>
                     <p>
-                        <i class="fa fa-book"></i>
-                        Reading
+                        <i class="fa fa-film"></i>
+                        Movies
                     </p>
                 </div>
             </div>
@@ -348,9 +348,9 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 <?php foreach ($stories as $story) : ?>
                     <div data-aos="fade-up" data-aos-delay="100">
                         <div class="card-bg-radial rounded-lg">
-                            <img src="<?= image_src('assets/stories/'.$story['urlname'].'/'.$story['image']) ?>" 
+                            <img src="<?= image_src('assets/stories/'.$story['urlname'].'/'.$story['image'], true, 'assets/stories/default.png') ?>" 
                                     alt="<?= $story['title'] ?>" 
-                                    class="h-auto max-w-full rounded-t-lg  object-cover w-full">
+                                    class="h-auto w-full max-w-[400px] rounded-t-lg object-cover">
                             <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($story['title']) ?></h3>
                             
                             <p class="px-4 text-sm text-gray-300">

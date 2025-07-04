@@ -76,13 +76,13 @@ function show_alert_message($session_key) {
     }
 }
 
-function image_src($src, $print=true)
+function image_src($src, $print=true, $default = 'assets/images/default.jpg')
 {
     $filePath = BASE_URL . $src;
 
     if (file_exists($filePath) && !is_dir($filePath)) {
         return url($src, $print);
     } else {
-        return url('assets/images/default.jpg', $print);
+        return url($default, $print);
     }
 }
