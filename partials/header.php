@@ -19,7 +19,7 @@ else {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,7 +114,7 @@ else {
         <link rel="stylesheet" href="<?php url('assets/js/aos/aos.css'); ?>">
         <script src="<?php url('assets/js/aos/aos.js'); ?>"></script>
     </head>
-    <body class="bg-black-base text-gray-200">
+    <body class="bg-gray-100 dark:bg-black-base dark:text-gray-200">
     <div id="outer-container" class="mx-auto container">
         <header class="py-8 text-center">
             <nav class="">
@@ -122,20 +122,20 @@ else {
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-4">
                             <img src="<?php url('assets/images/logo/mallik_logo.png'); ?>" alt="Mr Mallik" 
-                                class="w-12 h-12 rounded-full mx-auto transition-transform duration-800 hover:rotate-[360deg] hover:cursor-pointer" 
+                                class="w-12 h-12 rounded-full mx-auto transition-transform duration-800 hover:rotate-[360deg] hover:cursor-pointer invert dark:invert-0" 
                                 onmouseout="this.style.transform='rotate(-360deg)'">
-                            <a href="<?= url('') ?>" class="signature text-3xl">mr mallik</a>
+                            <a href="<?= url('') ?>" class="signature text-3xl text-black dark:text-white">mr mallik</a>
                         </div>
                         <ul class="flex justify-between text-gray-400 gap-12">
                             <?php
                             $menu = siteMenu();
                             foreach ($menu as $key => $value) {
-                                echo '<li><a href="' . url($key, false) . '" class="hover:text-gray-300 ' . activeUrl($key) . '" >' . $value . '</a></li>';
+                                echo '<li><a href="' . url($key, false) . '" class="text-gray-600 hover:text-gray-300 [&.active]:text-blue-600 dark:[&.active]:text-cyan-400 ' . activeUrl($key) . '" >' . $value . '</a></li>';
                             }
                             ?>
                         </ul>
                         <a href="mailto:<?= strtolower(CONTACT_EMAIL) ?>" target="_blank"
-                            class="hover:cursor-pointer bg-gray-900 dark:text-white font-bold py-2 px-4 rounded-lg">
+                            class="hover:cursor-pointer bg-gray-500 text-gray-200 dark:bg-gray-900 dark:text-white font-bold py-2 px-4 rounded-lg">
                             Let's Talk
                         </a>
                     </div>

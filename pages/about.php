@@ -16,12 +16,13 @@ $clients = [
     [
         'name' => 'Tierrasphere',
         'logo' => image_src('assets/images/showcase/TierraSphere.png', false),
-        'url' => 'https://tierrasphere.cosmokode.com/'
+        'url' => 'https://tierrasphere.cosmokode.com/',
     ],
     [
         'name' => 'Crowther Accountants',
         'logo' => image_src('assets/images/showcase/crowther.svg', false),
-        'url' => 'https://www.crowther.accountants/'
+        'url' => 'https://www.crowther.accountants/',
+        'invert' => false
     ],
     [
         'name' => 'Muscle Mind Stories',
@@ -32,12 +33,14 @@ $clients = [
     [
         'name' => 'Ramjan Interiors',
         'logo' => image_src('assets/images/showcase/ramjaninteriors.png', false),
-        'url' => 'https://www.ramjaninteriors.com/'
+        'url' => 'https://www.ramjaninteriors.com/',
+        'invert' => false
     ],
     [
         'name' => 'University of Huddersfield',
         'logo' => image_src('assets/images/showcase/universityofhuddersfield.svg', false),
-        'url' => 'https://www.hud.ac.uk/'
+        'url' => 'https://www.hud.ac.uk/',
+        'invert' => false
     ],
     [
         'name' => 'Fitplanex',
@@ -220,8 +223,9 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 echo '</div><div class="flex flex-row flex-wrap justify-center gap-8 py-6 my-4" data-aos="flip-down">';
             }
             ?>
-            <a href="javascript:;" title="<?= $client['name']; ?>" class="flex items-center justify-center filter grayscale <?php echo isset($client['invert']) ? 'invert' : '' ?> hover:grayscale-0 transition duration-300 ease-in-out">
-                <img src="<?= $client['logo'] ?>" alt="<?= $client['name'] ?>" class="w-40 object-contain">
+            <a href="javascript:;" title="<?= $client['name']; ?>" class="flex items-center justify-center transition duration-300 ease-in-out">
+                <img src="<?= $client['logo'] ?>" alt="<?= $client['name'] ?>" 
+                    class="w-40 object-contain grayscale <?php echo isset($client['invert']) && $client['invert'] == true ? 'invert-0 dark:invert' : 'invert dark:invert-0' ?> hover:grayscale-0">
             </a>
             <?php 
             $count++;
@@ -230,11 +234,11 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
         </div>
     </div>
     
-    <div class="card-bg-radial rounded-t-xl p-8 mb-4" id='edu-experience'>
+    <div class="card-bg-radial rounded-t-xl p-8 mb-4 shadow-lg" id='edu-experience'>
 
         <h2 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">Education &amp; Experience </h2>
         
-        <div class="experience flex justify-between py-8">
+        <div class="experience flex justify-between p-8 shadow-lg">
             <div class="flex flex-row" data-aos="fade-right">
                 <div class="flex flex-col gap-6 text-left">
                     <h3>2019 - 2021</h3>
@@ -315,23 +319,23 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
         <h2 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">Latest Work </h2>
 
-        <div class="flex flex-col justify-center py-8">
+        <div class="flex flex-col justify-center p-8">
             <div class="flex flex-row justify-center gap-8 py-6 my-4">
                 <?php foreach ($projects as $project) : ?>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-bg-radial rounded-lg">
+                        <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px]">
                             <img src="<?= image_src($project['image']) ?>" 
                                     alt="<?= $project['title'] ?>" 
                                     class="h-auto max-w-full rounded-t-lg  object-cover w-full">
                             <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($project['title']) ?></h3>
                             
-                            <p class="px-4 text-sm text-gray-300">
+                            <p class="px-4 text-sm text-gray-700 dark:text-gray-300">
                                 <span class="hidden lg:block"><?= $project['short_description'] ?></span>
                                 <span class="hidden md:block lg:hidden"><?= cutwords($project['short_description']) ?></span>
                                 <span class="block md:hidden"><?= cutwords($project['short_description'], 100) ?></span>
                             </p>
 
-                            <a class="p-4 text-right block mt-2 text-gray-400 hover:text-brand" 
+                            <a class="p-4 text-right block mt-2 text-gray-600 dark:text-gray-400 hover:brand-text" 
                                 href="<?php url('projects/'.$project['urlname']); ?>">
                                 Read more →
                             </a>
@@ -358,19 +362,19 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
             <div class="flex flex-row justify-center gap-8 py-6 my-4">
                 <?php foreach ($stories as $story) : ?>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-bg-radial rounded-lg">
+                        <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px]">
                             <img src="<?= image_src($story['image'], true, 'assets/stories/default.png') ?>" 
                                     alt="<?= $story['title'] ?>" 
                                     class="h-auto w-full max-w-[400px] rounded-t-lg object-cover">
                             <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($story['title']) ?></h3>
-                            
-                            <p class="px-4 text-sm text-gray-300">
+
+                            <p class="px-4 text-sm text-gray-700 dark:text-gray-300">
                                 <span class="hidden lg:block"><?= $story['short_description'] ?></span>
                                 <span class="hidden md:block lg:hidden"><?= cutwords($story['short_description']) ?></span>
                                 <span class="block md:hidden"><?= cutwords($story['short_description']) ?></span>
                             </p>
 
-                            <a class="p-4 text-right block mt-2 text-gray-400 hover:text-brand" 
+                            <a class="p-4 text-right block mt-2 text-gray-600 dark:text-gray-400 hover:brand-text" 
                                 href="<?php url('stories/'.$story['urlname']); ?>">
                                 Read more →
                             </a>

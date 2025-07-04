@@ -14,24 +14,34 @@
     --font-brand: 'BrittanySignature', cursive;
 }
 
-.active {
-    color: var(--color-brand);
-}
+@layer components {
+    /* Light mode */
+    .card-bg-linear {
+        background: linear-gradient(90deg, rgba(250, 250, 250, 1) 0%, rgba(230, 230, 240, 1) 92%);
+    }
 
-.card-bg-linear {
-    background: rgb(32,32,32);
-    background: -moz-linear-gradient(90deg, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
-    background: -webkit-linear-gradient(90deg, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
-    background: linear-gradient(90deg, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#202020",endColorstr="#07070e",GradientType=1);
-}
+    .card-bg-radial {
+        background: radial-gradient(circle, rgba(250, 250, 250, 1) 0%, rgba(230, 230, 240, 1) 92%);
+    }
 
-.card-bg-radial {
-    background: rgb(32,32,32);
-    background: -moz-radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
-    background: -webkit-radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
-    background: radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(7,7,14,1) 92%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#202020",endColorstr="#07070e",GradientType=1);
+    .brand-text {
+        color: #00f;
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+        .card-bg-linear {
+            background: linear-gradient(90deg, rgba(32, 32, 32, 1) 0%, rgba(7, 7, 14, 1) 92%);
+        }
+
+        .card-bg-radial {
+            background: radial-gradient(circle, rgba(32, 32, 32, 1) 0%, rgba(7, 7, 14, 1) 92%);
+        }
+
+        .brand-text {
+            color: #0ff;
+        }
+    }
 }
 
 .experience {
