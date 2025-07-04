@@ -4,43 +4,43 @@ require_once __DIR__ . '/../partials/header.php'; # config file
 $clients = [
     [
         'name' => 'Tierrasphere',
-        'logo' => 'https://tierrasphere.cosmokode.com/assets/images/logo.png',
+        'logo' => image_src('assets/images/showcase/TierraSphere.png', false),
         'url' => 'https://tierrasphere.cosmokode.com/'
     ],
     [
         'name' => 'Crowther Accountants',
-        'logo' => 'https://www.crowther.accountants/wp-content/themes/crowther/public/images/logo.svg',
+        'logo' => image_src('assets/images/showcase/crowther.svg', false),
         'url' => 'https://www.crowther.accountants/'
     ],
     [
         'name' => 'Muscle Mind Stories',
-        'logo' => 'https://musclemindstories.com/assets/images/mms-large-side.png',
+        'logo' => image_src('assets/images/showcase/musclemindstories.png', false),
         'url' => 'https://musclemindstories.com/',
         'invert' => true
     ],
     [
         'name' => 'Ramjan Interiors',
-        'logo' => 'https://www.ramjaninteriors.com/assets/img/logo/ri-logo-large-white.png',
+        'logo' => image_src('assets/images/showcase/ramjaninteriors.png', false),
         'url' => 'https://www.ramjaninteriors.com/'
     ],
     [
         'name' => 'University of Huddersfield',
-        'logo' => 'https://www.hud.ac.uk/media/universityofhuddersfield/styleassets/images/2016homepageimages/uoh-logo-2019-white.svg',
+        'logo' => image_src('assets/images/showcase/universityofhuddersfield.svg', false),
         'url' => 'https://www.hud.ac.uk/'
     ],
     [
         'name' => 'Fitplanex',
-        'logo' => 'https://fitplanex.com/build/images/logo-light.png',
+        'logo' => image_src('assets/images/showcase/fitplanex.png', false),
         'url' => 'https://www.fitplanex.com/'
     ],
     [
         'name' => 'CosmoKode',
-        'logo' => 'https://www.cosmokode.com/assets/images/logo.png',
+        'logo' => image_src('assets/images/showcase/cosmokode.png', false),
         'url' => 'https://www.cosmokode.com/'
     ],
     [
         'name' => 'Personnel Skills Matrix',
-        'logo' => 'https://psm.cosmokode.com/build/assets/logo-light-2AacuztI.png',
+        'logo' => image_src('assets/images/showcase/psm.png', false),
         'url' => 'https://www.psm.cosmokode.com/'
     ]
 ];
