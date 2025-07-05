@@ -15,6 +15,7 @@ define('BASE_URL', $_ENV['BASE_URL'] ?? __DIR__ . '/../' );
 define('APP_ENV', $env);
 define('APP_DEBUG', $_ENV['APP_DEBUG'] ?? true);
 define('URL_REWRITING', $_ENV['URL_REWRITING'] ?? false);
+define('MAINTENANCE_MODE', $_ENV['MAINTENANCE_MODE'] ?? false);
 
 // Database configuration
 define('DB_HOST', $_ENV['DB_HOST'] ?? '');
@@ -47,3 +48,15 @@ define('CONTACT_ADDRESS', $_ENV['CONTACT_ADDRESS'] ?? '');
 define('CONTACT_EMAIL', $_ENV['CONTACT_EMAIL'] ?? '');
 define('CONTACT_EMAIL2', $_ENV['CONTACT_EMAIL2'] ?? '');
 define('CONTACT_ADDRESS_2', $_ENV['CONTACT_ADDRESS_2'] ?? '');
+
+// if site is in maintenance mode, redirect to maintenance page
+if (MAINTENANCE_MODE) {
+    // Get the current script path
+    $currentScript = $_SERVER['PHP_SELF'];
+    
+    // Only redirect if we're not already on the maintenance page
+    if (!str_contains($currentScript, '/errors/maintenance.php')) {
+        header('Location: ' . APP_URL . '/errors/maintenance.php');
+        exit;
+    }
+}

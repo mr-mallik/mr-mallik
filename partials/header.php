@@ -128,9 +128,11 @@ else {
                         </div>
                         <ul class="flex justify-between text-gray-400 gap-12">
                             <?php
-                            $menu = siteMenu();
-                            foreach ($menu as $key => $value) {
-                                echo '<li><a href="' . url($key, false) . '" class="text-gray-600 hover:text-gray-300 [&.active]:text-blue-600 dark:[&.active]:text-cyan-400 ' . activeUrl($key) . '" >' . $value . '</a></li>';
+                            if (!str_contains($_SERVER['PHP_SELF'], '/errors/maintenance.php')) {
+                                $menu = siteMenu();
+                                foreach ($menu as $key => $value) {
+                                    echo '<li><a href="' . url($key, false) . '" class="text-gray-600 hover:text-gray-300 [&.active]:text-blue-600 dark:[&.active]:text-cyan-400 ' . activeUrl($key) . '" >' . $value . '</a></li>';
+                                }
                             }
                             ?>
                         </ul>
