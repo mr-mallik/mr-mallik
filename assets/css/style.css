@@ -1190,6 +1190,13 @@
       }
     }
   }
+  .hover\:text-brand {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-brand);
+      }
+    }
+  }
   .hover\:text-gray-300 {
     &:hover {
       @media (hover: hover) {

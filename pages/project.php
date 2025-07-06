@@ -38,7 +38,7 @@ $projectColumns = array_chunk($projects, ceil(count($projects) / $columns));
                                     <span class="block md:hidden"><?= cutwords($project['short_description'], 100) ?></span>
                                 </p>
 
-                                <a class="p-4 text-right block mt-2 text-gray-600 dark:text-gray-400 hover:brand-text" 
+                                <a class="p-4 text-right block mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
                                    href="<?php url('projects/'.$project['urlname']); ?>">
                                    Read more →
                                 </a>

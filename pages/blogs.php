@@ -41,7 +41,7 @@ $totalColumns = array_chunk($stories, ceil(count($stories) / $columns));
                                     <span class="block md:hidden"><?= cutwords($story['short_description'], 100) ?></span>
                                 </p>
 
-                                <a class="p-4 text-right block mt-2 text-gray-600 dark:text-gray-400 hover:brand-text" 
+                                <a class="p-4 text-right block mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
                                    href="<?php url('stories/'.$story['urlname']); ?>">
                                    Read more →
                                 </a>
