@@ -4,15 +4,14 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // Load the environment variables from the .env file
-$env = getenv('APP_ENV') ?: 'local';  // Default to 'development'
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../', '.env.' . $env);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../', '.env');
 $dotenv->load();
 
 // Application configuration
 define('APP_NAME', $_ENV['APP_NAME'] ?? 'My App');
 define('APP_URL', $_ENV['APP_URL'] ?? 'http://localhost');
 define('BASE_URL', $_ENV['BASE_URL'] ?? __DIR__ . '/../' );
-define('APP_ENV', $env);
+define('APP_ENV', $_ENV['APP_ENV'] ?? 'local');
 define('APP_DEBUG', $_ENV['APP_DEBUG'] ?? true);
 define('URL_REWRITING', $_ENV['URL_REWRITING'] ?? false);
 define('MAINTENANCE_MODE', $_ENV['MAINTENANCE_MODE'] ?? false);
@@ -50,7 +49,7 @@ define('CONTACT_EMAIL2', $_ENV['CONTACT_EMAIL2'] ?? '');
 define('CONTACT_ADDRESS_2', $_ENV['CONTACT_ADDRESS_2'] ?? '');
 
 // if site is in maintenance mode, redirect to maintenance page
-if (MAINTENANCE_MODE) {
+if (MAINTENANCE_MODE == 'true') {
     // Get the current script path
     $currentScript = $_SERVER['PHP_SELF'];
     
