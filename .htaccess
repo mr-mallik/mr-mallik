@@ -14,8 +14,24 @@ RewriteRule ^contact?/?$ pages/contact.php [L,QSA]
 RewriteRule ^about?/?$ pages/about.php [L,QSA]
 RewriteRule ^stories?/?$ pages/blogs.php [L,QSA]
 
+# Admin module
+RewriteRule ^admin/?$ pages/admin/dashboard.php [L,QSA]
+RewriteRule ^admin/login/?$ pages/admin/login.php [L,QSA]
+RewriteRule ^admin/auth/?$ pages/admin/auth.php [L,QSA]
+RewriteRule ^admin/dashboard/?$ pages/admin/dashboard.php [L,QSA]
+RewriteRule ^admin/blogs/?$ pages/admin/blogs.php [L,QSA]
+RewriteRule ^admin/blog-details/?$ pages/admin/blog-details.php [L,QSA]
+RewriteRule ^admin/projects/?$ pages/admin/projects.php [L,QSA]
+RewriteRule ^admin/skills/?$ pages/admin/skills.php [L,QSA]
+RewriteRule ^admin/resume/?$ pages/admin/resume.php [L,QSA]
+RewriteRule ^admin/services/?$ pages/admin/services.php [L,QSA]
+RewriteRule ^admin/files/?$ pages/admin/files.php [L,QSA]
+RewriteRule ^admin/profile/?$ pages/admin/profile.php [L,QSA]
+RewriteRule ^admin/logs/?$ pages/admin/logs.php [L,QSA]
+RewriteRule ^admin/logout/?$ pages/admin/logout.php [L,QSA]
+
 # Finance module
-RewriteRule ^finance/accounts?/?$ pages/finance/accounts.php [L,QSA]
+RewriteRule ^admin/accounts?/?$ pages/finance/accounts.php [L,QSA]
 
 # Custom error pages
 ErrorDocument 401 /errors/401.php

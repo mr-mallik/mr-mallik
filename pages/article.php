@@ -40,7 +40,7 @@ require_once __DIR__ . '/../partials/header.php'; # config file
 <article class="min-h-screen">
     <!-- Hero Banner Section -->
     <section class="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] overflow-hidden">
-        <img src="<?= !empty($article['image']) ? url($article['image']) : url('assets/images/projects.jpeg'); ?>" 
+        <img src="<?= !empty($article['banner_image']) ? url($article['banner_image']) : (!empty($article['image']) ? url($article['image']) : url('assets/images/projects.jpeg')); ?>"
              alt="<?= htmlspecialchars($article['title']); ?>" 
              class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>

@@ -1,11 +1,18 @@
 <?php
-require_once __DIR__ . "/../partials/finance/header.php";
+require_once __DIR__ . "/../../includes/admin-common.php";
+
+// If already logged in, redirect to dashboard
+if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
+    redirect("/admin");
+}
+
+require_once __DIR__ . "/../../partials/admin/header.php";
 ?>
 
 <div class="bg-black-base flex items-center justify-center min-h-screen">
     <div class="w-full max-w-md p-8 space-y-6 card-bg-radial rounded shadow-md">
         <h2 class="text-2xl font-bold text-center text-gray-300">Login</h2>
-        <form class="space-y-4" action="auth.php" method="POST">
+        <form class="space-y-4" action="auth" method="POST">
             <?= show_alert_message('error'); ?>
             <?= show_alert_message('success'); ?>
             <?= show_alert_message('info'); ?>
@@ -29,7 +36,7 @@ require_once __DIR__ . "/../partials/finance/header.php";
         </form>
         <p class="text-sm text-center text-gray-600">Design and Develop by 
             <a href="<?= SOCIAL_LINKEDIN ?>" target="_blank" class="font-bold hover:underline ">Gulger Mallik</a> <br/>
-            &copy; <?php echo date("Y"); ?> Finance Portal | All Rights Reserved.
+            &copy; <?php echo date("Y"); ?> All Rights Reserved.
         </p>
     </div>
 </div>

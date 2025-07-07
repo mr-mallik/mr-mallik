@@ -61,8 +61,8 @@ $clients = [
 
 $experience = dateDiff('2019-05-27', date('Y-m-d'));
 
-$projects = blogList("AND type='project'", 4);
-$stories = blogList("AND type='blog'", 4);
+$projects = blogList("AND type='project' AND status='A'", 4);
+$stories = blogList("AND type='blog' AND status='A'", 4);
 $skills = getSkills($type=['tech', 'frame', 'db']);
 ?>
 
