@@ -98,6 +98,52 @@ function sanitizeInput($input) {
     return htmlspecialchars(strip_tags(trim($input)), ENT_QUOTES, 'UTF-8');
 }
 
+// Sanitize input for basic text fields (removes HTML but keeps quotes)
+function sanitizeBasicInput($input) {
+    return trim(strip_tags($input));
+}
+
+// Sanitize HTML content for rich text fields (allows HTML tags)
+function sanitizeHtmlInput($input) {
+    // Remove only potentially dangerous tags and attributes
+    $allowedTags = '<p><br><strong><b><em><i><u><s><mark><small><sub><sup><h1><h2><h3><h4><h5><h6><ul><ol><li><a><img><blockquote><code><pre><table><tr><td><th><thead><tbody><tfoot><div><span><hr><dl><dt><dd>';
+    $cleaned = strip_tags(trim($input), $allowedTags);
+    
+    // Remove potentially dangerous attributes - improved regex
+    $cleaned = preg_replace('/\s*on\w+\s*=\s*["\'][^"\']*["\']/i', '', $cleaned);
+    $cleaned = preg_replace('/\s*javascript\s*:/i', '', $cleaned);
+    $cleaned = preg_replace('/\s*vbscript\s*:/i', '', $cleaned);
+    $cleaned = preg_replace('/\s*data\s*:/i', '', $cleaned);
+    $cleaned = preg_replace('/\s*style\s*=\s*["\'][^"\']*["\']/i', '', $cleaned); // Remove inline styles for security
+    
+    // Allow href and src attributes for links and images, but sanitize them
+    $cleaned = preg_replace_callback('/(<a[^>]*href\s*=\s*["\'])([^"\']*)["\']([^>]*>)/i', function($matches) {
+        $url = filter_var($matches[2], FILTER_SANITIZE_URL);
+        return $matches[1] . htmlspecialchars($url, ENT_QUOTES, 'UTF-8') . '"' . $matches[3];
+    }, $cleaned);
+    
+    $cleaned = preg_replace_callback('/(<img[^>]*src\s*=\s*["\'])([^"\']*)["\']([^>]*>)/i', function($matches) {
+        $url = filter_var($matches[2], FILTER_SANITIZE_URL);
+        return $matches[1] . htmlspecialchars($url, ENT_QUOTES, 'UTF-8') . '"' . $matches[3];
+    }, $cleaned);
+    
+    return $cleaned;
+}
+
+// Function to escape output for display (when you want to show HTML as text)
+function escapeOutput($input) {
+    return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
+}
+
+// Function to prepare content for database storage
+function prepareForDatabase($input, $allowHtml = false) {
+    if ($allowHtml) {
+        return sanitizeHtmlInput($input);
+    } else {
+        return sanitizeBasicInput($input);
+    }
+}
+
 // Format date
 function formatDate($date, $format = 'Y-m-d H:i:s') {
     return date($format, strtotime($date));

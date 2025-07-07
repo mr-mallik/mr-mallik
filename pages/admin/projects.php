@@ -11,18 +11,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'edit':
             $id = $_POST['id'] ?? null;
             $type = 'project'; // Force type to project
-            $title = sanitizeInput($_POST['title'] ?? '');
-            $overview = sanitizeInput($_POST['overview'] ?? '');
-            $shortDescription = sanitizeInput($_POST['short_description'] ?? '');
-            $publishedDate = sanitizeInput($_POST['published_date'] ?? '');
-            $skills = sanitizeInput($_POST['skills'] ?? '');
-            $status = sanitizeInput($_POST['status'] ?? 'D');
-            $github = sanitizeInput($_POST['github'] ?? '');
-            $online = sanitizeInput($_POST['online'] ?? '');
-            $userGuide = sanitizeInput($_POST['user_guide'] ?? '');
-            $seoTitle = sanitizeInput($_POST['seo_title'] ?? '');
-            $seoKeyword = sanitizeInput($_POST['seo_keyword'] ?? '');
-            $seoDesc = sanitizeInput($_POST['seo_desc'] ?? '');
+            $title = sanitizeBasicInput($_POST['title'] ?? '');
+            $overview = prepareForDatabase($_POST['overview'] ?? '', true); // Allow HTML
+            $shortDescription = prepareForDatabase($_POST['short_description'] ?? '', true); // Allow HTML
+            $publishedDate = sanitizeBasicInput($_POST['published_date'] ?? '');
+            $skills = sanitizeBasicInput($_POST['skills'] ?? '');
+            $status = sanitizeBasicInput($_POST['status'] ?? 'D');
+            $github = sanitizeBasicInput($_POST['github'] ?? '');
+            $online = sanitizeBasicInput($_POST['online'] ?? '');
+            $userGuide = sanitizeBasicInput($_POST['user_guide'] ?? '');
+            $seoTitle = sanitizeBasicInput($_POST['seo_title'] ?? '');
+            $seoKeyword = sanitizeBasicInput($_POST['seo_keyword'] ?? '');
+            $seoDesc = sanitizeBasicInput($_POST['seo_desc'] ?? '');
             
             // Generate URL name
             $urlname = $id ? generateUniqueSlug($title, 'blog', $id) : generateUniqueSlug($title, 'blog');
@@ -351,14 +351,22 @@ require_once __DIR__ . '/../../partials/admin/side-nav.php';
                 
                 <div class="mt-6">
                     <label for="overview" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Project Overview</label>
-                    <textarea name="overview" id="overview" rows="4" 
-                              class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"><?php echo htmlspecialchars(isset($project) ? $project['overview'] : ''); ?></textarea>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                        Supports HTML tags: &lt;p&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;u&gt;, &lt;br&gt;, &lt;a&gt;, &lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;, etc.
+                    </div>
+                    <textarea name="overview" id="overview" rows="8" 
+                              placeholder="Enter project overview with HTML tags if needed..."
+                              class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 font-mono text-sm"><?php echo isset($project) ? $project['overview'] : ''; ?></textarea>
                 </div>
                 
                 <div class="mt-6">
                     <label for="short_description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Short Description</label>
-                    <textarea name="short_description" id="short_description" rows="3" 
-                              class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"><?php echo htmlspecialchars(isset($project) ? $project['short_description'] : ''); ?></textarea>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                        Supports HTML tags for formatting. Keep it concise for preview purposes.
+                    </div>
+                    <textarea name="short_description" id="short_description" rows="4" 
+                              placeholder="Enter short description with HTML tags if needed..."
+                              class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 font-mono text-sm"><?php echo isset($project) ? $project['short_description'] : ''; ?></textarea>
                 </div>
                 
                 <div class="mt-6">
