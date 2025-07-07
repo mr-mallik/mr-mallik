@@ -10,7 +10,7 @@ $adminPages = [
     'dashboard' => ['url' => '/admin', 'icon' => 'fas fa-tachometer-alt', 'title' => 'Dashboard'],
     'blogs' => ['url' => '/admin/blogs', 'icon' => 'fas fa-blog', 'title' => 'Blogs'],
     'projects' => ['url' => '/admin/projects', 'icon' => 'fas fa-project-diagram', 'title' => 'Projects'],
-    // 'profile' => ['url' => '/admin/profile', 'icon' => 'fas fa-user', 'title' => 'Profile'],
+    'profile' => ['url' => '/admin/profile', 'icon' => 'fas fa-user', 'title' => 'Profile'],
     'logout' => ['url' => '/admin/logout', 'icon' => 'fas fa-sign-out-alt', 'title' => 'Logout']
 ];
 
@@ -39,7 +39,14 @@ function isActiveAdminPage($url) {
     <div class="absolute bottom-4 left-4 right-4">
         <div class="bg-gray-700 p-3 rounded-lg">
             <p class="text-sm text-gray-300">Welcome back,</p>
-            <p class="font-medium"><?php echo $_SESSION['admin_user']['name'] ?? 'Admin'; ?></p>
+            <p class="font-medium">
+                <?php 
+                    $firstName = $_SESSION['admin_user']['first_name'] ?? '';
+                    $lastName = $_SESSION['admin_user']['last_name'] ?? '';
+                    $fullName = trim($firstName . ' ' . $lastName);
+                    echo $fullName ?: 'Admin';
+                ?>
+            </p>
         </div>
     </div>
 </nav>
