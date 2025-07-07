@@ -13,7 +13,7 @@ require_once __DIR__ . '/../partials/header.php';
 
 $stories = [];
 $columns = 4; // Default number of columns
-$resume = blogList('AND type="blog"');
+$resume = blogList('AND type="blog" AND status="A"');
 $stories = array_merge($stories, $resume);
 
 // Calculate number of columns based on screen size
