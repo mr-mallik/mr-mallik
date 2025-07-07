@@ -15,36 +15,36 @@ require_once __DIR__ . '/../partials/header.php';
 <!-- Banner Section -->
 <div class="relative h-[400px] w-full">
     <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <h1 class="text-white p-10 text-6xl font-bold" data-aos="fade-up">Let's Connect</h1>
+        <h1 class="text-white p-10 text-3xl xl:text-6xl font-bold" data-aos="fade-up">Let's Connect</h1>
         <img src="<?php url('assets/images/contact-me.jpg');?>" alt="Contact Banner" class="w-full h-full object-cover">
     </div>
 </div>
 
 <!-- Contact Info Section -->
-<section class="container mx-auto py-10 px-4">
+<section class="container mx-auto py-4 xl:py-10 px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="text-center p-6 shadow-lg rounded-lg" data-aos="fade-up">
-            <i class="fas fa-map-marker-alt text-3xl text-gray-600 mb-4"></i>
-            <p><?= nl2br(CONTACT_ADDRESS_2); ?></p>
+            <i class="fas fa-map-marker-alt text-xl xl:text-3xl text-gray-600 mb-4"></i>
+            <p class="text-nowrap"><?= nl2br(CONTACT_ADDRESS_2); ?></p>
         </div>
         <div class="text-center p-6 shadow-lg rounded-lg" data-aos="fade-left">
-            <i class="fas fa-envelope text-3xl text-gray-600 mb-4"></i>
+            <i class="fas fa-envelope text-xl xl:text-3xl text-gray-600 mb-4"></i>
             <p>
                 <a class="hover:underline" href='mailto:<?= CONTACT_EMAIL; ?>'><?= CONTACT_EMAIL; ?></a>
             </p>
         </div>
 
         <div class="flex flex-col gap-2 text-center p-6 shadow-lg rounded-lg" data-aos="fade-left">            
-            <div class="flex justify-center space-x-6" data-aos="fade-up">
-                <a target="_blank" href="<?= SOCIAL_LINKEDIN; ?>" class="text-4xl text-gray-600"><i class="fab fa-linkedin"></i></a>
-                <a target="_blank" href="<?= SOCIAL_GITHUB; ?>" class="text-4xl text-gray-600"><i class="fab fa-github"></i></a>
-                <a target="_blank" href="<?= SOCIAL_MEDIUM; ?>" class="text-4xl text-gray-600"><i class="fab fa-medium"></i></a>
-                <a target="_blank" href="<?= SOCIAL_INSTAGRAM; ?>" class="text-4xl text-gray-600"><i class="fab fa-instagram"></i></a>
-                <a target="_blank" href="<?= SOCIAL_FACEBOOK; ?>" class="text-4xl text-gray-600"><i class="fab fa-facebook"></i></a>
+            <div class="flex justify-center space-x-3 xl:space-x-6" data-aos="fade-up">
+                <a target="_blank" href="<?= SOCIAL_LINKEDIN; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-linkedin"></i></a>
+                <a target="_blank" href="<?= SOCIAL_GITHUB; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="<?= SOCIAL_MEDIUM; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-medium"></i></a>
+                <a target="_blank" href="<?= SOCIAL_INSTAGRAM; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="<?= SOCIAL_FACEBOOK; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-facebook"></i></a>
             </div>
 
-            <p class="text-gray-400 mt-4">
-                Interested in collaborating?
+            <p class="text-gray-400 mt-0 xl:mt-4">
+                Interested in collaborating?<br/>
                 <a class="hover:underline" href="mailto:<?= CONTACT_EMAIL; ?>">Let's talk!</a>
             </p>
         </div>

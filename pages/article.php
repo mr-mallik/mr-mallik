@@ -45,7 +45,7 @@ require_once __DIR__ . '/../partials/header.php'; # config file
              class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center text-white px-4">
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+            <h1 class="text-4xl xl:text-6xl font-bold mb-4 leading-tight">
                 <?= htmlspecialchars($article['title']); ?>
             </h1>
             <p class="text-lg md:text-xl opacity-90 max-w-2xl">
@@ -74,6 +74,8 @@ require_once __DIR__ . '/../partials/header.php'; # config file
             </div>
             <?php endif; ?>
         </div>
+
+        <h1 class="text-4xl xl:text-5xl font-bold mb-4 leading-tight"><?= htmlspecialchars($article['title']); ?></h1>
 
         <?php if(!empty($article['details'])): ?>
             <div class="prose prose-lg max-w-none">

@@ -115,7 +115,7 @@ else {
         <script src="<?php url('assets/js/aos/aos.js'); ?>"></script>
     </head>
     <body class="bg-gray-100 dark:bg-black-base dark:text-gray-200">
-    <div id="outer-container" class="mx-auto container">
+    <div id="outer-container" class="mx-auto container px-10">
         <header class="py-8 text-center">
             <nav class="">
                 <!-- <div class="fixed"> -->

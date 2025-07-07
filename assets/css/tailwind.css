@@ -46,16 +46,16 @@
 
 .experience {
     h3 {
-        @apply font-semibold text-lg text-gray-600;
+        @apply font-semibold xl:text-lg text-gray-600;
     }
     p {
-        @apply dark:text-white text-xl font-bold;
+        @apply dark:text-white text-base xl:text-xl font-bold;
 
         i {
-            @apply text-xl;
+            @apply text-base xl:text-xl;
         }
         span {
-            @apply text-gray-500 text-lg font-normal;
+            @apply text-gray-500 text-sm xl:text-lg font-normal;
         }
     }
 }

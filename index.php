@@ -7,13 +7,13 @@ require_once __DIR__ . '/partials/header.php'; # config file
             <div class="flex items-center w-1/2 p-4 gap-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
                 <img src="<?= url('/assets/images/gulger-mallik@1x1.jpg'); ?>" 
                     alt="Gulger Mallik" 
-                    class="h-65 rounded-tl-xl rounded-br-xl hover:grayscale transition-all duration-300 ease-in-out">
+                    class="h-55 xl:h-65 rounded-tl-xl rounded-br-xl hover:grayscale transition-all duration-300 ease-in-out">
                 
                 <div class="flex flex-col pl-4">
                     <p class='text-gray-800 dark:text-gray-400'>Hello, I'm</p>
-                    <h1 class="py-2 text-4xl font-bold flex-nowrap text-gray-900 dark:text-white">Gulger Mallik.</h1>
+                    <h1 class="py-2 text-2xl xl:text-4xl font-bold flex-nowrap text-gray-900 dark:text-white">Gulger Mallik.</h1>
                     <p class="text-gray-800 dark:text-gray-400">I am a Software Engineer <br/>and a Fullstack developer.</p>
-                    <p class="text-gray-800 dark:text-gray-400 text-xs mt-4 text-justify">
+                    <p class="text-gray-800 dark:text-gray-400 text-xs mt-4 text-justify hidden xl:block">
                         Passionate about building
                         scalable web and mobile applications, enthusiastic about
                         learning new technologies, and committed to delivering high-quality software solutions. 
@@ -83,29 +83,31 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
                     <div class="flex flex-col gap-2">
                         <div class="h-32 flex">
-                            <div class="flex flex-col justify-center items-center p-4 text-center">
-                                <img src="<?= url('/assets/images/coding.png'); ?>" alt="Web Development" class="dark:invert h-20 opacity-60">
-                                <span class='text-xs text-gray-600 dark:text-gray-400 pt-2'>Web Development</span>
-                            </div>
+                            <div class="flex flex-row justify-between items-center w-full">
+                                <div class="flex flex-col justify-center items-center p-2 text-center flex-1">
+                                    <img src="<?= url('/assets/images/coding.png'); ?>" alt="Web Development" class="dark:invert opacity-60 w-8 sm:w-12 md:w-16">
+                                    <span class='text-[10px] sm:text-xs text-gray-600 dark:text-gray-400 pt-1'>Web Development</span>
+                                </div>
 
-                            <div class="flex flex-col justify-center items-center p-4 text-center">
-                                <img src="<?= url('/assets/images/mobile-development.png'); ?>" alt="Mobile Development" class="dark:invert h-20 opacity-60">
-                                <span class='text-xs text-gray-600 dark:text-gray-400 pt-2'>Mobile Development</span>
-                            </div>
+                                <div class="flex flex-col justify-center items-center p-2 text-center flex-1">
+                                    <img src="<?= url('/assets/images/mobile-development.png'); ?>" alt="Mobile Development" class="dark:invert opacity-60 w-8 sm:w-12 md:w-16">
+                                    <span class='text-[10px] sm:text-xs text-gray-600 dark:text-gray-400 pt-1'>Mobile Development</span>
+                                </div>
 
-                            <div class="flex flex-col justify-center items-center p-4 text-center">
-                                <img src="<?= url('/assets/images/artificial-intelligence.png'); ?>" alt="AI and ML" class="dark:invert h-20 opacity-60">
-                                <span class='text-xs text-gray-600 dark:text-gray-400 pt-2'>AI &amp; ML</span>
-                            </div>
+                                <div class="flex flex-col justify-center items-center p-2 text-center flex-1">
+                                    <img src="<?= url('/assets/images/artificial-intelligence.png'); ?>" alt="AI and ML" class="dark:invert opacity-60 w-8 sm:w-12 md:w-16">
+                                    <span class='text-[10px] sm:text-xs text-gray-600 dark:text-gray-400 pt-1'>AI &amp; ML</span>
+                                </div>
 
-                            <div class="flex flex-col justify-center items-center p-4 text-center">
-                                <img src="<?= url('/assets/images/research-and-development.png'); ?>" alt="Research and Development" class="dark:invert h-20 opacity-60">
-                                <span class='text-xs text-gray-600 dark:text-gray-400 pt-2'>Research &amp; Development</span>
-                            </div>
+                                <div class="flex flex-col justify-center items-center p-2 text-center flex-1">
+                                    <img src="<?= url('/assets/images/research-and-development.png'); ?>" alt="Research and Development" class="dark:invert opacity-60 w-8 sm:w-12 md:w-16">
+                                    <span class='text-[10px] sm:text-xs text-gray-600 dark:text-gray-400 pt-1'>R&amp;D</span>
+                                </div>
 
-                            <div class="flex flex-col justify-center items-center p-4 text-center">
-                                <img src="<?= url('/assets/images/software-development.png'); ?>" alt="Software Engineering" class="dark:invert h-20 opacity-60">
-                                <span class='text-xs text-gray-600 dark:text-gray-400 pt-2'>Software Engineering</span>
+                                <div class="flex flex-col justify-center items-center p-2 text-center flex-1">
+                                    <img src="<?= url('/assets/images/software-development.png'); ?>" alt="Software Engineering" class="dark:invert opacity-60 w-8 sm:w-12 md:w-16">
+                                    <span class='text-[10px] sm:text-xs text-gray-600 dark:text-gray-400 pt-1'>Software Engineering</span>
+                                </div>
                             </div>
                         </div>
                         <p class="text-gray-700 dark:text-gray-500 text-xs uppercase"> Services </p>
@@ -155,7 +157,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 <div class="p-4 card-bg-linear rounded-xl shadow-lg">
                     <div class="flex flex-row gap-4 p-2 h-44">
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="dark:text-white font-bold text-4xl" id="years">
+                            <span class="dark:text-white font-bold text-2xl xl:text-4xl" id="years">
                                 <?php 
                                 $years = date('Y') - 2019;
                                 echo str_pad($years, 2, 0, STR_PAD_LEFT); ?>+
@@ -164,12 +166,12 @@ require_once __DIR__ . '/partials/header.php'; # config file
                         </div>
 
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="dark:text-white font-bold text-4xl" id="happyClients">100%</span>
+                            <span class="dark:text-white font-bold text-2xl xl:text-4xl" id="happyClients">100%</span>
                             <span class="text-gray-700 dark:text-gray-300">Happy <br/>Clients</span>
                         </div>
 
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="dark:text-white font-bold text-4xl" id="codingHours">
+                            <span class="dark:text-white font-bold text-2xl xl:text-4xl" id="codingHours">
                                 <?php 
                                 $codingHours = $years * 365 * 5; // years * days in a year * daily coding hours
                                 echo '+' . $codingHours ?>
@@ -184,12 +186,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
                     <div class="flex flex-col gap-2">
                         <div class="h-44 px-4 py-2">
-                            <!-- <p class="text-sm text-gray-700 dark:text-gray-500 p-1">Enter your message with contact details</p>
-                            <form action="#" class="flex flex-row pb-4" method="POST" autocomplete="off">
-                                <input type="text" class="w-4/5 p-2 bg-gray-800 text-gray-200 rounded-l-xl" placeholder="Your Message, Email or Mobile Number" />
-                                <button type="button" class="w-1/5 py-2 px-6 bg-gray-800 dark:text-white rounded-r-xl cursor-pointer border-l border-gray-600 font-semibold">Send</button>
-                            </form> -->
-                            <p class="text-gray-700 dark:text-gray-500 text-3xl font-bold">
+                            <p class="text-gray-700 dark:text-gray-500 text-xl xl:text-3xl font-bold">
                                 Let's <br/>
                                 talk about your <span class="brand-text">next</span> project.
                                 <br/> <br/>
