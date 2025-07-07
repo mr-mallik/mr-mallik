@@ -18,7 +18,7 @@ require_once __DIR__ . '/../partials/header.php';
          class="absolute inset-0 w-full h-full object-cover object-center">
     
     <!-- Responsive overlay for readability -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/70 dark:from-black/60 dark:via-black/70 dark:to-black/80"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50 dark:from-black/60 dark:via-black/70 dark:to-black/80"></div>
     
     <!-- Content with proper z-index and text shadow -->
     <div class="relative z-10 flex items-center justify-center h-full px-4">
