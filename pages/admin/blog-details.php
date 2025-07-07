@@ -24,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'add':
         case 'edit':
             $id = $_POST['id'] ?? null;
-            $title = sanitizeInput($_POST['title'] ?? '');
-            $description = sanitizeInput($_POST['description'] ?? '');
-            $videoLink = sanitizeInput($_POST['video_link'] ?? '');
+            $title = sanitizeBasicInput($_POST['title'] ?? '');
+            $description = prepareForDatabase($_POST['description'] ?? '', true); // Allow HTML
+            $videoLink = sanitizeBasicInput($_POST['video_link'] ?? '');
             
             // Handle image upload
             $image = '';
@@ -140,7 +140,7 @@ require_once __DIR__ . '/../../partials/admin/side-nav.php';
     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <div class="flex justify-between items-start">
             <div>
-                <h1 class="text-2xl font-bold text-gray-900 dark:text-white"><?php echo htmlspecialchars($project['title']); ?></h1>
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white"><?php echo escapeOutput($project['title']); ?></h1>
                 <p class="text-gray-600 dark:text-gray-400 mt-2"><?php echo ucfirst($project['type']); ?> Details Management</p>
             </div>
             <a href="<?php echo APP_URL; ?>/admin/<?php echo $project['type'] === 'blog' ? 'blogs' : 'projects'; ?>" 
@@ -174,12 +174,12 @@ require_once __DIR__ . '/../../partials/admin/side-nav.php';
                                 <div class="flex justify-between items-start">
                                     <div class="flex-1">
                                         <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                                            <?php echo htmlspecialchars($detail['title']); ?>
+                                            <?php echo escapeOutput($detail['title']); ?>
                                         </h4>
                                         <?php if ($detail['description']): ?>
-                                            <p class="text-gray-600 dark:text-gray-400 mb-3">
-                                                <?php echo nl2br(htmlspecialchars($detail['description'])); ?>
-                                            </p>
+                                            <div class="text-gray-600 dark:text-gray-400 mb-3 prose prose-sm max-w-none">
+                                                <?php echo $detail['description']; ?>
+                                            </div>
                                         <?php endif; ?>
                                         <?php if ($detail['video_link']): ?>
                                             <p class="text-sm text-blue-600 dark:text-blue-400 mb-3">
@@ -192,7 +192,7 @@ require_once __DIR__ . '/../../partials/admin/side-nav.php';
                                         <?php if ($detail['image']): ?>
                                             <div class="mb-3">
                                                 <img src="<?php echo APP_URL; ?>/assets/<?php echo $project['type'] === 'blog' ? 'stories' : 'projects'; ?>/<?php echo $detail['image']; ?>" 
-                                                     alt="<?php echo htmlspecialchars($detail['title']); ?>" 
+                                                     alt="<?php echo escapeOutput($detail['title']); ?>" 
                                                      class="max-w-xs h-auto rounded-lg shadow-md">
                                             </div>
                                         <?php endif; ?>
@@ -240,20 +240,24 @@ require_once __DIR__ . '/../../partials/admin/side-nav.php';
                 <div>
                     <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Title</label>
                     <input type="text" name="title" id="title" required 
-                           value="<?php echo htmlspecialchars(isset($detail) ? $detail['title'] : ''); ?>"
+                           value="<?php echo escapeOutput(isset($detail) ? $detail['title'] : ''); ?>"
                            class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 
                 <div>
                     <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
-                    <textarea name="description" id="description" rows="6" 
-                              class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"><?php echo htmlspecialchars(isset($detail) ? $detail['description'] : ''); ?></textarea>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                        Supports HTML tags: &lt;p&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;u&gt;, &lt;br&gt;, &lt;a&gt;, &lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;, etc.
+                    </div>
+                    <textarea name="description" id="description" rows="8" 
+                              placeholder="Enter description with HTML tags if needed..."
+                              class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"><?php echo isset($detail) ? $detail['description'] : ''; ?></textarea>
                 </div>
                 
                 <div>
                     <label for="video_link" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Video Link</label>
                     <input type="url" name="video_link" id="video_link" 
-                           value="<?php echo htmlspecialchars(isset($detail) ? $detail['video_link'] : ''); ?>"
+                           value="<?php echo escapeOutput(isset($detail) ? $detail['video_link'] : ''); ?>"
                            class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 

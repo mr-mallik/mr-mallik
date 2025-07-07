@@ -135,9 +135,15 @@ require_once __DIR__ . '/../partials/header.php'; # config file
         <?php else: ?>
 
             <?php if(!empty($article['short_description'])): ?>
-                <p class="text-base sm:text-lg leading-relaxed mb-4 sm:mb-6 text-gray-700 dark:text-gray-300">
-                    <?= htmlspecialchars($article['short_description']); ?>
-                </p>
+                <div class="text-base sm:text-lg leading-relaxed mb-4 sm:mb-6 text-gray-700 dark:text-gray-300">
+                    <?= $article['short_description']; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if(!empty($article['overview'])): ?>
+                <div class="text-base sm:text-lg leading-relaxed mb-4 sm:mb-6 text-gray-700 dark:text-gray-300">
+                    <?= $article['overview']; ?>
+                </div>
             <?php endif; ?>
 
         <?php endif; ?>
