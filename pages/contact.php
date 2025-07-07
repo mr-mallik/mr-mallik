@@ -27,14 +27,14 @@ require_once __DIR__ . '/../partials/header.php';
             <i class="fas fa-map-marker-alt text-xl xl:text-3xl text-gray-600 mb-4"></i>
             <p class="text-nowrap"><?= nl2br(CONTACT_ADDRESS_2); ?></p>
         </div>
-        <div class="text-center p-6 shadow-lg rounded-lg" data-aos="fade-left">
+        <div class="text-center p-6 shadow-lg rounded-lg" data-aos="fade-top">
             <i class="fas fa-envelope text-xl xl:text-3xl text-gray-600 mb-4"></i>
             <p>
                 <a class="hover:underline" href='mailto:<?= CONTACT_EMAIL; ?>'><?= CONTACT_EMAIL; ?></a>
             </p>
         </div>
 
-        <div class="flex flex-col gap-2 text-center p-6 shadow-lg rounded-lg" data-aos="fade-left">            
+        <div class="flex flex-col gap-2 text-center p-6 shadow-lg rounded-lg" data-aos="fade-top">            
             <div class="flex justify-center space-x-3 xl:space-x-6" data-aos="fade-up">
                 <a target="_blank" href="<?= SOCIAL_LINKEDIN; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-linkedin"></i></a>
                 <a target="_blank" href="<?= SOCIAL_GITHUB; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-github"></i></a>
@@ -56,7 +56,7 @@ require_once __DIR__ . '/../partials/header.php';
     <div class="flex flex-col lg:flex-row gap-8 items-center">
         <div class="w-full lg:w-1/2">
             <form class="max-w-2xl mx-auto" data-aos="fade-up">
-                <h2 class="text-4xl font-semibold pb-16" data-aos="fade-left">Drop a Line</h2>
+                <h2 class="text-4xl font-semibold pb-16" data-aos="fade-top">Drop a Line</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <input type="text" placeholder="Your Name" class="w-full p-3 border rounded">
                     <input type="email" placeholder="Your Email" class="w-full p-3 border rounded">
@@ -66,7 +66,7 @@ require_once __DIR__ . '/../partials/header.php';
                 <button type="submit" class="bg-gray-600 text-white px-8 py-3 rounded hover:bg-brand hover:text-black hover:font-bold transition">Send Message</button>
             </form>
         </div>
-        <div class="card hidden lg:block w-full lg:w-1/2" data-aos="fade-left">
+        <div class="card hidden lg:block w-full lg:w-1/2" data-aos="fade-top">
             <img src="" alt="Contact Illustration" 
                 class="grayscale max-h-[600px] w-full object-cover rounded-lg shadow-lg">
         </div>

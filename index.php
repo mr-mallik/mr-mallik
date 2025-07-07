@@ -2,28 +2,30 @@
 require_once __DIR__ . '/partials/header.php'; # config file
 ?>
 
-    <section id="home" class="container mx-auto">
-        <div class="flex gap-4 mb-4">
-            <div class="flex items-center w-1/2 p-4 gap-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
-                <img src="<?= url('/assets/images/gulger-mallik@1x1.jpg'); ?>" 
+    <section id="home" class="container mx-auto px-10">
+        <div class="flex flex-col lg:flex-row gap-4 mb-4">
+            <div class="w-full lg:w-1/2">
+                <div class="flex items-center w-full p-4 gap-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
+                    <img src="<?= url('/assets/images/gulger-mallik@1x1.jpg'); ?>" 
                     alt="Gulger Mallik" 
                     class="h-55 xl:h-65 rounded-tl-xl rounded-br-xl hover:grayscale transition-all duration-300 ease-in-out">
-                
-                <div class="flex flex-col pl-4">
-                    <p class='text-gray-800 dark:text-gray-400'>Hello, I'm</p>
-                    <h1 class="py-2 text-2xl xl:text-4xl font-bold flex-nowrap text-gray-900 dark:text-white">Gulger Mallik.</h1>
-                    <p class="text-gray-800 dark:text-gray-400">I am a Software Engineer <br/>and a Fullstack developer.</p>
-                    <p class="text-gray-800 dark:text-gray-400 text-xs mt-4 text-justify hidden xl:block">
-                        Passionate about building
-                        scalable web and mobile applications, enthusiastic about
-                        learning new technologies, and committed to delivering high-quality software solutions. 
-                        Techenthusiast with a keen interest in AI and machine learning, always eager to explore innovative solutions to complex problems.
-                    </p>
+                    
+                    <div class="flex flex-col pl-4">
+                        <p class='text-gray-800 dark:text-gray-400'>Hello, I'm</p>
+                        <h1 class="py-2 text-2xl xl:text-4xl font-bold flex-nowrap text-gray-900 dark:text-white">Gulger Mallik.</h1>
+                        <p class="text-gray-800 dark:text-gray-400">I am a Software Engineer <br/>and a Fullstack developer.</p>
+                        <p class="text-gray-800 dark:text-gray-400 text-xs mt-4 text-justify block lg:hidden xl:block">
+                            Passionate about building
+                            scalable web and mobile applications, enthusiastic about
+                            learning new technologies, and committed to delivering high-quality software solutions. 
+                            Techenthusiast with a keen interest in AI and machine learning, always eager to explore innovative solutions to complex problems.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex flex-col gap-4 w-1/2">
-                <div class="p-4 card-bg-linear rounded-xl shadow-lg">
+            <div class="w-full lg:w-1/2 flex flex-col gap-4">
+                <div class="hidden lg:block p-4 card-bg-linear rounded-xl shadow-lg">
                     <p class="text-gray-800 dark:text-gray-500 text-sm flex items-center gap-2"> 
                         <i class="fas fa-briefcase"></i>
                         <a href="<?= url('about#edu-experience'); ?>" class="hover:underline text-gray-900 dark:text-gray-200">University of Huddersfield</a>
@@ -33,39 +35,38 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 <div class="flex gap-4">
                     <div class="w-1/2">
                         <a href="<?= url('about'); ?>">
-                        <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
-                            <div class="flex flex-col gap-2">
-                                <div class="h-32 overflow-hidden">
-                                    <img src="<?= url('/assets/images/about-me.jpeg'); ?>" alt="About Me" class="dark:grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+                            <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
+                                <div class="flex flex-col gap-2">
+                                    <div class="h-32 overflow-hidden">
+                                        <img src="<?= url('/assets/images/about-me.jpeg'); ?>" alt="About Me" class="dark:grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+                                    </div>
+                                    <p class="text-gray-700 dark:text-gray-500 text-xs font uppercase"> More About Me </p>
+                                    <h2 class="text-lg font-semibold tracking-wider" >About Me</h2>
                                 </div>
-                                <p class="text-gray-700 dark:text-gray-500 text-xs font uppercase"> More About Me </p>
-                                <h2 class="text-lg font-semibold tracking-wider" >About Me</h2>
                             </div>
-                        </div>
                         </a>
                     </div>
 
                     <div class="w-1/2">
                         <a href="<?= url('projects'); ?>">
-                        <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
-                            <div class="flex flex-col gap-2">
-                                <div class="h-32 overflow-hidden">
-                                    <img src="<?= url('/assets/images/projects.jpeg'); ?>" alt="Projects" class="dark:grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+                            <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
+                                <div class="flex flex-col gap-2">
+                                    <div class="h-32 overflow-hidden">
+                                        <img src="<?= url('/assets/images/projects.jpeg'); ?>" alt="Projects" class="dark:grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+                                    </div>
+                                    <p class="text-gray-700 dark:text-gray-500 text-xs uppercase"> Showcase </p>
+                                    <h2 class="text-lg font-semibold tracking-wider" >Projects</h2>
                                 </div>
-                                <p class="text-gray-700 dark:text-gray-500 text-xs uppercase"> Showcase </p>
-                                <h2 class="text-lg font-semibold tracking-wider" >Projects</h2>
                             </div>
-                        </div>
                         </a>
                     </div>
-
                 </div>
             </div>
         </div>
 
         <div class="flex flex-row gap-4 mb-4">
             <!-- 2 divs below 20%, 60%, 20% -->
-            <div class="w-1/4">
+            <div class="w-2/2 lg:w-1/4">
                 <a href="<?= url('stories'); ?>">
                 <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
                     <div class="flex flex-col gap-2">
@@ -79,7 +80,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 </a>
             </div>
 
-            <div class="w-2/4">
+            <div class="hidden lg:block lg:w-2/4">
                 <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
                     <div class="flex flex-col gap-2">
                         <div class="h-32 flex">
@@ -116,7 +117,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 </div>
             </div>
 
-            <div class="w-1/4">
+            <div class="w-2/2 lg:w-1/4">
                 <div class="p-4 card-bg-radial rounded-xl shadow-lg">
                     <div class="flex flex-col gap-2">
                         <div class="h-32 flex flex-col justify-center items-center p-4">
@@ -152,12 +153,12 @@ require_once __DIR__ . '/partials/header.php'; # config file
             </div>
         </div>
 
-        <div class="flex flex-row gap-4 mb-4">
-            <div class="w-1/2">
+        <div class="flex flex-col lg:flex-row gap-4 mb-4">
+            <div class="w-full lg:w-1/2">
                 <div class="p-4 card-bg-linear rounded-xl shadow-lg">
                     <div class="flex flex-row gap-4 p-2 h-44">
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="dark:text-white font-bold text-2xl xl:text-4xl" id="years">
+                            <span class="dark:text-white font-bold text-3xl xl:text-4xl" id="years">
                                 <?php 
                                 $years = date('Y') - 2019;
                                 echo str_pad($years, 2, 0, STR_PAD_LEFT); ?>+
@@ -166,12 +167,12 @@ require_once __DIR__ . '/partials/header.php'; # config file
                         </div>
 
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="dark:text-white font-bold text-2xl xl:text-4xl" id="happyClients">100%</span>
+                            <span class="dark:text-white font-bold text-3xl xl:text-4xl" id="happyClients">100%</span>
                             <span class="text-gray-700 dark:text-gray-300">Happy <br/>Clients</span>
                         </div>
 
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="dark:text-white font-bold text-2xl xl:text-4xl" id="codingHours">
+                            <span class="dark:text-white font-bold text-3xl xl:text-4xl" id="codingHours">
                                 <?php 
                                 $codingHours = $years * 365 * 5; // years * days in a year * daily coding hours
                                 echo '+' . $codingHours ?>
@@ -182,10 +183,10 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 </div>
             </div>
 
-            <div class="w-1/2">
-                <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
+            <div class="w-full lg:w-1/2">
+                <div class="p-2 lg:p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
                     <div class="flex flex-col gap-2">
-                        <div class="h-44 px-4 py-2">
+                        <div class="lg:h-44 px-4 lg:py-2">
                             <p class="text-gray-700 dark:text-gray-500 text-xl xl:text-3xl font-bold">
                                 Let's <br/>
                                 talk about your <span class="brand-text">next</span> project.

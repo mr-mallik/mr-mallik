@@ -115,18 +115,18 @@ else {
         <script src="<?php url('assets/js/aos/aos.js'); ?>"></script>
     </head>
     <body class="bg-gray-100 dark:bg-black-base dark:text-gray-200">
-    <div id="outer-container" class="mx-auto container px-10">
-        <header class="py-8 text-center">
+    <div id="outer-container" class="mx-auto container">
+        <header class="py-8 px-10 text-center">
             <nav class="">
                 <!-- <div class="fixed"> -->
                     <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2 lg:gap-4">
                             <img src="<?php url('assets/images/logo/mallik_logo.png'); ?>" alt="Mr Mallik" 
                                 class="w-12 h-12 rounded-full mx-auto transition-transform duration-800 hover:rotate-[360deg] hover:cursor-pointer invert dark:invert-0" 
                                 onmouseout="this.style.transform='rotate(-360deg)'">
                             <a href="<?= url('') ?>" class="signature text-3xl text-black dark:text-white">mr mallik</a>
                         </div>
-                        <ul class="flex justify-between text-gray-400 gap-12">
+                        <ul class="flex justify-between text-gray-400 gap-6 lg:gap-12">
                             <?php
                             if (!str_contains($_SERVER['PHP_SELF'], '/errors/maintenance.php')) {
                                 $menu = siteMenu();

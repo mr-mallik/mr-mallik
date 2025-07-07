@@ -68,11 +68,11 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
 <section id="about" class="container mx-auto">
     
-    <h1 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-left">The Blueprint </h1>
+    <h1 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold">The Blueprint </h1>
 
     <div class="flex flex-row card-bg-radial rounded-b-xl p-4 py-8 mb-4" data-aos="zoom-in">
 
-        <div class="flex flex-col w-1/3 gap-4 text-left p-4">
+        <div class="flex flex-col w-2/2 lg:w-1/3 gap-4 text-left p-4">
             <span class="text-gray-500 text-md xl:text-lg font-semibold">
                 <i class="fa fa-user text-cyan-500"></i>
                 Biography
@@ -115,13 +115,13 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
             </p>
         </div>
 
-        <div class="flex flex-col w-1/3 text-center items-center justify-center">
+        <div class="flex flex-col hidden lg:block lg:w-1/3 text-center items-center justify-center">
             <img src="<?= url('assets/images/about-me-grad.jpg'); ?>" 
                 alt="Gulger Mallik in graduation gown" 
                 class="max-h-[800px] rounded-full">
         </div>
 
-        <div class="flex flex-col w-1/3 gap-6 p-4 text-right">
+        <div class="flex flex-col w-2/2 lg:w-1/3 gap-6 p-4 text-right">
             <span class="text-gray-500 text-md xl:text-lg font-semibold">
                 <i class="fa fa-clock text-green-500"></i>
                 Credibility
@@ -213,7 +213,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
     <div class="flex flex-col justify-center py-8">
         
-        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-left">Showcase </h2>
+        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Showcase </h2>
 
         <div class="flex flex-row flex-wrap justify-center gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4" data-aos="flip-down">
             <?php 
@@ -236,10 +236,10 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
     
     <div class="card-bg-radial rounded-t-xl p-4 xl:p-8 mb-2 xl:mb-4 shadow-lg" id='edu-experience'>
 
-        <h2 class="text-center text-3xl xl:text-5xl p-4 xl:p-8 font-semibold" data-aos="fade-left">Education &amp; Experience </h2>
+        <h2 class="text-center text-3xl xl:text-5xl p-4 xl:p-8 font-semibold" data-aos="fade-top">Education &amp; Experience </h2>
 
         <div class="experience flex justify-between p-4 xl:p-8 shadow-lg">
-            <div class="flex flex-row" data-aos="fade-right">
+            <div class="flex flex-row" data-aos="fade-top">
                 <div class="flex flex-col gap-3 xl:gap-6 text-left">
                     <h3>2019 - 2021</h3>
 
@@ -317,10 +317,10 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
         <!-- <hr class="py-5 w-sm items-center border-gray-600" /> -->
 
-        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-left">Latest Work </h2>
+        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Latest Work </h2>
 
         <div class="flex flex-col justify-center p-4 xl:p-8">
-            <div class="flex flex-row justify-center gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
                 <?php foreach ($projects as $project) : ?>
                     <div data-aos="fade-up" data-aos-delay="100">
                         <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px]">
@@ -356,10 +356,10 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
     <?php if (count($stories) > 0) : ?>
         <!-- <hr class="py-5 border-gray-600" /> -->
 
-        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-left">Latest Stories </h2>
+        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Latest Stories </h2>
 
-        <div class="flex flex-col justify-center py-4 xl:py-8">
-            <div class="flex flex-row justify-center gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
+        <div class="flex flex-col justify-center p-4 xl:p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
                 <?php foreach ($stories as $story) : ?>
                     <div data-aos="fade-up" data-aos-delay="100">
                         <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px]">
@@ -390,7 +390,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
         </div>
     <?php endif; ?>
 
-    <!-- <h2 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">Testimonials </h2> -->
+    <!-- <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Testimonials </h2> -->
 
 </section>
 

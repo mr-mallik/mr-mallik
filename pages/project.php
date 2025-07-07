@@ -18,10 +18,10 @@ $projectColumns = array_chunk($projects, ceil(count($projects) / $columns));
 ?>
 
 <section id="projects">
-    <h2 class="text-center text-5xl p-8 font-semibold" data-aos="fade-left">The Grind Zone</h2>
+    <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold">The Grind Zone</h2>
 
     <div class="container mx-auto px-4">
-        <div class="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <?php foreach ($projectColumns as $column) : ?>
                 <div class="grid gap-4">
                     <?php foreach ($column as $project) : ?>
