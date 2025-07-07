@@ -10,7 +10,7 @@ $SEO = [
 ];
 
 require_once __DIR__ . '/../partials/header.php';
-$projects = blogList("AND type='project'");
+$projects = blogList("AND type='project' AND status='A'");
 
 // Calculate number of columns based on screen size
 $columns = 4; // Default number of columns
