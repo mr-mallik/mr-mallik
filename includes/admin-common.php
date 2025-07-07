@@ -186,3 +186,79 @@ function generateUniqueSlug($text, $table, $excludeId = null) {
     
     return $slug;
 }
+
+// Password management functions
+function validatePassword($password) {
+    $errors = [];
+    
+    if (strlen($password) < 8) {
+        $errors[] = "Password must be at least 8 characters long";
+    }
+    
+    if (!preg_match('/[A-Z]/', $password)) {
+        $errors[] = "Password must contain at least one uppercase letter";
+    }
+    
+    if (!preg_match('/[a-z]/', $password)) {
+        $errors[] = "Password must contain at least one lowercase letter";
+    }
+    
+    if (!preg_match('/[0-9]/', $password)) {
+        $errors[] = "Password must contain at least one number";
+    }
+    
+    return $errors;
+}
+
+function verifyCurrentPassword($userId, $currentPassword) {
+    global $CONN;
+    
+    $stmt = $CONN->prepare("SELECT password FROM profile WHERE id = ? LIMIT 1");
+    $stmt->execute([$userId]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if ($result) {
+        $md5Hash = md5($currentPassword);
+        $storedHash = $result['password'];
+        
+        return password_verify($md5Hash, $storedHash);
+    }
+    
+    return false;
+}
+
+function updateUserPassword($userId, $newPassword) {
+    global $CONN;
+    
+    $md5Hash = md5($newPassword);
+    $hashedPassword = password_hash($md5Hash, PASSWORD_DEFAULT);
+    
+    $stmt = $CONN->prepare("UPDATE profile SET password = ? WHERE id = ?"); // updated_at = NOW()
+    return $stmt->execute([$hashedPassword, $userId]);
+}
+
+function updateUserProfile($userId, $data) {
+    global $CONN;
+    
+    $allowedFields = ['name', 'email', 'phone', 'bio'];
+    $updateFields = [];
+    $params = [];
+    
+    foreach ($allowedFields as $field) {
+        if (isset($data[$field])) {
+            $updateFields[] = "$field = ?";
+            $params[] = sanitizeInput($data[$field]);
+        }
+    }
+    
+    if (!empty($updateFields)) {
+        // $updateFields[] = "updated_at = NOW()";
+        $params[] = $userId;
+        
+        $sql = "UPDATE profile SET " . implode(', ', $updateFields) . " WHERE id = ?";
+        $stmt = $CONN->prepare($sql);
+        return $stmt->execute($params);
+    }
+    
+    return false;
+}
