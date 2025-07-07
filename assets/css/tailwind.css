@@ -28,6 +28,10 @@
         color: #00f;
     }
 
+    .personal-banner-image {
+        background-image: url('../images/article-footer-light.png');
+    }
+
     /* Dark mode */
     @media (prefers-color-scheme: dark) {
         .card-bg-linear {
@@ -41,33 +45,155 @@
         .brand-text {
             color: #0ff;
         }
+
+        .personal-banner-image {
+            background-image: url('../images/article-footer-dark.png');
+        }
     }
 }
 
-.experience {
-    h3 {
-        @apply font-semibold xl:text-lg text-gray-600;
-    }
-    p {
-        @apply dark:text-white text-base xl:text-xl font-bold;
+/* Personal banner image classes */
+.personal-banner-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-        i {
-            @apply text-base xl:text-xl;
-        }
-        span {
-            @apply text-gray-500 text-sm xl:text-lg font-normal;
-        }
+/* Responsive banner image handling */
+@media (max-width: 640px) {
+    .personal-banner-image {
+        background-position: center top;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    .personal-banner-image {
+        background-position: center center;
+    }
+}
+
+@media (min-width: 1025px) {
+    .personal-banner-image {
+        background-position: center bottom;
+    }
+}
+
+/* Banner overlay utilities */
+.banner-overlay-light {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+}
+
+.banner-overlay-dark {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+}
+
+/* Responsive utilities */
+.aspect-video {
+    aspect-ratio: 16 / 9;
+}
+
+.aspect-square {
+    aspect-ratio: 1 / 1;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mobile-first responsive containers */
+.container {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1536px;
+    }
+}
+
+.experience h3 {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #6b7280;
+}
+
+@media (min-width: 1280px) {
+    .experience h3 {
+        font-size: 1.125rem;
+    }
+}
+
+.experience p {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+@media (prefers-color-scheme: light) {
+    .experience p {
+        color: #000000;
+    }
+}
+
+@media (min-width: 1280px) {
+    .experience p {
+        font-size: 1.25rem;
+    }
+}
+
+.experience p i {
+    font-size: 1rem;
+}
+
+@media (min-width: 1280px) {
+    .experience p i {
+        font-size: 1.25rem;
+    }
+}
+
+.experience p span {
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+@media (min-width: 1280px) {
+    .experience p span {
+        font-size: 1.125rem;
     }
 }
 
 .signature {
     font-family: var(--font-brand);
-}
-
-.article-footer-light {
-    background-image: url('../images/article-footer-light.png');
-}
-
-.article-footer-dark {
-    background-image: url('../images/article-footer-dark.png');
 }

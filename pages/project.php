@@ -18,33 +18,33 @@ $projectColumns = array_chunk($projects, ceil(count($projects) / $columns));
 ?>
 
 <section id="projects">
-    <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold">The Grind Zone</h2>
+    <h2 class="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold py-4 sm:py-6 lg:py-8 px-4 text-gray-900 dark:text-white">The Grind Zone</h2>
 
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <?php foreach ($projectColumns as $column) : ?>
-                <div class="grid gap-4">
-                    <?php foreach ($column as $project) : ?>
-                        <div data-aos="fade-up" data-aos-delay="100">
-                            <div class="card-bg-radial rounded-lg shadow-lg max-w-[400px]">
-                                <img src="<?= url($project['image']) ?>" 
-                                     alt="<?= $project['title'] ?>" 
-                                     class="h-auto max-w-full rounded-t-lg  object-cover w-full">
-                                <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($project['title']) ?></h3>
-                                
-                                <p class="px-4 text-sm text-gray-700 dark:text-gray-300">
-                                    <span class="hidden xl:block"><?= $project['short_description'] ?></span>
-                                    <span class="hidden lg:block xl:hidden"><?= cutwords($project['short_description']) ?></span>
-                                    <span class="block lg:hidden"><?= cutwords($project['short_description'], 100) ?></span>
-                                </p>
-
-                                <a class="p-4 text-right block mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
-                                   href="<?php url('projects/'.$project['urlname']); ?>">
-                                   Read more →
-                                </a>
-                            </div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            <?php foreach ($projects as $project) : ?>
+                <div class="w-full" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-bg-radial rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                        <div class="aspect-video overflow-hidden rounded-t-lg">
+                            <img src="<?= url($project['image']) ?>" 
+                                 alt="<?= $project['title'] ?>" 
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                         </div>
-                    <?php endforeach; ?>
+                        <div class="p-4 sm:p-6 flex flex-col flex-grow">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                                <?= cutwords($project['title'], 60) ?>
+                            </h3>
+                            
+                            <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 flex-grow">
+                                <?= cutwords($project['short_description'], 120) ?>
+                            </p>
+
+                            <a class="text-right text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 font-medium" 
+                               href="<?php url('projects/'.$project['urlname']); ?>">
+                               Read more →
+                            </a>
+                        </div>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>

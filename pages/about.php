@@ -66,36 +66,36 @@ $stories = blogList("AND type='blog'", 4);
 $skills = getSkills($type=['tech', 'frame', 'db']);
 ?>
 
-<section id="about" class="container mx-auto">
+<section id="about" class="container mx-auto px-4 sm:px-6 lg:px-8">
     
-    <h1 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold">The Blueprint </h1>
+    <h1 class="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold py-4 sm:py-6 lg:py-8 px-4 text-gray-900 dark:text-white">The Blueprint</h1>
 
-    <div class="flex flex-row card-bg-radial rounded-b-xl p-4 py-8 mb-4" data-aos="zoom-in">
+    <div class="flex flex-col lg:flex-row card-bg-radial rounded-xl p-4 sm:p-6 lg:p-8 mb-6 gap-6" data-aos="zoom-in">
 
-        <div class="flex flex-col w-2/2 lg:w-1/3 gap-4 text-left p-4">
-            <span class="text-gray-500 text-md xl:text-lg font-semibold">
+        <div class="w-full lg:w-1/3 flex flex-col gap-4 sm:gap-6 text-left">
+            <span class="text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg font-semibold">
                 <i class="fa fa-user text-cyan-500"></i>
                 Biography
-                <hr>
+                <hr class="mt-1">
             </span>
 
-            <p class="xl:text-justify lg:text-sm">
+            <p class="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 I am a software engineer and fullstack developer with a passion for AI and machine learning. I have a Master's degree in Computing from the University of Huddersfield, UK. I have worked as a software engineer in India and the UK. I have experience in developing web applications, mobile applications, and AI models.
             </p>
 
-            <span class="text-gray-500 text-md xl:text-lg font-semibold text-right">
+            <span class="text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg font-semibold text-right">
                 <i class="fa fa-envelope text-blue-500"></i>
                 Contact
-                <hr>
+                <hr class="mt-1">
             </span>
 
-            <div class="about-contact lg:text-sm">
+            <div class="about-contact text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300">
                 <p>
                     Huddersfield, UK
                 </p>
 
                 <p>
-                    <a href="mailto:gulgermallik@gmail.com">gulgermallik@gmail.com</a>
+                    <a href="mailto:gulgermallik@gmail.com" class="hover:underline brand-text">gulgermallik@gmail.com</a>
                 </p>
 
             </div>
@@ -130,27 +130,27 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
             <div class="flex flex-col gap-4 justify-center">
 
-                <div class="flex flex-row gap-2 justify-center">
+                <div class="flex flex-col sm:flex-row gap-2 justify-center">
                     <div class="flex items-center">
-                        <span class="text-3xl xl:text-6xl font-bold font-mono">02</span> 
-                        <span class="uppercase text-xs px-4 text-left text-gray-400">professional degrees</span>
+                        <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono">02</span> 
+                        <span class="uppercase text-[10px] sm:text-xs px-2 sm:px-4 text-left text-gray-400">professional degrees</span>
                     </div>
                     <div class="flex items-center">
-                        <span class="text-3xl xl:text-6xl font-bold font-mono">4+</span> 
-                        <span class="uppercase text-xs px-4 text-left text-gray-400">professional certifications</span>
+                        <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono">4+</span> 
+                        <span class="uppercase text-[10px] sm:text-xs px-2 sm:px-4 text-left text-gray-400">professional certifications</span>
                     </div>
                 </div>
 
-                <div class="flex flex-row gap-2 items-center">
-                    <span class="text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['years'], 2, '0', STR_PAD_LEFT); ?></span> 
-                    <span class="uppercase text-xs text-gray-400">years</span>
-                    <span class="text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['months'], 2, '0', STR_PAD_LEFT); ?></span> 
-                    <span class="uppercase text-xs text-gray-400"><?= $experience['months'] > 1 ? 'months' : 'month'; ?></span>
-                    <span class="text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['days'], 2, '0', STR_PAD_LEFT); ?></span> 
-                    <span class="uppercase text-xs text-gray-400"><?= $experience['days'] > 1 ? 'days' : 'day'; ?></span>
+                <div class="flex flex-row gap-1 sm:gap-2 items-center">
+                    <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['years'], 2, '0', STR_PAD_LEFT); ?></span> 
+                    <span class="uppercase text-[10px] sm:text-xs text-gray-400">years</span>
+                    <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['months'], 2, '0', STR_PAD_LEFT); ?></span> 
+                    <span class="uppercase text-[10px] sm:text-xs text-gray-400"><?= $experience['months'] > 1 ? 'months' : 'month'; ?></span>
+                    <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['days'], 2, '0', STR_PAD_LEFT); ?></span> 
+                    <span class="uppercase text-[10px] sm:text-xs text-gray-400"><?= $experience['days'] > 1 ? 'days' : 'day'; ?></span>
                 </div>
                 
-                <span class="text-upper text-gray-400 text-sm">of professional experience</span>
+                <span class="text-upper text-gray-400 text-xs sm:text-sm">of professional experience</span>
 
             </div>
 
@@ -238,33 +238,28 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
         <h2 class="text-center text-3xl xl:text-5xl p-4 xl:p-8 font-semibold" data-aos="fade-top">Education &amp; Experience </h2>
 
-        <div class="experience flex justify-between p-4 xl:p-8 shadow-lg">
-            <div class="flex flex-row" data-aos="fade-top">
-                <div class="flex flex-col gap-3 xl:gap-6 text-left">
-                    <h3>2019 - 2021</h3>
+        <div class="experience flex flex-col md:flex-row justify-between p-4 xl:p-8 shadow-lg gap-8">
+            <!-- 2024-Present Section -->
+            <div class="flex flex-col md:w-1/3" data-aos="fade-up">
+                <div class="flex flex-col gap-6 text-left">
+                    <h3>2024 - Present</h3>
 
-                    <p class="text-xs">
-                        <i class="fa fa-graduation-cap"></i>
-                        Bachelor of Computer Applications <br/>
-                        <span>St. Xaviers College, India</span>
+                    <p>
+                        <i class="fa fa-briefcase"></i>
+                        Research Assistant in Applied AI <br/>
+                        <span>University of Huddersfield, UK</span>
                     </p>
 
                     <p>
                         <i class="fa fa-briefcase"></i>
                         Software Engineer <br/>
-                        <span>Team Inertia Technologies, India</span>
+                        <span>CosmoKode Ltd, UK</span>
                     </p>
-
-                    <p>
-                        <i class="fa fa-briefcase"></i>
-                        Trellissoft Technologies <br/>
-                        <span>Trellissoft Inc, India</span>
-                    </p>
-
                 </div>
             </div>
 
-            <div class="flex flex-row" data-aos="fade-up-right">
+            <!-- 2022-2023 Section -->
+            <div class="flex flex-col md:w-1/3" data-aos="fade-up">
                 <div class="flex flex-col gap-6 text-left">
                     <h3>2022 - 2023</h3>
 
@@ -291,31 +286,34 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                         Research Technician <br/>
                         <span>University of Huddersfield, UK</span>
                     </p>
-                    
                 </div>
             </div>
 
-            <div class="flex flex-row" data-aos="fade-up-right">
+            <!-- 2019-2021 Section -->
+            <div class="flex flex-col md:w-1/3" data-aos="fade-up">
                 <div class="flex flex-col gap-6 text-left">
-                    <h3>2024 - Present</h3>
+                    <h3>2019 - 2021</h3>
 
-                    <p>
-                        <i class="fa fa-briefcase"></i>
-                        Research Assistant in Applied AI <br/>
-                        <span>University of Huddersfield, UK</span>
+                    <p class="text-xs">
+                        <i class="fa fa-graduation-cap"></i>
+                        Bachelor of Computer Applications <br/>
+                        <span>St. Xaviers College, India</span>
                     </p>
 
                     <p>
                         <i class="fa fa-briefcase"></i>
                         Software Engineer <br/>
-                        <span>CosmoKode Ltd, UK</span>
+                        <span>Team Inertia Technologies, India</span>
                     </p>
-                    
+
+                    <p>
+                        <i class="fa fa-briefcase"></i>
+                        Trellissoft Technologies <br/>
+                        <span>Trellissoft Inc, India</span>
+                    </p>
                 </div>
             </div>
         </div>
-
-        <!-- <hr class="py-5 w-sm items-center border-gray-600" /> -->
 
         <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Latest Work </h2>
 
@@ -341,16 +339,13 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                             </a>
                         </div>
                     </div>
-
                 <?php endforeach; ?>
             </div>
             
             <div class="flex justify-center">
                 <a href="<?php url('projects'); ?>" class="text-center font-mono text-lg xl:text-2xl font-semibold py-2 xl:py-4 underline transition ease-in-out">View all projects </a>
             </div>
-
         </div>
-
     </div>
 
     <?php if (count($stories) > 0) : ?>

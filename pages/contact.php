@@ -13,39 +13,61 @@ require_once __DIR__ . '/../partials/header.php';
 ?>
 
 <!-- Banner Section -->
-<div class="relative h-[400px] w-full">
-    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <h1 class="text-white p-10 text-3xl xl:text-6xl font-bold" data-aos="fade-up">Let's Connect</h1>
-        <img src="<?php url('assets/images/contact-me.jpg');?>" alt="Contact Banner" class="w-full h-full object-cover">
+<div class="relative h-[250px] sm:h-[300px] lg:h-[400px] w-full overflow-hidden">
+    <img src="<?php url('assets/images/article-footer-light.png'); ?>" alt="Contact Banner" 
+         class="absolute inset-0 w-full h-full object-cover object-center">
+    
+    <!-- Responsive overlay for readability -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/70 dark:from-black/60 dark:via-black/70 dark:to-black/80"></div>
+    
+    <!-- Content with proper z-index and text shadow -->
+    <div class="relative z-10 flex items-center justify-center h-full px-4">
+        <h1 class="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center drop-shadow-2xl leading-tight max-w-4xl" data-aos="fade-up">
+            Let's Connect
+        </h1>
     </div>
 </div>
 
 <!-- Contact Info Section -->
-<section class="container mx-auto py-4 xl:py-10 px-4">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="text-center p-6 shadow-lg rounded-lg" data-aos="fade-up">
-            <i class="fas fa-map-marker-alt text-xl xl:text-3xl text-gray-600 mb-4"></i>
-            <p class="text-nowrap"><?= nl2br(CONTACT_ADDRESS_2); ?></p>
+<section class="container mx-auto py-8 lg:py-16 px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div class="text-center p-6 lg:p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+            <i class="fas fa-map-marker-alt text-2xl sm:text-3xl lg:text-4xl text-gray-600 dark:text-gray-400 mb-4"></i>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Location</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base"><?= nl2br(CONTACT_ADDRESS_2); ?></p>
         </div>
-        <div class="text-center p-6 shadow-lg rounded-lg" data-aos="fade-top">
-            <i class="fas fa-envelope text-xl xl:text-3xl text-gray-600 mb-4"></i>
-            <p>
-                <a class="hover:underline" href='mailto:<?= CONTACT_EMAIL; ?>'><?= CONTACT_EMAIL; ?></a>
+        
+        <div class="text-center p-6 lg:p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-envelope text-2xl sm:text-3xl lg:text-4xl text-gray-600 dark:text-gray-400 mb-4"></i>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Email</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                <a class="hover:underline brand-text" href='mailto:<?= CONTACT_EMAIL; ?>'><?= CONTACT_EMAIL; ?></a>
             </p>
         </div>
 
-        <div class="flex flex-col gap-2 text-center p-6 shadow-lg rounded-lg" data-aos="fade-top">            
-            <div class="flex justify-center space-x-3 xl:space-x-6" data-aos="fade-up">
-                <a target="_blank" href="<?= SOCIAL_LINKEDIN; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-linkedin"></i></a>
-                <a target="_blank" href="<?= SOCIAL_GITHUB; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-github"></i></a>
-                <a target="_blank" href="<?= SOCIAL_MEDIUM; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-medium"></i></a>
-                <a target="_blank" href="<?= SOCIAL_INSTAGRAM; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-instagram"></i></a>
-                <a target="_blank" href="<?= SOCIAL_FACEBOOK; ?>" class="text-2xl xl:text-4xl text-gray-600"><i class="fab fa-facebook"></i></a>
+        <div class="text-center p-6 lg:p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300 md:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Social Media</h3>
+            <div class="flex justify-center space-x-3 lg:space-x-4 mb-4">
+                <a target="_blank" href="<?= SOCIAL_LINKEDIN; ?>" class="text-xl sm:text-2xl lg:text-3xl text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a target="_blank" href="<?= SOCIAL_GITHUB; ?>" class="text-xl sm:text-2xl lg:text-3xl text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-300">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a target="_blank" href="<?= SOCIAL_MEDIUM; ?>" class="text-xl sm:text-2xl lg:text-3xl text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300">
+                    <i class="fab fa-medium"></i>
+                </a>
+                <a target="_blank" href="<?= SOCIAL_INSTAGRAM; ?>" class="text-xl sm:text-2xl lg:text-3xl text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors duration-300">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a target="_blank" href="<?= SOCIAL_FACEBOOK; ?>" class="text-xl sm:text-2xl lg:text-3xl text-gray-600 dark:text-gray-400 hover:text-blue-800 dark:hover:text-blue-500 transition-colors duration-300">
+                    <i class="fab fa-facebook"></i>
+                </a>
             </div>
 
-            <p class="text-gray-400 mt-0 xl:mt-4">
+            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                 Interested in collaborating?<br/>
-                <a class="hover:underline" href="mailto:<?= CONTACT_EMAIL; ?>">Let's talk!</a>
+                <a class="hover:underline brand-text" href="mailto:<?= CONTACT_EMAIL; ?>">Let's talk!</a>
             </p>
         </div>
     </div>

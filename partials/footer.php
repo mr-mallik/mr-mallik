@@ -2,23 +2,24 @@
     </main>
 
     <!-- footer starts here -->
-    <footer class="py-4 text-center">
+    <footer class="py-8 px-4 sm:px-6 lg:px-10 text-center">
         
         <?php if (!str_contains($_SERVER['PHP_SELF'], '/errors/maintenance.php')) { ?>
-        <div id="quick-links" class="flex flex-row gap-8 py-4 text-xs text-gray-600 justify-center items-center">
-            <a href="<?php echo url(""); ?>" class="hover:underline">Home</a>
-            <a href="<?php echo url("about"); ?>"  class="hover:underline">About</a>
-            <a href="<?php echo url("projects"); ?>"  class="hover:underline">Projects</a>
-            <a href="<?php echo url("stories"); ?>"  class="hover:underline">Blog</a>
-            <a href="<?= SOCIAL_LINKEDIN; ?>" target="_blank" class="hover:underline">LinkedIn</a>
-            <a href="<?= SOCIAL_GITHUB; ?>" target="_blank" class="hover:underline">GitHub</a>
-            <a href="<?= SOCIAL_INSTAGRAM; ?>" target="_blank" class="hover:underline">Instagram</a>
-            <a href="<?= SOCIAL_MEDIUM; ?>" target="_blank" class="hover:underline">Medium</a>
+        <div id="quick-links" class="flex flex-wrap justify-center items-center gap-3 sm:gap-6 lg:gap-8 py-6 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <a href="<?php echo url(""); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Home</a>
+            <a href="<?php echo url("about"); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">About</a>
+            <a href="<?php echo url("projects"); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Projects</a>
+            <a href="<?php echo url("stories"); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Blog</a>
+            <a href="<?= SOCIAL_LINKEDIN; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">LinkedIn</a>
+            <a href="<?= SOCIAL_GITHUB; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">GitHub</a>
+            <a href="<?= SOCIAL_INSTAGRAM; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Instagram</a>
+            <a href="<?= SOCIAL_MEDIUM; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Medium</a>
         </div>
         <?php } ?>
 
-        <p class="text-sm text-gray-600">Design and Develop by 
-            <a href="<?= SOCIAL_LINKEDIN; ?>" target="_blank" class="font-bold hover:underline ">Gulger Mallik</a>. 
+        <p class="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto leading-relaxed">
+            Design and Develop by 
+            <a href="<?= SOCIAL_LINKEDIN; ?>" target="_blank" class="font-bold hover:underline brand-text">Gulger Mallik</a>. 
             &copy; <?php echo date("Y"); ?> All Rights Reserved.
         </p>
     </footer>
@@ -26,6 +27,7 @@
     <!-- body ends -->
 </body>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="<?= url('assets/js/app.js'); ?>"></script>
     <script>
         AOS.init();
     </script>
