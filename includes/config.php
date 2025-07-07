@@ -4,6 +4,14 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // Load the environment variables from the .env file
+try {
+    if (!file_exists(__DIR__ . '/../.env')) {
+        throw new Exception('.env file not found. Please create one based on .env.example.');
+    }
+} catch (Exception $e) {
+    die($e->getMessage());
+}
+
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../', '.env');
 $dotenv->load();
 
