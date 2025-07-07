@@ -61,18 +61,55 @@ require_once __DIR__ . '/../partials/header.php'; # config file
             <div class="flex items-center space-x-4">
                 <img src="<?= url('assets/images/gulger-mallik@1x1.jpg'); ?>" 
                      alt="Gulger Mallik" 
-                     class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
-                <div>
-                    <p class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">Gulger Mallik</p>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Software Engineer & AI Researcher</p>
+                     class="w-15 h-15 sm:w-18 sm:h-18 rounded-full object-cover">
+                <div class="flex flex-col">
+                    <!-- Author Info -->
+                    <div class="mb-2">
+                        <h2 class="font-semibold text-gray-900 dark:text-white text-base sm:text-lg">
+                            Gulger Mallik
+                        </h2>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            Software Engineer & AI Researcher
+                        </p>
+                    </div>
+
+                    <!-- Publication Date -->
+                    <?php if(!empty($article['published_date'])): ?>
+                    <div class="flex items-center gap-1 text-sm">
+                        <span class="text-gray-500 dark:text-gray-400">Published:</span>
+                        <time datetime="<?= date('Y-m-d', strtotime($article['published_date'])); ?>" 
+                              class="font-medium text-gray-900 dark:text-white">
+                            <?= date('F j, Y', strtotime($article['published_date'])); ?>
+                        </time>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
-            <?php if(!empty($article['published_date'])): ?>
-            <div class="text-left sm:text-right">
-                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Published on</p>
-                <p class="font-medium text-gray-900 dark:text-white text-sm sm:text-base"><?php echo date('F j, Y', strtotime($article['published_date'])); ?></p>
+            
+            <!-- Action Icons -->
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <?php if(!empty($article['github'])): ?>
+                <a href="<?= htmlspecialchars($article['github']); ?>" target="_blank" 
+                   class="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors duration-300"
+                   title="View on GitHub">
+                    <i class="fab fa-github text-lg sm:text-xl text-gray-600 dark:text-gray-400"></i>
+                </a>
+                <?php endif; ?>
+                
+                <?php if(!empty($article['online'])): ?>
+                <a href="<?= htmlspecialchars(!empty($article['online']) ? $article['online'] : $article['online']); ?>" target="_blank" 
+                   class="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors duration-300"
+                   title="View Live Demo">
+                    <i class="fas fa-external-link-alt text-lg sm:text-xl text-gray-600 dark:text-gray-400"></i>
+                </a>
+                <?php endif; ?>
+                
+                <button id="shareButton" 
+                        class="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors duration-300"
+                        title="Share this <?= $type === 'project' ? 'project' : 'story' ?>">
+                    <i class="fas fa-share-alt text-lg sm:text-xl text-gray-600 dark:text-gray-400"></i>
+                </button>
             </div>
-            <?php endif; ?>
         </div>
 
         <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight text-gray-900 dark:text-white"><?= htmlspecialchars($article['title']); ?></h1>
@@ -128,6 +165,151 @@ require_once __DIR__ . '/../partials/header.php'; # config file
         </div>
     </section>
 </article>
+
+<!-- Share Modal -->
+<div id="shareModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full mx-4 p-6">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Share this <?= $type === 'project' ? 'project' : 'story' ?></h3>
+            <button id="closeModal" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Copy Link -->
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Copy Link</label>
+            <div class="flex">
+                <input type="text" id="shareUrl" readonly 
+                       class="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-l-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white text-sm"
+                       value="<?= htmlspecialchars($page_url); ?>">
+                <button id="copyButton" 
+                        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-r-lg transition-colors duration-300">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+            <p id="copyFeedback" class="text-sm text-green-600 dark:text-green-400 mt-1 hidden">Link copied to clipboard!</p>
+        </div>
+        
+        <!-- Social Share Buttons -->
+        <div class="space-y-3">
+            <h4 class="text-sm font-medium text-gray-700 dark:text-gray-300">Share on social media</h4>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <a id="whatsappShare" target="_blank"
+                   class="flex items-center justify-center px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors duration-300">
+                    <i class="fab fa-whatsapp mr-2"></i>
+                    WhatsApp
+                </a>
+                
+                <a id="facebookShare" target="_blank"
+                   class="flex items-center justify-center px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-300">
+                    <i class="fab fa-facebook-f mr-2"></i>
+                    Facebook
+                </a>
+                
+                <a id="twitterShare" target="_blank"
+                   class="flex items-center justify-center px-4 py-3 bg-blue-400 hover:bg-blue-500 text-white rounded-lg transition-colors duration-300">
+                    <i class="fab fa-twitter mr-2"></i>
+                    Twitter
+                </a>
+                
+                <a id="linkedinShare" target="_blank"
+                   class="flex items-center justify-center px-4 py-3 bg-blue-800 hover:bg-blue-900 text-white rounded-lg transition-colors duration-300">
+                    <i class="fab fa-linkedin-in mr-2"></i>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const shareButton = document.getElementById('shareButton');
+    const shareModal = document.getElementById('shareModal');
+    const closeModal = document.getElementById('closeModal');
+    const copyButton = document.getElementById('copyButton');
+    const shareUrl = document.getElementById('shareUrl');
+    const copyFeedback = document.getElementById('copyFeedback');
+    
+    // Article data for sharing
+    const articleTitle = <?= json_encode(htmlspecialchars($article['title'])); ?>;
+    const articleDescription = <?= json_encode(htmlspecialchars($article['seo_desc'])); ?>;
+    const articleUrl = <?= json_encode($page_url); ?>;
+    
+    // Share button click handler
+    shareButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Check if Web Share API is supported (mobile devices)
+        if (navigator.share && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            navigator.share({
+                title: articleTitle,
+                text: articleDescription,
+                url: articleUrl
+            }).catch(err => {
+                console.log('Error sharing:', err);
+                showShareModal();
+            });
+        } else {
+            showShareModal();
+        }
+    });
+    
+    function showShareModal() {
+        shareModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        // Update share URLs
+        const encodedTitle = encodeURIComponent(articleTitle);
+        const encodedUrl = encodeURIComponent(articleUrl);
+        const encodedText = encodeURIComponent(articleDescription);
+        
+        document.getElementById('whatsappShare').href = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
+        document.getElementById('facebookShare').href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+        document.getElementById('twitterShare').href = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+        document.getElementById('linkedinShare').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+    }
+    
+    // Close modal handlers
+    closeModal.addEventListener('click', hideShareModal);
+    shareModal.addEventListener('click', function(e) {
+        if (e.target === shareModal) {
+            hideShareModal();
+        }
+    });
+    
+    function hideShareModal() {
+        shareModal.classList.add('hidden');
+        document.body.style.overflow = '';
+        copyFeedback.classList.add('hidden');
+    }
+    
+    // Copy to clipboard
+    copyButton.addEventListener('click', function() {
+        shareUrl.select();
+        shareUrl.setSelectionRange(0, 99999); // For mobile devices
+        
+        try {
+            document.execCommand('copy');
+            copyFeedback.classList.remove('hidden');
+            setTimeout(() => {
+                copyFeedback.classList.add('hidden');
+            }, 3000);
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+        }
+    });
+    
+    // ESC key to close modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !shareModal.classList.contains('hidden')) {
+            hideShareModal();
+        }
+    });
+});
+</script>
 
 <?php
 require_once __DIR__ . '/../partials/footer.php'; # config file
