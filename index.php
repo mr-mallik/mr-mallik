@@ -155,20 +155,26 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 <div class="p-4 card-bg-linear rounded-xl shadow-lg">
                     <div class="flex flex-row gap-4 p-2 h-44">
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="dark:text-white font-bold text-4xl">
-                                <?php echo str_pad(date('Y') - 2019, 2, 0, STR_PAD_LEFT); ?>
+                            <span class="dark:text-white font-bold text-4xl" id="years">
+                                <?php 
+                                $years = date('Y') - 2019;
+                                echo str_pad($years, 2, 0, STR_PAD_LEFT); ?>+
                             </span>
-                            <span class="text-gray-700 dark:text-gray-300">Years <br/>Experience</span>
+                            <span class="text-gray-700 dark:text-gray-300">Years of <br/>Experience</span>
                         </div>
 
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="dark:text-white font-bold text-4xl">100%</span>
-                            <span class="text-gray-700 dark:text-gray-300">Client <br/>Satisfaction</span>
+                            <span class="dark:text-white font-bold text-4xl" id="happyClients">100%</span>
+                            <span class="text-gray-700 dark:text-gray-300">Happy <br/>Clients</span>
                         </div>
 
                         <div class="flex flex-col gap-2 items-center text-center justify-center w-1/3 card-bg-radial rounded-xl">
-                            <span class="dark:text-white font-bold text-4xl">+100</span>
-                            <span class="text-gray-700 dark:text-gray-300">Hours <br/>Coded</span>
+                            <span class="dark:text-white font-bold text-4xl" id="codingHours">
+                                <?php 
+                                $codingHours = $years * 365 * 5; // years * days in a year * daily coding hours
+                                echo '+' . $codingHours ?>
+                            </span>
+                            <span class="text-gray-700 dark:text-gray-300">Coding <br/>Hours</span>
                         </div>
                     </div>
                 </div>
