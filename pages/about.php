@@ -106,7 +106,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 <hr>
             </span>
 
-            <p class="text-justify lg:text-sm">
+            <p class="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 Web Development <br/>
                 Mobile Development <br/>
                 AI and Machine Learning <br/>
@@ -133,21 +133,21 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 <div class="flex flex-col sm:flex-row gap-2 justify-center">
                     <div class="flex items-center">
                         <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono">02</span> 
-                        <span class="uppercase text-[10px] sm:text-xs px-2 sm:px-4 text-left text-gray-400">professional degrees</span>
+                        <span class="uppercase text-[12px] sm:text-xs px-2 sm:px-4 text-left text-gray-400">professional degrees</span>
                     </div>
                     <div class="flex items-center">
                         <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono">4+</span> 
-                        <span class="uppercase text-[10px] sm:text-xs px-2 sm:px-4 text-left text-gray-400">professional certifications</span>
+                        <span class="uppercase text-[12px] sm:text-xs px-2 sm:px-4 text-left text-gray-400">professional certifications</span>
                     </div>
                 </div>
 
                 <div class="flex flex-row gap-1 sm:gap-2 items-center">
                     <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['years'], 2, '0', STR_PAD_LEFT); ?></span> 
-                    <span class="uppercase text-[10px] sm:text-xs text-gray-400">years</span>
+                    <span class="uppercase text-[12px] sm:text-xs text-gray-400">years</span>
                     <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['months'], 2, '0', STR_PAD_LEFT); ?></span> 
-                    <span class="uppercase text-[10px] sm:text-xs text-gray-400"><?= $experience['months'] > 1 ? 'months' : 'month'; ?></span>
+                    <span class="uppercase text-[12px] sm:text-xs text-gray-400"><?= $experience['months'] > 1 ? 'months' : 'month'; ?></span>
                     <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['days'], 2, '0', STR_PAD_LEFT); ?></span> 
-                    <span class="uppercase text-[10px] sm:text-xs text-gray-400"><?= $experience['days'] > 1 ? 'days' : 'day'; ?></span>
+                    <span class="uppercase text-[12px] sm:text-xs text-gray-400"><?= $experience['days'] > 1 ? 'days' : 'day'; ?></span>
                 </div>
                 
                 <span class="text-upper text-gray-400 text-xs sm:text-sm">of professional experience</span>
@@ -176,31 +176,31 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 <hr>
             </span>
 
-            <div class="flex flex-row gap-6 justify-start text-left items-center lg:text-sm">
+            <div class="flex flex-row gap-6 justify-start text-left items-center">
                 <div class="flex flex-col gap-2">
-                    <p>
-                        <i class="fa fa-music"></i>
+                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
+                        <i class="fa fa-music "></i>
                         Music
                     </p>
-                    <p>
+                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
                         <i class="fa fa-dumbbell"></i>
                         Health and Fitness
                     </p>
-                    <p>
+                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
                         <i class="fa fa-plane"></i>
                         Travel
                     </p>
                 </div>
                 <div class="flex flex-col gap-2">
-                    <p>
+                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
                         <i class="fa fa-code"></i>
                         Code
                     </p>
-                    <p>
+                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
                         <i class="fa fa-camera"></i>
                         Photography
                     </p>
-                    <p>
+                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
                         <i class="fa fa-film"></i>
                         Movies
                     </p>

@@ -30,24 +30,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Handle image upload
             $image = '';
             $bannerImage = '';
+            $basePath = '/assets/' . ($type === 'blog' ? 'stories' : 'projects');
             
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = BASE_URL . '/assets/' . ($type === 'blog' ? 'stories' : 'projects');
+                $uploadDir = BASE_URL . $basePath;
                 $uploadResult = handleFileUpload($_FILES['image'], $uploadDir);
                 
                 if (isset($uploadResult['success'])) {
-                    $image = $uploadResult['filename'];
+                    $image = $basePath . '/' . $uploadResult['filename'];
                 } else {
                     redirect("/admin/blogs", "error", $uploadResult['error']);
                 }
             }
             
             if (isset($_FILES['banner_image']) && $_FILES['banner_image']['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = BASE_URL . '/assets/' . ($type === 'blog' ? 'stories' : 'projects');
+                $uploadDir = BASE_URL . $basePath;
                 $uploadResult = handleFileUpload($_FILES['banner_image'], $uploadDir);
                 
                 if (isset($uploadResult['success'])) {
-                    $bannerImage = $uploadResult['filename'];
+                    $bannerImage = $basePath . '/' . $uploadResult['filename'];
                 } else {
                     redirect("/admin/blogs", "error", $uploadResult['error']);
                 }
@@ -105,16 +106,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     // Delete files
                     if ($blog['image']) {
-                        $filePath = BASE_URL . '/assets/stories/' . $blog['image'];
-                        deleteFile($filePath);
-                        $filePath = BASE_URL . '/assets/projects/' . $blog['image'];
+                        $filePath = BASE_URL . $blog['image'];
                         deleteFile($filePath);
                     }
                     
                     if ($blog['banner_image']) {
-                        $filePath = BASE_URL . '/assets/stories/' . $blog['banner_image'];
-                        deleteFile($filePath);
-                        $filePath = BASE_URL . '/assets/projects/' . $blog['banner_image'];
+                        $filePath = BASE_URL . $blog['banner_image'];
                         deleteFile($filePath);
                     }
                     

@@ -42,7 +42,7 @@ require_once __DIR__ . '/../partials/header.php'; # config file
     <section class="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] overflow-hidden">
         <img src="<?= !empty($article['banner_image']) ? url($article['banner_image']) : (!empty($article['image']) ? url($article['image']) : url('assets/images/projects.jpeg')); ?>"
              alt="<?= htmlspecialchars($article['title']); ?>" 
-             class="w-full h-full object-cover">
+             class="w-full h-full object-cover object-center">
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         <div class="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-center text-white px-4 w-full max-w-4xl">
             <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-4 leading-tight">

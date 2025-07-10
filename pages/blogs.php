@@ -16,6 +16,13 @@ $columns = 4; // Default number of columns
 $resume = blogList('AND type="blog" AND status="A"');
 $stories = array_merge($stories, $resume);
 
+// if no stories found, show a message
+if (empty($stories)) {
+    echo '<p class="text-center text-gray-500 dark:text-gray-400">No stories found.</p>';
+    require_once __DIR__ . '/../partials/footer.php';
+    exit;
+}
+
 // Calculate number of columns based on screen size
 $totalColumns = array_chunk($stories, ceil(count($stories) / $columns));
 ?>
@@ -31,7 +38,7 @@ $totalColumns = array_chunk($stories, ceil(count($stories) / $columns));
                         <div class="aspect-video overflow-hidden rounded-t-lg">
                             <img src="<?= image_src($story['image'], true, 'assets/stories/default.png') ?>" 
                                  alt="<?= $story['title'] ?>" 
-                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                 class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4 sm:p-6 flex flex-col flex-grow">
                             <h3 class="text-lg sm:text-xl font-semibold mb-2 text-gray-900 dark:text-white">
