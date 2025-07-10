@@ -12,6 +12,13 @@ $SEO = [
 require_once __DIR__ . '/../partials/header.php';
 $projects = blogList("AND type='project' AND status='A'");
 
+// if no projects found, show a message
+if (empty($projects)) {
+    echo '<p class="text-center text-gray-500 dark:text-gray-400">No projects found.</p>';
+    require_once __DIR__ . '/../partials/footer.php';
+    exit;
+}
+
 // Calculate number of columns based on screen size
 $columns = 4; // Default number of columns
 $projectColumns = array_chunk($projects, ceil(count($projects) / $columns));
@@ -28,7 +35,7 @@ $projectColumns = array_chunk($projects, ceil(count($projects) / $columns));
                         <div class="aspect-video overflow-hidden rounded-t-lg">
                             <img src="<?= url($project['image']) ?>" 
                                  alt="<?= $project['title'] ?>" 
-                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                 class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4 sm:p-6 flex flex-col flex-grow">
                             <h3 class="text-lg sm:text-xl font-semibold mb-2 text-gray-900 dark:text-white">
