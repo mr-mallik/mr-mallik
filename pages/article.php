@@ -37,12 +37,122 @@ $SEO = [
 require_once __DIR__ . '/../partials/header.php'; # config file
 
 ?>
+
+<style>
+/* Gallery Masonry Layout */
+#galleryGrid {
+    column-count: 1;
+    column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    #galleryGrid {
+        column-count: 2;
+        column-gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    #galleryGrid {
+        column-count: 3;
+        column-gap: 1.5rem;
+    }
+}
+
+.gallery-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    display: inline-block;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .gallery-item {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Lightbox animations */
+#lightboxModal {
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease-in-out;
+}
+
+#lightboxImage {
+    transition: opacity 0.3s ease-in-out;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+/* Loading spinner */
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Navigation buttons hover effects */
+#prevImage, #nextImage {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#prevImage:hover, #nextImage:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+#closeLightbox {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#closeLightbox:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+    #prevImage, #nextImage, #closeLightbox {
+        width: 44px;
+        height: 44px;
+    }
+    
+    #lightboxImage {
+        max-width: 95vw;
+        max-height: 85vh;
+    }
+}
+</style>
+
 <article class="min-h-screen">
     <!-- Hero Banner Section -->
-    <section class="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] overflow-hidden">
+    <section class="relative w-full h-64 sm:h-80 md:h-96 lg:h-[300px] overflow-hidden">
         <img src="<?= !empty($article['banner_image']) ? url($article['banner_image']) : (!empty($article['image']) ? url($article['image']) : url('assets/images/projects.jpeg')); ?>"
              alt="<?= htmlspecialchars($article['title']); ?>" 
-             class="w-full h-full object-cover object-center">
+             class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         <div class="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-center text-white px-4 w-full max-w-4xl">
             <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-4 leading-tight">
@@ -148,6 +258,53 @@ require_once __DIR__ . '/../partials/header.php'; # config file
 
         <?php endif; ?>
 
+        <!-- Image Gallery Section -->
+        <?php
+        $galleryImages = [];
+        if (!empty($article['gallery'])) {
+            foreach ($article['gallery'] as $image) {
+                $galleryImages[] = [
+                    'thumb' => $image['thumb'],
+                    'full' => $image['full'],
+                    'alt' => $image['alt'],
+                    'caption' => $image['caption']
+                ];
+            }
+        }
+        ?>
+        
+        <?php if(!empty($galleryImages)): ?>
+        <div class="mt-12 sm:mt-16">
+            <h3 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-white text-center">
+                Gallery
+            </h3>
+            
+            <!-- Masonry Grid -->
+            <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                <?php foreach($galleryImages as $index => $image): ?>
+                <div class="gallery-item cursor-pointer group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                     data-index="<?= $index; ?>"
+                     data-full="<?= url($image['full']); ?>"
+                     data-alt="<?= htmlspecialchars($image['alt']); ?>"
+                     data-caption="<?= htmlspecialchars($image['caption']); ?>">
+                    <img src="<?= url($image['thumb']); ?>" 
+                         alt="<?= htmlspecialchars($image['alt']); ?>"
+                         class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110"
+                         loading="lazy">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="fas fa-expand-alt text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        <p class="text-white text-sm font-medium"><?= htmlspecialchars($image['caption']); ?></p>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+
     </section>
 
     <!-- Footer Image Section -->
@@ -230,8 +387,45 @@ require_once __DIR__ . '/../partials/header.php'; # config file
     </div>
 </div>
 
+<!-- Image Lightbox Modal -->
+<div id="lightboxModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+    <div class="relative w-full h-full flex items-center justify-center p-4">
+        <!-- Close Button -->
+        <button id="closeLightbox" class="absolute top-4 right-4 z-10 text-white hover:text-gray-300 transition-colors duration-300">
+            <i class="fas fa-times text-2xl sm:text-3xl"></i>
+        </button>
+        
+        <!-- Previous Button -->
+        <button id="prevImage" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors duration-300 z-10">
+            <i class="fas fa-chevron-left text-2xl sm:text-3xl"></i>
+        </button>
+        
+        <!-- Next Button -->
+        <button id="nextImage" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors duration-300 z-10">
+            <i class="fas fa-chevron-right text-2xl sm:text-3xl"></i>
+        </button>
+        
+        <!-- Image Container -->
+        <div class="relative max-w-full max-h-full">
+            <img id="lightboxImage" src="" alt="" class="max-w-full max-h-full object-contain">
+            
+            <!-- Image Caption -->
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-center">
+                <p id="lightboxCaption" class="text-white text-sm sm:text-base font-medium"></p>
+                <p id="lightboxCounter" class="text-white text-xs sm:text-sm opacity-75 mt-1"></p>
+            </div>
+        </div>
+        
+        <!-- Loading Spinner -->
+        <div id="lightboxLoader" class="absolute inset-0 flex items-center justify-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
+        </div>
+    </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Existing share functionality
     const shareButton = document.getElementById('shareButton');
     const shareModal = document.getElementById('shareModal');
     const closeModal = document.getElementById('closeModal');
@@ -239,81 +433,249 @@ document.addEventListener('DOMContentLoaded', function() {
     const shareUrl = document.getElementById('shareUrl');
     const copyFeedback = document.getElementById('copyFeedback');
     
+    // Gallery lightbox elements
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxLoader = document.getElementById('lightboxLoader');
+    const closeLightbox = document.getElementById('closeLightbox');
+    const prevImage = document.getElementById('prevImage');
+    const nextImage = document.getElementById('nextImage');
+    
+    let currentImageIndex = 0;
+    let galleryData = [];
+    
+    // Initialize gallery data
+    galleryItems.forEach((item, index) => {
+        galleryData.push({
+            full: item.dataset.full,
+            alt: item.dataset.alt,
+            caption: item.dataset.caption
+        });
+        
+        // Add click event to gallery items
+        item.addEventListener('click', function() {
+            openLightbox(index);
+        });
+    });
+    
     // Article data for sharing
     const articleTitle = <?= json_encode(htmlspecialchars($article['title'])); ?>;
     const articleDescription = <?= json_encode(htmlspecialchars($article['seo_desc'])); ?>;
     const articleUrl = <?= json_encode($page_url); ?>;
     
     // Share button click handler
-    shareButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Check if Web Share API is supported (mobile devices)
-        if (navigator.share && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            navigator.share({
-                title: articleTitle,
-                text: articleDescription,
-                url: articleUrl
-            }).catch(err => {
-                console.log('Error sharing:', err);
+    if (shareButton) {
+        shareButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Check if Web Share API is supported (mobile devices)
+            if (navigator.share && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                navigator.share({
+                    title: articleTitle,
+                    text: articleDescription,
+                    url: articleUrl
+                }).catch(err => {
+                    console.log('Error sharing:', err);
+                    showShareModal();
+                });
+            } else {
                 showShareModal();
-            });
-        } else {
-            showShareModal();
+            }
+        });
+    }
+    
+    // Gallery lightbox functions
+    function openLightbox(index) {
+        currentImageIndex = index;
+        lightboxModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        loadImage(index);
+    }
+    
+    function closeLightboxModal() {
+        lightboxModal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+    
+    function loadImage(index) {
+        if (index < 0 || index >= galleryData.length) return;
+        
+        const imageData = galleryData[index];
+        lightboxLoader.classList.remove('hidden');
+        lightboxImage.style.opacity = '0';
+        
+        // Create new image to preload
+        const img = new Image();
+        img.onload = function() {
+            lightboxImage.src = imageData.full;
+            lightboxImage.alt = imageData.alt;
+            lightboxCaption.textContent = imageData.caption;
+            lightboxCounter.textContent = `${index + 1} of ${galleryData.length}`;
+            
+            lightboxLoader.classList.add('hidden');
+            lightboxImage.style.opacity = '1';
+        };
+        img.onerror = function() {
+            lightboxLoader.classList.add('hidden');
+            lightboxCaption.textContent = 'Error loading image';
+            lightboxCounter.textContent = `${index + 1} of ${galleryData.length}`;
+        };
+        img.src = imageData.full;
+    }
+    
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % galleryData.length;
+        loadImage(currentImageIndex);
+    }
+    
+    function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length;
+        loadImage(currentImageIndex);
+    }
+    
+    // Lightbox event listeners
+    if (closeLightbox) {
+        closeLightbox.addEventListener('click', closeLightboxModal);
+    }
+    
+    if (nextImage) {
+        nextImage.addEventListener('click', showNextImage);
+    }
+    
+    if (prevImage) {
+        prevImage.addEventListener('click', showPrevImage);
+    }
+    
+    // Close lightbox when clicking outside image
+    if (lightboxModal) {
+        lightboxModal.addEventListener('click', function(e) {
+            if (e.target === lightboxModal) {
+                closeLightboxModal();
+            }
+        });
+    }
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!lightboxModal.classList.contains('hidden')) {
+            switch(e.key) {
+                case 'Escape':
+                    closeLightboxModal();
+                    break;
+                case 'ArrowRight':
+                    showNextImage();
+                    break;
+                case 'ArrowLeft':
+                    showPrevImage();
+                    break;
+            }
+        }
+        
+        // Close share modal with ESC
+        if (e.key === 'Escape' && shareModal && !shareModal.classList.contains('hidden')) {
+            hideShareModal();
         }
     });
     
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    if (lightboxModal) {
+        lightboxModal.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        lightboxModal.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+    }
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swiped left - show next image
+                showNextImage();
+            } else {
+                // Swiped right - show previous image
+                showPrevImage();
+            }
+        }
+    }
+    
     function showShareModal() {
-        shareModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        
-        // Update share URLs
-        const encodedTitle = encodeURIComponent(articleTitle);
-        const encodedUrl = encodeURIComponent(articleUrl);
-        const encodedText = encodeURIComponent(articleDescription);
-        
-        document.getElementById('whatsappShare').href = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
-        document.getElementById('facebookShare').href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
-        document.getElementById('twitterShare').href = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
-        document.getElementById('linkedinShare').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+        if (shareModal) {
+            shareModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            // Update share URLs
+            const encodedTitle = encodeURIComponent(articleTitle);
+            const encodedUrl = encodeURIComponent(articleUrl);
+            const encodedText = encodeURIComponent(articleDescription);
+            
+            const whatsappShare = document.getElementById('whatsappShare');
+            const facebookShare = document.getElementById('facebookShare');
+            const twitterShare = document.getElementById('twitterShare');
+            const linkedinShare = document.getElementById('linkedinShare');
+            
+            if (whatsappShare) whatsappShare.href = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
+            if (facebookShare) facebookShare.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+            if (twitterShare) twitterShare.href = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+            if (linkedinShare) linkedinShare.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+        }
     }
     
     // Close modal handlers
-    closeModal.addEventListener('click', hideShareModal);
-    shareModal.addEventListener('click', function(e) {
-        if (e.target === shareModal) {
-            hideShareModal();
-        }
-    });
+    if (closeModal) {
+        closeModal.addEventListener('click', hideShareModal);
+    }
+    
+    if (shareModal) {
+        shareModal.addEventListener('click', function(e) {
+            if (e.target === shareModal) {
+                hideShareModal();
+            }
+        });
+    }
     
     function hideShareModal() {
-        shareModal.classList.add('hidden');
-        document.body.style.overflow = '';
-        copyFeedback.classList.add('hidden');
+        if (shareModal) {
+            shareModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        if (copyFeedback) {
+            copyFeedback.classList.add('hidden');
+        }
     }
     
     // Copy to clipboard
-    copyButton.addEventListener('click', function() {
-        shareUrl.select();
-        shareUrl.setSelectionRange(0, 99999); // For mobile devices
-        
-        try {
-            document.execCommand('copy');
-            copyFeedback.classList.remove('hidden');
-            setTimeout(() => {
-                copyFeedback.classList.add('hidden');
-            }, 3000);
-        } catch (err) {
-            console.error('Failed to copy: ', err);
-        }
-    });
-    
-    // ESC key to close modal
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !shareModal.classList.contains('hidden')) {
-            hideShareModal();
-        }
-    });
+    if (copyButton) {
+        copyButton.addEventListener('click', function() {
+            if (shareUrl) {
+                shareUrl.select();
+                shareUrl.setSelectionRange(0, 99999); // For mobile devices
+                
+                try {
+                    document.execCommand('copy');
+                    if (copyFeedback) {
+                        copyFeedback.classList.remove('hidden');
+                        setTimeout(() => {
+                            copyFeedback.classList.add('hidden');
+                        }, 3000);
+                    }
+                } catch (err) {
+                    console.error('Failed to copy: ', err);
+                }
+            }
+        });
+    }
 });
 </script>
 

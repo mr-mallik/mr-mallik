@@ -15,7 +15,7 @@ require_once __DIR__ . '/../partials/header.php';
 <!-- Banner Section -->
 <div class="relative h-[250px] sm:h-[300px] lg:h-[400px] w-full overflow-hidden">
     <img src="<?php url('assets/images/article-footer-light.png'); ?>" alt="Contact Banner" 
-         class="absolute inset-0 w-full h-full object-cover object-center">
+         class="absolute inset-0 w-full h-full object-contain">
     
     <!-- Responsive overlay for readability -->
     <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50 dark:from-black/60 dark:via-black/70 dark:to-black/80"></div>
