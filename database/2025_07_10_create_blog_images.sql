@@ -1,0 +1,1 @@
+CREATE TABLE `blog_images` (`id` INT NOT NULL AUTO_INCREMENT , `project_id` INT(11) NOT NULL , `title` VARCHAR(255) NOT NULL , `image` TEXT NOT NULL , PRIMARY KEY (`id`));

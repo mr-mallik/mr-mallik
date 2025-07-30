@@ -30,24 +30,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Handle image upload
             $image = '';
             $bannerImage = '';
+            $uploadDir = '/assets/projects/'. $urlname .'/';
             
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = BASE_URL . '/assets/projects';
-                $uploadResult = handleFileUpload($_FILES['image'], $uploadDir);
+                $uploadResult = handleFileUpload($_FILES['image'], BASE_URL . $uploadDir);
                 
                 if (isset($uploadResult['success'])) {
-                    $image = $uploadResult['filename'];
+                    $image = $uploadDir . $uploadResult['filename'];
                 } else {
                     redirect("/admin/projects", "error", $uploadResult['error']);
                 }
             }
             
             if (isset($_FILES['banner_image']) && $_FILES['banner_image']['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = BASE_URL . '/assets/projects';
-                $uploadResult = handleFileUpload($_FILES['banner_image'], $uploadDir);
+                $uploadResult = handleFileUpload($_FILES['banner_image'], BASE_URL . $uploadDir);
                 
                 if (isset($uploadResult['success'])) {
-                    $bannerImage = $uploadResult['filename'];
+                    $bannerImage = $uploadDir . $uploadResult['filename'];
                 } else {
                     redirect("/admin/projects", "error", $uploadResult['error']);
                 }
@@ -401,20 +400,20 @@ require_once __DIR__ . '/../../partials/admin/side-nav.php';
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                     <div>
-                        <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Project Image</label>
+                        <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Project Image (400px X 400px)</label>
                         <input type="file" name="image" id="image" accept="image/*" 
                                onchange="previewImage(this, 'image-preview')"
                                class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
                         <div id="image-preview" class="mt-2">
                             <?php if (isset($project['image']) && $project['image']): ?>
-                                <img src="<?=url($project['image']); ?>" 
+                                <img src="<?=url($project['image']); ?>" width="400" height="400"
                                      alt="Current image" class="max-w-full h-auto rounded-lg shadow-md">
                             <?php endif; ?>
                         </div>
                     </div>
                     
                     <div>
-                        <label for="banner_image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Banner Image</label>
+                        <label for="banner_image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Banner Image (1500px X 500px)</label>
                         <input type="file" name="banner_image" id="banner_image" accept="image/*" 
                                onchange="previewImage(this, 'banner-preview')"
                                class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
