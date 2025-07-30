@@ -166,6 +166,14 @@ require_once __DIR__ . '/../partials/header.php'; # config file
 
     <!-- Article Content -->
     <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <!-- back button -->
+        <div class="mb-6 sm:mb-8">
+            <a href="<?= url($type === 'project' ? 'projects' : 'stories'); ?>" 
+               class="inline-flex items-center text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:underline">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to <?= $type === 'project' ? 'Projects' : 'Stories'; ?>
+            </a>
+        </div>
         <!-- Article Meta -->
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 pb-6 border-b border-gray-200 dark:border-gray-700 gap-4">
             <div class="flex items-center space-x-4">
