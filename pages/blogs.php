@@ -3,9 +3,9 @@ require_once __DIR__ . '/../includes/common.php'; // Common functions and config
 
 // SEO configuration for the blogs page
 $SEO = [
-    'title' => 'My Journey Log | Gulger Mallik',
-    'description' => 'Explore the journey of Gulger Mallik through various blogs and stories.',
-    'keywords' => 'gulger mallik, blogs, stories, journey log',
+    'title' => 'Blog & Stories | Gulger Mallik | Software Engineering Journey | Mr Mallik',
+    'description' => 'Follow Gulger Mallik\'s software engineering journey through insightful blogs and stories. Learn about experiences at University of Huddersfield, CosmoKode, and the tech industry.',
+    'keywords' => 'gulger mallik blog, mr mallik stories, software engineering blog, tech journey, university huddersfield experience, cosmokode stories, developer blog uk',
     'url' => url('blogs', false),
 ];
 
@@ -50,7 +50,7 @@ $totalColumns = array_chunk($stories, ceil(count($stories) / $columns));
                             </p>
 
                             <a class="text-right text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 font-medium" 
-                               href="<?php url('stories/'.$story['urlname']); ?>">
+                               href="<?php url('blogs/'.$story['urlname']); ?>">
                                Read more →
                             </a>
                         </div>

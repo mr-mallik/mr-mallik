@@ -48,6 +48,10 @@ define('SOCIAL_FACEBOOK', $_ENV['SOCIAL_FACEBOOK'] ?? '');
 define('SOCIAL_TWITTER', $_ENV['SOCIAL_TWITTER'] ?? '');
 define('SOCIAL_YOUTUBE', $_ENV['SOCIAL_YOUTUBE'] ?? '');
 
+// Academic and Research Profiles
+define('ACADEMIC_ORCID', $_ENV['ACADEMIC_ORCID'] ?? 'https://orcid.org/0009-0002-5110-8575');
+define('ACADEMIC_PURE', $_ENV['ACADEMIC_PURE'] ?? 'https://pure.hud.ac.uk/en/persons/gulger-mallik');
+
 // Constants for contact details
 define('CONTACT_PHONE', $_ENV['CONTACT_PHONE'] ?? '');
 define('CONTACT_PHONE2', $_ENV['CONTACT_PHONE2'] ?? '');

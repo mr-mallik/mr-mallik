@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Handle image upload
             $image = '';
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = BASE_URL . '/assets/' . ($project['type'] === 'blog' ? 'stories' : 'projects');
+                $uploadDir = BASE_URL . '/assets/' . ($project['type'] === 'blog' ? 'blog' : 'projects');
                 $uploadResult = handleFileUpload($_FILES['image'], $uploadDir);
                 
                 if (isset($uploadResult['success'])) {
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     // Delete file
                     if ($detail['image']) {
-                        $filePath = BASE_URL . '/assets/' . ($project['type'] === 'blog' ? 'stories' : 'projects') . '/' . $detail['image'];
+                        $filePath = BASE_URL . '/assets/' . ($project['type'] === 'blog' ? 'blog' : 'projects') . '/' . $detail['image'];
                         deleteFile($filePath);
                     }
                     
@@ -191,7 +191,7 @@ require_once __DIR__ . '/../../partials/admin/side-nav.php';
                                         <?php endif; ?>
                                         <?php if ($detail['image']): ?>
                                             <div class="mb-3">
-                                                <img src="<?php echo APP_URL; ?>/assets/<?php echo $project['type'] === 'blog' ? 'stories' : 'projects'; ?>/<?php echo $detail['image']; ?>" 
+                                                <img src="<?php echo APP_URL; ?>/assets/<?php echo $project['type'] === 'blog' ? 'blog' : 'projects'; ?>/<?php echo $detail['image']; ?>" 
                                                      alt="<?php echo escapeOutput($detail['title']); ?>" 
                                                      class="max-w-xs h-auto rounded-lg shadow-md">
                                             </div>
@@ -268,7 +268,7 @@ require_once __DIR__ . '/../../partials/admin/side-nav.php';
                            class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                     <div id="image-preview" class="mt-2">
                         <?php if (isset($detail['image']) && $detail['image']): ?>
-                            <img src="<?php echo APP_URL; ?>/assets/<?php echo $project['type'] === 'blog' ? 'stories' : 'projects'; ?>/<?php echo $detail['image']; ?>" 
+                            <img src="<?php echo APP_URL; ?>/assets/<?php echo $project['type'] === 'blog' ? 'blog' : 'projects'; ?>/<?php echo $detail['image']; ?>" 
                                  alt="Current image" class="max-w-full h-auto rounded-lg shadow-md">
                         <?php endif; ?>
                     </div>

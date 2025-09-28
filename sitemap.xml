@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- Homepage -->
+    <url>
+        <loc>https://mrmallik.com/</loc>
+        <lastmod><?= date('Y-m-d'); ?></lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://mrmallik.com/assets/images/gulger-mallik@1x1.jpg</image:loc>
+            <image:title>Gulger Mallik - Software Engineer</image:title>
+            <image:caption>Gulger Mallik, Software Engineer and Full Stack Developer</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- About Page -->
+    <url>
+        <loc>https://mrmallik.com/about</loc>
+        <lastmod><?= date('Y-m-d'); ?></lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://mrmallik.com/assets/images/about-me-grad.jpg</image:loc>
+            <image:title>About Gulger Mallik</image:title>
+            <image:caption>Gulger Mallik graduation photo from University of Huddersfield</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Projects Page -->
+    <url>
+        <loc>https://mrmallik.com/projects</loc>
+        <lastmod><?= date('Y-m-d'); ?></lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://mrmallik.com/assets/images/projects.jpeg</image:loc>
+            <image:title>Projects by Gulger Mallik</image:title>
+            <image:caption>Software development projects portfolio</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Blog/Stories Page -->
+    <url>
+        <loc>https://mrmallik.com/stories</loc>
+        <lastmod><?= date('Y-m-d'); ?></lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://mrmallik.com/assets/images/stories.jpeg</image:loc>
+            <image:title>Blog Stories by Gulger Mallik</image:title>
+            <image:caption>Software engineering journey and tech insights</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Contact Page -->
+    <url>
+        <loc>https://mrmallik.com/contact</loc>
+        <lastmod><?= date('Y-m-d'); ?></lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>https://mrmallik.com/assets/images/contact-me.jpg</image:loc>
+            <image:title>Contact Gulger Mallik</image:title>
+            <image:caption>Get in touch with Gulger Mallik for software development projects</image:caption>
+        </image:image>
+    </url>
+    
+</urlset>

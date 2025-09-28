@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Handle image upload
             $image = '';
             $bannerImage = '';
-            $basePath = '/assets/' . ($type === 'blog' ? 'stories' : 'projects');
+            $basePath = '/assets/' . ($type === 'blog' ? 'blog' : 'projects');
             
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
                 $uploadDir = BASE_URL . $basePath;
@@ -309,7 +309,7 @@ require_once __DIR__ . '/../../partials/admin/side-nav.php';
                     <div>
                         <label for="type" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Type</label>
                         <select name="type" id="type" required class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                            <option value="blog" <?php echo (isset($blog) && $blog['type'] === 'blog') ? 'selected' : ''; ?>>Blog</option>
+                            <option value='blogs' <?php echo (isset($blog) && $blog['type'] === 'blog') ? 'selected' : ''; ?>>Blog</option>
                             <option value="project" <?php echo (isset($blog) && $blog['type'] === 'project') ? 'selected' : ''; ?>>Project</option>
                         </select>
                     </div>

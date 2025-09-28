@@ -9,10 +9,11 @@
             <a href="<?php echo url(""); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Home</a>
             <a href="<?php echo url("about"); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">About</a>
             <a href="<?php echo url("projects"); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Projects</a>
-            <a href="<?php echo url("stories"); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Blog</a>
+            <a href="<?php echo url('blogs'); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Blog</a>
             <a href="<?= SOCIAL_LINKEDIN; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">LinkedIn</a>
             <a href="<?= SOCIAL_GITHUB; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">GitHub</a>
-            <a href="<?= SOCIAL_INSTAGRAM; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Instagram</a>
+            <a href="<?= ACADEMIC_PURE; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">PURE</a>
+            <a href="<?= ACADEMIC_ORCID; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">ORCID</a>
             <a href="<?= SOCIAL_MEDIUM; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Medium</a>
         </div>
         <?php } ?>
