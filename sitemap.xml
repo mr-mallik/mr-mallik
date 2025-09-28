@@ -43,7 +43,7 @@
     
     <!-- Blog/Stories Page -->
     <url>
-        <loc>https://mrmallik.com/stories</loc>
+        <loc>https://mrmallik.com/blogs</loc>
         <lastmod><?= date('Y-m-d'); ?></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>

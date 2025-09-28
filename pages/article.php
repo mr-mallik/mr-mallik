@@ -22,7 +22,7 @@ $page_url = '';
 if($type === 'project') {
     $page_url = url('projects/' . $article['urlname'], false);
 } elseif($type === 'blog') {
-    $page_url = url('stories/' . $article['urlname'], false);
+    $page_url = url('blogs/' . $article['urlname'], false);
 }
 
 $SEO = [
