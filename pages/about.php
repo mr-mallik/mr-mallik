@@ -388,7 +388,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                             </p>
 
                             <a class="p-2 xl:p-4 text-right block mt-1 xl:mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
-                                href="<?php url('stories/'.$story['urlname']); ?>">
+                                href="<?php url('blogs/'.$story['urlname']); ?>">
                                 Read more →
                             </a>
                         </div>

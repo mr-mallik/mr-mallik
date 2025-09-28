@@ -99,7 +99,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
         $stories = blogList("AND type='blog' AND status='A'");
         foreach ($stories as $story) {
             echo "<url>\n";
-            echo "    <loc>" . url('stories/' . $story['urlname'], false) . "</loc>\n";
+            echo "    <loc>" . url('blogs/' . $story['urlname'], false) . "</loc>\n";
             echo "    <lastmod>" . date('Y-m-d', strtotime($story['updated_at'] ?? $story['created_at'])) . "</lastmod>\n";
             echo "    <changefreq>monthly</changefreq>\n";
             echo "    <priority>0.6</priority>\n";
