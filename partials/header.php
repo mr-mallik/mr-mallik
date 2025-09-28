@@ -33,18 +33,28 @@ else {
         <link rel="preconnect" href="https://cdnjs.cloudflare.com">
         
         <!-- Favicon and App Icons -->
-        <link rel="icon" type="image/x-icon" href="<?= url('favicon.ico') ?>" />
-        <link rel="apple-touch-icon" sizes="180x180" href="<?= url('apple-touch-icon.png') ?>" />
-        <link rel="icon" type="image/png" sizes="32x32" href="<?= url('favicon-32x32.png') ?>" />
-        <link rel="icon" type="image/png" sizes="16x16" href="<?= url('favicon-16x16.png') ?>" />
-        <link rel="manifest" href="<?= url('site.webmanifest') ?>" />
-        <link rel="mask-icon" href="<?= url('safari-pinned-tab.svg') ?>" color="#5bbad5" />
+        <link rel="icon" type="image/x-icon" href="<?= url('favicon.ico', false) ?>" />
+        <link rel="shortcut icon" type="image/x-icon" href="<?= url('favicon.ico', false) ?>" />
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= url('apple-touch-icon.png', false) ?>" />
+        <link rel="icon" type="image/png" sizes="32x32" href="<?= url('favicon-32x32.png', false) ?>" />
+        <link rel="icon" type="image/png" sizes="16x16" href="<?= url('favicon-16x16.png', false) ?>" />
+        <link rel="manifest" href="<?= url('site.webmanifest', false) ?>" />
+        <link rel="mask-icon" href="<?= url('safari-pinned-tab.svg', false) ?>" color="#5bbad5" />
+        
+        <!-- Additional favicon formats for better compatibility -->
+        <meta name="msapplication-TileImage" content="<?= url('favicon-32x32.png', false) ?>" />
+        <meta name="msapplication-config" content="<?= url('browserconfig.xml', false) ?>" />
         
         <!-- App Configuration -->
-        <meta name="apple-mobile-web-app-title" content="mrmallik" />
-        <meta name="application-name" content="mrmallik" />
+        <meta name="apple-mobile-web-app-title" content="Gulger Mallik" />
+        <meta name="application-name" content="Mr Mallik" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#000000" />
+        
+        <!-- Favicon optimization for search engines -->
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         
         <!-- SEO Meta Tags -->
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -81,21 +91,99 @@ else {
         <meta name="twitter:creator" content="@gulger_mallik">
         <meta name="twitter:url" content="<?= htmlspecialchars($SEO['url']); ?>">
 
+        <!-- Additional SEO Meta Tags -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        
+        <!-- Rich Snippets -->
+        <meta property="profile:first_name" content="Gulger">
+        <meta property="profile:last_name" content="Mallik">
+        <meta property="profile:username" content="mr-mallik">
+        
+        <!-- LinkedIn -->
+        <meta property="article:author" content="<?php echo SOCIAL_LINKEDIN; ?>">
+        
+        <!-- Company/Organization Tags -->
+        <meta name="company" content="CosmoKode Ltd">
+        <meta name="industry" content="Software Development">
+        <meta name="location" content="United Kingdom">
+        
+        <!-- Academic Verification -->
+        <meta name="academic-orcid" content="0009-0002-5110-8575">
+        <meta name="academic-affiliation" content="University of Huddersfield">
+        <meta name="research-profile" content="https://pure.hud.ac.uk/en/persons/gulger-mallik">
+        
+        <!-- Professional Verification -->
+        <meta name="dc.creator" content="Gulger Mallik">
+        <meta name="dc.contributor" content="Gulger Mallik">
+        <meta name="dc.publisher" content="Mr Mallik">
+        <meta name="citation_author" content="Gulger Mallik">
+        <meta name="citation_author_institution" content="University of Huddersfield">
+
         <!-- Structured Data -->
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Gulger Mallik",
-            "alternateName": "Mr Mallik",
+            "alternateName": ["Mr Mallik", "mr mallik", "Gulger Mallik Software Engineer"],
             "url": "<?= htmlspecialchars($SEO['url']); ?>",
             "image": "<?= htmlspecialchars($SEO['image']); ?>",
+            "logo": "<?= url('favicon-32x32.png', false); ?>",
             "description": "<?= htmlspecialchars($SEO['description']); ?>",
-            "jobTitle": "Software Engineer",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "Freelance"
+            "jobTitle": ["Software Engineer", "Full Stack Developer", "Web Developer"],
+            "knowsAbout": ["Software Engineering", "Web Development", "Mobile Development", "AI", "Machine Learning", "Full Stack Development", "PHP", "JavaScript", "Python"],
+            "address": {
+                "@type": "PostalAddress",
+                "addressRegion": "West Yorkshire",
+                "addressCountry": "United Kingdom"
             },
+            "alumniOf": [
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "University of Huddersfield",
+                    "url": "https://www.hud.ac.uk/",
+                    "sameAs": "<?php echo ACADEMIC_PURE; ?>"
+                }
+            ],
+            "affiliation": [
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "University of Huddersfield",
+                    "url": "https://www.hud.ac.uk/"
+                },
+                {
+                    "@type": "Organization",
+                    "name": "CosmoKode Ltd",
+                    "url": "https://cosmokode.com/"
+                }
+            ],
+            "worksFor": [
+                {
+                    "@type": "Organization",
+                    "name": "CosmoKode Ltd",
+                    "url": "https://cosmokode.com/",
+                    "description": "Co-founder"
+                }
+            ],
+            "hasOccupation": {
+                "@type": "Occupation",
+                "name": "Software Engineer",
+                "occupationalCategory": "Computer and Information Technology Occupations",
+                "skills": ["Web Development", "Mobile Development", "Full Stack Development", "AI/ML", "Software Engineering"]
+            },
+            "workLocation": "United Kingdom",
+            "nationality": "Indian",
+            "identifier": [
+                {
+                    "@type": "PropertyValue",
+                    "name": "ORCID",
+                    "value": "0009-0002-5110-8575",
+                    "url": "<?php echo ACADEMIC_ORCID; ?>"
+                }
+            ],
             "sameAs": [
                 "<?php echo SOCIAL_LINKEDIN; ?>",
                 "<?php echo SOCIAL_GITHUB; ?>",
@@ -103,7 +191,70 @@ else {
                 "<?php echo SOCIAL_INSTAGRAM; ?>",
                 "<?php echo SOCIAL_FACEBOOK; ?>",
                 "<?php echo SOCIAL_TWITTER; ?>",
-                "<?php echo SOCIAL_YOUTUBE; ?>"
+                "<?php echo SOCIAL_YOUTUBE; ?>",
+                "<?php echo ACADEMIC_PURE; ?>",
+                "<?php echo ACADEMIC_ORCID; ?>"
+            ]
+        }
+        </script>
+        
+        <!-- Organization Structured Data for CosmoKode -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "CosmoKode Ltd",
+            "url": "https://cosmokode.com/",
+            "logo": "<?= url('favicon-32x32.png', false); ?>",
+            "founder": {
+                "@type": "Person",
+                "name": "Gulger Mallik",
+                "url": "<?= htmlspecialchars($SEO['url']); ?>"
+            },
+            "description": "Software development company co-founded by Gulger Mallik"
+        }
+        </script>
+
+        <!-- Academic/Research Profile -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": "<?php echo ACADEMIC_ORCID; ?>",
+            "name": "Gulger Mallik",
+            "givenName": "Gulger",
+            "familyName": "Mallik",
+            "alternateName": "Mr Mallik",
+            "jobTitle": ["Software Engineer", "Researcher", "Full Stack Developer"],
+            "affiliation": [
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "University of Huddersfield",
+                    "url": "https://www.hud.ac.uk/",
+                    "department": {
+                        "@type": "Organization",
+                        "name": "School of Computing and Engineering"
+                    }
+                }
+            ],
+            "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "University of Huddersfield",
+                "url": "https://www.hud.ac.uk/"
+            },
+            "url": "<?= htmlspecialchars($SEO['url']); ?>",
+            "sameAs": [
+                "<?php echo ACADEMIC_PURE; ?>",
+                "<?php echo ACADEMIC_ORCID; ?>"
+            ],
+            "knowsAbout": [
+                "Software Engineering",
+                "Computer Science", 
+                "Web Development",
+                "Mobile Development",
+                "Artificial Intelligence",
+                "Machine Learning",
+                "Full Stack Development"
             ]
         }
         </script>

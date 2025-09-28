@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://mrmallik.com/sitemap.php
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Disallow certain paths if needed
+Disallow: /vendor/
+Disallow: /includes/
+Disallow: /database/
+Disallow: /*.sql$
+Disallow: /.env
+Disallow: /composer.json
+Disallow: /composer.lock
+
+# Allow important assets
+Allow: /assets/
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/images/
+Allow: /favicon.ico
+Allow: /favicon-*.png
+Allow: /android-chrome-*.png
+Allow: /apple-touch-icon.png
+Allow: /site.webmanifest
+
+# SEO optimization
+Host: https://mrmallik.com

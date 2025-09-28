@@ -3,9 +3,9 @@ require_once __DIR__ . '/../includes/common.php'; // Common functions and config
 
 // SEO configuration for the projects page
 $SEO = [
-    'title' => 'Projects | Gulger Mallik',
-    'description' => 'Explore the projects by Gulger Mallik, showcasing expertise in software development and design.',
-    'keywords' => 'gulger mallik, projects, software development, web design',
+    'title' => 'Projects by Gulger Mallik | Software Development Portfolio | Mr Mallik',
+    'description' => 'Explore software development projects by Gulger Mallik (Mr Mallik) featuring web applications, mobile apps, and AI/ML solutions. Work includes projects for University of Huddersfield, Crowther Accountants, Tierrasphere, and CosmoKode.',
+    'keywords' => 'gulger mallik projects, mr mallik portfolio, software development projects, web applications, mobile apps, university huddersfield projects, crowther accountants software, tierrasphere development, cosmokode projects',
     'url' => url('projects', false),
 ];
 

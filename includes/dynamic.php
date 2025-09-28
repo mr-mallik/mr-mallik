@@ -8,7 +8,7 @@ function siteMenu()
         '' => 'Home',
         'about' => 'About',
         'projects' => 'Work',
-        'stories' => 'Stories',
+        'blogs' => 'Stories',
         'contact' => 'Contact',
     ];
 

@@ -2,9 +2,9 @@
 require_once __DIR__ . '/../includes/common.php'; # config file
 // META TAGS
 $SEO = [
-    'title' => 'About Gulger Mallik',
-    'description' => 'Gulger Mallik is a Software Engineer and a Fullstack developer.',
-    'keywords' => 'gulger mallik, mr mallik, gulger, mallik, software engineer, fullstack developer',
+    'title' => 'About Gulger Mallik | Software Engineer at University of Huddersfield | Mr Mallik',
+    'description' => 'Learn about Gulger Mallik (Mr Mallik), Software Engineer and Full Stack Developer with Master\'s from University of Huddersfield. Co-founder of CosmoKode, worked with Team Inertia Technologies, Trellissoft, Crowther Accountants, and Tierrasphere.',
+    'keywords' => 'gulger mallik about, mr mallik biography, software engineer uk, university of huddersfield graduate, cosmokode co-founder, team inertia technologies, trellissoft inc, crowther accountants developer, tierrasphere engineer, master computing huddersfield, fullstack developer england',
     'image' => url('assets/images/gulger-mallik@1x1.jpg', false),
     'url' => url('about', false),
 ];
@@ -79,8 +79,10 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 <hr class="mt-1">
             </span>
 
-            <p class="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                I am a software engineer and fullstack developer with a passion for AI and machine learning. I have a Master's degree in Computing from the University of Huddersfield, UK. I have worked as a software engineer in India and the UK. I have experience in developing web applications, mobile applications, and AI models.
+            <p class="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
+                I am a software engineer and fullstack developer with a Master's degree in Computing from the University of Huddersfield, UK. 
+                Co-founder of <a href='https://www.cosmokode.com' target='_blank' class='hover:underline'>CosmoKode Ltd</a>, I have worked with leading organizations including Team Inertia Technologies, Trellissoft Inc, Crowther Accountants, and Tierrasphere. 
+                My expertise spans web development, mobile applications, AI/ML, and research & development. 
             </p>
 
             <span class="text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg font-semibold text-right">
@@ -100,6 +102,26 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
             </div>
 
+            <!-- <span class="text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg font-semibold text-right">
+                <i class="fa fa-graduation-cap text-purple-500"></i>
+                Academic Profiles
+                <hr class="mt-1">
+            </span>
+
+            <div class="about-academic text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300">
+                <p>
+                    <a href="<?= ACADEMIC_PURE; ?>" target="_blank" class="hover:underline brand-text">
+                        <i class="fa fa-university"></i> University Research Profile
+                    </a>
+                </p>
+
+                <p>
+                    <a href="<?= ACADEMIC_ORCID; ?>" target="_blank" class="hover:underline brand-text">
+                        <i class="fab fa-orcid"></i> ORCID: 0009-0002-5110-8575
+                    </a>
+                </p>
+            </div> -->
+
             <span class="text-gray-500 text-md xl:text-lg font-semibold">
                 <i class="fa fa-gears text-orange-500"></i>
                 Services
@@ -108,7 +130,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
             <p class="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 Web Development <br/>
-                Mobile Development <br/>
+                <!-- Mobile Development <br/> -->
                 AI and Machine Learning <br/>
                 Research and Development <br/>
                 Software Engineering
@@ -318,7 +340,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
         <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Latest Work </h2>
 
         <div class="flex flex-col justify-center p-4 xl:p-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 dgap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
                 <?php foreach ($projects as $project) : ?>
                     <div data-aos="fade-up" data-aos-delay="100">
                         <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px]">
@@ -328,9 +350,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                             <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($project['title']) ?></h3>
                             
                             <p class="px-4 text-sm text-gray-700 dark:text-gray-300">
-                                <span class="hidden xl:block"><?= $project['short_description'] ?></span>
-                                <span class="hidden lg:block xl:hidden"><?= cutwords($project['short_description']) ?></span>
-                                <span class="block lg:hidden"><?= cutwords($project['short_description'], 100) ?></span>
+                                <span class=""><?= cutwords($project['short_description']) ?></span>
                             </p>
 
                             <a class="p-2 xl:p-4 text-right block mt-1 xl:mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
@@ -364,9 +384,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                             <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($story['title']) ?></h3>
 
                             <p class="px-4 text-sm text-gray-700 dark:text-gray-300">
-                                <span class="hidden xl:block"><?= $story['short_description'] ?></span>
-                                <span class="hidden lg:block xl:hidden"><?= cutwords($story['short_description']) ?></span>
-                                <span class="block lg:hidden"><?= cutwords($story['short_description'], 100) ?></span>
+                                <span class=""><?= cutwords($story['short_description']) ?></span>
                             </p>
 
                             <a class="p-2 xl:p-4 text-right block mt-1 xl:mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
@@ -379,7 +397,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
             </div>
             
             <div class="flex justify-center">
-                <a href="<?php url('stories'); ?>" class="text-center font-mono text-lg xl:text-2xl font-semibold py-2 xl:py-4 underline transition ease-in-out">View all stories </a>
+                <a href="<?php url('blogs'); ?>" class="text-center font-mono text-lg xl:text-2xl font-semibold py-2 xl:py-4 underline transition ease-in-out">View all stories </a>
             </div>
 
         </div>

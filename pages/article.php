@@ -26,7 +26,7 @@ if($type === 'project') {
 }
 
 $SEO = [
-    'title' =>  ($type === 'project' ? 'Project: ' : 'Story: ') . htmlspecialchars($article['title']) . ' | Gulger Mallik',
+    'title' =>  ($type === 'project' ? 'Project: ' : 'Blog: ') . htmlspecialchars($article['title']) . ' | Gulger Mallik | Mr Mallik',
     'description' => htmlspecialchars($article['seo_desc']),
     'keywords' => $article['seo_keyword'] ? htmlspecialchars($article['seo_keyword']) : 'gulger mallik, mr mallik, gulger, mallik, software engineer, fullstack developer',
     'image' => !empty($article['image']) ? url($article['image'], false) : url('assets/images/article-footer-light.png', false),
@@ -150,10 +150,10 @@ require_once __DIR__ . '/../partials/header.php'; # config file
 <article class="min-h-screen">
     <!-- Hero Banner Section -->
     <section class="relative w-full h-64 sm:h-80 md:h-96 lg:h-[300px] overflow-hidden">
-        <img src="<?= !empty($article['banner_image']) ? url($article['banner_image']) : (!empty($article['image']) ? url($article['image']) : url('assets/images/projects.jpeg')); ?>"
+        <img src="<?= !empty($article['banner_image']) ? url($article['banner_image']) : url('assets/images/projects.jpeg'); ?>"
              alt="<?= htmlspecialchars($article['title']); ?>" 
-             class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+             class="w-full h-full object-top object-cover">
+        <!-- <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         <div class="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-center text-white px-4 w-full max-w-4xl">
             <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-4 leading-tight">
                 <?= htmlspecialchars($article['title']); ?>
@@ -161,14 +161,14 @@ require_once __DIR__ . '/../partials/header.php'; # config file
             <p class="text-sm sm:text-base md:text-lg lg:text-xl opacity-90 max-w-2xl mx-auto">
                 <?= htmlspecialchars($article['seo_desc']); ?>
             </p>
-        </div>
+        </div> -->
     </section>
 
     <!-- Article Content -->
     <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <!-- back button -->
         <div class="mb-6 sm:mb-8">
-            <a href="<?= url($type === 'project' ? 'projects' : 'stories'); ?>" 
+            <a href="<?= url($type === 'project' ? 'projects' : 'blogs'); ?>" 
                class="inline-flex items-center text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:underline">
                 <i class="fas fa-arrow-left mr-2"></i>
                 Back to <?= $type === 'project' ? 'Projects' : 'Stories'; ?>
@@ -269,6 +269,17 @@ require_once __DIR__ . '/../partials/header.php'; # config file
         <!-- Image Gallery Section -->
         <?php
         $galleryImages = [];
+
+        // Main Image
+        if(!empty($article['image'])) {
+            $galleryImages[] = [
+                'thumb' => $article['image'],
+                'full' => $article['image'],
+                'alt' => $article['title'],
+                'caption' => $article['title']
+            ];
+        }
+
         if (!empty($article['gallery'])) {
             foreach ($article['gallery'] as $image) {
                 $galleryImages[] = [
@@ -299,7 +310,7 @@ require_once __DIR__ . '/../partials/header.php'; # config file
                          alt="<?= htmlspecialchars($image['alt']); ?>"
                          class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110"
                          loading="lazy">
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                    <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                         <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <i class="fas fa-expand-alt text-white text-2xl"></i>
                         </div>
