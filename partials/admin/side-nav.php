@@ -10,6 +10,7 @@ $adminPages = [
     'dashboard' => ['url' => '/admin', 'icon' => 'fas fa-tachometer-alt', 'title' => 'Dashboard'],
     'blogs' => ['url' => '/admin/blogs', 'icon' => 'fas fa-blog', 'title' => 'Blogs'],
     'projects' => ['url' => '/admin/projects', 'icon' => 'fas fa-project-diagram', 'title' => 'Projects'],
+    'cookie-consent' => ['url' => '/admin/cookie-consent', 'icon' => 'fas fa-cookie-bite', 'title' => 'Cookie Consent'],
     'profile' => ['url' => '/admin/profile', 'icon' => 'fas fa-user', 'title' => 'Profile'],
     'logout' => ['url' => '/admin/logout', 'icon' => 'fas fa-sign-out-alt', 'title' => 'Logout']
 ];

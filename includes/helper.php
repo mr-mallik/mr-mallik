@@ -86,3 +86,35 @@ function image_src($src, $print=true, $default = 'assets/images/default.jpg')
         return url($default, $print);
     }
 }
+
+/**
+ * Check if user has given consent for specific cookie category
+ * @param string $category The cookie category to check (analytics, marketing, functional)
+ * @return bool True if consent given, false otherwise
+ */
+function has_cookie_consent($category = 'analytics') {
+    require_once __DIR__ . '/cookies/CookieConsent.php';
+    
+    try {
+        $cookieConsent = new CookieConsent();
+        return $cookieConsent->isCategoryAllowed($category);
+    } catch (Exception $e) {
+        // If there's an error, default to no consent
+        return false;
+    }
+}
+
+/**
+ * Get cookie consent preferences
+ * @return array|null Consent preferences or null if not set
+ */
+function get_cookie_consent_preferences() {
+    require_once __DIR__ . '/cookies/CookieConsent.php';
+    
+    try {
+        $cookieConsent = new CookieConsent();
+        return $cookieConsent->getConsentPreferences();
+    } catch (Exception $e) {
+        return null;
+    }
+}

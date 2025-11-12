@@ -29,9 +29,13 @@ RewriteRule ^admin/files/?$ pages/admin/files.php [L,QSA]
 RewriteRule ^admin/profile/?$ pages/admin/profile.php [L,QSA]
 RewriteRule ^admin/logs/?$ pages/admin/logs.php [L,QSA]
 RewriteRule ^admin/logout/?$ pages/admin/logout.php [L,QSA]
+RewriteRule ^admin/cookie-consent/?$ pages/admin/cookie-consent.php [L,QSA]
 
 # Tools module
 RewriteRule ^tools/reachout?/?$ pages/tools/reachout.php [L,QSA]
+
+# pages
+RewriteRule ^privacy-policy?/?$ pages/privacy-policy.php [L,QSA]
 
 # Custom error pages
 ErrorDocument 401 /errors/401.php
