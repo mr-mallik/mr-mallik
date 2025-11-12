@@ -260,7 +260,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
         <h2 class="text-center text-3xl xl:text-5xl p-4 xl:p-8 font-semibold" data-aos="fade-top">Education &amp; Experience </h2>
 
-        <div class="experience flex flex-col md:flex-row justify-between p-4 xl:p-8 shadow-lg gap-8">
+        <div class="experience flex flex-col md:flex-row justify-between p-4 xl:p-8 gap-8">
             <!-- 2024-Present Section -->
             <div class="flex flex-col md:w-1/3" data-aos="fade-up">
                 <div class="flex flex-col gap-6 text-left">
@@ -340,7 +340,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
         <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Latest Work </h2>
 
         <div class="flex flex-col justify-center p-4 xl:p-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 dgap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
                 <?php foreach ($projects as $project) : ?>
                     <div data-aos="fade-up" data-aos-delay="100">
                         <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px]">

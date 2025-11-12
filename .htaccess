@@ -30,8 +30,8 @@ RewriteRule ^admin/profile/?$ pages/admin/profile.php [L,QSA]
 RewriteRule ^admin/logs/?$ pages/admin/logs.php [L,QSA]
 RewriteRule ^admin/logout/?$ pages/admin/logout.php [L,QSA]
 
-# Finance module
-RewriteRule ^admin/accounts?/?$ pages/finance/accounts.php [L,QSA]
+# Tools module
+RewriteRule ^tools/reachout?/?$ pages/tools/reachout.php [L,QSA]
 
 # Custom error pages
 ErrorDocument 401 /errors/401.php
