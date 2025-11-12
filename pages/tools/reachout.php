@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/../../includes/common.php'; # config file
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +23,43 @@
 	<meta name="twitter:description" content="Professional LinkedIn outreach message templates to help you connect with potential employers and hiring managers. Customize and copy messages easily.">
 	<meta name="twitter:image" content="https://mrmallik.com/assets/images/gulger-mallik@1x1.jpg">
 	<link rel="icon" href="https://mrmallik.com/assets/images/gulger-mallik@1x1.jpg" type="image/x-icon">
+
+	<?php 
+	// Include cookie consent banner - only on frontend pages
+	if (!isset($is_admin_page) || !$is_admin_page) {
+		include_once __DIR__ .  '/../../partials/cookie-consent.php';
+	}
+	?>
+
+	<!-- Google Analytics - Only load if consent given -->
+	<script>
+	// Check for cookie consent before loading Google Analytics
+	function initializeAnalytics() {
+		if (window.checkCookieConsent && window.checkCookieConsent('analytics')) {
+			// Load Google Analytics script
+			const script = document.createElement('script');
+			script.async = true;
+			script.src = 'https://www.googletagmanager.com/gtag/js?id=G-44CBK2NCK9';
+			document.head.appendChild(script);
+			
+			script.onload = function() {
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'G-44CBK2NCK9', {
+					anonymize_ip: true,
+					cookie_flags: 'SameSite=Lax;Secure'
+				});
+			};
+		}
+	}
+	
+	// Initialize analytics after consent is loaded
+	document.addEventListener('DOMContentLoaded', function() {
+		// Wait a bit for cookie consent to initialize
+		setTimeout(initializeAnalytics, 500);
+	});
+	</script>
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
 	<script src="https://cdn.tailwindcss.com"></script>
@@ -379,7 +419,7 @@ $templates[] = [
 	<!-- Footer -->
 	<footer class="mt-12 text-center text-gray-500">
 		<p>&copy; 2025 LinkedIn Outreach Templates. Made with ❤️ for job seekers.</p>
-		<p class="text-sm">Developer by <a href="https://github.com/mr-mallik" target="_blank" class="text-blue-500 hover:underline">Gulger Mallik</a></p>
+		<p class="text-sm">Developed by <a href="https://linkedin.com/in/mrmallik" target="_blank" class="text-blue-500 hover:underline">Gulger Mallik</a></p>
 		<p class="text-xs mt-2">
 			💡 <strong>Pro tips:</strong> Use <kbd class="px-1 py-0.5 bg-gray-200 dark:bg-gray-600 rounded text-xs">Ctrl+Shift+D</kbd> to toggle theme, 
 			<kbd class="px-1 py-0.5 bg-gray-200 dark:bg-gray-600 rounded text-xs">Ctrl+Shift+R</kbd> to reset to system preference

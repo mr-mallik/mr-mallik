@@ -6,3 +6,6 @@
 /node_modules
 /assets/projects
 /public/stories
+
+# ignore logs files in logs directory
+/logs/*.log
