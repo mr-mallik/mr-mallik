@@ -32,23 +32,21 @@
         background-image: url('../images/article-footer-light.png');
     }
 
-    /* Dark mode */
-    @media (prefers-color-scheme: dark) {
-        .card-bg-linear {
-            background: linear-gradient(90deg, rgba(32, 32, 32, 1) 0%, rgba(7, 7, 14, 1) 92%);
-        }
+    /* Dark mode - using .dark class selector */
+    .dark .card-bg-linear {
+        background: linear-gradient(90deg, rgba(32, 32, 32, 1) 0%, rgba(7, 7, 14, 1) 92%);
+    }
 
-        .card-bg-radial {
-            background: radial-gradient(circle, rgba(32, 32, 32, 1) 0%, rgba(7, 7, 14, 1) 92%);
-        }
+    .dark .card-bg-radial {
+        background: radial-gradient(circle, rgba(32, 32, 32, 1) 0%, rgba(7, 7, 14, 1) 92%);
+    }
 
-        .brand-text {
-            color: #0ff;
-        }
+    .dark .brand-text {
+        color: #0ff;
+    }
 
-        .personal-banner-image {
-            background-image: url('../images/article-footer-dark.png');
-        }
+    .dark .personal-banner-image {
+        background-image: url('../images/article-footer-dark.png');
     }
 }
 
