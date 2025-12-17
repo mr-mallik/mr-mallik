@@ -5,7 +5,7 @@
     <footer class="py-8 px-4 sm:px-6 lg:px-10 text-center">
         
         <?php if (!str_contains($_SERVER['PHP_SELF'], '/errors/maintenance.php')) { ?>
-        <div id="quick-links" class="flex flex-wrap justify-center items-center gap-3 sm:gap-6 lg:gap-8 py-6 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+        <div id="quick-links" class="flex flex-wrap justify-center items-center gap-3 sm:gap-6 lg:gap-8 py-6 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
             <a href="<?php echo url(""); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Home</a>
             <a href="<?php echo url("about"); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">About</a>
             <a href="<?php echo url("projects"); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Projects</a>

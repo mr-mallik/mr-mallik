@@ -3,7 +3,7 @@ require_once __DIR__ . '/../includes/common.php'; # config file
 // META TAGS
 $SEO = [
     'title' => 'About Gulger Mallik | Software Engineer at University of Huddersfield | Mr Mallik',
-    'description' => 'Learn about Gulger Mallik (Mr Mallik), Software Engineer and Full Stack Developer with Master\'s from University of Huddersfield. Co-founder of CosmoKode, worked with Team Inertia Technologies, Trellissoft, Crowther Accountants, and Tierrasphere.',
+    'description' => 'Learn about Gulger Mallik (Mr Mallik), Software Engineer and Full Stack Developer with Master\'s from University of Huddersfield. Co-founder of Cosmokode, worked with Team Inertia Technologies, Trellissoft, Crowther Accountants, and Tierrasphere.',
     'keywords' => 'gulger mallik about, mr mallik biography, software engineer uk, university of huddersfield graduate, cosmokode co-founder, team inertia technologies, trellissoft inc, crowther accountants developer, tierrasphere engineer, master computing huddersfield, fullstack developer england',
     'image' => url('assets/images/gulger-mallik@1x1.jpg', false),
     'url' => url('about', false),
@@ -17,45 +17,49 @@ $clients = [
         'name' => 'Tierrasphere',
         'logo' => image_src('assets/images/showcase/TierraSphere.png', false),
         'url' => 'https://tierrasphere.cosmokode.com/',
+        'color' => 0 // colored logo
     ],
     [
         'name' => 'Crowther Accountants',
         'logo' => image_src('assets/images/showcase/crowther.svg', false),
         'url' => 'https://www.crowther.accountants/',
-        'invert' => false
+        'color' => 1 // white logo
     ],
     [
         'name' => 'Muscle Mind Stories',
         'logo' => image_src('assets/images/showcase/musclemindstories.png', false),
         'url' => 'https://musclemindstories.com/',
-        'invert' => true
+        'color' => -1 // black logo
     ],
     [
         'name' => 'Ramjan Interiors',
         'logo' => image_src('assets/images/showcase/ramjaninteriors.png', false),
         'url' => 'https://www.ramjaninteriors.com/',
-        'invert' => false
+        'color' => 1 // white logo
     ],
     [
         'name' => 'University of Huddersfield',
         'logo' => image_src('assets/images/showcase/universityofhuddersfield.svg', false),
         'url' => 'https://www.hud.ac.uk/',
-        'invert' => false
+        'color' => 1 // white logo
     ],
     [
         'name' => 'Fitplanex',
         'logo' => image_src('assets/images/showcase/fitplanex.png', false),
-        'url' => 'https://www.fitplanex.com/'
+        'url' => 'https://www.fitplanex.com/',
+        'color' => 0 // colored logo
     ],
     [
-        'name' => 'CosmoKode',
+        'name' => 'Cosmokode Ltd',
         'logo' => image_src('assets/images/showcase/cosmokode.png', false),
-        'url' => 'https://www.cosmokode.com/'
+        'url' => 'https://www.cosmokode.com/',
+        'color' => 0 // colored logo
     ],
     [
         'name' => 'Personnel Skills Matrix',
         'logo' => image_src('assets/images/showcase/psm.png', false),
-        'url' => 'https://www.psm.cosmokode.com/'
+        'url' => 'https://www.psm.cosmokode.com/',
+        'color' => 0 // colored logo
     ]
 ];
 
@@ -81,7 +85,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
             <p class="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
                 I am a software engineer and fullstack developer with a Master's degree in Computing from the University of Huddersfield, UK. 
-                Co-founder of <a href='https://www.cosmokode.com' target='_blank' class='hover:underline'>CosmoKode Ltd</a>, I have worked with leading organizations including Team Inertia Technologies, Trellissoft Inc, Crowther Accountants, and Tierrasphere. 
+                Co-founder of <a href='https://www.cosmokode.com' target='_blank' class='hover:underline'>Cosmokode Ltd</a>, I have worked with leading organizations including Team Inertia Technologies, Trellissoft Inc, Crowther Accountants, and Tierrasphere. 
                 My expertise spans web development, mobile applications, AI/ML, and research & development. 
             </p>
 
@@ -247,7 +251,21 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
             ?>
             <a href="javascript:;" title="<?= $client['name']; ?>" class="flex items-center justify-center transition duration-300 ease-in-out">
                 <img src="<?= $client['logo'] ?>" alt="<?= $client['name'] ?>" 
-                    class="w-30 xl:w-40 object-contain grayscale <?php echo isset($client['invert']) && $client['invert'] == true ? 'invert-0 dark:invert' : 'invert dark:invert-0' ?> hover:grayscale-0">
+                    class="w-30 xl:w-40 object-contain 
+                        <?php 
+                            if (isset($client['color'])) {
+                                if ($client['color'] == 0) {
+                                    echo ''; // colored logo - no invert in any mode
+                                } elseif ($client['color'] == 1) {
+                                    echo 'invert dark:invert-0'; // white logo - invert in light mode, original in dark mode
+                                } elseif ($client['color'] == -1) {
+                                    echo 'invert-0 dark:invert'; // black logo - original in light mode, invert in dark mode
+                                }
+                            } else {
+                                echo 'invert-0 dark:invert'; // default
+                            }
+                        ?>
+                    ">
             </a>
             <?php 
             $count++;
@@ -275,7 +293,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                     <p>
                         <i class="fa fa-briefcase"></i>
                         Software Engineer <br/>
-                        <span>CosmoKode Ltd, UK</span>
+                        <span>Cosmokode Ltd, UK</span>
                     </p>
                 </div>
             </div>
