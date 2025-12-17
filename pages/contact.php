@@ -12,8 +12,20 @@ $SEO = [
 require_once __DIR__ . '/../partials/header.php';
 ?>
 
-<!-- Banner Section -->
-<div class="relative min-h-[300px] h-full overflow-hidden personal-banner-image"></div>
+<!-- Page Header -->
+<section class="container mx-auto pt-8 lg:pt-12 px-4 sm:px-6 lg:px-8">
+    <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 lg:mb-8 text-center">Contact</h1>
+    <div class="w-full mb-8 lg:mb-12">
+        <img src="<?= url('assets/images/article-footer-light.png', false); ?>" 
+             alt="Contact Banner" 
+             class="w-full h-auto object-contain block dark:hidden"
+             id="banner-light">
+        <img src="<?= url('assets/images/article-footer-dark.png', false); ?>" 
+             alt="Contact Banner" 
+             class="w-full h-auto object-contain hidden dark:block"
+             id="banner-dark">
+    </div>
+</section>
 
 <!-- Contact Info Section -->
 <section class="container mx-auto py-4 lg:py-8 px-4 sm:px-6 lg:px-8">
