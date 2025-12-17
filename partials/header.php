@@ -261,9 +261,31 @@ else {
 
         <!-- External Resources -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="<?php url('assets/css/style.css'); ?>">
-        <link rel="stylesheet" href="<?php url('assets/js/aos/aos.css'); ?>">
-        <script src="<?php url('assets/js/aos/aos.js'); ?>"></script>
+        <link rel="stylesheet" href="<?= url('assets/css/style.css') ?>">
+        <link rel="stylesheet" href="<?= url('assets/js/aos/aos.css') ?>">
+        <script src="<?= url('assets/js/aos/aos.js') ?>"></script>
+        
+        <!-- Theme initialization script - runs before page renders to prevent flash -->
+        <script>
+            // Initialize theme before page renders to prevent flash
+            (function() {
+                const theme = localStorage.getItem('theme');
+                const htmlElement = document.documentElement;
+                
+                if (theme === 'dark') {
+                    htmlElement.classList.add('dark');
+                } else if (theme === 'light') {
+                    htmlElement.classList.remove('dark');
+                } else {
+                    // Default to light theme (user can change to dark or system preference)
+                    // If you want to respect system preference by default, uncomment the next 3 lines:
+                    // if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    //     htmlElement.classList.add('dark');
+                    // }
+                    htmlElement.classList.remove('dark');
+                }
+            })();
+        </script>
     </head>
     <body class="bg-gray-100 dark:bg-black-base dark:text-gray-200">
     <div id="outer-container" class="mx-auto container max-w-7xl">
@@ -271,7 +293,7 @@ else {
             <nav class="relative">
                 <div class="flex justify-between items-center">
                     <div class="flex items-center gap-2 lg:gap-4">
-                        <img src="<?php url('assets/images/logo/mallik_logo.png'); ?>" alt="Mr Mallik" 
+                        <img src="<?= url('assets/images/logo/mallik_logo.png') ?>" alt="Mr Mallik" 
                             class="w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-transform duration-800 hover:rotate-[360deg] hover:cursor-pointer invert dark:invert-0" 
                             onmouseout="this.style.transform='rotate(-360deg)'">
                         <a href="<?= url('') ?>" class="signature text-2xl sm:text-3xl text-black dark:text-white">mr mallik</a>
@@ -289,11 +311,27 @@ else {
                         ?>
                     </ul>
                     
-                    <!-- Desktop CTA Button -->
-                    <a href="mailto:<?= strtolower(CONTACT_EMAIL) ?>" target="_blank"
-                        class="hidden md:block hover:cursor-pointer bg-gray-500 text-gray-200 dark:bg-gray-900 dark:text-white hover:bg-gray-600 dark:hover:bg-gray-800 font-bold py-2 px-3 lg:px-4 rounded-lg transition-colors duration-300 text-sm lg:text-base">
-                        Let's Talk
-                    </a>
+                    
+                    <div class="flex items-center gap-2 lg:gap-4">
+                        <!-- Theme toggle -->
+                        <button type="button" id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-300" aria-label="Toggle theme">
+                            <!-- Sun icon for dark mode -->
+                            <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                            </svg>
+                            <!-- Moon icon for light mode -->
+                            <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                            </svg>
+                        </button>
+
+
+                        <!-- Desktop CTA Button -->
+                        <a href="mailto:<?= strtolower(CONTACT_EMAIL) ?>" target="_blank"
+                            class="hidden md:block hover:cursor-pointer bg-gray-500 text-gray-200 dark:bg-gray-900 dark:text-white hover:bg-gray-600 dark:hover:bg-gray-800 font-bold py-2 px-3 lg:px-4 rounded-lg transition-colors duration-300 text-sm lg:text-base">
+                            Let's Talk
+                        </a>
+                    </div>
                     
                     <!-- Mobile Hamburger Button -->
                     <button id="mobile-menu-button" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-300" aria-label="Toggle mobile menu">
