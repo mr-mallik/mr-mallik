@@ -6,7 +6,7 @@ $SEO = [
     'title' => 'Gulger Mallik | Software Engineer & Full Stack Developer | Mr Mallik',
     'description' => 'Gulger Mallik (Mr Mallik) is a Software Engineer and Full Stack Developer with expertise in web development, mobile apps, AI/ML. Based in UK, worked with University of Huddersfield, Crowther Accountants, Tierrasphere, CosmoKode.',
     'keywords' => 'gulger mallik, mr mallik, gulger mallik software engineer, mr mallik developer, full stack developer uk, web development, mobile development, ai machine learning, university of huddersfield, crowther accountants, tierrasphere, cosmokode, team inertia technologies, trellissoft',
-    'image' => url('assets/images/gulger-mallik@1x1.jpg', false),
+    'image' => url('assets/images/gulger-mallik@1x1.png', false),
     'url' => url('', false),
 ];
 
@@ -16,10 +16,10 @@ require_once __DIR__ . '/partials/header.php'; # config file
     <section id="home" class="container mx-auto px-4 sm:px-6 lg:px-10">
         <div class="flex flex-col lg:flex-row gap-4 mb-4">
             <div class="w-full lg:w-1/2">
-                <div class="flex flex-col sm:flex-row items-center w-full p-4 sm:p-6 gap-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
-                    <img src="<?= url('/assets/images/gulger-mallik@1x1.jpg'); ?>" 
+                <div class="flex flex-col sm:flex-row items-center w-full p-2 sm:p-4 gap-4 card-bg-radial rounded-xl shadow-lg">
+                    <img src="<?= url('/assets/images/gulger-mallik@1x1.png'); ?>" 
                     alt="Gulger Mallik" 
-                    class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-40 lg:h-40 xl:w-52 xl:h-52 rounded-tl-xl rounded-br-xl hover:grayscale transition-all duration-300 ease-in-out object-cover">
+                    class="w-28 h-28 sm:w-36 sm:h-36 md:w-42 md:h-42 lg:w-36 lg:h-36 xl:w-48 xl:h-48 rounded-tl-xl rounded-br-xl transition-all duration-300 ease-in-out object-cover">
                     
                     <div class="flex flex-col text-center sm:text-left sm:pl-4">
                         <p class='text-gray-800 dark:text-gray-400 text-sm sm:text-base'>Hello, I'm</p>
@@ -29,7 +29,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                             Passionate about building applications. Tech enthusiast with interest in AI/ML, always eager to solve complex problems.
                         </p> -->
                         <p class="text-gray-800 dark:text-gray-400 text-xs sm:text-sm mt-4 text-justify"> <!-- hidden md:block lg:hidden xl:block -->
-                            Tech enthusiast with a keen interest in AI and machine learning, always eager to explore innovative solutions to complex problems.
+                            <!-- Tech enthusiast with a keen interest in AI and machine learning, always eager to explore innovative solutions to complex problems. -->
                             Passionate about building solutions that make a difference.
                         </p>
                     </div>
@@ -37,20 +37,20 @@ require_once __DIR__ . '/partials/header.php'; # config file
             </div>
 
             <div class="w-full lg:w-1/2 flex flex-col gap-4">
-                <div class="hidden lg:block p-4 card-bg-linear rounded-xl shadow-lg">
+                <!-- <div class="hidden lg:block p-4 card-bg-linear rounded-xl shadow-lg">
                     <p class="text-gray-800 dark:text-gray-500 text-sm flex items-center gap-2 flex-wrap"> 
                         <i class="fas fa-briefcase"></i>
                         <a href="<?= url('about#edu-experience'); ?>" class="hover:underline text-gray-900 dark:text-gray-200">University of Huddersfield</a>
                         <span class='text-gray-500 dark:text-gray-400'>England, United Kingdom</span>
                     </p>
-                </div>
+                </div> -->
                 <div class="flex flex-col sm:flex-row gap-4">
                     <div class="w-full sm:w-1/2">
                         <a href="<?= url('about'); ?>">
-                            <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <div class="p-4 bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                                 <div class="flex flex-col gap-2">
                                     <div class="h-24 sm:h-32 overflow-hidden rounded-lg">
-                                        <img src="<?= url('/assets/images/about-me.jpeg'); ?>" alt="About Me" class="w-full object-cover dark:grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+                                        <img src="<?= url('/assets/images/about-me.jpeg'); ?>" alt="About Me" class="w-full object-cover transition-all duration-300 ease-in-out">
                                     </div>
                                     <p class="text-gray-700 dark:text-gray-500 text-xs uppercase tracking-wide"> More About Me </p>
                                     <h2 class="text-base sm:text-lg font-semibold tracking-wider text-gray-900 dark:text-white">About Me</h2>
@@ -61,10 +61,10 @@ require_once __DIR__ . '/partials/header.php'; # config file
 
                     <div class="w-full sm:w-1/2">
                         <a href="<?= url('projects'); ?>">
-                            <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <div class="p-4 bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                                 <div class="flex flex-col gap-2">
                                     <div class="h-24 sm:h-32 overflow-hidden rounded-lg">
-                                        <img src="<?= url('/assets/images/projects.jpeg'); ?>" alt="Projects" class="w-full object-cover dark:grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+                                        <img src="<?= url('/assets/images/projects.jpeg'); ?>" alt="Projects" class="w-full object-cover transition-all duration-300 ease-in-out">
                                     </div>
                                     <p class="text-gray-700 dark:text-gray-500 text-xs uppercase tracking-wide"> Showcase </p>
                                     <h2 class="text-base sm:text-lg font-semibold tracking-wider text-gray-900 dark:text-white">Projects</h2>
@@ -80,10 +80,10 @@ require_once __DIR__ . '/partials/header.php'; # config file
             <!-- Stories Card -->
             <div class="w-full sm:w-1/2 lg:w-1/4">
                 <a href="<?= url('blogs'); ?>">
-                <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="p-4 bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="flex flex-col gap-2">
                         <div class="h-24 sm:h-32 overflow-hidden rounded-lg">
-                            <img src="<?= url('/assets/images/stories.jpeg'); ?>" alt="Blogs" class="w-full object-cover dark:grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+                            <img src="<?= url('/assets/images/stories.jpeg'); ?>" alt="Blogs" class="w-full object-cover transition-all duration-300 ease-in-out">
                         </div>
                         <p class="text-gray-700 dark:text-gray-500 text-xs uppercase tracking-wide"> Blog </p>
                         <h2 class="text-base sm:text-lg font-semibold tracking-wider text-gray-900 dark:text-white">Stories</h2>
@@ -94,7 +94,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
 
             <!-- Services Card - Hidden on mobile, shown on large screens -->
             <div class="hidden lg:block lg:w-2/4">
-                <div class="p-4 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
+                <div class="p-4 bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg">
                     <div class="flex flex-col gap-2">
                         <div class="h-32 flex">
                             <div class="flex flex-row justify-between items-center w-full">
@@ -136,25 +136,25 @@ require_once __DIR__ . '/partials/header.php'; # config file
                     <div class="flex flex-col gap-2">
                         <div class="h-24 sm:h-32 flex flex-col justify-center items-center p-2">
                             <div class="flex flex-row gap-2 justify-center">
-                                <div class="rounded-full bg-gray-300 shadow-lg dark:bg-gray-800 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex justify-center items-center">
+                                <div class="rounded-full bg-gray-100 shadow-lg dark:bg-gray-800 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex justify-center items-center">
                                     <a href="<?= SOCIAL_LINKEDIN ?>" title="LinkedIn" target="_blank" class="text-gray-900 dark:text-gray-200 text-sm sm:text-base lg:text-xl xl:text-2xl">
                                         <i class="fab fa-linkedin-in"></i>
                                     </a>
                                 </div>
 
-                                <div class="rounded-full bg-gray-300 shadow-lg dark:bg-gray-800 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex justify-center items-center">
+                                <div class="rounded-full bg-gray-100 shadow-lg dark:bg-gray-800 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex justify-center items-center">
                                     <a href="<?= SOCIAL_GITHUB ?>" title="GitHub" target="_blank" class="text-gray-900 dark:text-gray-200 text-sm sm:text-base lg:text-xl xl:text-2xl">
                                         <i class="fab fa-github"></i>
                                     </a>
                                 </div>
                             
-                                <div class="rounded-full bg-gray-300 shadow-lg dark:bg-gray-800 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex justify-center items-center">
+                                <div class="rounded-full bg-gray-100 shadow-lg dark:bg-gray-800 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex justify-center items-center">
                                     <a href="<?= SOCIAL_MEDIUM ?>" title="Medium" target="_blank" class="text-gray-900 dark:text-gray-200 text-sm sm:text-base lg:text-xl xl:text-2xl">
                                         <i class="fab fa-medium"></i>
                                     </a>
                                 </div>
                                 
-                                <div class="rounded-full bg-gray-300 shadow-lg dark:bg-gray-800 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex justify-center items-center">
+                                <div class="rounded-full bg-gray-100 shadow-lg dark:bg-gray-800 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex justify-center items-center">
                                     <a href="<?= SOCIAL_INSTAGRAM ?>" title="Instagram" target="_blank" class="text-gray-900 dark:text-gray-200 text-sm sm:text-base lg:text-xl xl:text-2xl">
                                         <i class="fab fa-instagram"></i>
                                     </a>
@@ -199,7 +199,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
             </div>
 
             <div class="w-full lg:w-1/2">
-                <div class="p-4 lg:p-6 bg-gray-300 dark:bg-gray-900 rounded-xl shadow-lg">
+                <div class="p-4 lg:p-6 bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg">
                     <div class="flex flex-col gap-2">
                         <div class="min-h-[160px] sm:min-h-[180px] px-2 lg:px-4 py-4 flex flex-col justify-center">
                             <p class="text-gray-700 dark:text-gray-500 text-lg sm:text-xl xl:text-3xl font-bold leading-relaxed">
