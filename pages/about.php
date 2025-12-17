@@ -72,7 +72,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
 <section id="about" class="container mx-auto px-4 sm:px-6 lg:px-8">
     
-    <h1 class="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold py-4 sm:py-6 lg:py-8 px-4 text-gray-900 dark:text-white">The Blueprint</h1>
+    <h1 class="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold py-4 sm:py-6 lg:py-8 px-4 text-gray-900 dark:text-white">About Me</h1>
 
     <div class="flex flex-col lg:flex-row card-bg-radial rounded-xl p-4 sm:p-6 lg:p-8 mb-6 gap-6" data-aos="zoom-in">
 
@@ -83,10 +83,10 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 <hr class="mt-1">
             </span>
 
-            <p class="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
-                I am a software engineer and fullstack developer with a Master's degree in Computing from the University of Huddersfield, UK. 
-                Co-founder of <a href='https://www.cosmokode.com' target='_blank' class='hover:underline'>Cosmokode Ltd</a>, I have worked with leading organizations including Team Inertia Technologies, Trellissoft Inc, Crowther Accountants, and Tierrasphere. 
-                My expertise spans web development, mobile applications, AI/ML, and research & development. 
+            <p class="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300">
+                Software engineer and fullstack developer with a Master's in Computing from the University of Huddersfield. 
+                Co-founder of <a href='https://www.cosmokode.com' target='_blank' class='hover:underline brand-text'>Cosmokode Ltd</a>, 
+                specializing in web development, AI/ML solutions, and research-driven innovation.
             </p>
 
             <span class="text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg font-semibold text-right">
@@ -134,17 +134,15 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
             <p class="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 Web Development <br/>
-                <!-- Mobile Development <br/> -->
-                AI and Machine Learning <br/>
-                Research and Development <br/>
-                Software Engineering
+                AI &amp; Machine Learning <br/>
+                Research &amp; Development
             </p>
         </div>
 
-        <div class="flex flex-col hidden lg:block lg:w-1/3 text-center items-center justify-center">
-            <img src="<?= url('assets/images/about-me-grad.jpg'); ?>" 
-                alt="Gulger Mallik in graduation gown" 
-                class="max-h-[800px] rounded-full">
+        <div class="hidden lg:flex lg:w-1/3 items-center justify-center relative overflow-hidden rounded-xl shadow-md">
+            <img src="<?= url('assets/images/about-me.png'); ?>" 
+            alt="Gulger Mallik in graduation gown" 
+            class="w-full h-full object-cover object-center opacity-90">
         </div>
 
         <div class="flex flex-col w-2/2 lg:w-1/3 gap-6 p-4 text-right">
@@ -196,7 +194,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 <?php endforeach; ?>
             </div>
 
-            <span class="text-gray-500 text-md xl:text-lg font-semibold">
+            <!-- <span class="text-gray-500 text-md xl:text-lg font-semibold">
                 <i class="fa fa-heart text-red-500"></i>
                 Likes &amp; Interests
                 <hr>
@@ -231,7 +229,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                         Movies
                     </p>
                 </div>
-            </div>
+            </div> -->
 
 
         </div>
@@ -274,88 +272,304 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
         </div>
     </div>
     
-    <div class="card-bg-radial rounded-t-xl p-4 xl:p-8 mb-2 xl:mb-4 shadow-lg" id='edu-experience'>
+    <div class="card-bg-radial rounded-xl p-4 xl:p-8 mb-8 shadow-lg" id='edu-experience'>
 
-        <h2 class="text-center text-3xl xl:text-5xl p-4 xl:p-8 font-semibold" data-aos="fade-top">Education &amp; Experience </h2>
+        <h2 class="text-center text-3xl xl:text-5xl p-4 xl:p-8 font-semibold" data-aos="fade-top">Education &amp; Experience</h2>
 
-        <div class="experience flex flex-col md:flex-row justify-between p-4 xl:p-8 gap-8">
-            <!-- 2024-Present Section -->
-            <div class="flex flex-col md:w-1/3" data-aos="fade-up">
-                <div class="flex flex-col gap-6 text-left">
-                    <h3>2024 - Present</h3>
-
-                    <p>
-                        <i class="fa fa-briefcase"></i>
-                        Research Assistant in Applied AI <br/>
-                        <span>University of Huddersfield, UK</span>
-                    </p>
-
-                    <p>
-                        <i class="fa fa-briefcase"></i>
-                        Software Engineer <br/>
-                        <span>Cosmokode Ltd, UK</span>
-                    </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 xl:p-8">
+            
+            <!-- Director & Co-founder - Cosmokode Ltd -->
+            <div class="flip-card" data-aos="fade-up">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flex flex-col h-full justify-between">
+                            <div>
+                                <p class="font-bold text-base mb-2">
+                                    <i class="fa fa-briefcase text-cyan-500"></i>
+                                    Director &amp; Co-founder
+                                </p>
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">Cosmokode Ltd, UK</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Apr 2025 - Present</p>
+                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Leading strategic direction and technical innovation for enterprise software solutions. Building scalable web applications and AI-driven solutions for diverse clients.</p>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="font-bold text-sm mb-3">
+                            <i class="fa fa-briefcase text-cyan-500"></i>
+                            Director &amp; Co-founder
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>• Leading strategic direction and technical innovation for enterprise software solutions</li>
+                            <li>• Building scalable web applications and AI-driven solutions for diverse clients</li>
+                            <li>• Managing cross-functional teams and overseeing full-stack development architecture</li>
+                            <li>• Driving business growth through client relationships and technical excellence</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- 2022-2023 Section -->
-            <div class="flex flex-col md:w-1/3" data-aos="fade-up">
-                <div class="flex flex-col gap-6 text-left">
-                    <h3>2022 - 2023</h3>
-
-                    <p>
-                        <i class="fa fa-graduation-cap"></i>
-                        Master of Science in Computing <br/>
-                        <span>University of Huddersfield, UK</span>
-                    </p>
-
-                    <p>
-                        <i class="fa fa-briefcase"></i>
-                        Software Engineer <br/>
-                        <span>Shop &amp; Bakery Equipment Ltd, UK</span>
-                    </p>
-
-                    <p>
-                        <i class="fa fa-briefcase"></i>
-                        R &amp; D Software Engineer <br/>
-                        <span>University of Huddersfield, UK</span>
-                    </p>
-
-                    <p>
-                        <i class="fa fa-briefcase"></i>
-                        Research Technician <br/>
-                        <span>University of Huddersfield, UK</span>
-                    </p>
+            <!-- Research Assistant in Applied AI -->
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="50">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flex flex-col h-full justify-between">
+                            <div>
+                                <p class="font-bold text-base mb-2">
+                                    <i class="fa fa-briefcase text-cyan-500"></i>
+                                    Research Assistant in Applied AI
+                                </p>
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">University of Huddersfield, UK</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Oct 2024 - Oct 2025</p>
+                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Developing AI workflows for geospatial data using regression and neural networks. Collaborating with Tierrasphere to translate agricultural data into reproducible insights.</p>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="font-bold text-sm mb-3">
+                            <i class="fa fa-briefcase text-cyan-500"></i>
+                            KTP Associate - Tierrasphere
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>• Increased predictive accuracy by 49% developing AI workflows for geospatial data using regression and neural networks</li>
+                            <li>• Enabled data-driven decisions by translating agricultural data into reproducible insights</li>
+                            <li>• Deployed 2 cloud-hosted dashboards via Azure and Streamlit supporting 4 interdisciplinary teams</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- 2019-2021 Section -->
-            <div class="flex flex-col md:w-1/3" data-aos="fade-up">
-                <div class="flex flex-col gap-6 text-left">
-                    <h3>2019 - 2021</h3>
-
-                    <p class="text-xs">
-                        <i class="fa fa-graduation-cap"></i>
-                        Bachelor of Computer Applications <br/>
-                        <span>St. Xaviers College, India</span>
-                    </p>
-
-                    <p>
-                        <i class="fa fa-briefcase"></i>
-                        Software Engineer <br/>
-                        <span>Team Inertia Technologies, India</span>
-                    </p>
-
-                    <p>
-                        <i class="fa fa-briefcase"></i>
-                        Trellissoft Technologies <br/>
-                        <span>Trellissoft Inc, India</span>
-                    </p>
+            <!-- AI/ML Research Technician -->
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flex flex-col h-full justify-between">
+                            <div>
+                                <p class="font-bold text-base mb-2">
+                                    <i class="fa fa-briefcase text-cyan-500"></i>
+                                    AI/ML Research Technician
+                                </p>
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">University of Huddersfield, UK</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Apr 2024 - Aug 2024</p>
+                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Automating audit processes using Python (Django) and machine learning for Crowther Accountants. Developed web tools with responsive UI and integrated CI/CD pipelines.</p>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="font-bold text-sm mb-3">
+                            <i class="fa fa-briefcase text-cyan-500"></i>
+                            KTP Associate - Crowther Accountants
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>• Reduced manual audit work by 30% automating processes using Python (Django) and machine learning</li>
+                            <li>• Developed 3 Django-based web tools with responsive UI supporting accounting operations</li>
+                            <li>• Streamlined deployment integrating CI/CD pipelines and Git workflows</li>
+                            <li>• Facilitated onboarding with comprehensive documentation and tutorials</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
+            <!-- R&D Software Engineer -->
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flex flex-col h-full justify-between">
+                            <div>
+                                <p class="font-bold text-base mb-2">
+                                    <i class="fa fa-briefcase text-cyan-500"></i>
+                                    R &amp; D Software Engineer
+                                </p>
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">University of Huddersfield, UK</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Oct 2023 - Apr 2024</p>
+                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Designing automated scheduling and asset management for ATMAS. Integrating real-time sensor data and advancing 3D object recognition using machine learning.</p>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="font-bold text-sm mb-3">
+                            <i class="fa fa-briefcase text-cyan-500"></i>
+                            ECMPG Collaboration
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>• Improved ATMAS efficiency by 25% designing automated scheduling and asset management</li>
+                            <li>• Enhanced operational visibility integrating real-time sensor data from InfluxDB</li>
+                            <li>• Automated workflows in ATMAS increasing process consistency by 30%</li>
+                            <li>• Advanced 3D object recognition research using machine learning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MSc Computing -->
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flex flex-col h-full justify-between">
+                            <div>
+                                <p class="font-bold text-base mb-2">
+                                    <i class="fa fa-graduation-cap text-purple-500"></i>
+                                    MSc Computing (Distinction)
+                                </p>
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">University of Huddersfield, UK</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Sep 2022 - Dec 2023</p>
+                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Specialized in advanced computing, AI, and software engineering. Dissertation on machine learning applications achieving distinction grade.</p>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="font-bold text-sm mb-3">
+                            <i class="fa fa-graduation-cap text-purple-500"></i>
+                            Advanced Professional Practice
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>• Achieved Distinction grade specializing in AI, machine learning, and software engineering</li>
+                            <li>• Peer Commendation Award for outstanding contributions in computing and collaborative research</li>
+                            <li>• Academic Representative for MSc program, liaising with faculty to improve student experience</li>
+                            <li>• Dissertation on machine learning applications demonstrating research excellence</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Software Engineer - Shop & Bakery -->
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="250">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flex flex-col h-full justify-between">
+                            <div>
+                                <p class="font-bold text-base mb-2">
+                                    <i class="fa fa-briefcase text-cyan-500"></i>
+                                    Software Engineer
+                                </p>
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">Shop &amp; Bakery Equipment Ltd, UK</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Dec 2022 - Mar 2024</p>
+                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Customizing e-commerce workflows and developing admin modules for manufacturing and retail operations. Enhancing UI/UX and optimizing site performance.</p>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="font-bold text-sm mb-3">
+                            <i class="fa fa-briefcase text-cyan-500"></i>
+                            PHP/OpenCart Developer
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>• Increased order processing efficiency by 35% customizing 3 e-commerce workflows</li>
+                            <li>• Developed 5 advanced admin modules supporting manufacturing and retail operations</li>
+                            <li>• Improved customer satisfaction by 25% enhancing UI/UX and optimizing performance across 4 device types</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Software Engineer - Trellissoft -->
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flex flex-col h-full justify-between">
+                            <div>
+                                <p class="font-bold text-base mb-2">
+                                    <i class="fa fa-briefcase text-cyan-500"></i>
+                                    Software Engineer
+                                </p>
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">Trellissoft Inc, India</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Mar 2022 - Aug 2022</p>
+                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Extending PHP/Laravel modules and integrating MSSQL databases. Developing scalable business applications with modular architecture principles.</p>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="font-bold text-sm mb-3">
+                            <i class="fa fa-briefcase text-cyan-500"></i>
+                            PHP/Laravel Developer
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>• Increased system performance by 25% extending PHP/Laravel modules and integrating MSSQL databases</li>
+                            <li>• Developed scalable business applications applying modular architecture principles</li>
+                            <li>• Enhanced stakeholder confidence delivering client demos showcasing automation solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Software Engineer - Team Inertia -->
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="350">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flex flex-col h-full justify-between">
+                            <div>
+                                <p class="font-bold text-base mb-2">
+                                    <i class="fa fa-briefcase text-cyan-500"></i>
+                                    Software Engineer
+                                </p>
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">Teaminertia Technologies, India</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">May 2019 - Mar 2022</p>
+                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Delivering CMS, CRM, and PWA solutions for startup clients. Optimizing backend processes and mentoring junior developers in agile environment.</p>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="font-bold text-sm mb-3">
+                            <i class="fa fa-briefcase text-cyan-500"></i>
+                            Full-Stack Developer
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>• Delivered CMS, CRM, and PWA solutions automating 3 key business workflows</li>
+                            <li>• Improved system efficiency by 50% optimizing backend processes</li>
+                            <li>• Mentored junior developers and managed agile releases enhancing team productivity</li>
+                            <li>• Collaborated with multiple clients ensuring technical solutions met operational requirements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BCA -->
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flex flex-col h-full justify-between">
+                            <div>
+                                <p class="font-bold text-base mb-2">
+                                    <i class="fa fa-graduation-cap text-purple-500"></i>
+                                    Bachelor of Computer Applications
+                                </p>
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">St. Xavier's College, India</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Jun 2016 - May 2019</p>
+                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Foundation in computer science, programming, and software development. Graduated with distinction from Goa University.</p>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="font-bold text-sm mb-3">
+                            <i class="fa fa-graduation-cap text-purple-500"></i>
+                            Distinction - Goa University
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>• Achieved Distinction demonstrating strong academic performance in computer science fundamentals</li>
+                            <li>• Built foundation in programming, database management, and software development</li>
+                            <li>• Organized and led intercollegiate technical event managing cross-functional teams</li>
+                            <li>• Graduated with honors focusing on practical application development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </div>
 
-        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Latest Work </h2>
+    <!-- Latest Work Section - Separated for visual distinction -->
+    <div class="py-8">
+        
+        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Latest Work</h2>
 
         <div class="flex flex-col justify-center p-4 xl:p-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
@@ -381,15 +595,14 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
             </div>
             
             <div class="flex justify-center">
-                <a href="<?php url('projects'); ?>" class="text-center font-mono text-lg xl:text-2xl font-semibold py-2 xl:py-4 underline transition ease-in-out">View all projects </a>
+                <a href="<?php url('projects'); ?>" class="text-center font-mono text-lg xl:text-2xl font-semibold py-2 xl:py-4 underline transition ease-in-out hover:text-brand">View all projects</a>
             </div>
         </div>
     </div>
 
     <?php if (count($stories) > 0) : ?>
-        <!-- <hr class="py-5 border-gray-600" /> -->
 
-        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Latest Stories </h2>
+        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Latest Stories</h2>
 
         <div class="flex flex-col justify-center p-4 xl:p-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
