@@ -149,9 +149,9 @@ function blogGet($type, $slug)
     $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // fetch other details from blog_det
-    $sqlDetails = "SELECT * FROM blog_det WHERE project_id = ?";
+    $sqlDetails = "SELECT * FROM blog_det WHERE blog_id = ?";
     $stmtDetails = $CONN->prepare($sqlDetails);
-    $stmtDetails->execute([$article['project_id']]);
+    $stmtDetails->execute([$article['blog_id']]);
 
     $article['details'] = $stmtDetails->fetchAll(PDO::FETCH_ASSOC);
 

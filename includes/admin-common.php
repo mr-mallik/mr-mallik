@@ -208,7 +208,7 @@ function slugExists($slug, $table, $excludeId = null) {
     $params = [$slug];
     
     if ($excludeId) {
-        $sql .= " AND project_id != ?";
+        $sql .= " AND blog_id != ?";
         $params[] = $excludeId;
     }
     

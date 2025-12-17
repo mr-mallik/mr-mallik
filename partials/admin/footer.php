@@ -1,18 +1,18 @@
     </div> <!-- End of main content -->
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-12 py-6">
+        <div class="px-8 text-center text-sm text-gray-600 dark:text-gray-400">
+            <p>&copy; <?php echo date('Y'); ?> Mr Mallik CMS. All rights reserved.</p>
+        </div>
+    </footer>
 </div> <!-- End of sidebar wrapper -->
 
 <script>
-// Initialize AOS
-AOS.init({
-    duration: 800,
-    once: true
-});
-
-// Alert auto-hide
+// Alert auto-hide with Material animation
 document.addEventListener('DOMContentLoaded', function() {
     const alerts = document.querySelectorAll('.alert');
     alerts.forEach(function(alert) {
         setTimeout(function() {
+            alert.style.transform = 'translateX(400px)';
             alert.style.opacity = '0';
             setTimeout(function() {
                 alert.remove();
@@ -21,30 +21,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Form validation
+// Form validation with Material styling
 function validateForm(form) {
     const requiredFields = form.querySelectorAll('[required]');
     let isValid = true;
     
     requiredFields.forEach(function(field) {
         if (!field.value.trim()) {
-            field.classList.add('border-red-500');
+            field.classList.add('border-red-500', 'ring-2', 'ring-red-200');
             isValid = false;
         } else {
-            field.classList.remove('border-red-500');
+            field.classList.remove('border-red-500', 'ring-2', 'ring-red-200');
         }
     });
     
     return isValid;
 }
 
-// File upload preview
+// File upload preview with Material card
 function previewImage(input, previewId) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
             document.getElementById(previewId).innerHTML = 
-                `<img src="${e.target.result}" alt="Preview" class="max-w-full h-auto rounded-lg shadow-md">`;
+                `<div class="material-card bg-white dark:bg-gray-700 p-4 rounded-xl shadow-lg">
+                    <img src="${e.target.result}" alt="Preview" class="w-full h-auto rounded-lg">
+                </div>`;
         };
         reader.readAsDataURL(input.files[0]);
     }
