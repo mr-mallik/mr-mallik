@@ -17,17 +17,36 @@
 }
 
 @layer components {
-    /* Light mode */
-    .card-bg-linear {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 50%, rgba(241, 245, 249, 0.92) 100%);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-        border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Card backgrounds with CSS variables */
+    .card-bg-linear,
+    .card-bg-radial,
+    .flip-card-front,
+    .flip-card-back {
+        --shadow-light: 0 1px 3px rgb(0 0 0 / 0.06), 0 1px 2px rgb(0 0 0 / 0.04);
+        --shadow-medium: 0 2px 4px rgb(0 0 0 / 0.06), 0 1px 2px rgb(0 0 0 / 0.04);
+        --shadow-dark: 0 2px 8px rgb(0 0 0 / 0.4), 0 1px 3px rgb(0 0 0 / 0.3);
+        --shadow-darker: 0 4px 12px rgb(0 0 0 / 0.5), 0 2px 4px rgb(0 0 0 / 0.3);
+        --border-light: 1px solid rgb(0 0 0 / 0.05);
+        --border-dark: 1px solid rgb(255 255 255 / 0.05);
     }
 
-    .card-bg-radial {
-        background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 40%, rgba(241, 245, 249, 0.92) 100%);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-        border: 1px solid rgba(0, 0, 0, 0.05);
+    .card-bg-linear {
+        background: linear-gradient(135deg, rgb(255 255 255 / 0.98), rgb(248 250 252 / 0.95) 50%, rgb(241 245 249 / 0.92));
+        box-shadow: var(--shadow-light);
+        border: var(--border-light);
+    }
+
+    .card-bg-radial,
+    .flip-card-front {
+        background: radial-gradient(circle at top left, rgb(255 255 255 / 0.98), rgb(248 250 252 / 0.95) 40%, rgb(241 245 249 / 0.92));
+        box-shadow: var(--shadow-medium);
+        border: var(--border-light);
+    }
+
+    .flip-card-back {
+        background: linear-gradient(135deg, rgb(255 255 255 / 0.98), rgb(248 250 252 / 0.95) 50%, rgb(241 245 249 / 0.92));
+        box-shadow: var(--shadow-medium);
+        border: var(--border-light);
     }
 
     .brand-text {
@@ -38,20 +57,30 @@
         background-image: url('../images/article-footer-light.png');
     }
 
-    /* Dark mode - using .dark class selector */
-    .dark .card-bg-linear {
-        background: linear-gradient(135deg, rgba(32, 32, 32, 1) 0%, rgba(16, 16, 24, 0.98) 50%, rgba(7, 7, 14, 1) 100%);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Dark mode */
+    .dark .card-bg-linear,
+    .dark .flip-card-back {
+        background: linear-gradient(135deg, rgb(32 32 32), rgb(16 16 24 / 0.98) 50%, rgb(7 7 14));
+        box-shadow: var(--shadow-dark);
+        border: var(--border-dark);
     }
 
-    .dark .card-bg-radial {
-        background: radial-gradient(circle at top left, rgba(40, 40, 48, 1) 0%, rgba(24, 24, 32, 0.98) 40%, rgba(7, 7, 14, 1) 100%);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+    .dark .card-bg-radial,
+    .dark .flip-card-front {
+        background: radial-gradient(circle at top left, rgb(40 40 48), rgb(24 24 32 / 0.98) 40%, rgb(7 7 14));
+        box-shadow: var(--shadow-darker);
+        border: var(--border-dark);
     }
 
-    /* Flip card styles */
+    .dark .brand-text {
+        color: #0ff;
+    }
+
+    .dark .personal-banner-image {
+        background-image: url('../images/article-footer-dark.png');
+    }
+
+    /* Flip card */
     .flip-card {
         perspective: 1000px;
         height: auto;
@@ -62,7 +91,6 @@
         position: relative;
         width: 100%;
         min-height: 200px;
-        text-align: left;
         transition: transform 0.6s;
         transform-style: preserve-3d;
     }
@@ -71,98 +99,55 @@
         transform: rotateY(180deg);
     }
 
-    .flip-card-front, .flip-card-back {
+    .flip-card-front,
+    .flip-card-back {
         width: 100%;
         backface-visibility: hidden;
         border-radius: 0.75rem;
         padding: 1.5rem;
     }
 
-    .flip-card-front {
-        background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 40%, rgba(241, 245, 249, 0.92) 100%);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
     .flip-card-back {
         position: absolute;
-        top: 0;
-        left: 0;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 50%, rgba(241, 245, 249, 0.92) 100%);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-        border: 1px solid rgba(0, 0, 0, 0.05);
+        inset: 0;
         transform: rotateY(180deg);
-    }
-
-    .dark .flip-card-front {
-        background: radial-gradient(circle at top left, rgba(40, 40, 48, 1) 0%, rgba(24, 24, 32, 0.98) 40%, rgba(7, 7, 14, 1) 100%);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .dark .flip-card-back {
-        background: linear-gradient(135deg, rgba(32, 32, 32, 1) 0%, rgba(16, 16, 24, 0.98) 50%, rgba(7, 7, 14, 1) 100%);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .dark .brand-text {
-        color: #0ff;
-    }
-
-    .dark .personal-banner-image {
-        background-image: url('../images/article-footer-dark.png');
     }
 }
 
-/* Textured background for light mode only */
+/* Textured background for light mode */
 html:not(.dark) body {
-    background: linear-gradient(0deg, rgba(243, 244, 246, 0.95) 0%, rgba(249, 250, 251, 0.95) 100%),
-                radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-                radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background: 
+        linear-gradient(rgb(243 244 246 / 0.95), rgb(249 250 251 / 0.95)),
+        radial-gradient(circle at 25% 25%, rgb(0 0 0 / 0.02) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgb(0 0 0 / 0.02) 1px, transparent 1px);
     background-size: 100% 100%, 4px 4px, 4px 4px;
     background-position: 0 0, 0 0, 2px 2px;
 }
 
-/* Dotted texture overlay for light mode */
 html:not(.dark) body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle, rgba(0, 0, 0, 0.15) 1px, transparent 1px),
-        radial-gradient(circle, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    inset: 0;
+    background: 
+        radial-gradient(circle, rgb(0 0 0 / 0.15) 1px, transparent 1px),
+        radial-gradient(circle, rgb(0 0 0 / 0.1) 1px, transparent 1px);
     background-size: 8px 8px, 16px 16px;
     background-position: 0 0, 4px 4px;
     pointer-events: none;
     z-index: 0;
 }
 
-/* Paper texture for light mode */
 html:not(.dark) body::after {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 0;
 }
 
 .portrait {
-    background-image: url('../images/about-me.png'); 
-    background-position: center center; 
-    background-repeat: no-repeat; 
-    background-size: contain;
-    background-color: #000;
-    max-width: 100%;
-    height: auto;
-    /* filter: brightness(95%); */
+    background: #000 url('../images/about-me.png') center/contain no-repeat;
     filter: contrast(110%);
     
     @media (min-width: 1024px) {
@@ -174,166 +159,72 @@ html:not(.dark) body::after {
     }
 }
 
-/* Personal banner image classes */
 .personal-banner-image {
-    background-image: url('../images/article-footer-light.png');
-    background-size: contain;
-    background-position: top center;
-    background-repeat: no-repeat;
+    background: url('../images/article-footer-light.png') top center/contain no-repeat;
     width: 100%;
-    height: auto;
-    min-height: 300px;
-}
-
-/* Responsive banner image handling */
-@media (max-width: 640px) {
-    .personal-banner-image {
-        background-position: top center;
-        min-height: 250px;
-    }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-    .personal-banner-image {
-        background-position: top center;
-        min-height: 300px;
-    }
-}
-
-@media (min-width: 1025px) {
-    .personal-banner-image {
-        background-position: top center;
+    min-height: 250px;
+    
+    @media (min-width: 1025px) {
         min-height: 400px;
     }
 }
 
-/* Banner overlay utilities */
 .banner-overlay-light {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+    background: linear-gradient(rgb(0 0 0 / 0.4), rgb(0 0 0 / 0.6));
 }
 
 .banner-overlay-dark {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+    background: linear-gradient(rgb(0 0 0 / 0.6), rgb(0 0 0 / 0.8));
 }
 
-/* Responsive utilities */
-.aspect-video {
-    aspect-ratio: 16 / 9;
-}
-
-.aspect-square {
-    aspect-ratio: 1 / 1;
-}
-
-/* Smooth scrolling */
 html {
     scroll-behavior: smooth;
 }
 
-/* Mobile-first responsive containers */
-.container {
-    max-width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-@media (min-width: 640px) {
-    .container {
-        max-width: 640px;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-}
-
-@media (min-width: 768px) {
-    .container {
-        max-width: 768px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .container {
-        max-width: 1024px;
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-}
-
-@media (min-width: 1280px) {
-    .container {
-        max-width: 1280px;
-    }
-}
-
-@media (min-width: 1536px) {
-    .container {
-        max-width: 1536px;
-    }
-}
-
-/* Experience section styles */
+/* Experience section */
 .experience h3 {
     font-weight: 600;
     font-size: 1rem;
-    color: #4b5563; /* gray-600 for light mode */
-}
-
-@media (min-width: 1280px) {
-    .experience h3 {
+    color: #4b5563;
+    
+    @media (min-width: 1280px) {
         font-size: 1.125rem;
     }
 }
 
 .experience p {
-    color: #111827; /* gray-900 for light mode */
+    color: #111827;
     font-size: 1rem;
     font-weight: 700;
-}
-
-@media (min-width: 1280px) {
-    .experience p {
+    
+    @media (min-width: 1280px) {
         font-size: 1.25rem;
     }
 }
 
 .experience p i {
-    font-size: 1rem;
-    color: #6b7280; /* gray-500 for icons */
-}
-
-@media (min-width: 1280px) {
-    .experience p i {
-        font-size: 1.25rem;
-    }
+    font-size: inherit;
+    color: #6b7280;
 }
 
 .experience p span {
-    color: #6b7280; /* gray-500 for light mode */
+    color: #6b7280;
     font-size: 0.875rem;
     font-weight: 400;
-}
-
-@media (min-width: 1280px) {
-    .experience p span {
+    
+    @media (min-width: 1280px) {
         font-size: 1.125rem;
     }
 }
 
-/* Dark mode experience styles */
-.dark .experience h3 {
-    color: #9ca3af; /* gray-400 for dark mode */
+.dark .experience h3,
+.dark .experience p i,
+.dark .experience p span {
+    color: #9ca3af;
 }
 
 .dark .experience p {
-    color: #f9fafb; /* gray-50 for dark mode */
-}
-
-.dark .experience p i {
-    color: #9ca3af; /* gray-400 for icons in dark mode */
-}
-
-.dark .experience p span {
-    color: #9ca3af; /* gray-400 for dark mode */
+    color: #f9fafb;
 }
 
 .signature {
