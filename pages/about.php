@@ -567,48 +567,63 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
     </div>
 
     <!-- Latest Work Section - Separated for visual distinction -->
-    <div class="py-8">
+    <div class="card-bg-linear rounded-xl p-6 xl:p-10 mb-8 shadow-lg">
         
-        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Latest Work</h2>
+        <div class="flex items-center justify-between mb-6 xl:mb-8 border-b border-gray-300 dark:border-gray-700 pb-4">
+            <h2 class="text-2xl xl:text-4xl font-semibold text-gray-900 dark:text-white" data-aos="fade-right">
+                <i class="fa fa-laptop-code text-cyan-500 mr-2"></i>
+                Latest Work
+            </h2>
+            <a href="<?php url('projects'); ?>" class="text-sm xl:text-base font-semibold text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">
+                View all →
+            </a>
+        </div>
 
-        <div class="flex flex-col justify-center p-4 xl:p-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
-                <?php foreach ($projects as $project) : ?>
-                    <div data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px]">
-                            <img src="<?= image_src($project['image']) ?>" 
-                                    alt="<?= $project['title'] ?>" 
-                                    class="h-auto max-w-full rounded-t-lg  object-cover w-full">
-                            <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($project['title']) ?></h3>
-                            
-                            <p class="px-4 text-sm text-gray-700 dark:text-gray-300">
-                                <span class=""><?= cutwords($project['short_description']) ?></span>
-                            </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-6">
+            <?php foreach ($projects as $project) : ?>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px] hover:shadow-xl transition-shadow duration-300">
+                        <img src="<?= image_src($project['image']) ?>" 
+                                alt="<?= $project['title'] ?>" 
+                                class="h-auto max-w-full rounded-t-lg object-cover w-full">
+                        <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($project['title']) ?></h3>
+                        
+                        <p class="px-4 text-sm text-gray-700 dark:text-gray-300">
+                            <span class=""><?= cutwords($project['short_description']) ?></span>
+                        </p>
 
-                            <a class="p-2 xl:p-4 text-right block mt-1 xl:mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
-                                href="<?php url('projects/'.$project['urlname']); ?>">
-                                Read more →
-                            </a>
-                        </div>
+                        <a class="p-2 xl:p-4 text-right block mt-1 xl:mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
+                            href="<?php url('projects/'.$project['urlname']); ?>">
+                            Read more →
+                        </a>
                     </div>
-                <?php endforeach; ?>
-            </div>
-            
-            <div class="flex justify-center">
-                <a href="<?php url('projects'); ?>" class="text-center font-mono text-lg xl:text-2xl font-semibold py-2 xl:py-4 underline transition ease-in-out hover:text-brand">View all projects</a>
-            </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 
     <?php if (count($stories) > 0) : ?>
 
-        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Latest Stories</h2>
+    <!-- Latest Stories Section -->
+    <div class="relative overflow-hidden rounded-xl mb-8">
+        <!-- Background gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 opacity-50"></div>
+        
+        <div class="relative z-10 p-6 xl:p-10">
+            <div class="flex items-center justify-between mb-6 xl:mb-8 border-b border-cyan-200 dark:border-gray-700 pb-4">
+                <h2 class="text-2xl xl:text-4xl font-semibold text-gray-900 dark:text-white" data-aos="fade-right">
+                    <i class="fa fa-book-open text-purple-500 mr-2"></i>
+                    Latest Stories
+                </h2>
+                <a href="<?php url('blogs'); ?>" class="text-sm xl:text-base font-semibold text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">
+                    View all →
+                </a>
+            </div>
 
-        <div class="flex flex-col justify-center p-4 xl:p-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-6">
                 <?php foreach ($stories as $story) : ?>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px]">
+                        <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px] hover:shadow-xl transition-shadow duration-300">
                             <img src="<?= image_src($story['image'], true, 'assets/stories/default.png') ?>" 
                                     alt="<?= $story['title'] ?>" 
                                     class="h-auto w-full max-w-[400px] rounded-t-lg object-cover">
@@ -626,12 +641,9 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                     </div>
                 <?php endforeach; ?>
             </div>
-            
-            <div class="flex justify-center">
-                <a href="<?php url('blogs'); ?>" class="text-center font-mono text-lg xl:text-2xl font-semibold py-2 xl:py-4 underline transition ease-in-out">View all stories </a>
-            </div>
-
         </div>
+    </div>
+
     <?php endif; ?>
 
     <!-- <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Testimonials </h2> -->

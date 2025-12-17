@@ -27,21 +27,41 @@ require_once __DIR__ . '/../partials/header.php';
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         <div class="text-center p-6 lg:p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
-            <i class="fas fa-map-marker-alt text-2xl sm:text-3xl lg:text-4xl text-gray-600 dark:text-gray-400 mb-4"></i>
+            <div class="flex justify-center mb-4">
+                <svg class="w-6 h-6 sm:w-8 sm:h-8 lg:w-8 lg:h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="office-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#830eae;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#fe952d;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M3 21h18M5 21V7l8-4v18M19 21V10l-6-3M9 9h.01M9 12h.01M9 15h.01M9 18h.01" stroke="url(#office-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </div>
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Location</h3>
             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base"><?= nl2br(CONTACT_ADDRESS_2); ?></p>
         </div>
         
         <div class="text-center p-6 lg:p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
-            <i class="fas fa-envelope text-2xl sm:text-3xl lg:text-4xl text-gray-600 dark:text-gray-400 mb-4"></i>
+            <div class="flex justify-center mb-4">
+                <svg class="w-6 h-6 sm:w-8 sm:h-8 lg:w-8 lg:h-8" viewBox="0 0 256 193" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
+                    <path d="M58.182 192.05V93.14L27.507 65.077 0 49.504v125.091c0 9.658 7.825 17.455 17.455 17.455h40.727Z" fill="#4285F4"/>
+                    <path d="M197.818 192.05h40.727c9.659 0 17.455-7.826 17.455-17.455V49.504l-31.156 17.837-27.026 25.798v98.91Z" fill="#34A853"/>
+                    <path d="m58.182 93.14-4.174-38.647 4.174-36.989L128 69.868l69.818-52.364 4.669 34.992-4.669 40.644L128 145.504z" fill="#EA4335"/>
+                    <path d="M197.818 17.504V93.14L256 49.504V26.231c0-21.585-24.64-33.89-41.89-20.945l-16.292 12.218Z" fill="#FBBC04"/>
+                    <path d="m0 49.504 26.759 20.07L58.182 93.14V17.504L41.89 5.286C24.61-7.66 0 4.646 0 26.23v23.273Z" fill="#C5221F"/>
+                </svg>
+            </div>
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Email</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                Drop me a line at
+            </p>
             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                 <a class="hover:underline brand-text" href='mailto:<?= CONTACT_EMAIL; ?>'><?= CONTACT_EMAIL; ?></a>
             </p>
         </div>
 
         <div class="text-center p-6 lg:p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300 md:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Social Media</h3>
             <div class="flex justify-center space-x-3 lg:space-x-4 mb-4">
                 <!-- LinkedIn -->
                 <a target="_blank" href="<?= SOCIAL_LINKEDIN; ?>" class="w-6 h-6 sm:w-8 sm:h-8 lg:w-8 lg:h-8 hover:scale-110 transition-transform duration-300" title="LinkedIn">
@@ -85,7 +105,7 @@ require_once __DIR__ . '/../partials/header.php';
                     </svg>
                 </a>
             </div>
-
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Social Links</h3>
             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                 Interested in collaborating?<br/>
                 <a class="hover:underline brand-text" href="mailto:<?= CONTACT_EMAIL; ?>">Let's talk!</a>
