@@ -74,34 +74,41 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
     
     <h1 class="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold py-4 sm:py-6 lg:py-8 px-4 text-gray-900 dark:text-white">About Me</h1>
 
-    <div class="flex flex-col lg:flex-row card-bg-radial rounded-xl p-4 sm:p-6 lg:p-8 mb-6 gap-6" data-aos="zoom-in">
+    <div class="rounded-xl p-4 sm:p-6 lg:p-8 mb-6 relative min-h-[600px] lg:min-h-[700px] text-white" data-aos="zoom-in">
 
-        <div class="w-full lg:w-1/3 flex flex-col gap-4 sm:gap-6 text-left">
-            <span class="text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg font-semibold">
+        <!-- div with portrait background -->
+        <div class="hidden lg:block absolute portrait inset-0 bg-cover bg-center rounded-xl"></div>
+        
+        <!-- Content container -->
+        <div class="relative z-10 flex flex-col lg:flex-row gap-6">
+            
+            <!-- Left Column: Biography, Contact, Services -->
+            <div class="w-full lg:w-1/3 flex flex-col gap-4 sm:gap-6 text-left">
+            <span class="text-sm sm:text-base lg:text-lg font-semibold">
                 <i class="fa fa-user text-cyan-500"></i>
                 Biography
                 <hr class="mt-1">
             </span>
 
-            <p class="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300">
+            <p class="text-sm sm:text-base lg:text-lg">
                 Software engineer and fullstack developer with a Master's in Computing from the University of Huddersfield. 
-                Co-founder of <a href='https://www.cosmokode.com' target='_blank' class='hover:underline brand-text'>Cosmokode Ltd</a>, 
-                specializing in web development, AI/ML solutions, and research-driven innovation.
+                Co-founder of <a href='https://www.cosmokode.com' target='_blank' class='hover:underline text-cyan-300'>Cosmokode Ltd</a>,
+                &nbsp;specializing in web development, AI/ML solutions, and research-driven innovation.
             </p>
 
-            <span class="text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg font-semibold text-right">
+            <span class="text-sm sm:text-base lg:text-lg font-semibold text-right">
                 <i class="fa fa-envelope text-blue-500"></i>
                 Contact
                 <hr class="mt-1">
             </span>
 
-            <div class="about-contact text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300">
+            <div class="about-contact text-sm sm:text-base lg:text-lg">
                 <p>
                     Huddersfield, UK
                 </p>
 
                 <p>
-                    <a href="mailto:gulgermallik@gmail.com" class="hover:underline brand-text">gulgermallik@gmail.com</a>
+                    <a href="mailto:gulgermallik@gmail.com" class="hover:underline text-cyan-300">gulgermallik@gmail.com</a>
                 </p>
 
             </div>
@@ -126,26 +133,24 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 </p>
             </div> -->
 
-            <span class="text-gray-500 text-md xl:text-lg font-semibold">
+            <span class="text-md xl:text-lg font-semibold">
                 <i class="fa fa-gears text-orange-500"></i>
                 Services
                 <hr>
             </span>
 
-            <p class="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p class="text-sm sm:text-base lg:text-lg leading-relaxed">
                 Web Development <br/>
                 AI &amp; Machine Learning <br/>
                 Research &amp; Development
             </p>
         </div>
 
-        <div class="hidden lg:flex lg:w-1/3 items-center justify-center relative overflow-hidden rounded-xl shadow-md">
-            <img src="<?= url('assets/images/about-me.png'); ?>" 
-            alt="Gulger Mallik in graduation gown" 
-            class="w-full h-full object-cover object-center opacity-90">
-        </div>
+        <!-- Middle Column: Empty space for background image visibility -->
+        <div class="hidden lg:block lg:w-1/3"></div>
 
-        <div class="flex flex-col w-2/2 lg:w-1/3 gap-6 p-4 text-right">
+        <!-- Right Column: Credibility, Technical Skills -->
+        <div class="w-full lg:w-1/3 flex flex-col gap-6 p-4 text-right">
             <span class="text-gray-500 text-md xl:text-lg font-semibold">
                 <i class="fa fa-clock text-green-500"></i>
                 Credibility
@@ -235,6 +240,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
         </div>
     </div>
 
+        </div>
     <div class="flex flex-col justify-center py-8">
         
         <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Showcase </h2>
@@ -567,7 +573,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
     </div>
 
     <!-- Latest Work Section - Separated for visual distinction -->
-    <div class="card-bg-linear rounded-xl p-6 xl:p-10 mb-8 shadow-lg">
+    <div class="rounded-xl py-6 xl:py-10 mb-8">
         
         <div class="flex items-center justify-between mb-6 xl:mb-8 border-b border-gray-300 dark:border-gray-700 pb-4">
             <h2 class="text-2xl xl:text-4xl font-semibold text-gray-900 dark:text-white" data-aos="fade-right">
@@ -605,9 +611,9 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
     <?php if (count($stories) > 0) : ?>
 
     <!-- Latest Stories Section -->
-    <div class="relative overflow-hidden rounded-xl mb-8">
+    <div class="card-bg-linear relative overflow-hidden rounded-xl mb-8">
         <!-- Background gradient overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 opacity-50"></div>
+        <!-- <div class="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 opacity-50"></div> -->
         
         <div class="relative z-10 p-6 xl:p-10">
             <div class="flex items-center justify-between mb-6 xl:mb-8 border-b border-cyan-200 dark:border-gray-700 pb-4">
