@@ -17,47 +17,66 @@ require_once __DIR__ . '/../../partials/admin/header.php';
 require_once __DIR__ . '/../../partials/admin/side-nav.php';
 ?>
 
-<div class="space-y-6">
-    <!-- Stats Cards -->
+<div class="space-y-8">
+    <!-- Stats Cards - Material Design -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <div class="flex items-center">
-                <div class="flex-shrink-0">
-                    <i class="fas fa-blog text-3xl text-blue-600"></i>
+        <!-- Blogs Card -->
+        <div class="material-card bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl shadow-xl p-6 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full"></div>
+            <div class="relative">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                        <i class="fas fa-blog text-3xl"></i>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-5xl font-bold"><?php echo $blogCount; ?></p>
+                    </div>
                 </div>
-                <div class="ml-5 w-0 flex-1">
-                    <dl>
-                        <dt class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">Total Blogs</dt>
-                        <dd class="text-lg font-medium text-gray-900 dark:text-white"><?php echo $blogCount; ?></dd>
-                    </dl>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <div class="flex items-center">
-                <div class="flex-shrink-0">
-                    <i class="fas fa-project-diagram text-3xl text-green-600"></i>
-                </div>
-                <div class="ml-5 w-0 flex-1">
-                    <dl>
-                        <dt class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">Total Projects</dt>
-                        <dd class="text-lg font-medium text-gray-900 dark:text-white"><?php echo $projectCount; ?></dd>
-                    </dl>
+                <p class="text-blue-100 font-medium">Total Blogs</p>
+                <div class="mt-3 pt-3 border-t border-white/20">
+                    <a href="<?php echo APP_URL; ?>/admin/content?type=blog" class="text-sm text-white hover:text-blue-100 flex items-center">
+                        Manage Blogs <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <div class="flex items-center">
-                <div class="flex-shrink-0">
-                    <i class="fas fa-file-alt text-3xl text-purple-600"></i>
+        <!-- Projects Card -->
+        <div class="material-card bg-gradient-to-br from-green-500 to-green-600 rounded-2xl shadow-xl p-6 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full"></div>
+            <div class="relative">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                        <i class="fas fa-project-diagram text-3xl"></i>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-5xl font-bold"><?php echo $projectCount; ?></p>
+                    </div>
                 </div>
-                <div class="ml-5 w-0 flex-1">
-                    <dl>
-                        <dt class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">Total Content</dt>
-                        <dd class="text-lg font-medium text-gray-900 dark:text-white"><?php echo $blogCount + $projectCount; ?></dd>
-                    </dl>
+                <p class="text-green-100 font-medium">Total Projects</p>
+                <div class="mt-3 pt-3 border-t border-white/20">
+                    <a href="<?php echo APP_URL; ?>/admin/content?type=project" class="text-sm text-white hover:text-green-100 flex items-center">
+                        Manage Projects <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Content Card -->
+        <div class="material-card bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl shadow-xl p-6 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full"></div>
+            <div class="relative">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                        <i class="fas fa-file-alt text-3xl"></i>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-5xl font-bold"><?php echo $blogCount + $projectCount; ?></p>
+                    </div>
+                </div>
+                <p class="text-purple-100 font-medium">Total Content</p>
+                <div class="mt-3 pt-3 border-t border-white/20">
+                    <span class="text-sm text-purple-100">Blogs + Projects</span>
                 </div>
             </div>
         </div>
@@ -89,7 +108,7 @@ require_once __DIR__ . '/../../partials/admin/side-nav.php';
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <a href="<?php echo APP_URL; ?>/admin/<?php echo $item['type'] === 'blog' ? 'blogs' : 'projects'; ?>?action=edit&id=<?php echo $item['project_id']; ?>" 
+                                <a href="<?php echo APP_URL; ?>/admin/content?action=edit&id=<?php echo $item['blog_id']; ?>" 
                                    class="text-blue-600 hover:text-blue-800 text-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
@@ -105,12 +124,12 @@ require_once __DIR__ . '/../../partials/admin/side-nav.php';
     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Quick Actions</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <a href="<?php echo APP_URL; ?>/admin/blogs?action=add" 
+            <a href="<?php echo APP_URL; ?>/admin/content?action=add" 
                class="flex items-center p-4 bg-blue-50 dark:bg-blue-900 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors">
                 <i class="fas fa-plus text-blue-600 mr-3"></i>
                 <span class="text-blue-600 dark:text-blue-300 font-medium">Add New Blog</span>
             </a>
-            <a href="<?php echo APP_URL; ?>/admin/projects?action=add" 
+            <a href="<?php echo APP_URL; ?>/admin/content?action=add" 
                class="flex items-center p-4 bg-green-50 dark:bg-green-900 rounded-lg hover:bg-green-100 dark:hover:bg-green-800 transition-colors">
                 <i class="fas fa-plus text-green-600 mr-3"></i>
                 <span class="text-green-600 dark:text-green-300 font-medium">Add New Project</span>
