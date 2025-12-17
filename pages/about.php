@@ -74,7 +74,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
     
     <h1 class="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold py-4 sm:py-6 lg:py-8 px-4 text-gray-900 dark:text-white">About Me</h1>
 
-    <div class="rounded-xl p-4 sm:p-6 lg:p-8 mb-6 relative min-h-[600px] lg:min-h-[700px] text-white" data-aos="zoom-in">
+    <div class="rounded-xl bg-black p-4 sm:p-6 lg:p-8 mb-6 relative min-h-[600px] lg:min-h-[700px] text-white" data-aos="zoom-in">
 
         <!-- div with portrait background -->
         <div class="hidden lg:block absolute portrait inset-0 bg-cover bg-center rounded-xl"></div>
@@ -278,7 +278,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
         </div>
     </div>
     
-    <div class="card-bg-radial rounded-xl p-4 xl:p-8 mb-8 shadow-lg" id='edu-experience'>
+    <div class="dark:text-white rounded-xl p-4 xl:p-8 mb-8 shadow-lg" id='edu-experience'>
 
         <h2 class="text-center text-3xl xl:text-5xl p-4 xl:p-8 font-semibold" data-aos="fade-top">Education &amp; Experience</h2>
 
