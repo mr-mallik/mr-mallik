@@ -13,14 +13,7 @@ require_once __DIR__ . '/../partials/header.php';
 ?>
 
 <!-- Banner Section -->
-<div class="relative h-[300px] w-full overflow-hidden personal-banner-image">
-    <!-- <img src="<?php url('assets/images/article-footer-light.png'); ?>" alt="Contact Banner" 
-         class="absolute inset-0 w-full h-full object-contain"> -->
-    
-    <!-- Responsive overlay for readability -->
-    <!-- <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50 dark:from-black/60 dark:via-black/70 dark:to-black/80"></div> -->
-
-</div>
+<div class="relative min-h-[300px] h-full overflow-hidden personal-banner-image"></div>
 
 <!-- Contact Info Section -->
 <section class="container mx-auto py-4 lg:py-8 px-4 sm:px-6 lg:px-8">
