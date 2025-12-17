@@ -176,27 +176,34 @@ html:not(.dark) body::after {
 
 /* Personal banner image classes */
 .personal-banner-image {
-    background-size: cover;
-    background-position: center;
+    background-image: url('../images/article-footer-light.png');
+    background-size: contain;
+    background-position: top center;
     background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+    min-height: 300px;
 }
 
 /* Responsive banner image handling */
 @media (max-width: 640px) {
     .personal-banner-image {
-        background-position: center top;
+        background-position: top center;
+        min-height: 250px;
     }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
     .personal-banner-image {
-        background-position: center center;
+        background-position: top center;
+        min-height: 300px;
     }
 }
 
 @media (min-width: 1025px) {
     .personal-banner-image {
-        background-position: center bottom;
+        background-position: top center;
+        min-height: 400px;
     }
 }
 
