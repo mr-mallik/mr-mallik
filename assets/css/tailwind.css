@@ -230,3 +230,72 @@ html {
 .signature {
     font-family: var(--font-brand);
 }
+
+/* Director Page Styles */
+.director-page {
+    font-family: 'Inter', sans-serif;
+}
+
+.director-page h1,
+.director-page h2,
+.director-page h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+.profile-image {
+    box-shadow: 
+        0 10px 30px rgb(0 0 0 / 0.1),
+        0 0 0 1px rgb(0 0 0 / 0.05);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: translateY(-4px);
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #000;
+    color: #000;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+}
+
+.social-link:hover {
+    background: #000;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+}
+
+.director-signature {
+    font-family: 'Brush Script MT', cursive;
+    font-style: italic;
+    opacity: 0.8;
+    filter: grayscale(100%);
+}
+
+.content-divider {
+    height: 2px;
+    background: linear-gradient(to right, transparent, #000, transparent);
+    opacity: 0.2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .director-signature {
+        font-size: 1.5rem;
+    }
+    
+    .social-link {
+        width: 36px;
+        height: 36px;
+    }
+}

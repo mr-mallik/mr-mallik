@@ -92,8 +92,7 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
 
             <p class="text-sm sm:text-base lg:text-lg">
                 Software engineer and fullstack developer with a Master's in Computing from the University of Huddersfield. 
-                Co-founder of <a href='https://www.cosmokode.com' target='_blank' class='hover:underline text-cyan-300'>Cosmokode Ltd</a>,
-                &nbsp;specializing in web development, AI/ML solutions, and research-driven innovation.
+                Co-founder of <a href='https://www.cosmokode.com' target='_blank' class='hover:underline text-cyan-300'>Cosmokode Ltd</a>, specializing in web development, AI/ML solutions, and research-driven innovation.
             </p>
 
             <span class="text-sm sm:text-base lg:text-lg font-semibold text-right">
