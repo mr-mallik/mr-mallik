@@ -13,6 +13,8 @@ RewriteRule ^projects?/?$ pages/project.php [L,QSA]
 RewriteRule ^contact?/?$ pages/contact.php [L,QSA]
 RewriteRule ^about?/?$ pages/about.php [L,QSA]
 RewriteRule ^blogs?/?$ pages/blogs.php [L,QSA]
+# director page
+RewriteRule ^director?/?$ pages/director.php [L,QSA]
 
 # Admin module
 RewriteRule ^admin/?$ pages/admin/dashboard.php [L,QSA]
