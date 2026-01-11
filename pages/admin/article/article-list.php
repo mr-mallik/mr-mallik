@@ -37,9 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     deleteFile($filePath);
                 }
                 
-                redirect("/admin/article", "success", ucfirst($content['type']) . " deleted successfully!");
+                redirect($dispUrl, "success", ucfirst($content['type']) . " deleted successfully!");
             } catch (Exception $e) {
-                redirect("/admin/article", "error", "Error: " . $e->getMessage());
+                redirect($dispUrl, "error", "Error: " . $e->getMessage());
             }
         }
     }
@@ -79,7 +79,7 @@ require_once __DIR__ . '/../../../partials/admin/side-nav.php';
             <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Manage Content</h2>
             <p class="text-gray-600 dark:text-gray-400 mt-1">Manage all your blogs and projects in one place</p>
         </div>
-        <a href="<?php echo APP_URL; ?>/admin/content?action=add" 
+        <a href="<?php echo $editUrl; ?>" 
            class="flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 ripple">
             <i class="fas fa-plus mr-2"></i>Add New Content
         </a>
@@ -194,12 +194,12 @@ require_once __DIR__ . '/../../../partials/admin/side-nav.php';
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                 <div class="flex items-center space-x-2">
-                                    <a href="<?php echo $editUrl; ?>?action=edit&id=<?php echo $item['blog_id']; ?>" 
+                                    <a href="<?php echo $editUrl; ?>?id=<?php echo $item['blog_id']; ?>" 
                                        class="w-9 h-9 flex items-center justify-center bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-all"
                                        title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="<?php echo $editUrl; ?>?action=details&id=<?php echo $item['blog_id']; ?>" 
+                                    <a href="<?php echo APP_URL; ?>/admin/content-details?id=<?php echo $item['blog_id']; ?>" 
                                        class="w-9 h-9 flex items-center justify-center bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-all"
                                        title="Manage Details">
                                         <i class="fas fa-list"></i>
