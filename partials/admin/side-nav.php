@@ -8,6 +8,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 $currentUri = $_SERVER['REQUEST_URI'];
 $adminPages = [
     'dashboard' => ['url' => '/admin', 'icon' => 'fas fa-tachometer-alt', 'title' => 'Dashboard'],
+    'article' => ['url' => '/admin/article-list', 'icon' => 'fas fa-th-large', 'title' => 'Articles'],
     'content' => ['url' => '/admin/content', 'icon' => 'fas fa-th-large', 'title' => 'Content'],
     'cookie-consent' => ['url' => '/admin/cookie-consent', 'icon' => 'fas fa-cookie-bite', 'title' => 'Cookie Consent'],
     'profile' => ['url' => '/admin/profile', 'icon' => 'fas fa-user', 'title' => 'Profile'],

@@ -1,0 +1,5 @@
+#!/bin/bash
+# Generate .htaccess file
+# Usage: ./commands/generate_htaccess or bash commands/generate_htaccess
+
+php "$(dirname "$0")/generate_htaccess.php"

@@ -267,7 +267,7 @@ else {
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         
         <!-- Tailwind CSS -->
-        <link rel="stylesheet" href="<?= url('assets/css/style.css') ?>">
+        <link rel="stylesheet" href="<?= url('assets/css/styles.css') ?>">
         
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

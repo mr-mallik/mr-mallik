@@ -75,7 +75,7 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 ### Tailwind CSS Build
 **Required after any Tailwind class changes**:
 ```bash
-npx tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/style.css --minify
+npx tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/styles.css --minify
 ```
 
 Config is in `tailwind.config.js` with `darkMode: 'class'` and content scanning `./**/*.php` and `./**/*.html`.
