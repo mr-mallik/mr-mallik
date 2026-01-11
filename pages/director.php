@@ -280,7 +280,7 @@ else {
                     Gulger Mallik
                 </h1>
                 <p class="text-lg md:text-xl text-gray-800 font-medium">
-                    Director & Co-founder, <span class="font-semibold">Cosmokode Ltd</span>
+                    Co-founder & Director, <span class="font-semibold">Cosmokode Ltd</span>
                 </p>
             </header>
             
