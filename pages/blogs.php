@@ -3,9 +3,10 @@ require_once __DIR__ . '/../includes/common.php'; // Common functions and config
 
 // SEO configuration for the blogs page
 $SEO = [
-    'title' => 'Blog & Stories | Gulger Mallik | Software Engineering Journey | Mr Mallik',
-    'description' => 'Follow Gulger Mallik\'s software engineering journey through insightful blogs and stories. Learn about experiences at University of Huddersfield, CosmoKode, and the tech industry.',
+    'title' => 'Blog & Stories | Gulger Mallik | Mr Mallik',
+    'description' => 'Insightful blogs about software engineering, tech experiences at University of Huddersfield, CosmoKode, and the industry.',
     'keywords' => 'gulger mallik blog, mr mallik stories, software engineering blog, tech journey, university huddersfield experience, cosmokode stories, developer blog uk',
+    'image' => url('assets/images/og-image.png', false),
     'url' => url('blogs', false),
 ];
 

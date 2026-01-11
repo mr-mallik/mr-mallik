@@ -3,10 +3,10 @@ require_once __DIR__ . '/includes/common.php'; # config file
 
 // SEO configuration for the homepage
 $SEO = [
-    'title' => 'Gulger Mallik | Software Engineer & Full Stack Developer | Mr Mallik',
-    'description' => 'Gulger Mallik (Mr Mallik) is a Software Engineer and Full Stack Developer with expertise in web development, mobile apps, AI/ML. Based in UK, worked with University of Huddersfield, Crowther Accountants, Tierrasphere, CosmoKode.',
+    'title' => 'Gulger Mallik | Software Engineer | Mr Mallik',
+    'description' => 'Software Engineer & Full Stack Developer in UK. Expertise in web development, mobile apps, and AI/ML solutions.',
     'keywords' => 'gulger mallik, mr mallik, gulger mallik software engineer, mr mallik developer, full stack developer uk, web development, mobile development, ai machine learning, university of huddersfield, crowther accountants, tierrasphere, cosmokode, team inertia technologies, trellissoft',
-    'image' => url('assets/images/gulger-mallik@1x1.png', false),
+    'image' => url('assets/images/og-image.png', false),
     'url' => url('', false),
 ];
 
