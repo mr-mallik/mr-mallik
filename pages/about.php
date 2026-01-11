@@ -2,10 +2,10 @@
 require_once __DIR__ . '/../includes/common.php'; # config file
 // META TAGS
 $SEO = [
-    'title' => 'About Gulger Mallik | Software Engineer at University of Huddersfield | Mr Mallik',
-    'description' => 'Learn about Gulger Mallik (Mr Mallik), Software Engineer and Full Stack Developer with Master\'s from University of Huddersfield. Co-founder of Cosmokode, worked with Team Inertia Technologies, Trellissoft, Crowther Accountants, and Tierrasphere.',
+    'title' => 'About Gulger Mallik | Software Engineer | Mr Mallik',
+    'description' => 'Software Engineer & Full Stack Developer. Master\'s from University of Huddersfield. Co-founder of Cosmokode.',
     'keywords' => 'gulger mallik about, mr mallik biography, software engineer uk, university of huddersfield graduate, cosmokode co-founder, team inertia technologies, trellissoft inc, crowther accountants developer, tierrasphere engineer, master computing huddersfield, fullstack developer england',
-    'image' => url('assets/images/gulger-mallik@1x1.jpg', false),
+    'image' => url('assets/images/og-image.png', false),
     'url' => url('about', false),
 ];
 

@@ -4,8 +4,9 @@ require_once '../includes/common.php';
 $page_title = "Privacy Policy - Cookie Information";
 $SEO = [
     'title' => 'Privacy Policy & Cookie Information | Gulger Mallik',
-    'description' => 'Learn about how we collect, use, and protect your personal data and information about our cookie usage.',
+    'description' => 'Learn how we collect, use, and protect your personal data. Complete information about our cookie usage and GDPR compliance.',
     'keywords' => 'privacy policy, cookie policy, data protection, GDPR, gulger mallik, mr mallik',
+    'image' => url('assets/images/og-image.png', false),
     'url' => url('privacy-policy', false),
 ];
 

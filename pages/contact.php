@@ -3,9 +3,10 @@ require_once __DIR__ . '/../includes/common.php'; // Common functions and config
 
 // SEO configuration for the contact page
 $SEO = [
-    'title' => 'Contact Gulger Mallik | Software Engineer & Developer | Mr Mallik',
-    'description' => 'Get in touch with Gulger Mallik (Mr Mallik) for software development projects, collaborations, or consulting. Co-founder of CosmoKode, experienced with web development and AI/ML solutions.',
+    'title' => 'Contact Gulger Mallik | Software Engineer | Mr Mallik',
+    'description' => 'Get in touch for software development projects, collaborations, or consulting. Co-founder of CosmoKode with web & AI/ML expertise.',
     'keywords' => 'contact gulger mallik, mr mallik contact, hire software engineer uk, cosmokode contact, gulger mallik email, software development consultant',
+    'image' => url('assets/images/og-image.png', false),
     'url' => url('contact', false),
 ];
 

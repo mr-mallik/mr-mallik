@@ -2,9 +2,9 @@
 require_once __DIR__ . '/../includes/common.php'; # config file
 $defaultSeo = [
     'title' => 'Gulger Mallik - Co-founder & Director at Cosmokode Ltd',
-    'description' => 'Gulger Mallik is Director and Co-founder of Cosmokode Ltd with over half a decade of industry experience in software engineering, full-stack development, and AI/ML implementations. Leading innovative tech solutions in the UK.',
+    'description' => 'Director & Co-founder of Cosmokode Ltd with 5+ years in software engineering, full-stack development, and AI/ML. Leading UK tech solutions.',
     'keywords' => 'gulger mallik, mr mallik, director cosmokode, cosmokode ltd, software engineering director, full stack developer, tech entrepreneur, UK software development',
-    'image' => url('assets/images/gulger-mallik@1x1.png', false),
+    'image' => url('assets/images/og-image.png', false),
     'url' => url('director', false),
 ];
 

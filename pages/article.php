@@ -29,7 +29,7 @@ $SEO = [
     'title' =>  ($type === 'project' ? 'Project: ' : 'Blog: ') . htmlspecialchars($article['title']) . ' | Gulger Mallik | Mr Mallik',
     'description' => htmlspecialchars($article['seo_desc']),
     'keywords' => $article['seo_keyword'] ? htmlspecialchars($article['seo_keyword']) : 'gulger mallik, mr mallik, gulger, mallik, software engineer, fullstack developer',
-    'image' => !empty($article['image']) ? url($article['image'], false) : url('assets/images/article-footer-light.png', false),
+    'image' => !empty($article['image']) ? url($article['image'], false) : url('assets/images/og-image.png', false),
     'image_alt' => htmlspecialchars($article['title']),
     'url' => $page_url,
 ];
