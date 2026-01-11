@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../includes/common.php'; # config file
 $defaultSeo = [
-    'title' => 'Gulger Mallik - Director & Co-founder at Cosmokode Ltd',
+    'title' => 'Gulger Mallik - Co-founder & Director at Cosmokode Ltd',
     'description' => 'Gulger Mallik is Director and Co-founder of Cosmokode Ltd with over half a decade of industry experience in software engineering, full-stack development, and AI/ML implementations. Leading innovative tech solutions in the UK.',
     'keywords' => 'gulger mallik, mr mallik, director cosmokode, cosmokode ltd, software engineering director, full stack developer, tech entrepreneur, UK software development',
     'image' => url('assets/images/gulger-mallik@1x1.png', false),
@@ -164,13 +164,13 @@ else {
                     "@type": "Organization",
                     "name": "CosmoKode Ltd",
                     "url": "https://cosmokode.com/",
-                    "description": "Director & Co-founder",
+                    "description": "Co-founder & Director",
                     "foundingDate": "2018"
                 }
             ],
             "hasOccupation": {
                 "@type": "Occupation",
-                "name": "Director & Co-founder",
+                "name": "Co-founder & Director",
                 "occupationalCategory": "Management and Leadership in Technology",
                 "skills": ["Software Engineering", "Full Stack Development", "AI/ML", "Technology Leadership", "Business Strategy", "Team Management"],
                 "yearsOfExperience": "6+"
@@ -226,7 +226,7 @@ else {
             "givenName": "Gulger",
             "familyName": "Mallik",
             "alternateName": "Mr Mallik",
-            "jobTitle": ["Director & Co-founder at Cosmokode Ltd", "Software Engineer", "Researcher", "Full Stack Developer"],
+            "jobTitle": ["Co-founder & Director at Cosmokode Ltd", "Software Engineer", "Researcher", "Full Stack Developer"],
             "affiliation": [
                 {
                     "@type": "CollegeOrUniversity",
@@ -347,7 +347,7 @@ else {
                         <p class="text-xs text-gray-600 mb-1 font-medium">Sincerely,</p>
                         <div class="signature text-4xl sm:text-5xl my-2">mr mallik</div>
                         <p class="text-xs text-gray-700 font-semibold mt-0.5">Gulger Mallik</p>
-                        <p class="text-xs text-gray-600">Director & Co-founder, Cosmokode Ltd</p>
+                        <p class="text-xs text-gray-600">Co-founder & Director, Cosmokode Ltd</p>
                     </div>
                     
                     <!-- Social Links (Bottom Right) -->
