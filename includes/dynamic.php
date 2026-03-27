@@ -2,6 +2,33 @@
 
 $CONN = DBConnect(DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD);
 
+/**
+ * Simple file-based cache for CMS One API responses.
+ * Pass $value to write, omit $value (null) to read.
+ * Returns null on cache miss.
+ */
+function _cmsCache($key, $value = null, $ttl = 300)
+{
+    $file = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'mrmallik_' . $key . '.cache';
+
+    // Write
+    if ($value !== null) {
+        @file_put_contents($file, json_encode(['e' => time() + $ttl, 'v' => $value]), LOCK_EX);
+        return $value;
+    }
+
+    // Read
+    if (!file_exists($file)) return null;
+    $raw = @file_get_contents($file);
+    if ($raw === false) return null;
+    $data = json_decode($raw, true);
+    if (!$data || $data['e'] < time()) {
+        @unlink($file);
+        return null;
+    }
+    return $data['v'];
+}
+
 function blogList($cond="", $limit=null)
 {
     global $CONN;
@@ -106,6 +133,10 @@ function getResume($cond= '', $order=null, $limit=null)
 
 function cmsoneArticleList($category = null, $tag = null, $limit = 20, $page = 1)
 {
+    $cacheKey = 'articles_list_' . md5($category . $tag . $limit . $page);
+    $cached   = _cmsCache($cacheKey);
+    if ($cached !== null) return $cached;
+
     $api = new API(CMS_ONE_API_URL);
     $api->setBearerToken(CMS_ONE_API_KEY);
 
@@ -123,11 +154,16 @@ function cmsoneArticleList($category = null, $tag = null, $limit = 20, $page = 1
         return [];
     }
 
+    _cmsCache($cacheKey, $response['data'], 300);
     return $response['data'];
 }
 
 function cmsoneArticleGet($slug)
 {
+    $cacheKey = 'article_' . md5($slug);
+    $cached   = _cmsCache($cacheKey);
+    if ($cached !== null) return $cached;
+
     $api = new API(CMS_ONE_API_URL);
     $api->setBearerToken(CMS_ONE_API_KEY);
 
@@ -137,6 +173,7 @@ function cmsoneArticleGet($slug)
         return null;
     }
 
+    _cmsCache($cacheKey, $response['data'], 600);
     return $response['data'];
 }
 

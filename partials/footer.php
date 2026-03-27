@@ -28,6 +28,24 @@
     <!-- body ends -->
     
     <!-- Scripts -->
+    <script>
+        // Hide page loader once all resources (including images) are fully loaded
+        (function () {
+            function dismissLoader() {
+                var loader = document.getElementById('page-loader');
+                if (!loader) return;
+                loader.classList.add('loader-hidden');
+                setTimeout(function () { loader.style.display = 'none'; }, 420);
+            }
+            if (document.readyState === 'complete') {
+                dismissLoader();
+            } else {
+                window.addEventListener('load', dismissLoader);
+                // Fallback: dismiss after 8s even if some resources stall
+                setTimeout(dismissLoader, 8000);
+            }
+        })();
+    </script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="<?= url('assets/js/app.js'); ?>"></script>
     <script>

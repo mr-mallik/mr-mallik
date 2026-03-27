@@ -42,6 +42,8 @@ else {
         <!-- Preconnect for performance -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+        <link rel="preconnect" href="https://res.cloudinary.com">
+        <link rel="dns-prefetch" href="https://res.cloudinary.com">
         
         <!-- Favicon and App Icons -->
         <link rel="icon" type="image/x-icon" href="<?= url('favicon.ico', false) ?>" />
@@ -299,6 +301,15 @@ else {
         </script>
     </head>
     <body class="bg-gray-100 dark:bg-black-base dark:text-gray-200">
+
+    <!-- Global Page Loader -->
+    <div id="page-loader" role="status" aria-label="Loading">
+        <img src="<?= url('assets/images/logo/mallik_logo@0.25x.png', false) ?>"
+             alt="Loading..."
+             class="w-16 h-16 logo-spin invert dark:invert-0">
+        <span class="text-xs text-gray-400 dark:text-gray-500 tracking-widest uppercase">Loading&hellip;</span>
+    </div>
+
     <div id="outer-container" class="relative z-10 mx-auto container max-w-7xl">
         <header class="py-4 sm:py-6 lg:py-8 px-4 sm:px-6 lg:px-10 text-center">
             <nav class="relative">
