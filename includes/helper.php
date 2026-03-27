@@ -87,34 +87,44 @@ function image_src($src, $print=true, $default = 'assets/images/default.jpg')
     }
 }
 
-/**
- * Check if user has given consent for specific cookie category
- * @param string $category The cookie category to check (analytics, marketing, functional)
- * @return bool True if consent given, false otherwise
- */
-function has_cookie_consent($category = 'analytics') {
-    require_once __DIR__ . '/cookies/CookieConsent.php';
-    
-    try {
-        $cookieConsent = new CookieConsent();
-        return $cookieConsent->isCategoryAllowed($category);
-    } catch (Exception $e) {
-        // If there's an error, default to no consent
-        return false;
-    }
+function siteMenu()
+{
+    $menu = [
+        '' => 'Home',
+        'about' => 'About',
+        'projects' => 'Work',
+        'blogs' => 'Stories',
+        'contact' => 'Contact',
+    ];
+
+    return $menu;
 }
 
-/**
- * Get cookie consent preferences
- * @return array|null Consent preferences or null if not set
- */
-function get_cookie_consent_preferences() {
-    require_once __DIR__ . '/cookies/CookieConsent.php';
+function dateDiff($date1, $date2)
+{
+    $diff = abs(strtotime($date2) - strtotime($date1));
+
+    $years = floor($diff / (365*60*60*24));
+    $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+    $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24) / (60*60*24));
+
+    return [
+        'years' => $years,
+        'months' => $months,
+        'days' => $days,
+    ];
+}
+
+function cmsone_imagehandler($src, $print=true, $default = 'assets/images/default.jpg')
+{
+    $url = CMS_ONE_URL . '/' . $src;
     
-    try {
-        $cookieConsent = new CookieConsent();
-        return $cookieConsent->getConsentPreferences();
-    } catch (Exception $e) {
-        return null;
+    $headers = @get_headers($url);
+    $exists = $headers && strpos($headers[0], '200') !== false;
+    
+    if ($exists) {
+        return $url;
+    } else {
+        return url($default, $print);
     }
 }

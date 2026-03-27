@@ -379,10 +379,3 @@ else {
 
         <main>
         <!-- body starts here -->
-        
-        <?php 
-        // Include cookie consent banner - only on frontend pages
-        if (!isset($is_admin_page) || !$is_admin_page) {
-            include_once __DIR__ . '/cookie-consent.php';
-        }
-        ?>

@@ -2,19 +2,6 @@
 
 $CONN = DBConnect(DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD);
 
-function siteMenu()
-{
-    $menu = [
-        '' => 'Home',
-        'about' => 'About',
-        'projects' => 'Work',
-        'blogs' => 'Stories',
-        'contact' => 'Contact',
-    ];
-
-    return $menu;
-}
-
 function blogList($cond="", $limit=null)
 {
     global $CONN;
@@ -28,22 +15,6 @@ function blogList($cond="", $limit=null)
     $result = DBQuery($CONN, $sql);
 
     return DBFetchAll($result);
-}
-
-// caluclate years, months, days
-function dateDiff($date1, $date2)
-{
-    $diff = abs(strtotime($date2) - strtotime($date1));
-
-    $years = floor($diff / (365*60*60*24));
-    $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-    $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24) / (60*60*24));
-
-    return [
-        'years' => $years,
-        'months' => $months,
-        'days' => $days,
-    ];
 }
 
 // get skills
@@ -131,6 +102,25 @@ function getResume($cond= '', $order=null, $limit=null)
     $result = DBQuery($CONN, $sql);
 
     return DBFetchAll($result);
+}
+
+function cmsoneArticleList($category = null, $limit = 20, $page = 1)
+{
+    $api = new API(CMS_ONE_API_URL);
+    $api->setBearerToken(CMS_ONE_API_KEY);
+
+    $params = ['page' => $page, 'limit' => $limit];
+    if ($category) {
+        $params['category'] = $category;
+    }
+
+    $response = $api->get('articles', $params);
+
+    if (!$response || empty($response['success']) || empty($response['data'])) {
+        return [];
+    }
+
+    return $response['data'];
 }
 
 function blogGet($type, $slug)

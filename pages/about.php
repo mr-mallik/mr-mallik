@@ -9,7 +9,6 @@ $SEO = [
     'url' => url('about', false),
 ];
 
-
 require_once __DIR__ . '/../partials/header.php'; # config file
 
 $clients = [
@@ -65,8 +64,36 @@ $clients = [
 
 $experience = dateDiff('2019-05-27', date('Y-m-d'));
 
-$projects = blogList("AND type='project' AND status='A'", 4);
-$stories = blogList("AND type='blog' AND status='A'", 4);
+// Single API call to fetch latest articles (projects & blogs)
+$api = new API(CMS_ONE_API_URL);
+$api->setBearerToken(CMS_ONE_API_KEY);
+$articles = $api->get('/articles', [
+    'page' => 1,
+    'limit' => 10,
+    'sort' => 'latest'
+]);
+
+// Separate projects and blogs, limit to 4 each
+$projects = [];
+$stories = [];
+
+if($articles && isset($articles['success']) && $articles['success']) {
+    foreach($articles['data'] ?? [] as $article) {
+        if(isset($article['categories'])) {
+            foreach($article['categories'] as $category) {
+                if($category['slug'] === 'project' && count($projects) < 4) {
+                    $projects[] = $article;
+                } elseif($category['slug'] === 'blog' && count($stories) < 4) {
+                    $stories[] = $article;
+                }
+            }
+        }
+        // Stop once we have 4 of each
+        if(count($projects) >= 4 && count($stories) >= 4) {
+            break;
+        }
+    }
+}
 $skills = getSkills($type=['tech', 'frame', 'db']);
 ?>
 
@@ -576,38 +603,38 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
         
         <div class="flex items-center justify-between mb-6 xl:mb-8 border-b border-gray-300 dark:border-gray-700 pb-4">
             <h2 class="text-2xl xl:text-4xl font-semibold text-gray-900 dark:text-white" data-aos="fade-right">
-                <i class="fa fa-laptop-code text-cyan-500 mr-2"></i>
+                    <i class="fa fa-laptop-code text-cyan-500 mr-2"></i>
                 Latest Work
             </h2>
-            <a href="<?php url('projects'); ?>" class="text-sm xl:text-base font-semibold text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">
-                View all →
-            </a>
-        </div>
+                <a href="<?php url('projects'); ?>" class="text-sm xl:text-base font-semibold text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">
+                    View all →
+                </a>
+            </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-6">
             <?php foreach ($projects as $project) : ?>
                 <div data-aos="fade-up" data-aos-delay="100">
                     <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px] hover:shadow-xl transition-shadow duration-300">
-                        <img src="<?= image_src($project['image']) ?>" 
-                                alt="<?= $project['title'] ?>" 
+                        <img src="<?= $project['featuredImage'] ?? url('assets/projects/default.png', false) ?>" 
+                                    alt="<?= $project['title'] ?>" 
                                 class="h-auto max-w-full rounded-t-lg object-cover w-full">
                         <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($project['title']) ?></h3>
                         
                         <p class="px-4 text-sm text-gray-700 dark:text-gray-300">
-                            <span class=""><?= cutwords($project['short_description']) ?></span>
-                        </p>
+                            <span class=""><?= cutwords($project['excerpt']) ?></span>
+                                </p>
 
                         <a class="p-2 xl:p-4 text-right block mt-1 xl:mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
-                            href="<?php url('projects/'.$project['urlname']); ?>">
+                            href="<?php url('projects/'.$project['slug']); ?>">
                             Read more →
-                        </a>
+                                </a>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
 
-    <?php if (count($stories) > 0) : ?>
+        <?php if (count($stories) > 0) : ?>
 
     <!-- Latest Stories Section -->
     <div class="card-bg-linear relative overflow-hidden rounded-xl mb-8">
@@ -629,19 +656,19 @@ $skills = getSkills($type=['tech', 'frame', 'db']);
                 <?php foreach ($stories as $story) : ?>
                     <div data-aos="fade-up" data-aos-delay="100">
                         <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px] hover:shadow-xl transition-shadow duration-300">
-                            <img src="<?= image_src($story['image'], true, 'assets/stories/default.png') ?>" 
+                            <img src="<?= $story['featuredImage'] ?? url('assets/stories/default.png', false) ?>" 
                                     alt="<?= $story['title'] ?>" 
                                     class="h-auto w-full max-w-[400px] rounded-t-lg object-cover">
                             <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($story['title']) ?></h3>
 
                             <p class="px-4 text-sm text-gray-700 dark:text-gray-300">
-                                <span class=""><?= cutwords($story['short_description']) ?></span>
-                            </p>
+                                <span class=""><?= cutwords($story['excerpt']) ?></span>
+                                </p>
 
                             <a class="p-2 xl:p-4 text-right block mt-1 xl:mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
-                                href="<?php url('blogs/'.$story['urlname']); ?>">
+                                href="<?php url('blogs/'.$story['slug']); ?>">
                                 Read more →
-                            </a>
+                                </a>
                         </div>
                     </div>
                 <?php endforeach; ?>

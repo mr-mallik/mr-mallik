@@ -11,7 +11,7 @@ $SEO = [
 ];
 
 require_once __DIR__ . '/../partials/header.php';
-$projects = blogList("AND type='project' AND status='A'");
+$projects = cmsoneArticleList('project');
 
 // if no projects found, show a message
 if (empty($projects)) {
@@ -19,10 +19,6 @@ if (empty($projects)) {
     require_once __DIR__ . '/../partials/footer.php';
     exit;
 }
-
-// Calculate number of columns based on screen size
-$columns = 4; // Default number of columns
-$projectColumns = array_chunk($projects, ceil(count($projects) / $columns));
 ?>
 
 <section id="projects">
@@ -34,8 +30,8 @@ $projectColumns = array_chunk($projects, ceil(count($projects) / $columns));
                 <div class="w-full" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-bg-radial rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                         <div class="aspect-video overflow-hidden rounded-t-lg">
-                            <img src="<?= url($project['image']) ?>" 
-                                 alt="<?= $project['title'] ?>" 
+                            <img src="<?= htmlspecialchars($project['featuredImage']) ?>" 
+                                 alt="<?= htmlspecialchars($project['featuredImageAlt'] ?: $project['title']) ?>" 
                                  class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4 sm:p-6 flex flex-col flex-grow">
@@ -44,11 +40,11 @@ $projectColumns = array_chunk($projects, ceil(count($projects) / $columns));
                             </h3>
                             
                             <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 flex-grow">
-                                <?= cutwords($project['short_description'], 120) ?>
+                                <?= cutwords($project['excerpt'], 120) ?>
                             </p>
 
                             <a class="text-right text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 font-medium" 
-                               href="<?php url('projects/'.$project['urlname']); ?>">
+                               href="<?= url('projects/'.$project['slug'], false) ?>">
                                Read more →
                             </a>
                         </div>

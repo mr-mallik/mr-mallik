@@ -12,10 +12,7 @@ $SEO = [
 
 require_once __DIR__ . '/../partials/header.php';
 
-$stories = [];
-$columns = 4; // Default number of columns
-$resume = blogList('AND type="blog" AND status="A"');
-$stories = array_merge($stories, $resume);
+$stories = cmsoneArticleList('blog');
 
 // if no stories found, show a message
 if (empty($stories)) {
@@ -23,9 +20,6 @@ if (empty($stories)) {
     require_once __DIR__ . '/../partials/footer.php';
     exit;
 }
-
-// Calculate number of columns based on screen size
-$totalColumns = array_chunk($stories, ceil(count($stories) / $columns));
 ?>
 
 <section id="projects">
@@ -37,8 +31,8 @@ $totalColumns = array_chunk($stories, ceil(count($stories) / $columns));
                 <div class="w-full" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-bg-radial rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                         <div class="aspect-video overflow-hidden rounded-t-lg">
-                            <img src="<?= image_src($story['image'], true, 'assets/stories/default.png') ?>" 
-                                 alt="<?= $story['title'] ?>" 
+                            <img src="<?= htmlspecialchars($story['featuredImage']) ?>" 
+                                 alt="<?= htmlspecialchars($story['featuredImageAlt'] ?: $story['title']) ?>" 
                                  class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-4 sm:p-6 flex flex-col flex-grow">
@@ -47,11 +41,11 @@ $totalColumns = array_chunk($stories, ceil(count($stories) / $columns));
                             </h3>
                             
                             <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 flex-grow">
-                                <?= cutwords($story['short_description'], 120) ?>
+                                <?= cutwords($story['excerpt'], 120) ?>
                             </p>
 
                             <a class="text-right text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 font-medium" 
-                               href="<?php url('blogs/'.$story['urlname']); ?>">
+                               href="<?= url('blogs/'.$story['slug'], false) ?>">
                                Read more →
                             </a>
                         </div>
