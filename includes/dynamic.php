@@ -104,7 +104,7 @@ function getResume($cond= '', $order=null, $limit=null)
     return DBFetchAll($result);
 }
 
-function cmsoneArticleList($category = null, $limit = 20, $page = 1)
+function cmsoneArticleList($category = null, $tag = null, $limit = 20, $page = 1)
 {
     $api = new API(CMS_ONE_API_URL);
     $api->setBearerToken(CMS_ONE_API_KEY);
@@ -113,11 +113,28 @@ function cmsoneArticleList($category = null, $limit = 20, $page = 1)
     if ($category) {
         $params['category'] = $category;
     }
+    if ($tag) {
+        $params['tag'] = $tag;
+    }
 
     $response = $api->get('articles', $params);
 
     if (!$response || empty($response['success']) || empty($response['data'])) {
         return [];
+    }
+
+    return $response['data'];
+}
+
+function cmsoneArticleGet($slug)
+{
+    $api = new API(CMS_ONE_API_URL);
+    $api->setBearerToken(CMS_ONE_API_KEY);
+
+    $response = $api->get('articles/' . rawurlencode($slug));
+
+    if (!$response || empty($response['success']) || empty($response['data'])) {
+        return null;
     }
 
     return $response['data'];

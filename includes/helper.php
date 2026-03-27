@@ -29,7 +29,8 @@ function url($url, $print=true) {
 }
 
 function activeUrl($url) {
-    $parts = explode('/', $_SERVER['REQUEST_URI']);
+    $path  = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $parts = explode('/', $path);
     
     if(APP_ENV == "local") {
         # drop key = 1 and re-index the array
@@ -126,5 +127,148 @@ function cmsone_imagehandler($src, $print=true, $default = 'assets/images/defaul
         return $url;
     } else {
         return url($default, $print);
+    }
+}
+
+/**
+ * Render a Tiptap/ProseMirror JSON content string to HTML.
+ */
+function renderTiptapBlocks($jsonString)
+{
+    if (empty($jsonString)) return '';
+
+    $doc = is_array($jsonString) ? $jsonString : json_decode($jsonString, true);
+    if (json_last_error() !== JSON_ERROR_NONE || empty($doc)) return '';
+
+    return renderTiptapNode($doc);
+}
+
+function renderTiptapNode($node, $unwrapParagraph = false)
+{
+    if (!is_array($node) || !isset($node['type'])) return '';
+
+    $type     = $node['type'];
+    $attrs    = isset($node['attrs'])    ? $node['attrs']    : [];
+    $children = isset($node['content']) ? $node['content'] : [];
+
+    switch ($type) {
+        case 'doc':
+            $out = '';
+            foreach ($children as $child) {
+                $out .= renderTiptapNode($child);
+            }
+            return $out;
+
+        case 'heading':
+            $level = max(1, min(6, isset($attrs['level']) ? intval($attrs['level']) : 2));
+            $inner = '';
+            foreach ($children as $child) {
+                $inner .= renderTiptapNode($child);
+            }
+            $classMap = [
+                1 => 'text-3xl sm:text-4xl font-bold mt-10 mb-4 text-gray-900 dark:text-white',
+                2 => 'text-2xl sm:text-3xl font-bold mt-8 mb-3 text-gray-900 dark:text-white',
+                3 => 'text-xl sm:text-2xl font-semibold mt-6 mb-3 text-gray-900 dark:text-white',
+                4 => 'text-lg sm:text-xl font-semibold mt-5 mb-2 text-gray-900 dark:text-white',
+                5 => 'text-base font-semibold mt-4 mb-2 text-gray-900 dark:text-white',
+                6 => 'text-sm font-semibold mt-4 mb-2 text-gray-600 dark:text-gray-400',
+            ];
+            return "<h{$level} class=\"{$classMap[$level]}\">{$inner}</h{$level}>\n";
+
+        case 'paragraph':
+            $inner = '';
+            foreach ($children as $child) {
+                $inner .= renderTiptapNode($child);
+            }
+            if ($unwrapParagraph) return $inner;
+            if (empty(trim(strip_tags($inner)))) return "<p class=\"mb-4\">&nbsp;</p>\n";
+            return "<p class=\"text-base sm:text-lg leading-relaxed mb-4 text-gray-800 dark:text-gray-300\">{$inner}</p>\n";
+
+        case 'bulletList':
+            $inner = '';
+            foreach ($children as $child) {
+                $inner .= renderTiptapNode($child);
+            }
+            return "<ul class=\"list-disc list-outside pl-5 sm:pl-6 mb-5 space-y-1.5 text-base sm:text-lg text-gray-800 dark:text-gray-300\">{$inner}</ul>\n";
+
+        case 'orderedList':
+            $inner = '';
+            foreach ($children as $child) {
+                $inner .= renderTiptapNode($child);
+            }
+            return "<ol class=\"list-decimal list-outside pl-5 sm:pl-6 mb-5 space-y-1.5 text-base sm:text-lg text-gray-800 dark:text-gray-300\">{$inner}</ol>\n";
+
+        case 'listItem':
+            $inner = '';
+            foreach ($children as $child) {
+                $inner .= renderTiptapNode($child, $child['type'] === 'paragraph');
+            }
+            return "<li class=\"leading-relaxed\">{$inner}</li>\n";
+
+        case 'blockquote':
+            $inner = '';
+            foreach ($children as $child) {
+                $inner .= renderTiptapNode($child, $child['type'] === 'paragraph');
+            }
+            return "<blockquote class=\"border-l-4 border-blue-500 dark:border-blue-400 pl-4 sm:pl-6 my-6 py-2 italic text-gray-700 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/10 rounded-r-lg\">{$inner}</blockquote>\n";
+
+        case 'codeBlock':
+            $lang = isset($attrs['language']) ? htmlspecialchars($attrs['language']) : '';
+            $code = '';
+            foreach ($children as $child) {
+                if (isset($child['text'])) $code .= htmlspecialchars($child['text']);
+            }
+            $langAttr = $lang ? " class=\"language-{$lang}\"" : '';
+            return "<pre class=\"bg-gray-100 dark:bg-gray-800 rounded-xl p-4 overflow-x-auto mb-6\"><code{$langAttr} class=\"text-sm font-mono text-gray-800 dark:text-gray-200\">{$code}</code></pre>\n";
+
+        case 'image':
+            $src   = isset($attrs['src'])   ? htmlspecialchars($attrs['src'])   : '';
+            $alt   = isset($attrs['alt'])   ? htmlspecialchars($attrs['alt'])   : '';
+            $title = !empty($attrs['title']) ? ' title="' . htmlspecialchars($attrs['title']) . '"' : '';
+            if (empty($src)) return '';
+            $caption = $alt ? "<figcaption class=\"text-center text-sm text-gray-500 dark:text-gray-400 mt-2 italic\">{$alt}</figcaption>" : '';
+            return "<figure class=\"my-8\">\n<img src=\"{$src}\" alt=\"{$alt}\"{$title} class=\"w-full rounded-xl shadow-lg\" loading=\"lazy\">\n{$caption}</figure>\n";
+
+        case 'horizontalRule':
+            return "<hr class=\"my-8 border-t-2 border-gray-200 dark:border-gray-700\">\n";
+
+        case 'hardBreak':
+            return "<br>\n";
+
+        case 'text':
+            $text = htmlspecialchars(isset($node['text']) ? $node['text'] : '');
+            foreach (isset($node['marks']) ? $node['marks'] : [] as $mark) {
+                switch ($mark['type']) {
+                    case 'bold':
+                        $text = "<strong class=\"font-semibold text-gray-900 dark:text-white\">{$text}</strong>";
+                        break;
+                    case 'italic':
+                        $text = "<em>{$text}</em>";
+                        break;
+                    case 'underline':
+                        $text = "<u>{$text}</u>";
+                        break;
+                    case 'strike':
+                        $text = "<s class=\"line-through\">{$text}</s>";
+                        break;
+                    case 'code':
+                        $text = "<code class=\"bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono text-red-600 dark:text-red-400\">{$text}</code>";
+                        break;
+                    case 'link':
+                        $href   = isset($mark['attrs']['href'])   ? htmlspecialchars($mark['attrs']['href'])   : '#';
+                        $target = !empty($mark['attrs']['target']) ? htmlspecialchars($mark['attrs']['target']) : '_blank';
+                        $rel    = $target === '_blank' ? ' rel="noopener noreferrer"' : '';
+                        $text   = "<a href=\"{$href}\" target=\"{$target}\"{$rel} class=\"text-blue-600 dark:text-blue-400 hover:underline\">{$text}</a>";
+                        break;
+                }
+            }
+            return $text;
+
+        default:
+            $out = '';
+            foreach ($children as $child) {
+                $out .= renderTiptapNode($child);
+            }
+            return $out;
     }
 }

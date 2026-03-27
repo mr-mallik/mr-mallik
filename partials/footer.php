@@ -12,7 +12,7 @@
             <a href="<?php echo url('blogs'); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Blog</a>
             <a href="<?= SOCIAL_LINKEDIN; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">LinkedIn</a>
             <a href="<?= SOCIAL_GITHUB; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">GitHub</a>
-            <a href="<?= ACADEMIC_PURE; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">PURE</a>
+            <!-- <a href="<?= ACADEMIC_PURE; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">PURE</a> -->
             <a href="<?= ACADEMIC_ORCID; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">ORCID</a>
             <a href="<?= SOCIAL_MEDIUM; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Medium</a>
         </div>

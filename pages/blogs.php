@@ -12,7 +12,9 @@ $SEO = [
 
 require_once __DIR__ . '/../partials/header.php';
 
-$stories = cmsoneArticleList('blog');
+$filterCategory = isset($_GET['category']) ? trim($_GET['category']) : null;
+$filterTag      = isset($_GET['tag'])      ? trim($_GET['tag'])      : null;
+$stories = cmsoneArticleList($filterCategory ?? 'blog', $filterTag);
 
 // if no stories found, show a message
 if (empty($stories)) {
@@ -25,12 +27,33 @@ if (empty($stories)) {
 <section id="projects">
     <h2 class="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold py-4 sm:py-6 lg:py-8 px-4 text-gray-900 dark:text-white">Blogs</h2>
 
+    <?php if ($filterTag || $filterCategory): ?>
+    <div class="flex items-center justify-center gap-2 mb-4 flex-wrap">
+        <span class="text-sm text-gray-500 dark:text-gray-400">Filtered by:</span>
+        <?php if ($filterTag): ?>
+        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+            <i class="fas fa-tag text-xs"></i>
+            <?= htmlspecialchars($filterTag) ?>
+        </span>
+        <?php endif; ?>
+        <?php if ($filterCategory): ?>
+        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+            <i class="fas fa-folder-open text-xs"></i>
+            <?= htmlspecialchars($filterCategory) ?>
+        </span>
+        <?php endif; ?>
+        <a href="<?= url('blogs', false) ?>" class="text-xs text-red-500 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+            &times; Clear filter
+        </a>
+    </div>
+    <?php endif; ?>
+
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             <?php foreach ($stories as $story) : ?>
                 <div class="w-full" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-bg-radial rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-                        <div class="aspect-video overflow-hidden rounded-t-lg">
+                        <div class="aspect-[40/21] overflow-hidden rounded-t-lg">
                             <img src="<?= htmlspecialchars($story['featuredImage']) ?>" 
                                  alt="<?= htmlspecialchars($story['featuredImageAlt'] ?: $story['title']) ?>" 
                                  class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300">
