@@ -92,11 +92,11 @@ require_once __DIR__ . '/../partials/header.php';
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10 space-y-8">
 
-    <!-- Hero image: natural dimensions, no cropping -->
-    <div class="relative rounded-xl overflow-hidden shadow-md">
+    <!-- Hero image: constrained height, no distortion -->
+    <div class="relative rounded-xl overflow-hidden shadow-md h-[260px] sm:h-[360px] lg:h-[440px] bg-gray-900">
         <img src="<?= htmlspecialchars($article['featuredImage'] ?? '') ?>"
              alt="<?= htmlspecialchars($article['title']) ?>"
-             class="w-full h-auto block">
+             class="w-full h-full object-contain block">
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
             <a href="<?= url($listingPage, false) ?>"
