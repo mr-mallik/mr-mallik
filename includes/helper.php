@@ -229,6 +229,37 @@ function renderTiptapNode($node, $unwrapParagraph = false)
             $caption = $alt ? "<figcaption class=\"text-center text-sm text-gray-500 dark:text-gray-400 mt-2 italic\">{$alt}</figcaption>" : '';
             return "<figure class=\"my-8\">\n<img src=\"{$src}\" alt=\"{$alt}\"{$title} class=\"w-full rounded-xl shadow-lg\" loading=\"lazy\">\n{$caption}</figure>\n";
 
+        case 'videoEmbed':
+            $src = isset($attrs['src']) ? htmlspecialchars($attrs['src']) : '';
+            if (empty($src)) return '';
+            // YouTube / Vimeo → <iframe>, everything else → <video>
+            if (preg_match('/youtube\.com|youtu\.be/i', $src)) {
+                preg_match('/(?:v=|youtu\.be\/)([a-zA-Z0-9_\-]{11})/', $src, $m);
+                $vid = $m[1] ?? '';
+                if (!$vid) return '';
+                $embed = 'https://www.youtube.com/embed/' . $vid;
+                return "<figure class=\"my-8 rounded-xl overflow-hidden shadow-lg\">"
+                     . "<div class=\"relative w-full\" style=\"padding-top:56.25%\">"
+                     . "<iframe src=\"{$embed}\" class=\"absolute inset-0 w-full h-full\" frameborder=\"0\" "
+                     . "allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" "
+                     . "allowfullscreen loading=\"lazy\"></iframe></div></figure>\n";
+            }
+            if (preg_match('/vimeo\.com/i', $src)) {
+                preg_match('/vimeo\.com\/(\d+)/i', $src, $m);
+                $vid = $m[1] ?? '';
+                if (!$vid) return '';
+                $embed = 'https://player.vimeo.com/video/' . $vid;
+                return "<figure class=\"my-8 rounded-xl overflow-hidden shadow-lg\">"
+                     . "<div class=\"relative w-full\" style=\"padding-top:56.25%\">"
+                     . "<iframe src=\"{$embed}\" class=\"absolute inset-0 w-full h-full\" frameborder=\"0\" "
+                     . "allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen loading=\"lazy\"></iframe>"
+                     . "</div></figure>\n";
+            }
+            // Direct video file (mp4, webm, ogg, mov, etc.)
+            return "<figure class=\"my-8\">"
+                 . "<video src=\"{$src}\" controls preload=\"metadata\" "
+                 . "class=\"w-full rounded-xl shadow-lg max-h-[560px]\"></video></figure>\n";
+
         case 'horizontalRule':
             return "<hr class=\"my-8 border-t-2 border-gray-200 dark:border-gray-700\">\n";
 

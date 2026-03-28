@@ -9,6 +9,10 @@ $CONN = DBConnect(DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD);
  */
 function _cmsCache($key, $value = null, $ttl = 300)
 {
+    if (!CMS_CACHE_ENABLED) {
+        return null;
+    }
+
     $file = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'mrmallik_' . $key . '.cache';
 
     // Write
