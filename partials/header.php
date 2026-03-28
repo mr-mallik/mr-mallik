@@ -27,13 +27,13 @@ else {
         
         <!-- CMS One Analytics -->
         <script>
-        (function() {
-            var script = document.createElement('script');
-            script.src = 'https://cmsone.cosmokode.com/api/analytics/script.js';
-            script.dataset.token = '5c2d16f01f3126dab56da88a745762ff';
-            script.async = true;
-            document.head.appendChild(script);
-        })();
+        // (function() {
+        //     var script = document.createElement('script');
+        //     script.src = 'https://cmsone.cosmokode.com/api/analytics/script.js';
+        //     script.dataset.token = '5c2d16f01f3126dab56da88a745762ff';
+        //     script.async = true;
+        //     document.head.appendChild(script);
+        // })();
         </script>
         
         <!-- Canonical URL -->
