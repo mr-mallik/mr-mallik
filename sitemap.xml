@@ -4,12 +4,12 @@
     
     <!-- Homepage -->
     <url>
-        <loc>https://mrmallik.com/</loc>
+        <loc>https://www.mrmallik.com/</loc>
         <lastmod>2026-03-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://mrmallik.com/assets/images/gulger-mallik@1x1.jpg</image:loc>
+            <image:loc>https://www.mrmallik.com/assets/images/gulger-mallik@1x1.jpg</image:loc>
             <image:title>Gulger Mallik - Software Engineer</image:title>
             <image:caption>Gulger Mallik, Software Engineer and Full Stack Developer</image:caption>
         </image:image>
@@ -17,12 +17,12 @@
     
     <!-- About Page -->
     <url>
-        <loc>https://mrmallik.com/about</loc>
+        <loc>https://www.mrmallik.com/about</loc>
         <lastmod>2026-03-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
         <image:image>
-            <image:loc>https://mrmallik.com/assets/images/about-me-grad.jpg</image:loc>
+            <image:loc>https://www.mrmallik.com/assets/images/about-me-grad.jpg</image:loc>
             <image:title>About Gulger Mallik</image:title>
             <image:caption>Gulger Mallik graduation photo from University of Huddersfield</image:caption>
         </image:image>
@@ -30,12 +30,12 @@
     
     <!-- Projects Page -->
     <url>
-        <loc>https://mrmallik.com/projects</loc>
+        <loc>https://www.mrmallik.com/projects</loc>
         <lastmod>2026-03-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://mrmallik.com/assets/images/projects.jpeg</image:loc>
+            <image:loc>https://www.mrmallik.com/assets/images/projects.jpeg</image:loc>
             <image:title>Projects by Gulger Mallik</image:title>
             <image:caption>Software development projects portfolio</image:caption>
         </image:image>
@@ -43,12 +43,12 @@
     
     <!-- Blog/Stories Page -->
     <url>
-        <loc>https://mrmallik.com/blogs</loc>
+        <loc>https://www.mrmallik.com/blogs</loc>
         <lastmod>2026-03-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
         <image:image>
-            <image:loc>https://mrmallik.com/assets/images/stories.jpeg</image:loc>
+            <image:loc>https://www.mrmallik.com/assets/images/stories.jpeg</image:loc>
             <image:title>Blog Stories by Gulger Mallik</image:title>
             <image:caption>Software engineering journey and tech insights</image:caption>
         </image:image>
@@ -56,19 +56,63 @@
     
     <!-- Contact Page -->
     <url>
-        <loc>https://mrmallik.com/contact</loc>
+        <loc>https://www.mrmallik.com/contact</loc>
         <lastmod>2026-03-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
         <image:image>
-            <image:loc>https://mrmallik.com/assets/images/contact-me.jpg</image:loc>
+            <image:loc>https://www.mrmallik.com/assets/images/contact-me.jpg</image:loc>
             <image:title>Contact Gulger Mallik</image:title>
             <image:caption>Get in touch with Gulger Mallik for software development projects</image:caption>
         </image:image>
     </url>
     
     <url>
-    <loc>https://mrmallik.com/projects/the-automated-test-management-and-asset-scheduling-system-atmas</loc>
+    <loc>https://www.mrmallik.com/projects/chaos-of-traditional-job-hunting</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774705579/cmsone/69c27846dac54dbd5bafd57e/028acb90-79de-4547-bf04-eaca4adc6d9c.webp</image:loc>
+        <image:title>Chaos of Traditional Job Hunting</image:title>
+        <image:caption>Discover how an AI-powered Job Application Tracker transformed my job search, streamlining organization, analyzing JD requirements, and optimizing applications.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://www.mrmallik.com/projects/visualizing-strategic-positioning</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774705133/cmsone/69c27846dac54dbd5bafd57e/2fc98138-54d2-4357-8a60-5ba04b99238a.png</image:loc>
+        <image:title>Visualizing Strategic Positioning</image:title>
+        <image:caption>Discover how a custom React and ApexCharts app visualizes strategic differentiation using Blue Ocean Strategy principles, identifying market gaps.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://www.mrmallik.com/projects/how-i-used-googles-antigravity-ai-tool</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774701225/cmsone/69c27846dac54dbd5bafd57e/114eb095-ecca-42d2-9d65-76c3ac731953.png</image:loc>
+        <image:title>How I used Google&#039;s Antigravity AI Tool</image:title>
+        <image:caption>Explore the reality of Google&#039;s Antigravity AI tool. Discover how this powerful technology amplifies, rather than replaces, the role of the modern Software Engi</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://www.mrmallik.com/projects/building-the-digital-backbone-for-soil-carbon-innovation</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774700861/cmsone/69c27846dac54dbd5bafd57e/f654bce9-1fa2-4a3f-a7a8-f4c5704b7582.webp</image:loc>
+        <image:title>Building the Digital Backbone for Soil Carbon Innovation</image:title>
+        <image:caption>Explore the three core technological assets powering the Tierrasphere initiative: the internal modeling tool, the frontend prototype, and the public-facing website.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://www.mrmallik.com/projects/the-automated-test-management-and-asset-scheduling-system-atmas</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -79,7 +123,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/projects/crowther-audit-program</loc>
+    <loc>https://www.mrmallik.com/projects/crowther-audit-program</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -90,7 +134,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/projects/business-management-suite-for-ramjan-interiors</loc>
+    <loc>https://www.mrmallik.com/projects/business-management-suite-for-ramjan-interiors</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -101,7 +145,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/projects/amanora-the-beauty-lounge</loc>
+    <loc>https://www.mrmallik.com/projects/amanora-the-beauty-lounge</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -112,7 +156,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/projects/project-deep-dive-lifepharma-e-commerce-platform</loc>
+    <loc>https://www.mrmallik.com/projects/project-deep-dive-lifepharma-e-commerce-platform</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -123,7 +167,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/projects/dashboard-screen-builder-at-trellissoft-inc</loc>
+    <loc>https://www.mrmallik.com/projects/dashboard-screen-builder-at-trellissoft-inc</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -134,7 +178,51 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/blogs/building-a-home-and-a-career-abroad</loc>
+    <loc>https://www.mrmallik.com/blogs/chaos-of-traditional-job-hunting</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774705579/cmsone/69c27846dac54dbd5bafd57e/028acb90-79de-4547-bf04-eaca4adc6d9c.webp</image:loc>
+        <image:title>Chaos of Traditional Job Hunting</image:title>
+        <image:caption>Discover how an AI-powered Job Application Tracker transformed my job search, streamlining organization, analyzing JD requirements, and optimizing applications.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://www.mrmallik.com/blogs/the-value-of-alumni-engagement-in-career-development</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774704939/cmsone/69c27846dac54dbd5bafd57e/99c9b6fc-9911-46ee-9070-f946d2049881.jpg</image:loc>
+        <image:title>The Value of Alumni Engagement in Career Development</image:title>
+        <image:caption>Reflecting on the rewarding experience of serving as an Alumni Panelist, sharing professional insights, and the value of career-launching opportunities.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://www.mrmallik.com/blogs/how-i-used-googles-antigravity-ai-tool</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774701225/cmsone/69c27846dac54dbd5bafd57e/114eb095-ecca-42d2-9d65-76c3ac731953.png</image:loc>
+        <image:title>How I used Google&#039;s Antigravity AI Tool</image:title>
+        <image:caption>Explore the reality of Google&#039;s Antigravity AI tool. Discover how this powerful technology amplifies, rather than replaces, the role of the modern Software Engi</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://www.mrmallik.com/blogs/building-the-digital-backbone-for-soil-carbon-innovation</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774700861/cmsone/69c27846dac54dbd5bafd57e/f654bce9-1fa2-4a3f-a7a8-f4c5704b7582.webp</image:loc>
+        <image:title>Building the Digital Backbone for Soil Carbon Innovation</image:title>
+        <image:caption>Explore the three core technological assets powering the Tierrasphere initiative: the internal modeling tool, the frontend prototype, and the public-facing website.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://www.mrmallik.com/blogs/building-a-home-and-a-career-abroad</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -145,7 +233,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/blogs/the-automated-test-management-and-asset-scheduling-system-atmas</loc>
+    <loc>https://www.mrmallik.com/blogs/the-automated-test-management-and-asset-scheduling-system-atmas</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -156,7 +244,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/blogs/test</loc>
+    <loc>https://www.mrmallik.com/blogs/earning-the-peer-commendation</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -167,7 +255,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/blogs/academic-rep</loc>
+    <loc>https://www.mrmallik.com/blogs/academic-rep</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -178,7 +266,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/blogs/conquering-the-master-in-computing</loc>
+    <loc>https://www.mrmallik.com/blogs/conquering-the-master-in-computing</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -189,7 +277,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/blogs/my-experience-as-a-placement-student</loc>
+    <loc>https://www.mrmallik.com/blogs/my-experience-as-a-placement-student</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -200,7 +288,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/blogs/earning-a-distinction-in-computer-applications</loc>
+    <loc>https://www.mrmallik.com/blogs/earning-a-distinction-in-computer-applications</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -211,7 +299,7 @@
     </image:image>
 </url>
 <url>
-    <loc>https://mrmallik.com/blogs/my-techlipse-2019-experience-at-st-xaviers-college</loc>
+    <loc>https://www.mrmallik.com/blogs/my-techlipse-2019-experience-at-st-xaviers-college</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
