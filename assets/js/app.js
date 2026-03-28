@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
                        '&limit='   + limit;
         if (tag) params += '&tag=' + encodeURIComponent(tag);
 
-        fetch('/api/articles?' + params)
+        fetch((window.APP_URL || '') + '/api/articles?' + params)
             .then(function (res) {
                 if (!res.ok) throw new Error('Network error');
                 return res.json();

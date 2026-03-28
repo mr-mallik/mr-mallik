@@ -90,29 +90,28 @@ require_once __DIR__ . '/../partials/header.php';
 
 <article class="min-h-screen">
 
-    <!-- Hero Banner -->
-    <section class="relative w-full h-56 sm:h-72 md:h-96 lg:h-[400px] overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10 space-y-8">
+
+    <!-- Hero image: natural dimensions, no cropping -->
+    <div class="relative rounded-xl overflow-hidden shadow-md">
         <img src="<?= htmlspecialchars($article['featuredImage'] ?? '') ?>"
              alt="<?= htmlspecialchars($article['title']) ?>"
-             class="w-full h-full object-cover object-top">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 pb-6 sm:pb-8">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Back link inside hero -->
-                <a href="<?= url($listingPage, false) ?>"
-                   class="inline-flex items-center text-xs sm:text-sm text-white/80 hover:text-white mb-3 transition-colors">
-                    <i class="fas fa-arrow-left mr-2"></i>
-                    Back to <?= $type === 'project' ? 'Projects' : 'Stories' ?>
-                </a>
-                <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight drop-shadow-lg">
-                    <?= htmlspecialchars($article['title']) ?>
-                </h1>
-            </div>
+             class="w-full h-auto block">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+            <a href="<?= url($listingPage, false) ?>"
+               class="inline-flex items-center text-xs sm:text-sm text-white/80 hover:text-white mb-3 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to <?= $type === 'project' ? 'Projects' : 'Stories' ?>
+            </a>
+            <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight drop-shadow-lg">
+                <?= htmlspecialchars($article['title']) ?>
+            </h1>
         </div>
-    </section>
+    </div>
 
     <!-- Article body -->
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 bg-white dark:bg-transparent rounded-xl shadow-sm">
+    <div class="bg-white dark:bg-transparent rounded-xl shadow-sm px-5 sm:px-8 py-7 sm:py-9">
 
         <!-- Meta bar -->
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 pb-6 border-b border-gray-200 dark:border-gray-700 gap-4">
@@ -299,25 +298,23 @@ require_once __DIR__ . '/../partials/header.php';
         </div>
         <?php endif; ?>
 
-    </section>
+    </div>
 
     <!-- CTA -->
-    <section class="w-full">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-8 sm:py-12 lg:py-16">
-            <div class="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-xl shadow-lg">
-                <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
-                    Ready to Build Something Amazing?
-                </h3>
-                <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
-                    Let's collaborate on your next project and create solutions that make a difference.
-                </p>
-                <a href="<?= url('contact', false) ?>"
-                   class="inline-block bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
-                    Get In Touch
-                </a>
-            </div>
-        </div>
-    </section>
+    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 sm:p-8 text-center">
+        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+            Ready to Build Something Amazing?
+        </h3>
+        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
+            Let's collaborate on your next project and create solutions that make a difference.
+        </p>
+        <a href="<?= url('contact', false) ?>"
+           class="inline-block bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
+            Get In Touch
+        </a>
+    </div>
+
+    </div>
 
 </article>
 

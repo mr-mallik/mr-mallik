@@ -1,0 +1,140 @@
+[
+    {
+        "type": "work",
+        "role": "Research Technician",
+        "org": "University of Huddersfield, UK",
+        "period": "Mar 2026 – Present",
+        "summary": "Building a full-stack platform to help housing associations make data-driven Net Zero retrofit decisions using explainable AI, predictive modelling, and cross-departmental feasibility analysis.",
+        "detail_title": "Net Zero Retrofit Decision Platform",
+        "details": [
+            "Developing a full-stack web platform enabling housing associations to plan and prioritise Net Zero retrofit interventions",
+            "Implementing explainable AI (XAI) models to surface transparent, audit-ready retrofit recommendations",
+            "Building predictive models to forecast energy performance, cost impact, and carbon reduction outcomes",
+            "Designing cross-departmental feasibility analysis tools to support finance, operations, and sustainability teams",
+            "Integrating housing stock data pipelines to drive real-time, evidence-based decision making"
+        ]
+    },
+    {
+        "type": "work",
+        "role": "Director & Co-founder",
+        "org": "Cosmokode Ltd, UK",
+        "period": "Apr 2025 – Present",
+        "summary": "Leading strategic direction and technical innovation for enterprise software solutions. Building scalable web applications and AI-driven solutions for diverse clients.",
+        "detail_title": "Director & Co-founder",
+        "details": [
+            "Leading strategic direction and technical innovation for enterprise software solutions",
+            "Building scalable web applications and AI-driven solutions for diverse clients",
+            "Managing cross-functional teams and overseeing full-stack development architecture",
+            "Driving business growth through client relationships and technical excellence"
+        ]
+    },
+    {
+        "type": "work",
+        "role": "Research Assistant in Applied AI",
+        "org": "University of Huddersfield, UK",
+        "period": "Oct 2024 – Oct 2025",
+        "summary": "Developing AI workflows for geospatial data using regression and neural networks. Collaborating with Tierrasphere to translate agricultural data into reproducible insights.",
+        "detail_title": "KTP Associate – Tierrasphere",
+        "details": [
+            "Increased predictive accuracy by 49% developing AI workflows for geospatial data using regression and neural networks",
+            "Enabled data-driven decisions by translating agricultural data into reproducible insights",
+            "Deployed 2 cloud-hosted dashboards via Azure and Streamlit supporting 4 interdisciplinary teams"
+        ]
+    },
+    {
+        "type": "work",
+        "role": "AI/ML Research Technician",
+        "org": "University of Huddersfield, UK",
+        "period": "Apr 2024 – Aug 2024",
+        "summary": "Automating audit processes using Python (Django) and machine learning for Crowther Accountants. Developed web tools with responsive UI and integrated CI/CD pipelines.",
+        "detail_title": "KTP Associate – Crowther Accountants",
+        "details": [
+            "Reduced manual audit work by 30% automating processes using Python (Django) and machine learning",
+            "Developed 3 Django-based web tools with responsive UI supporting accounting operations",
+            "Streamlined deployment integrating CI/CD pipelines and Git workflows",
+            "Facilitated onboarding with comprehensive documentation and tutorials"
+        ]
+    },
+    {
+        "type": "work",
+        "role": "R&D Software Engineer",
+        "org": "University of Huddersfield, UK",
+        "period": "Oct 2023 – Apr 2024",
+        "summary": "Designing automated scheduling and asset management for ATMAS. Integrating real-time sensor data and advancing 3D object recognition using machine learning.",
+        "detail_title": "ECMPG Collaboration",
+        "details": [
+            "Improved ATMAS efficiency by 25% designing automated scheduling and asset management",
+            "Enhanced operational visibility integrating real-time sensor data from InfluxDB",
+            "Automated workflows in ATMAS increasing process consistency by 30%",
+            "Advanced 3D object recognition research using machine learning"
+        ]
+    },
+    {
+        "type": "education",
+        "role": "MSc Computing (Distinction)",
+        "org": "University of Huddersfield, UK",
+        "period": "Sep 2022 – Dec 2023",
+        "summary": "Specialized in advanced computing, AI, and software engineering. Dissertation on machine learning applications achieving distinction grade.",
+        "detail_title": "Advanced Professional Practice",
+        "details": [
+            "Achieved Distinction grade specializing in AI, machine learning, and software engineering",
+            "Peer Commendation Award for outstanding contributions in computing and collaborative research",
+            "Academic Representative for MSc program, liaising with faculty to improve student experience",
+            "Dissertation on machine learning applications demonstrating research excellence"
+        ]
+    },
+    {
+        "type": "work",
+        "role": "Software Engineer",
+        "org": "Shop & Bakery Equipment Ltd, UK",
+        "period": "Dec 2022 – Mar 2024",
+        "summary": "Customizing e-commerce workflows and developing admin modules for manufacturing and retail operations. Enhancing UI/UX and optimizing site performance.",
+        "detail_title": "PHP/OpenCart Developer",
+        "details": [
+            "Increased order processing efficiency by 35% customizing 3 e-commerce workflows",
+            "Developed 5 advanced admin modules supporting manufacturing and retail operations",
+            "Improved customer satisfaction by 25% enhancing UI/UX and optimizing performance across 4 device types"
+        ]
+    },
+    {
+        "type": "work",
+        "role": "Software Engineer",
+        "org": "Trellissoft Inc, India",
+        "period": "Mar 2022 – Aug 2022",
+        "summary": "Extending PHP/Laravel modules and integrating MSSQL databases. Developing scalable business applications with modular architecture principles.",
+        "detail_title": "PHP/Laravel Developer",
+        "details": [
+            "Increased system performance by 25% extending PHP/Laravel modules and integrating MSSQL databases",
+            "Developed scalable business applications applying modular architecture principles",
+            "Enhanced stakeholder confidence delivering client demos showcasing automation solutions"
+        ]
+    },
+    {
+        "type": "work",
+        "role": "Software Engineer",
+        "org": "Teaminertia Technologies, India",
+        "period": "May 2019 – Mar 2022",
+        "summary": "Delivering CMS, CRM, and PWA solutions for startup clients. Optimizing backend processes and mentoring junior developers in agile environment.",
+        "detail_title": "Full-Stack Developer",
+        "details": [
+            "Delivered CMS, CRM, and PWA solutions automating 3 key business workflows",
+            "Improved system efficiency by 50% optimizing backend processes",
+            "Mentored junior developers and managed agile releases enhancing team productivity",
+            "Collaborated with multiple clients ensuring technical solutions met operational requirements"
+        ]
+    },
+    {
+        "type": "education",
+        "role": "Bachelor of Computer Applications (Distinction)",
+        "org": "St. Xavier's College, India",
+        "period": "Jun 2016 – May 2019",
+        "summary": "Foundation in computer science, programming, and software development. Graduated with distinction from Goa University.",
+        "detail_title": "Distinction – Goa University",
+        "details": [
+            "Achieved Distinction demonstrating strong academic performance in computer science fundamentals",
+            "Built foundation in programming, database management, and software development",
+            "Organised and led intercollegiate technical event managing cross-functional teams",
+            "Graduated with honours focusing on practical application development"
+        ]
+    }
+]

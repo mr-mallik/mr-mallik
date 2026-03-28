@@ -46,6 +46,7 @@
             }
         })();
     </script>
+    <script>window.APP_URL = '<?= rtrim(APP_URL, '/') ?>';</script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="<?= url('assets/js/app.js'); ?>"></script>
     <script>

@@ -2,9 +2,12 @@
 DirectoryIndex index.php
 
 # Enable URL rewriting
+Options -MultiViews
 RewriteEngine On
 
 # API endpoints
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^api/articles/?$ api/articles.php [L,QSA]
 
 # Redirect to internal pages
