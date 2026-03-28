@@ -9,3 +9,5 @@
 
 # ignore logs files in logs directory
 /logs/*.log
+
+/.local
