@@ -1,0 +1,401 @@
+# Mr Mallik (Gulger Mallik) - Portfolio Website Documentation
+
+## About the Person
+
+**Full Name**: Gulger Mallik  
+**Professional Title**: Software Engineer, Researcher & Full Stack Developer  
+**Location**: Huddersfield, United Kingdom  
+**Email**: gulgermallik@gmail.com  
+**Website**: mrmallik.com (also known as Mr Mallik)
+
+### Professional Summary
+
+Gulger Mallik is a software engineer and full-stack developer with a Master's degree in Computing from the University of Huddersfield, UK. He is the co-founder of **Cosmokode Ltd**, a technology company specializing in web development, AI/ML solutions, and research-driven innovation. With over 5+ years of professional experience (starting May 2019), he has worked across multiple industries including academia, accounting, manufacturing, e-commerce, and startups.
+
+### Areas of Expertise
+- **Web Development**: Full-stack development using PHP, Laravel, JavaScript, and modern frameworks
+- **Artificial Intelligence & Machine Learning**: Applied AI solutions, neural networks, regression models, geospatial data analysis
+- **Research & Development**: Publishing research, developing innovative solutions, collaborating with academic institutions
+- **CMS/CRM Development**: Custom content management and customer relationship management systems
+- **Progressive Web Apps (PWA)**: Mobile-first, responsive web applications
+- **Data Science**: Data analysis, visualization, and machine learning workflows
+
+### Professional Services Offered
+1. **Web Development** - Custom websites, e-commerce solutions, business applications
+2. **AI & Machine Learning** - Predictive models, automation, data analysis
+3. **Research & Development** - Innovation consultancy, technical research, prototyping
+
+## Education Background
+
+### Master's Degree - MSc Computing (Advanced)
+- **Institution**: University of Huddersfield, UK
+- **Period**: October 2022 - September 2023
+- **Achievement**: Distinction
+- **Focus**: Advanced computing, artificial intelligence, machine learning, research methodologies
+- **Key Outcomes**: Demonstrated excellence in computing research and applied AI technologies
+
+### Bachelor's Degree - BCA (Bachelor of Computer Applications)
+- **Institution**: St. Xavier's College, Goa, India (Affiliated with Goa University)
+- **Period**: June 2016 - May 2019
+- **Achievement**: Distinction
+- **Focus**: Computer science fundamentals, programming, database management, software development
+- **Key Outcomes**: Built strong foundation in software development, organized intercollegiate technical events
+
+### Professional Certifications
+- 4+ professional certifications across various technologies and domains
+- Continuous learning and professional development in emerging technologies
+
+## Professional Experience
+
+### Current & Recent Positions
+
+#### 1. Research Assistant in Applied AI (KTP Associate)
+**University of Huddersfield** | October 2024 - October 2025 | Huddersfield, UK  
+*Partner: Tierrasphere*
+
+- Increased predictive accuracy by **49%** through development of 3 AI workflows for geospatial data using regression and neural networks
+- Enabled data-driven decisions by collaborating with stakeholders to translate agricultural data into reproducible and usable insights
+- Deployed 2 cloud-hosted dashboards via Azure and Streamlit, supporting decision-making for 4 interdisciplinary teams
+- Focus areas: Agricultural technology, geospatial data analysis, machine learning, cloud deployment
+
+#### 2. AI/ML Research Technician (KTP Associate)
+**University of Huddersfield** | April 2024 - August 2024 | Huddersfield, UK  
+*Partner: Crowther Accountants*
+
+- Reduced manual audit work by **30%** through automating processes using Python (Django) and machine learning models
+- Developed 3 Django-based web tools featuring responsive UI to support accounting operations
+- Streamlined deployment by integrating CI/CD pipelines and implementing Git workflows
+- Facilitated user onboarding with creation and distribution of detailed documentation and tutorials
+- Focus areas: Audit automation, accounting software, Django development, machine learning
+
+#### 3. R&D Software Engineer
+**University of Huddersfield** | October 2023 - April 2024 | Huddersfield, UK  
+*Collaboration with Engineering Control Machine Performance Group (ECMPG)*
+
+- Improved ATMAS (Asset Tracking and Management System) efficiency by **25%** through designing automated scheduling and asset management
+- Enhanced operational visibility by integrating real-time sensor data from InfluxDB into ATMAS
+- Automated workflows in ATMAS supporting manufacturing and service industries, increasing process consistency by **30%**
+- Advanced 3D object recognition research using machine learning, improving master dataset for identification
+- Focus areas: Manufacturing automation, IoT integration, 3D computer vision, asset management systems
+
+### Previous Positions
+
+#### 4. Software Engineer (PHP/OpenCart Developer)
+**Shop & Bakery Equipment Ltd.** | December 2022 - March 2024 | Halifax, UK
+
+- Increased order processing efficiency by **35%** by customizing 3 e-commerce workflows
+- Developed 5 advanced admin modules supporting manufacturing and retail operations
+- Improved customer satisfaction by **25%** by enhancing UI/UX and optimizing site performance on 4 device types
+- Focus areas: E-commerce development, OpenCart customization, manufacturing systems
+
+#### 5. Software Engineer (PHP, Laravel Developer)
+**Trellissoft Inc** | March 2022 - August 2022 | Panaji, India
+
+- Increased system performance by **25%** by extending PHP/Laravel modules and integrating MSSQL databases
+- Developed scalable business applications applying modular architecture principles
+- Enhanced stakeholder confidence by delivering client demos showcasing automation solutions
+- Focus areas: Laravel development, business applications, database integration
+
+#### 6. Software Engineer (Full-Stack Developer)
+**Team Inertia Technologies** | May 2019 - March 2022 | Panaji, India
+
+- Delivered CMS, CRM, and PWA solutions automating 3 key business workflows
+- Improved system efficiency by **50%** by optimizing backend processes
+- Mentored junior developers and managed agile releases to enhance team productivity
+- Collaborated with multiple clients to ensure technical solutions met operational requirements
+- Focus areas: Full-stack development, startup solutions, team leadership
+
+## Entrepreneurship
+
+### Co-Founder - Cosmokode Ltd
+**Website**: cosmokode.com
+
+Gulger Mallik co-founded Cosmokode Ltd, a technology company that provides:
+- Custom web development solutions
+- AI and machine learning implementations
+- Business automation systems
+- Research and development consultancy
+- Technical innovation services
+
+The company has worked with various clients including Tierrasphere, Muscle Mind Stories, Ramjan Interiors, Fitplanex, and Personnel Skills Matrix (PSM).
+
+## Portfolio - Featured Projects
+
+Gulger Mallik has developed and contributed to numerous projects across different industries. His portfolio showcases expertise in:
+
+### Project Categories
+
+1. **ATMAS (Automated Tracking & Management System)**
+   - Asset tracking and management platform
+   - Real-time sensor integration with InfluxDB
+   - Automated scheduling for manufacturing
+   - 3D object recognition capabilities
+
+2. **Crowther Audit Program**
+   - Audit automation for accounting firms
+   - Django-based web application
+   - Machine learning integration
+   - Process optimization tools
+
+3. **Dashboard Screen Builder**
+   - Data visualization platform
+   - Cloud deployment (Azure/Streamlit)
+   - Interactive analytics dashboards
+
+4. **Business Management Suite for Ramjan Interiors**
+   - Custom CRM/CMS solution
+   - Business workflow automation
+   - Client management system
+
+5. **Amanora the Beauty Lounge**
+   - Salon management system
+   - Booking and scheduling
+   - Customer relationship management
+
+6. **Life Pharma**
+   - Pharmaceutical industry solution
+   - Inventory management
+   - E-commerce capabilities
+
+7. **Personal Portfolio**
+   - This website (mrmallik.com)
+   - Professional showcase
+   - Blog and content platform
+
+### Client Showcase
+
+Gulger has worked with prestigious organizations including:
+- **Tierrasphere** - Agricultural technology company
+- **Crowther Accountants** - UK accounting firm
+- **University of Huddersfield** - Academic institution
+- **Muscle Mind Stories** - Fitness and wellness platform
+- **Ramjan Interiors** - Interior design business
+- **Fitplanex** - Fitness planning application
+- **Cosmokode Ltd** - Technology consultancy
+- **Personnel Skills Matrix (PSM)** - HR management system
+
+## Research & Academic Contributions
+
+### Academic Profiles
+- **ORCID**: 0009-0002-5110-8575
+- **University Research Profile**: Available on University of Huddersfield website
+- **Google Scholar**: Active research publication profile
+- **ResearchGate**: Engaged in academic networking and collaboration
+
+### Research Focus Areas
+- Applied Artificial Intelligence
+- Machine Learning in Industry
+- Geospatial Data Analysis
+- 3D Computer Vision and Object Recognition
+- Automation and Process Optimization
+- Agricultural Technology Innovation
+
+### KTP (Knowledge Transfer Partnership) Experience
+
+Gulger has participated in multiple KTP programs, a UK-wide initiative connecting businesses with academic expertise:
+- **Tierrasphere KTP**: AI workflows for agricultural data (2024-2025)
+- **Crowther Accountants KTP**: Audit automation using ML (2024)
+
+These partnerships demonstrate his ability to bridge academic research with practical business applications.
+
+## Technical Skills & Competencies
+
+### Programming Languages
+- PHP (Expert)
+- Python (Advanced)
+- JavaScript (Advanced)
+- SQL (Expert)
+
+### Frameworks & Technologies
+- **Backend**: Laravel, Django, Node.js
+- **Frontend**: React, Vue.js, Tailwind CSS
+- **CMS**: WordPress, OpenCart, Custom solutions
+- **Databases**: MySQL, PostgreSQL, MSSQL, InfluxDB
+- **Cloud**: Azure, AWS, Streamlit
+- **AI/ML**: TensorFlow, scikit-learn, Neural Networks
+- **DevOps**: Git, CI/CD, Docker
+
+### Technical Expertise Areas
+- Full-stack web development
+- RESTful API design and development
+- Database architecture and optimization
+- Machine learning model development
+- Data visualization and analytics
+- Responsive UI/UX design
+- E-commerce solutions
+- Business process automation
+- Real-time data integration
+- Cloud deployment and management
+
+## Website Features & Content
+
+### Main Sections
+
+#### 1. Homepage
+- Professional introduction and overview
+- Quick access to About, Projects, and Stories sections
+- Services highlight
+- Latest work showcase
+- Social media integration
+
+#### 2. About Page
+- Comprehensive biography
+- Education timeline
+- Professional experience history
+- Technical skills showcase
+- Client showcase with logos
+- Credibility metrics (degrees, certifications, years of experience)
+- Contact information
+
+#### 3. Projects Section
+Featured portfolio projects demonstrating technical capabilities across various industries. Each project includes:
+- Detailed description
+- Technologies used
+- Business impact
+- Visual showcase
+- Links to live demos (where applicable)
+
+#### 4. Stories (Blog)
+Personal and professional blog featuring:
+- Technical articles
+- Career milestones
+- Academic achievements
+- Industry insights
+- Learning experiences
+
+Key story topics include:
+- **Academic Rep**: University representation role
+- **Bachelor in Computer Applications**: Educational journey
+- **Centre for Precision Technology Group**: Research collaboration
+- **Master in Computing**: Postgraduate experience
+- **Peer Commendation**: Recognition and awards
+- **Student Coordinator**: Leadership experiences
+
+#### 5. Contact
+- Email: gulgermallik@gmail.com
+- Location: Huddersfield, United Kingdom
+- LinkedIn and social media profiles
+- Academic profiles (ORCID, Google Scholar, ResearchGate)
+- Professional inquiry form
+
+### Additional Features
+- **Privacy Policy**: GDPR-compliant privacy information
+- **Cookie Consent**: User preference management
+- **Dynamic Sitemap**: SEO optimization
+- **Responsive Design**: Mobile-first, works on all devices
+- **Dark Mode**: User preference for light/dark theme
+- **Medium RSS Integration**: External blog article aggregation
+- **Animated Scrolling**: Smooth user experience with AOS library
+
+## Social & Professional Presence
+
+### Social Media Profiles
+- **LinkedIn**: Professional networking and career updates
+- **GitHub**: Open-source contributions and code repositories
+- **Twitter**: Industry insights and professional updates
+- **Facebook**: Professional page
+- **Instagram**: Personal branding
+
+### Academic Networks
+- **Google Scholar**: Research publications and citations
+- **ORCID**: Permanent digital identifier for researchers
+- **ResearchGate**: Academic collaboration and paper sharing
+- **University Profile**: University of Huddersfield research portal
+
+## Professional Achievements & Metrics
+
+### Quantifiable Impacts
+- **5+ years** of professional software engineering experience
+- **49% improvement** in predictive accuracy (Tierrasphere AI project)
+- **30% reduction** in manual audit work (Crowther automation)
+- **35% increase** in order processing efficiency (e-commerce optimization)
+- **50% system efficiency** improvement (backend optimization)
+- **02 professional degrees** (Bachelor's and Master's with Distinction)
+- **4+ professional certifications**
+- **Multiple KTP programs** completed successfully
+- **7+ major projects** in portfolio
+- **8+ client organizations** served
+- **3 AI/ML workflows** developed and deployed
+- **5+ web applications** built and maintained
+
+### Recognition & Awards
+- Multiple peer commendations
+- Academic distinction in both degrees
+- Student coordinator and leadership roles
+- Academic representative positions
+- Industry collaboration partnerships
+
+## Career Philosophy & Approach
+
+Gulger Mallik describes himself as:
+> "Passionate about building solutions that make a difference"
+
+His professional approach emphasizes:
+- **Research-driven innovation**: Applying academic rigor to practical problems
+- **Data-driven decision making**: Using analytics and metrics to guide development
+- **Collaborative problem-solving**: Working with interdisciplinary teams
+- **Continuous learning**: Pursuing certifications and staying current with technology
+- **Measurable impact**: Focusing on quantifiable improvements and business value
+- **User-centric design**: Creating solutions that meet real operational needs
+
+## Timeline Summary
+
+- **2016-2019**: Bachelor's degree at St. Xavier's College, India
+- **2019-2022**: Full-stack developer at Team Inertia Technologies, India
+- **2022**: Software engineer at Trellissoft Inc, India
+- **2022-2023**: Master's degree at University of Huddersfield, UK (while working part-time)
+- **2022-2024**: E-commerce developer at Shop & Bakery Equipment Ltd, UK
+- **2023-2024**: R&D Software Engineer at University of Huddersfield, UK
+- **2024**: AI/ML Research Technician (Crowther KTP), UK
+- **2024-2025**: Research Assistant in Applied AI (Tierrasphere KTP), UK
+- **Ongoing**: Co-founder of Cosmokode Ltd
+
+## Website Purpose & Goals
+
+The mrmallik.com portfolio website serves multiple purposes:
+
+1. **Professional Showcase**: Demonstrate technical expertise and project accomplishments
+2. **Career Documentation**: Chronicle professional journey and achievements
+3. **Thought Leadership**: Share insights through blog articles and stories
+4. **Client Acquisition**: Attract potential clients for Cosmokode Ltd services
+5. **Academic Presence**: Maintain visibility in research and academic communities
+6. **Networking Platform**: Connect with other professionals, clients, and collaborators
+7. **Personal Branding**: Establish Gulger Mallik / Mr Mallik as a recognized name in software engineering and AI/ML
+
+## Target Audiences
+
+The website caters to:
+- **Potential Employers**: Seeking experienced software engineers or researchers
+- **Business Clients**: Looking for web development or AI/ML solutions
+- **Academic Collaborators**: Universities and research institutions
+- **Industry Partners**: Companies interested in KTP or R&D collaboration
+- **Students & Learners**: Those seeking mentorship or inspiration
+- **Professional Network**: Colleagues and peers in the technology industry
+
+## Content Strategy
+
+The website employs a content strategy focused on:
+- **Authenticity**: Real projects with measurable impacts
+- **Professionalism**: High-quality presentation and SEO optimization
+- **Transparency**: Clear communication of skills and experience
+- **Engagement**: Interactive elements and smooth user experience
+- **Credibility**: Verifiable achievements and quantifiable results
+- **Accessibility**: GDPR compliance, responsive design, dark mode support
+
+## Future Direction
+
+Based on the content and structure, Gulger Mallik appears focused on:
+- Continuing research in applied AI and machine learning
+- Growing Cosmokode Ltd as a technology consultancy
+- Expanding portfolio of impactful projects
+- Contributing to academic research and publications
+- Building expertise in emerging technologies
+- Establishing thought leadership in AI/ML and web development
+- Collaborating with academic and industry partners on innovative solutions
+
+---
+
+**Last Updated**: March 2, 2026  
+**Website**: mrmallik.com | gulgermallik@gmail.com  
+**Location**: Huddersfield, United Kingdom  
+**Status**: Active software engineer, researcher, and entrepreneur

@@ -5,7 +5,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://mrmallik.com/</loc>
-        <lastmod><?= date('Y-m-d'); ?></lastmod>
+        <lastmod>2026-03-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -18,7 +18,7 @@
     <!-- About Page -->
     <url>
         <loc>https://mrmallik.com/about</loc>
-        <lastmod><?= date('Y-m-d'); ?></lastmod>
+        <lastmod>2026-03-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
         <image:image>
@@ -31,7 +31,7 @@
     <!-- Projects Page -->
     <url>
         <loc>https://mrmallik.com/projects</loc>
-        <lastmod><?= date('Y-m-d'); ?></lastmod>
+        <lastmod>2026-03-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <image:image>
@@ -44,7 +44,7 @@
     <!-- Blog/Stories Page -->
     <url>
         <loc>https://mrmallik.com/blogs</loc>
-        <lastmod><?= date('Y-m-d'); ?></lastmod>
+        <lastmod>2026-03-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -57,7 +57,7 @@
     <!-- Contact Page -->
     <url>
         <loc>https://mrmallik.com/contact</loc>
-        <lastmod><?= date('Y-m-d'); ?></lastmod>
+        <lastmod>2026-03-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
         <image:image>
@@ -66,5 +66,160 @@
             <image:caption>Get in touch with Gulger Mallik for software development projects</image:caption>
         </image:image>
     </url>
+    
+    <url>
+    <loc>https://mrmallik.com/projects/the-automated-test-management-and-asset-scheduling-system-atmas</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774652937/cmsone/69c27846dac54dbd5bafd57e/51879f9b-8e33-4430-a806-61013ed62d96.jpg</image:loc>
+        <image:title>The Automated Test Management and Asset Scheduling System (ATMAS)</image:title>
+        <image:caption>Explore the development, architecture, and achievements of the Automated Test Management and Asset Scheduling System (ATMAS) deployed at the University of Hudde</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/projects/crowther-audit-program</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774655257/cmsone/69c27846dac54dbd5bafd57e/8de632cc-d3ad-43ae-99bf-3d92dcb0d847.webp</image:loc>
+        <image:title>Crowther Audit Program</image:title>
+        <image:caption>Explore the Crowther Audit Program, a collaboration automating complex Excel audits using the ChatGPT API to boost efficiency and accuracy by 40%.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/projects/business-management-suite-for-ramjan-interiors</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774654713/cmsone/69c27846dac54dbd5bafd57e/ae6d3767-b1a1-45e4-9a93-2e408ab7c3b1.webp</image:loc>
+        <image:title>Business Management Suite for Ramjan Interiors</image:title>
+        <image:caption>Discover how a custom Business Management Suite revolutionized Ramjan Interiors by integrating project management, inventory, and client relations into one efficient system.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/projects/amanora-the-beauty-lounge</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774638939/cmsone/69c27846dac54dbd5bafd57e/35378ea8-9ef1-46d0-83d7-cc21240a533e.webp</image:loc>
+        <image:title>Amanora The Beauty Lounge</image:title>
+        <image:caption>Explore the development journey of a robust, cross-platform booking and backend system tailored for Amanora The Beauty Lounge, ensuring seamless service management.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/projects/project-deep-dive-lifepharma-e-commerce-platform</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774638941/cmsone/69c27846dac54dbd5bafd57e/65913f17-262e-4d22-8bf2-04aad7d76759.webp</image:loc>
+        <image:title>LifePharma E-commerce Platform</image:title>
+        <image:caption>A detailed review of the LifePharma project, a final-year endeavor focused on developing a simulated pharmaceutical e-commerce platform, highlighting key features.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/projects/dashboard-screen-builder-at-trellissoft-inc</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774638938/cmsone/69c27846dac54dbd5bafd57e/c648c02b-2161-4871-b435-5dd6b450738d.webp</image:loc>
+        <image:title>Dashboard Screen Builder at Trellissoft, Inc.</image:title>
+        <image:caption>Discover the Dashboard Screen Builder, a customizable data visualization tool developed at Trellissoft, Inc. to drive dynamic business insights and data-driven.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/blogs/building-a-home-and-a-career-abroad</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774656058/cmsone/69c27846dac54dbd5bafd57e/fc47467f-cb04-4c0b-b922-17d6a78739f4.jpg</image:loc>
+        <image:title>Building a Home and a Career Abroad</image:title>
+        <image:caption>From a one-way ticket to a staff designation: an international student shares the demanding but rewarding journey of pursuing a Master&#039;s in the UK.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/blogs/the-automated-test-management-and-asset-scheduling-system-atmas</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774652937/cmsone/69c27846dac54dbd5bafd57e/51879f9b-8e33-4430-a806-61013ed62d96.jpg</image:loc>
+        <image:title>The Automated Test Management and Asset Scheduling System (ATMAS)</image:title>
+        <image:caption>Explore the development, architecture, and achievements of the Automated Test Management and Asset Scheduling System (ATMAS) deployed at the University of Hudde</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/blogs/test</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774653167/cmsone/69c27846dac54dbd5bafd57e/45b3fe09-1d1d-4949-bfcb-6ef88f8817ad.jpg</image:loc>
+        <image:title>Earning the Peer Commendation</image:title>
+        <image:caption>Explore the significance of receiving the Peer Commendation for Exceptional Achievement in Computing and what it signifies about technical skill and teamwork.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/blogs/academic-rep</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774652695/cmsone/69c27846dac54dbd5bafd57e/8ccd57a3-39a5-4642-ae10-524f3341f00d.webp</image:loc>
+        <image:title>Academic Rep</image:title>
+        <image:caption>Discover the crucial role of an Academic Representative in bridging student needs with faculty decisions, enhancing communication, and driving positive change.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/blogs/conquering-the-master-in-computing</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774653940/cmsone/69c27846dac54dbd5bafd57e/9e3cc3b1-a777-4715-8831-604a6c2e484f.jpg</image:loc>
+        <image:title>Conquering the Master in Computing</image:title>
+        <image:caption>Celebrating the achievement of a Master in Computing with Distinction, highlighting academic rigor, advanced technical skills, and readiness for high-impact rol</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/blogs/my-experience-as-a-placement-student</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774652947/cmsone/69c27846dac54dbd5bafd57e/ca886406-f544-4e4e-9762-1e31f37c3bfe.jpg</image:loc>
+        <image:title>My Experience as a Placement Student</image:title>
+        <image:caption>Undertaking a placement at the Centre for Precision Technology (CPT) at the University of Huddersfield.</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/blogs/earning-a-distinction-in-computer-applications</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774650654/cmsone/69c27846dac54dbd5bafd57e/04f2b448-e46d-43cf-bfaf-6cd013bb278e.webp</image:loc>
+        <image:title>Earning a Distinction in Computer Applications</image:title>
+        <image:caption>Reflecting on achieving a Distinction in my Bachelor of Computer Applications (BCA), the foundational skills gained in programming and algorithms are now poweri</image:caption>
+    </image:image>
+</url>
+<url>
+    <loc>https://mrmallik.com/blogs/my-techlipse-2019-experience-at-st-xaviers-college</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+        <image:loc>https://res.cloudinary.com/dl1jpvy4k/image/upload/v1774638733/cmsone/69c27846dac54dbd5bafd57e/815f1cb1-496e-41cc-b195-094b53b3da79.jpg</image:loc>
+        <image:title>My Techlipse 2019 Experience at St. Xavier&#039;s College</image:title>
+        <image:caption>Discover how the role of Student Coordinator for Techlipse 2019 honed essential organizational, project management, and leadership skills under pressure.</image:caption>
+    </image:image>
+</url>
     
 </urlset>

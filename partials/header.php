@@ -25,12 +25,25 @@ else {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         
+        <!-- CMS One Analytics -->
+        <script>
+        (function() {
+            var script = document.createElement('script');
+            script.src = 'https://cmsone.cosmokode.com/api/analytics/script.js';
+            script.dataset.token = '5c2d16f01f3126dab56da88a745762ff';
+            script.async = true;
+            document.head.appendChild(script);
+        })();
+        </script>
+        
         <!-- Canonical URL -->
         <link rel="canonical" href="<?= htmlspecialchars($SEO['url']); ?>">
         
         <!-- Preconnect for performance -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+        <link rel="preconnect" href="https://res.cloudinary.com">
+        <link rel="dns-prefetch" href="https://res.cloudinary.com">
         
         <!-- Favicon and App Icons -->
         <link rel="icon" type="image/x-icon" href="<?= url('favicon.ico', false) ?>" />
@@ -288,6 +301,15 @@ else {
         </script>
     </head>
     <body class="bg-gray-100 dark:bg-black-base dark:text-gray-200">
+
+    <!-- Global Page Loader -->
+    <div id="page-loader" role="status" aria-label="Loading">
+        <img src="<?= url('assets/images/logo/mallik_logo@0.25x.png', false) ?>"
+             alt="Loading..."
+             class="w-16 h-16 logo-spin invert dark:invert-0">
+        <span class="text-xs text-gray-400 dark:text-gray-500 tracking-widest uppercase">Loading&hellip;</span>
+    </div>
+
     <div id="outer-container" class="relative z-10 mx-auto container max-w-7xl">
         <header class="py-4 sm:py-6 lg:py-8 px-4 sm:px-6 lg:px-10 text-center">
             <nav class="relative">
@@ -325,23 +347,22 @@ else {
                             </svg>
                         </button>
 
-
                         <!-- Desktop CTA Button -->
                         <a href="mailto:<?= strtolower(CONTACT_EMAIL) ?>" target="_blank"
                             class="hidden md:block hover:cursor-pointer bg-gray-500 text-gray-200 dark:bg-gray-900 dark:text-white hover:bg-gray-600 dark:hover:bg-gray-800 font-bold py-2 px-3 lg:px-4 rounded-lg transition-colors duration-300 text-sm lg:text-base">
                             Let's Talk
                         </a>
+
+                        <!-- Mobile Hamburger Button -->
+                        <button id="mobile-menu-button" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-300" aria-label="Toggle mobile menu">
+                            <svg id="hamburger-icon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                            <svg id="close-icon" class="w-6 h-6 hidden transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
                     </div>
-                    
-                    <!-- Mobile Hamburger Button -->
-                    <button id="mobile-menu-button" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-300" aria-label="Toggle mobile menu">
-                        <svg id="hamburger-icon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                        <svg id="close-icon" class="w-6 h-6 hidden transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
                 </div>
                 
                 <!-- Mobile Menu -->
@@ -368,10 +389,3 @@ else {
 
         <main>
         <!-- body starts here -->
-        
-        <?php 
-        // Include cookie consent banner - only on frontend pages
-        if (!isset($is_admin_page) || !$is_admin_page) {
-            include_once __DIR__ . '/cookie-consent.php';
-        }
-        ?>

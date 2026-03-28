@@ -60,6 +60,13 @@ define('CONTACT_EMAIL', $_ENV['CONTACT_EMAIL'] ?? '');
 define('CONTACT_EMAIL2', $_ENV['CONTACT_EMAIL2'] ?? '');
 define('CONTACT_ADDRESS_2', $_ENV['CONTACT_ADDRESS_2'] ?? '');
 
+// CMS One Configuration
+define('CMS_ONE_URL', $_ENV['CMS_ONE_URL'] ?? '');
+define('CMS_ONE_API_URL', $_ENV['CMS_ONE_API_URL'] ?? '');
+define('CMS_ONE_API_KEY', $_ENV['CMS_ONE_API_KEY'] ?? '');
+define('CMS_ONE_TRACKING_TOKEN', $_ENV['CMS_ONE_TRACKING_TOKEN'] ?? '');
+define('CMS_CACHE_ENABLED', ($_ENV['CMS_CACHE_ENABLED'] ?? 'false') === 'true');
+
 // if site is in maintenance mode, redirect to maintenance page
 if (MAINTENANCE_MODE == 'true') {
     // Get the current script path

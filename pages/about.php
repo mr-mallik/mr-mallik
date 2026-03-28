@@ -1,660 +1,266 @@
 <?php
-require_once __DIR__ . '/../includes/common.php'; # config file
-// META TAGS
+require_once __DIR__ . '/../includes/common.php';
+
 $SEO = [
-    'title' => 'About Gulger Mallik | Software Engineer | Mr Mallik',
+    'title'       => 'About Gulger Mallik | Software Engineer | Mr Mallik',
     'description' => 'Software Engineer & Full Stack Developer. Master\'s from University of Huddersfield. Co-founder of Cosmokode.',
-    'keywords' => 'gulger mallik about, mr mallik biography, software engineer uk, university of huddersfield graduate, cosmokode co-founder, team inertia technologies, trellissoft inc, crowther accountants developer, tierrasphere engineer, master computing huddersfield, fullstack developer england',
-    'image' => url('assets/images/og-image.png', false),
-    'url' => url('about', false),
+    'keywords'    => 'gulger mallik about, mr mallik biography, software engineer uk, university of huddersfield graduate, cosmokode co-founder, team inertia technologies, trellissoft inc, crowther accountants developer, tierrasphere engineer, master computing huddersfield, fullstack developer england',
+    'image'       => url('assets/images/og-image.png', false),
+    'url'         => url('about', false),
 ];
 
+require_once __DIR__ . '/../partials/header.php';
 
-require_once __DIR__ . '/../partials/header.php'; # config file
-
-$clients = [
-    [
-        'name' => 'Tierrasphere',
-        'logo' => image_src('assets/images/showcase/TierraSphere.png', false),
-        'url' => 'https://tierrasphere.cosmokode.com/',
-        'color' => 0 // colored logo
-    ],
-    [
-        'name' => 'Crowther Accountants',
-        'logo' => image_src('assets/images/showcase/crowther.svg', false),
-        'url' => 'https://www.crowther.accountants/',
-        'color' => 1 // white logo
-    ],
-    [
-        'name' => 'Muscle Mind Stories',
-        'logo' => image_src('assets/images/showcase/musclemindstories.png', false),
-        'url' => 'https://musclemindstories.com/',
-        'color' => -1 // black logo
-    ],
-    [
-        'name' => 'Ramjan Interiors',
-        'logo' => image_src('assets/images/showcase/ramjaninteriors.png', false),
-        'url' => 'https://www.ramjaninteriors.com/',
-        'color' => 1 // white logo
-    ],
-    [
-        'name' => 'University of Huddersfield',
-        'logo' => image_src('assets/images/showcase/universityofhuddersfield.svg', false),
-        'url' => 'https://www.hud.ac.uk/',
-        'color' => 1 // white logo
-    ],
-    [
-        'name' => 'Fitplanex',
-        'logo' => image_src('assets/images/showcase/fitplanex.png', false),
-        'url' => 'https://www.fitplanex.com/',
-        'color' => 0 // colored logo
-    ],
-    [
-        'name' => 'Cosmokode Ltd',
-        'logo' => image_src('assets/images/showcase/cosmokode.png', false),
-        'url' => 'https://www.cosmokode.com/',
-        'color' => 0 // colored logo
-    ],
-    [
-        'name' => 'Personnel Skills Matrix',
-        'logo' => image_src('assets/images/showcase/psm.png', false),
-        'url' => 'https://www.psm.cosmokode.com/',
-        'color' => 0 // colored logo
-    ]
-];
-
+$clients    = json_decode(file_get_contents(__DIR__ . '/../data/clients.json'), true) ?? [];
+$timeline   = json_decode(file_get_contents(__DIR__ . '/../data/edu-exp.json'), true) ?? [];
 $experience = dateDiff('2019-05-27', date('Y-m-d'));
+$skills     = getSkills(['tech', 'frame', 'db']);
 
-$projects = blogList("AND type='project' AND status='A'", 4);
-$stories = blogList("AND type='blog' AND status='A'", 4);
-$skills = getSkills($type=['tech', 'frame', 'db']);
+// Latest articles from CMS (4 projects + 4 blogs)
+$projects = [];
+$stories  = [];
+$articles = cmsoneArticleList(null, null, 20, 1);
+foreach ($articles as $article) {
+    foreach ($article['categories'] ?? [] as $cat) {
+        if ($cat['slug'] === 'project' && count($projects) < 4) { $projects[] = $article; break; }
+        if ($cat['slug'] === 'blog'    && count($stories)  < 4) { $stories[]  = $article; break; }
+    }
+    if (count($projects) >= 4 && count($stories) >= 4) break;
+}
+
+function logoClass(int $color): string {
+    if ($color === 1)  return 'invert dark:invert-0';    // white logo
+    if ($color === -1) return 'invert-0 dark:invert';    // black logo
+    return '';                                            // coloured – no filter
+}
+
+function articleCard(array $a, string $urlBase): string {
+    $img     = htmlspecialchars($a['featuredImage']    ?? '');
+    $imgAlt  = htmlspecialchars($a['featuredImageAlt'] ?? $a['title']);
+    $title   = htmlspecialchars(cutwords($a['title'],   60));
+    $excerpt = htmlspecialchars(cutwords($a['excerpt'], 100));
+    $href    = htmlspecialchars($urlBase . '/' . $a['slug']);
+    return <<<HTML
+        <div class="card-bg-radial rounded-lg shadow hover:shadow-lg transition-shadow duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
+            <div class="aspect-[40/21] overflow-hidden rounded-t-lg">
+                <img src="{$img}" alt="{$imgAlt}" loading="lazy"
+                     class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="p-4 flex flex-col flex-grow gap-2">
+                <h3 class="text-base font-semibold text-gray-900 dark:text-white leading-snug">{$title}</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 flex-grow">{$excerpt}</p>
+                <a href="{$href}" class="text-sm font-medium text-right text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Read more →</a>
+            </div>
+        </div>
+HTML;
+}
 ?>
 
-<section id="about" class="container mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <h1 class="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold py-4 sm:py-6 lg:py-8 px-4 text-gray-900 dark:text-white">About Me</h1>
+<section id="about" class="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-10 pb-10">
 
-    <div class="rounded-xl bg-black p-4 sm:p-6 lg:p-8 mb-6 relative min-h-[600px] lg:min-h-[700px] text-white" data-aos="zoom-in">
+    <h1 class="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold px-4 text-gray-900 dark:text-white">About Me</h1>
 
-        <!-- div with portrait background -->
-        <div class="hidden lg:block absolute portrait inset-0 bg-cover bg-center rounded-xl"></div>
-        
-        <!-- Content container -->
-        <div class="relative z-10 flex flex-col lg:flex-row gap-6">
-            
-            <!-- Left Column: Biography, Contact, Services -->
-            <div class="w-full lg:w-1/3 flex flex-col gap-4 sm:gap-6 text-left">
-            <span class="text-sm sm:text-base lg:text-lg font-semibold">
-                <i class="fa fa-user text-cyan-500"></i>
-                Biography
-                <hr class="mt-1">
-            </span>
+    <div class="rounded-2xl bg-black text-white relative overflow-hidden" data-aos="zoom-in">
+        <div class="absolute hidden lg:block portrait inset-0 bg-cover bg-top rounded-2xl opacity-80"></div>
 
-            <p class="text-sm sm:text-base lg:text-lg">
-                Software engineer and fullstack developer with a Master's in Computing from the University of Huddersfield. 
-                Co-founder of <a href='https://www.cosmokode.com' target='_blank' class='hover:underline text-cyan-300'>Cosmokode Ltd</a>, specializing in web development, AI/ML solutions, and research-driven innovation.
-            </p>
+        <div class="relative z-10 flex flex-col lg:flex-row gap-6 p-6 sm:p-8 lg:p-10 h-full">
 
-            <span class="text-sm sm:text-base lg:text-lg font-semibold text-right">
-                <i class="fa fa-envelope text-blue-500"></i>
-                Contact
-                <hr class="mt-1">
-            </span>
-
-            <div class="about-contact text-sm sm:text-base lg:text-lg">
-                <p>
-                    Huddersfield, UK
-                </p>
-
-                <p>
-                    <a href="mailto:gulgermallik@gmail.com" class="hover:underline text-cyan-300">gulgermallik@gmail.com</a>
-                </p>
-
-            </div>
-
-            <!-- <span class="text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg font-semibold text-right">
-                <i class="fa fa-graduation-cap text-purple-500"></i>
-                Academic Profiles
-                <hr class="mt-1">
-            </span>
-
-            <div class="about-academic text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300">
-                <p>
-                    <a href="<?= ACADEMIC_PURE; ?>" target="_blank" class="hover:underline brand-text">
-                        <i class="fa fa-university"></i> University Research Profile
-                    </a>
-                </p>
-
-                <p>
-                    <a href="<?= ACADEMIC_ORCID; ?>" target="_blank" class="hover:underline brand-text">
-                        <i class="fab fa-orcid"></i> ORCID: 0009-0002-5110-8575
-                    </a>
-                </p>
-            </div> -->
-
-            <span class="text-md xl:text-lg font-semibold">
-                <i class="fa fa-gears text-orange-500"></i>
-                Services
-                <hr>
-            </span>
-
-            <p class="text-sm sm:text-base lg:text-lg leading-relaxed">
-                Web Development <br/>
-                AI &amp; Machine Learning <br/>
-                Research &amp; Development
-            </p>
-        </div>
-
-        <!-- Middle Column: Empty space for background image visibility -->
-        <div class="hidden lg:block lg:w-1/3"></div>
-
-        <!-- Right Column: Credibility, Technical Skills -->
-        <div class="w-full lg:w-1/3 flex flex-col gap-6 p-4 text-right">
-            <span class="text-gray-500 text-md xl:text-lg font-semibold">
-                <i class="fa fa-clock text-green-500"></i>
-                Credibility
-                <hr>
-            </span>
-
-            <div class="flex flex-col gap-4 justify-center">
-
-                <div class="flex flex-col sm:flex-row gap-2 justify-center">
-                    <div class="flex items-center">
-                        <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono">02</span> 
-                        <span class="uppercase text-[12px] sm:text-xs px-2 sm:px-4 text-left text-gray-400">professional degrees</span>
-                    </div>
-                    <div class="flex items-center">
-                        <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono">4+</span> 
-                        <span class="uppercase text-[12px] sm:text-xs px-2 sm:px-4 text-left text-gray-400">professional certifications</span>
-                    </div>
-                </div>
-
-                <div class="flex flex-row gap-1 sm:gap-2 items-center">
-                    <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['years'], 2, '0', STR_PAD_LEFT); ?></span> 
-                    <span class="uppercase text-[12px] sm:text-xs text-gray-400">years</span>
-                    <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['months'], 2, '0', STR_PAD_LEFT); ?></span> 
-                    <span class="uppercase text-[12px] sm:text-xs text-gray-400"><?= $experience['months'] > 1 ? 'months' : 'month'; ?></span>
-                    <span class="text-2xl sm:text-3xl xl:text-6xl font-bold font-mono"><?= str_pad($experience['days'], 2, '0', STR_PAD_LEFT); ?></span> 
-                    <span class="uppercase text-[12px] sm:text-xs text-gray-400"><?= $experience['days'] > 1 ? 'days' : 'day'; ?></span>
-                </div>
-                
-                <span class="text-upper text-gray-400 text-xs sm:text-sm">of professional experience</span>
-
-            </div>
-
-            <span class="text-left text-gray-500 text-md xl:text-lg font-semibold">
-                <i class="fa fa-chart-simple text-yellow-500"></i>
-                Technical Skills
-                <hr>
-            </span>
-
-            <div class="flex flex-row flex-wrap gap-4 text-left">
-                <?php foreach ($skills as $skill) : ?>
-                    <div class="flex flex-col gap-1 xl:gap-2 text-center justify-center items-center">
-                        <img src="<?= $skill['icon']; ?>" alt="<?= $skill['title'] ?>" title="<?= $skill['title'] ?>" 
-                            class="w-6 h-6 xl:w-8 xl:h-8 object-contain hover:cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out">
-                        <span class="hidden xl:block text-xs"><?= $skill['title'] ?></span>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-
-            <!-- <span class="text-gray-500 text-md xl:text-lg font-semibold">
-                <i class="fa fa-heart text-red-500"></i>
-                Likes &amp; Interests
-                <hr>
-            </span>
-
-            <div class="flex flex-row gap-6 justify-start text-left items-center">
-                <div class="flex flex-col gap-2">
-                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
-                        <i class="fa fa-music "></i>
-                        Music
-                    </p>
-                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
-                        <i class="fa fa-dumbbell"></i>
-                        Health and Fitness
-                    </p>
-                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
-                        <i class="fa fa-plane"></i>
-                        Travel
+            <!-- Left: Bio + Contact + Services -->
+            <div class="w-full lg:w-1/3 flex flex-col gap-6">
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-cyan-400 mb-1">Biography</p>
+                    <p class="text-sm sm:text-base leading-relaxed text-gray-200">
+                        Software engineer and fullstack developer with a Master's in Computing from the University of Huddersfield.
+                        Co-founder of <a href="https://www.cosmokode.com" target="_blank" rel="noopener noreferrer"
+                            class="text-cyan-300 hover:underline">Cosmokode Ltd</a>,
+                        specialising in web development, AI/ML solutions, and research-driven innovation.
                     </p>
                 </div>
-                <div class="flex flex-col gap-2">
-                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
-                        <i class="fa fa-code"></i>
-                        Code
-                    </p>
-                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
-                        <i class="fa fa-camera"></i>
-                        Photography
-                    </p>
-                    <p class="text-[13px] lg:text-lg text-gray-700 dark:text-gray-300 text-nowrap">
-                        <i class="fa fa-film"></i>
-                        Movies
-                    </p>
-                </div>
-            </div> -->
 
-
-        </div>
-    </div>
-
-        </div>
-    <div class="flex flex-col justify-center py-8">
-        
-        <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Showcase </h2>
-
-        <div class="flex flex-row flex-wrap justify-center gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4" data-aos="flip-down">
-            <?php 
-            $count = 0;
-            foreach ($clients as $client) : 
-            if ($count > 0 && $count % 5 == 0) {
-                echo '</div><div class="flex flex-row flex-wrap justify-center gap-4 xl:gap-8 py-3 xl:py-6 my-2 xl:my-4" data-aos="flip-down">';
-            }
-            ?>
-            <a href="javascript:;" title="<?= $client['name']; ?>" class="flex items-center justify-center transition duration-300 ease-in-out">
-                <img src="<?= $client['logo'] ?>" alt="<?= $client['name'] ?>" 
-                    class="w-30 xl:w-40 object-contain 
-                        <?php 
-                            if (isset($client['color'])) {
-                                if ($client['color'] == 0) {
-                                    echo ''; // colored logo - no invert in any mode
-                                } elseif ($client['color'] == 1) {
-                                    echo 'invert dark:invert-0'; // white logo - invert in light mode, original in dark mode
-                                } elseif ($client['color'] == -1) {
-                                    echo 'invert-0 dark:invert'; // black logo - original in light mode, invert in dark mode
-                                }
-                            } else {
-                                echo 'invert-0 dark:invert'; // default
-                            }
-                        ?>
-                    ">
-            </a>
-            <?php 
-            $count++;
-            endforeach; 
-            ?>
-        </div>
-    </div>
-    
-    <div class="dark:text-white rounded-xl p-4 xl:p-8 mb-8 shadow-lg" id='edu-experience'>
-
-        <h2 class="text-center text-3xl xl:text-5xl p-4 xl:p-8 font-semibold" data-aos="fade-top">Education &amp; Experience</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 xl:p-8">
-            
-            <!-- Director & Co-founder - Cosmokode Ltd -->
-            <div class="flip-card" data-aos="fade-up">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flex flex-col h-full justify-between">
-                            <div>
-                                <p class="font-bold text-base mb-2">
-                                    <i class="fa fa-briefcase text-cyan-500"></i>
-                                    Director &amp; Co-founder
-                                </p>
-                                <p class="font-semibold text-gray-900 dark:text-gray-100">Cosmokode Ltd, UK</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Apr 2025 - Present</p>
-                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Leading strategic direction and technical innovation for enterprise software solutions. Building scalable web applications and AI-driven solutions for diverse clients.</p>
-                            </div>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <p class="font-bold text-sm mb-3">
-                            <i class="fa fa-briefcase text-cyan-500"></i>
-                            Director &amp; Co-founder
-                        </p>
-                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
-                            <li>• Leading strategic direction and technical innovation for enterprise software solutions</li>
-                            <li>• Building scalable web applications and AI-driven solutions for diverse clients</li>
-                            <li>• Managing cross-functional teams and overseeing full-stack development architecture</li>
-                            <li>• Driving business growth through client relationships and technical excellence</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Research Assistant in Applied AI -->
-            <div class="flip-card" data-aos="fade-up" data-aos-delay="50">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flex flex-col h-full justify-between">
-                            <div>
-                                <p class="font-bold text-base mb-2">
-                                    <i class="fa fa-briefcase text-cyan-500"></i>
-                                    Research Assistant in Applied AI
-                                </p>
-                                <p class="font-semibold text-gray-900 dark:text-gray-100">University of Huddersfield, UK</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Oct 2024 - Oct 2025</p>
-                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Developing AI workflows for geospatial data using regression and neural networks. Collaborating with Tierrasphere to translate agricultural data into reproducible insights.</p>
-                            </div>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <p class="font-bold text-sm mb-3">
-                            <i class="fa fa-briefcase text-cyan-500"></i>
-                            KTP Associate - Tierrasphere
-                        </p>
-                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
-                            <li>• Increased predictive accuracy by 49% developing AI workflows for geospatial data using regression and neural networks</li>
-                            <li>• Enabled data-driven decisions by translating agricultural data into reproducible insights</li>
-                            <li>• Deployed 2 cloud-hosted dashboards via Azure and Streamlit supporting 4 interdisciplinary teams</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AI/ML Research Technician -->
-            <div class="flip-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flex flex-col h-full justify-between">
-                            <div>
-                                <p class="font-bold text-base mb-2">
-                                    <i class="fa fa-briefcase text-cyan-500"></i>
-                                    AI/ML Research Technician
-                                </p>
-                                <p class="font-semibold text-gray-900 dark:text-gray-100">University of Huddersfield, UK</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Apr 2024 - Aug 2024</p>
-                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Automating audit processes using Python (Django) and machine learning for Crowther Accountants. Developed web tools with responsive UI and integrated CI/CD pipelines.</p>
-                            </div>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <p class="font-bold text-sm mb-3">
-                            <i class="fa fa-briefcase text-cyan-500"></i>
-                            KTP Associate - Crowther Accountants
-                        </p>
-                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
-                            <li>• Reduced manual audit work by 30% automating processes using Python (Django) and machine learning</li>
-                            <li>• Developed 3 Django-based web tools with responsive UI supporting accounting operations</li>
-                            <li>• Streamlined deployment integrating CI/CD pipelines and Git workflows</li>
-                            <li>• Facilitated onboarding with comprehensive documentation and tutorials</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- R&D Software Engineer -->
-            <div class="flip-card" data-aos="fade-up" data-aos-delay="150">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flex flex-col h-full justify-between">
-                            <div>
-                                <p class="font-bold text-base mb-2">
-                                    <i class="fa fa-briefcase text-cyan-500"></i>
-                                    R &amp; D Software Engineer
-                                </p>
-                                <p class="font-semibold text-gray-900 dark:text-gray-100">University of Huddersfield, UK</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Oct 2023 - Apr 2024</p>
-                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Designing automated scheduling and asset management for ATMAS. Integrating real-time sensor data and advancing 3D object recognition using machine learning.</p>
-                            </div>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <p class="font-bold text-sm mb-3">
-                            <i class="fa fa-briefcase text-cyan-500"></i>
-                            ECMPG Collaboration
-                        </p>
-                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
-                            <li>• Improved ATMAS efficiency by 25% designing automated scheduling and asset management</li>
-                            <li>• Enhanced operational visibility integrating real-time sensor data from InfluxDB</li>
-                            <li>• Automated workflows in ATMAS increasing process consistency by 30%</li>
-                            <li>• Advanced 3D object recognition research using machine learning</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MSc Computing -->
-            <div class="flip-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flex flex-col h-full justify-between">
-                            <div>
-                                <p class="font-bold text-base mb-2">
-                                    <i class="fa fa-graduation-cap text-purple-500"></i>
-                                    MSc Computing (Distinction)
-                                </p>
-                                <p class="font-semibold text-gray-900 dark:text-gray-100">University of Huddersfield, UK</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Sep 2022 - Dec 2023</p>
-                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Specialized in advanced computing, AI, and software engineering. Dissertation on machine learning applications achieving distinction grade.</p>
-                            </div>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <p class="font-bold text-sm mb-3">
-                            <i class="fa fa-graduation-cap text-purple-500"></i>
-                            Advanced Professional Practice
-                        </p>
-                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
-                            <li>• Achieved Distinction grade specializing in AI, machine learning, and software engineering</li>
-                            <li>• Peer Commendation Award for outstanding contributions in computing and collaborative research</li>
-                            <li>• Academic Representative for MSc program, liaising with faculty to improve student experience</li>
-                            <li>• Dissertation on machine learning applications demonstrating research excellence</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Software Engineer - Shop & Bakery -->
-            <div class="flip-card" data-aos="fade-up" data-aos-delay="250">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flex flex-col h-full justify-between">
-                            <div>
-                                <p class="font-bold text-base mb-2">
-                                    <i class="fa fa-briefcase text-cyan-500"></i>
-                                    Software Engineer
-                                </p>
-                                <p class="font-semibold text-gray-900 dark:text-gray-100">Shop &amp; Bakery Equipment Ltd, UK</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Dec 2022 - Mar 2024</p>
-                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Customizing e-commerce workflows and developing admin modules for manufacturing and retail operations. Enhancing UI/UX and optimizing site performance.</p>
-                            </div>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <p class="font-bold text-sm mb-3">
-                            <i class="fa fa-briefcase text-cyan-500"></i>
-                            PHP/OpenCart Developer
-                        </p>
-                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
-                            <li>• Increased order processing efficiency by 35% customizing 3 e-commerce workflows</li>
-                            <li>• Developed 5 advanced admin modules supporting manufacturing and retail operations</li>
-                            <li>• Improved customer satisfaction by 25% enhancing UI/UX and optimizing performance across 4 device types</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Software Engineer - Trellissoft -->
-            <div class="flip-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flex flex-col h-full justify-between">
-                            <div>
-                                <p class="font-bold text-base mb-2">
-                                    <i class="fa fa-briefcase text-cyan-500"></i>
-                                    Software Engineer
-                                </p>
-                                <p class="font-semibold text-gray-900 dark:text-gray-100">Trellissoft Inc, India</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Mar 2022 - Aug 2022</p>
-                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Extending PHP/Laravel modules and integrating MSSQL databases. Developing scalable business applications with modular architecture principles.</p>
-                            </div>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <p class="font-bold text-sm mb-3">
-                            <i class="fa fa-briefcase text-cyan-500"></i>
-                            PHP/Laravel Developer
-                        </p>
-                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
-                            <li>• Increased system performance by 25% extending PHP/Laravel modules and integrating MSSQL databases</li>
-                            <li>• Developed scalable business applications applying modular architecture principles</li>
-                            <li>• Enhanced stakeholder confidence delivering client demos showcasing automation solutions</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Software Engineer - Team Inertia -->
-            <div class="flip-card" data-aos="fade-up" data-aos-delay="350">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flex flex-col h-full justify-between">
-                            <div>
-                                <p class="font-bold text-base mb-2">
-                                    <i class="fa fa-briefcase text-cyan-500"></i>
-                                    Software Engineer
-                                </p>
-                                <p class="font-semibold text-gray-900 dark:text-gray-100">Teaminertia Technologies, India</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">May 2019 - Mar 2022</p>
-                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Delivering CMS, CRM, and PWA solutions for startup clients. Optimizing backend processes and mentoring junior developers in agile environment.</p>
-                            </div>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <p class="font-bold text-sm mb-3">
-                            <i class="fa fa-briefcase text-cyan-500"></i>
-                            Full-Stack Developer
-                        </p>
-                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
-                            <li>• Delivered CMS, CRM, and PWA solutions automating 3 key business workflows</li>
-                            <li>• Improved system efficiency by 50% optimizing backend processes</li>
-                            <li>• Mentored junior developers and managed agile releases enhancing team productivity</li>
-                            <li>• Collaborated with multiple clients ensuring technical solutions met operational requirements</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BCA -->
-            <div class="flip-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flex flex-col h-full justify-between">
-                            <div>
-                                <p class="font-bold text-base mb-2">
-                                    <i class="fa fa-graduation-cap text-purple-500"></i>
-                                    Bachelor of Computer Applications
-                                </p>
-                                <p class="font-semibold text-gray-900 dark:text-gray-100">St. Xavier's College, India</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Jun 2016 - May 2019</p>
-                                <p class="text-xs text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">Foundation in computer science, programming, and software development. Graduated with distinction from Goa University.</p>
-                            </div>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 italic mt-4">Hover to see details</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <p class="font-bold text-sm mb-3">
-                            <i class="fa fa-graduation-cap text-purple-500"></i>
-                            Distinction - Goa University
-                        </p>
-                        <ul class="text-xs space-y-2 text-gray-700 dark:text-gray-300">
-                            <li>• Achieved Distinction demonstrating strong academic performance in computer science fundamentals</li>
-                            <li>• Built foundation in programming, database management, and software development</li>
-                            <li>• Organized and led intercollegiate technical event managing cross-functional teams</li>
-                            <li>• Graduated with honors focusing on practical application development</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Latest Work Section - Separated for visual distinction -->
-    <div class="rounded-xl py-6 xl:py-10 mb-8">
-        
-        <div class="flex items-center justify-between mb-6 xl:mb-8 border-b border-gray-300 dark:border-gray-700 pb-4">
-            <h2 class="text-2xl xl:text-4xl font-semibold text-gray-900 dark:text-white" data-aos="fade-right">
-                <i class="fa fa-laptop-code text-cyan-500 mr-2"></i>
-                Latest Work
-            </h2>
-            <a href="<?php url('projects'); ?>" class="text-sm xl:text-base font-semibold text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">
-                View all →
-            </a>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-6">
-            <?php foreach ($projects as $project) : ?>
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px] hover:shadow-xl transition-shadow duration-300">
-                        <img src="<?= image_src($project['image']) ?>" 
-                                alt="<?= $project['title'] ?>" 
-                                class="h-auto max-w-full rounded-t-lg object-cover w-full">
-                        <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($project['title']) ?></h3>
-                        
-                        <p class="px-4 text-sm text-gray-700 dark:text-gray-300">
-                            <span class=""><?= cutwords($project['short_description']) ?></span>
-                        </p>
-
-                        <a class="p-2 xl:p-4 text-right block mt-1 xl:mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
-                            href="<?php url('projects/'.$project['urlname']); ?>">
-                            Read more →
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-blue-400 mb-2">Contact</p>
+                    <div class="flex flex-col gap-1 text-sm text-gray-300">
+                        <span><i class="fa fa-location-dot text-gray-500 w-4"></i> Huddersfield, UK</span>
+                        <a href="mailto:<?= htmlspecialchars(CONTACT_EMAIL) ?>" class="hover:text-cyan-300 transition-colors">
+                            <i class="fa fa-envelope text-gray-500 w-4"></i> <?= htmlspecialchars(CONTACT_EMAIL) ?>
                         </a>
                     </div>
                 </div>
+
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-orange-400 mb-2">Services</p>
+                    <ul class="text-sm text-gray-300 space-y-1">
+                        <li><i class="fa fa-code text-orange-400 w-4"></i> Web Development</li>
+                        <li><i class="fa fa-brain text-orange-400 w-4"></i> AI &amp; Machine Learning</li>
+                        <li><i class="fa fa-flask text-orange-400 w-4"></i> Research &amp; Development</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Middle: Portrait space -->
+            <div class="hidden lg:block lg:w-1/3"></div>
+
+            <!-- Right: Stats + Skills -->
+            <div class="w-full lg:w-1/3 flex flex-col gap-6">
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-green-400 mb-3">Credibility</p>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex flex-wrap gap-x-6 gap-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="text-4xl font-bold font-mono">02</span>
+                                <span class="text-xs text-gray-400 uppercase leading-tight">Professional<br>Degrees</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-4xl font-bold font-mono">4+</span>
+                                <span class="text-xs text-gray-400 uppercase leading-tight">Professional<br>Certifications</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="text-4xl font-bold font-mono"><?= str_pad($experience['years'],  2, '0', STR_PAD_LEFT) ?></span>
+                            <span class="text-xs text-gray-400 uppercase">yrs</span>
+                            <span class="text-4xl font-bold font-mono"><?= str_pad($experience['months'], 2, '0', STR_PAD_LEFT) ?></span>
+                            <span class="text-xs text-gray-400 uppercase">mo</span>
+                            <span class="text-4xl font-bold font-mono"><?= str_pad($experience['days'],   2, '0', STR_PAD_LEFT) ?></span>
+                            <span class="text-xs text-gray-400 uppercase">d</span>
+                        </div>
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">of professional experience</p>
+                    </div>
+                </div>
+
+                <?php if (!empty($skills)) : ?>
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-yellow-400 mb-3">Technical Skills</p>
+                    <div class="flex flex-wrap gap-3">
+                        <?php foreach ($skills as $skill) : ?>
+                        <div class="flex flex-col items-center gap-1 group" title="<?= htmlspecialchars($skill['title']) ?>">
+                            <img src="<?= htmlspecialchars($skill['icon']) ?>"
+                                 alt="<?= htmlspecialchars($skill['title']) ?>"
+                                 class="w-7 h-7 object-contain group-hover:scale-110 transition-transform duration-200">
+                            <span class="hidden xl:block text-[10px] text-gray-400"><?= htmlspecialchars($skill['title']) ?></span>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+
+        </div>
+    </div>
+
+    <div data-aos="fade-up">
+        <h2 class="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold py-4 sm:py-6 lg:py-8 px-4 text-gray-900 dark:text-white">Showcase</h2>
+        <div class="flex flex-row flex-wrap justify-center items-center gap-6 sm:gap-10">
+            <?php foreach ($clients as $client) : ?>
+            <a href="<?= htmlspecialchars($client['url']) ?>" target="_blank" rel="noopener noreferrer"
+               title="<?= htmlspecialchars($client['name']) ?>"
+               class="transition-opacity duration-200 hover:opacity-75">
+                <img src="<?= image_src($client['logo'], false) ?>"
+                     alt="<?= htmlspecialchars($client['name']) ?>"
+                     class="h-8 sm:h-10 w-auto object-contain <?= logoClass((int) $client['color']) ?>">
+            </a>
             <?php endforeach; ?>
         </div>
     </div>
 
-    <?php if (count($stories) > 0) : ?>
+    <div id="edu-experience">
+        <h2 class="text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold py-4 sm:py-6 lg:py-8 px-4 text-gray-900 dark:text-white" data-aos="fade-up">
+            Education &amp; Experience
+        </h2>
 
-    <!-- Latest Stories Section -->
-    <div class="card-bg-linear relative overflow-hidden rounded-xl mb-8">
-        <!-- Background gradient overlay -->
-        <!-- <div class="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 opacity-50"></div> -->
-        
-        <div class="relative z-10 p-6 xl:p-10">
-            <div class="flex items-center justify-between mb-6 xl:mb-8 border-b border-cyan-200 dark:border-gray-700 pb-4">
-                <h2 class="text-2xl xl:text-4xl font-semibold text-gray-900 dark:text-white" data-aos="fade-right">
-                    <i class="fa fa-book-open text-purple-500 mr-2"></i>
-                    Latest Stories
-                </h2>
-                <a href="<?php url('blogs'); ?>" class="text-sm xl:text-base font-semibold text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">
-                    View all →
-                </a>
-            </div>
+        <div class="relative max-w-2xl mx-auto">
+            <!-- Line: mobile = left-4 (dot centre), sm+ = date-col(w-16=64) + gap-4(16) + half-dot(16) = left-24 (96px) -->
+            <div class="absolute left-4 sm:left-24 top-0 bottom-0 w-px bg-gray-300 dark:bg-gray-700"></div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-6">
-                <?php foreach ($stories as $story) : ?>
-                    <div data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-bg-radial shadow-lg rounded-lg max-w-[400px] hover:shadow-xl transition-shadow duration-300">
-                            <img src="<?= image_src($story['image'], true, 'assets/stories/default.png') ?>" 
-                                    alt="<?= $story['title'] ?>" 
-                                    class="h-auto w-full max-w-[400px] rounded-t-lg object-cover">
-                            <h3 class="px-4 py-2 text-xl font-semibold py-3"><?= cutwords($story['title']) ?></h3>
+            <div class="space-y-3">
+                <?php foreach ($timeline as $i => $item) :
+                    $isWork  = ($item['type'] === 'work');
+                    $bgDot   = $isWork ? 'bg-cyan-500' : 'bg-purple-500';
+                    $dotIcon = $isWork ? 'fa-briefcase' : 'fa-graduation-cap';
+                    $bullet  = $isWork ? 'text-cyan-700 dark:text-cyan-500' : 'text-purple-700 dark:text-purple-500';
+                    $delay   = $i * 40;
+                    [$mon, $yr] = array_pad(explode(' ', explode(' – ', $item['period'])[0] ?? ''), 2, '');
+                ?>
+                <div class="relative flex gap-4 items-start" data-aos="fade-up" data-aos-delay="<?= $delay ?>">
 
-                            <p class="px-4 text-sm text-gray-700 dark:text-gray-300">
-                                <span class=""><?= cutwords($story['short_description']) ?></span>
-                            </p>
-
-                            <a class="p-2 xl:p-4 text-right block mt-1 xl:mt-2 text-gray-600 dark:text-gray-400 hover:text-brand" 
-                                href="<?php url('blogs/'.$story['urlname']); ?>">
-                                Read more →
-                            </a>
-                        </div>
+                    <!-- Date column: hidden on mobile, visible sm+ -->
+                    <div class="hidden sm:flex w-16 flex-col items-end justify-start pt-2 shrink-0">
+                        <span class="text-xs font-semibold text-gray-700 dark:text-gray-400 leading-none"><?= htmlspecialchars($mon) ?></span>
+                        <span class="text-xs text-gray-500 dark:text-gray-500 mt-0.5 leading-none"><?= htmlspecialchars($yr) ?></span>
                     </div>
+
+                    <!-- Dot -->
+                    <div class="relative z-10 flex-shrink-0 w-8 h-8 rounded-full <?= $bgDot ?> flex items-center justify-center shadow-sm">
+                        <i class="fa <?= $dotIcon ?> text-white text-xs"></i>
+                    </div>
+
+                    <!-- Card -->
+                    <details class="card-bg-radial rounded-lg flex-1 group min-w-0">
+                        <summary class="p-3.5 cursor-pointer list-none flex items-start justify-between gap-3">
+                            <div class="flex-1 min-w-0">
+                                <p class="font-semibold text-sm text-gray-900 dark:text-white leading-tight"><?= htmlspecialchars($item['role']) ?></p>
+                                <p class="text-xs text-gray-600 dark:text-gray-400 mt-0.5"><?= htmlspecialchars($item['org']) ?></p>
+                                <!-- Period shown on mobile (date col hidden); hidden on sm+ (date col visible) -->
+                                <p class="text-xs text-gray-500 dark:text-gray-500 mt-0.5 sm:hidden"><?= htmlspecialchars($item['period']) ?></p>
+                            </div>
+                            <i class="fa fa-chevron-right text-gray-500 dark:text-gray-500 mt-1 shrink-0 text-xs transition-transform duration-200 group-open:rotate-90"></i>
+                        </summary>
+
+                        <div class="px-3.5 pb-3.5 pt-2 border-t border-gray-200 dark:border-gray-700/50">
+                            <p class="text-[11px] text-gray-500 dark:text-gray-500 mb-2"><?= htmlspecialchars($item['period']) ?></p>
+                            <p class="text-xs text-gray-700 dark:text-gray-400 leading-relaxed mb-2.5"><?= htmlspecialchars($item['summary']) ?></p>
+                            <p class="text-[11px] font-semibold text-gray-600 dark:text-gray-500 uppercase tracking-wide mb-1.5"><?= htmlspecialchars($item['detail_title']) ?></p>
+                            <ul class="space-y-1.5">
+                                <?php foreach ($item['details'] as $detail) : ?>
+                                <li class="flex gap-2 text-xs text-gray-700 dark:text-gray-400 leading-relaxed">
+                                    <span class="<?= $bullet ?> shrink-0">•</span>
+                                    <?= htmlspecialchars($detail) ?>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>
     </div>
 
+    <?php if (!empty($projects)) : ?>
+    <div>
+        <div class="flex items-center justify-between mb-6 pb-3 border-b border-gray-200 dark:border-gray-700" data-aos="fade-right">
+            <h3 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 dark:text-white">
+                <i class="fa fa-laptop-code text-cyan-500 mr-2"></i> Latest Work
+            </h3>
+            <a href="<?= url('projects', false) ?>" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                View all →
+            </a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <?php foreach ($projects as $project) : ?>
+            <?= articleCard($project, url('projects', false)) ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
     <?php endif; ?>
 
-    <!-- <h2 class="text-center text-3xl xl:text-5xl xl:p-8 p-3 font-semibold" data-aos="fade-top">Testimonials </h2> -->
+    <?php if (!empty($stories)) : ?>
+    <div class="card-bg-linear rounded-2xl p-6 sm:p-8">
+        <div class="flex items-center justify-between mb-6 pb-3 border-b border-gray-200 dark:border-gray-700" data-aos="fade-right">
+            <h3 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 dark:text-white">
+                <i class="fa fa-book-open text-purple-500 mr-2"></i> Latest Stories
+            </h3>
+            <a href="<?= url('blogs', false) ?>" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                View all →
+            </a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <?php foreach ($stories as $story) : ?>
+            <?= articleCard($story, url('blogs', false)) ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
 
 </section>
 
-<?php
-require_once __DIR__ . '/../partials/footer.php'; # config file
-?>
+<?php require_once __DIR__ . '/../partials/footer.php'; ?>

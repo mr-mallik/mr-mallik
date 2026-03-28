@@ -16,20 +16,16 @@ require_once __DIR__ . '/partials/header.php'; # config file
     <section id="home" class="container mx-auto px-4 sm:px-6 lg:px-10">
         <div class="flex flex-col lg:flex-row gap-4 mb-4">
             <div class="w-full lg:w-1/2">
-                <div class="flex flex-col sm:flex-row items-center w-full p-2 sm:p-4 gap-4 card-bg-radial rounded-xl shadow-lg">
+                <div class="flex flex-row items-center w-full p-3 sm:p-4 gap-3 sm:gap-4 card-bg-radial rounded-xl shadow-lg h-full">
                     <img src="<?= url('/assets/images/gulger-mallik@1x1.png'); ?>" 
                     alt="Gulger Mallik" 
-                    class="w-28 h-28 sm:w-36 sm:h-36 md:w-42 md:h-42 lg:w-36 lg:h-36 xl:w-48 xl:h-48 rounded-tl-xl rounded-br-xl transition-all duration-300 ease-in-out object-cover">
+                    class="w-20 h-20 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-36 lg:h-36 xl:w-48 xl:h-48 rounded-tl-xl rounded-br-xl transition-all duration-300 ease-in-out object-cover shrink-0">
                     
-                    <div class="flex flex-col text-center sm:text-left sm:pl-4">
-                        <p class='text-gray-800 dark:text-gray-400 text-sm sm:text-base'>Hello, I'm</p>
-                        <h1 class="py-2 text-xl sm:text-2xl md:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white">Gulger Mallik.</h1>
-                        <p class="text-gray-800 dark:text-gray-400 text-sm sm:text-base">I am a Software Engineer, Researcher <br class="hidden sm:block"/>and a Fullstack developer.</p>
-                        <!-- <p class="text-gray-800 dark:text-gray-400 text-xs sm:text-sm mt-4 text-justify block md:hidden lg:block xl:hidden">
-                            Passionate about building applications. Tech enthusiast with interest in AI/ML, always eager to solve complex problems.
-                        </p> -->
-                        <p class="text-gray-800 dark:text-gray-400 text-xs sm:text-sm mt-4 text-justify"> <!-- hidden md:block lg:hidden xl:block -->
-                            <!-- Tech enthusiast with a keen interest in AI and machine learning, always eager to explore innovative solutions to complex problems. -->
+                    <div class="flex flex-col text-left pl-1 sm:pl-4">
+                        <p class="text-gray-800 dark:text-gray-400 text-xs sm:text-base">Hello, I'm</p>
+                        <h1 class="py-1 sm:py-2 text-lg sm:text-2xl md:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white">Gulger Mallik.</h1>
+                        <p class="text-gray-800 dark:text-gray-400 text-xs sm:text-base">I am a Software Engineer, Researcher and a Fullstack developer.</p>
+                        <p class="hidden sm:block text-gray-800 dark:text-gray-400 text-xs sm:text-sm mt-3 sm:mt-4">
                             Passionate about building solutions that make a difference.
                         </p>
                     </div>
@@ -44,13 +40,13 @@ require_once __DIR__ . '/partials/header.php'; # config file
                         <span class='text-gray-500 dark:text-gray-400'>England, United Kingdom</span>
                     </p>
                 </div> -->
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <div class="w-full sm:w-1/2">
+                <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                    <div>
                         <a href="<?= url('about'); ?>">
                             <div class="p-4 bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                                 <div class="flex flex-col gap-2">
-                                    <div class="h-24 sm:h-32 overflow-hidden rounded-lg">
-                                        <img src="<?= url('/assets/images/about-me.jpeg'); ?>" alt="About Me" class="w-full object-cover transition-all duration-300 ease-in-out">
+                                    <div class="h-28 sm:h-32 lg:h-36 overflow-hidden rounded-lg">
+                                        <img src="<?= url('/assets/images/about-me.jpeg'); ?>" alt="About Me" class="w-full h-full object-cover transition-all duration-300 ease-in-out">
                                     </div>
                                     <p class="text-gray-700 dark:text-gray-500 text-xs uppercase tracking-wide"> More About Me </p>
                                     <h2 class="text-base sm:text-lg font-semibold tracking-wider text-gray-900 dark:text-white">About Me</h2>
@@ -59,12 +55,12 @@ require_once __DIR__ . '/partials/header.php'; # config file
                         </a>
                     </div>
 
-                    <div class="w-full sm:w-1/2">
+                    <div>
                         <a href="<?= url('projects'); ?>">
                             <div class="p-4 bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                                 <div class="flex flex-col gap-2">
-                                    <div class="h-24 sm:h-32 overflow-hidden rounded-lg">
-                                        <img src="<?= url('/assets/images/projects.jpeg'); ?>" alt="Projects" class="w-full object-cover transition-all duration-300 ease-in-out">
+                                    <div class="h-28 sm:h-32 lg:h-36 overflow-hidden rounded-lg">
+                                        <img src="<?= url('/assets/images/projects.jpeg'); ?>" alt="Projects" class="w-full h-full object-cover transition-all duration-300 ease-in-out">
                                     </div>
                                     <p class="text-gray-700 dark:text-gray-500 text-xs uppercase tracking-wide"> Showcase </p>
                                     <h2 class="text-base sm:text-lg font-semibold tracking-wider text-gray-900 dark:text-white">Projects</h2>
@@ -83,7 +79,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 <div class="p-4 bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="flex flex-col gap-2">
                         <div class="h-24 sm:h-32 overflow-hidden rounded-lg">
-                            <img src="<?= url('/assets/images/stories.jpeg'); ?>" alt="Blogs" class="w-full object-cover transition-all duration-300 ease-in-out">
+                            <img src="<?= url('/assets/images/stories.jpeg'); ?>" alt="Blogs" class="w-full h-full object-cover transition-all duration-300 ease-in-out">
                         </div>
                         <p class="text-gray-700 dark:text-gray-500 text-xs uppercase tracking-wide"> Blog </p>
                         <h2 class="text-base sm:text-lg font-semibold tracking-wider text-gray-900 dark:text-white">Stories</h2>
@@ -135,7 +131,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                 <div class="p-4 card-bg-radial rounded-xl shadow-lg">
                     <div class="flex flex-col gap-2">
                         <div class="h-24 sm:h-32 flex flex-col justify-center items-center p-2">
-                            <div class="flex flex-row gap-2 justify-center">
+                            <div class="flex flex-row flex-wrap gap-2 justify-center">
                                 <div class="rounded-full bg-gray-100 shadow-lg dark:bg-gray-800 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex justify-center items-center">
                                     <a href="<?= SOCIAL_LINKEDIN ?>" title="LinkedIn" target="_blank" class="text-gray-900 dark:text-gray-200 text-sm sm:text-base lg:text-xl xl:text-2xl">
                                         <i class="fab fa-linkedin-in"></i>
@@ -170,10 +166,10 @@ require_once __DIR__ . '/partials/header.php'; # config file
 
         <div class="flex flex-col lg:flex-row gap-4 mb-4">
             <div class="w-full lg:w-1/2">
-                <div class="p-4 lg:p-6 card-bg-linear rounded-xl shadow-lg">
-                    <div class="flex flex-col sm:flex-row gap-4 p-2 min-h-[160px] sm:min-h-[180px]">
-                        <div class="flex flex-col gap-2 items-center text-center justify-center flex-1 card-bg-radial rounded-xl p-4">
-                            <span class="text-gray-900 dark:text-white font-bold text-2xl sm:text-3xl xl:text-4xl" id="years">
+                <div class="p-4 lg:p-6 card-bg-linear rounded-xl shadow-lg h-full">
+                    <div class="flex flex-row gap-2 sm:gap-4 p-2 h-full">
+                        <div class="flex flex-col gap-1 sm:gap-2 items-center text-center justify-center flex-1 card-bg-radial rounded-xl p-2 sm:p-4">
+                            <span class="text-gray-900 dark:text-white font-bold text-lg sm:text-3xl xl:text-4xl" id="years">
                                 <?php 
                                 $years = date('Y') - 2019;
                                 echo str_pad($years, 2, 0, STR_PAD_LEFT); ?>+
@@ -181,13 +177,13 @@ require_once __DIR__ . '/partials/header.php'; # config file
                             <span class="text-gray-700 dark:text-gray-300 text-xs sm:text-sm text-center">Years of <br/>Experience</span>
                         </div>
 
-                        <div class="flex flex-col gap-2 items-center text-center justify-center flex-1 card-bg-radial rounded-xl p-4">
-                            <span class="text-gray-900 dark:text-white font-bold text-2xl sm:text-3xl xl:text-4xl" id="happyClients">100%</span>
+                        <div class="flex flex-col gap-1 sm:gap-2 items-center text-center justify-center flex-1 card-bg-radial rounded-xl p-2 sm:p-4">
+                            <span class="text-gray-900 dark:text-white font-bold text-lg sm:text-3xl xl:text-4xl" id="happyClients">100%</span>
                             <span class="text-gray-700 dark:text-gray-300 text-xs sm:text-sm text-center">Happy <br/>Clients</span>
                         </div>
 
-                        <div class="flex flex-col gap-2 items-center text-center justify-center flex-1 card-bg-radial rounded-xl p-4">
-                            <span class="text-gray-900 dark:text-white font-bold text-2xl sm:text-3xl xl:text-4xl" id="codingHours">
+                        <div class="flex flex-col gap-1 sm:gap-2 items-center text-center justify-center flex-1 card-bg-radial rounded-xl p-2 sm:p-4">
+                            <span class="text-gray-900 dark:text-white font-bold text-lg sm:text-3xl xl:text-4xl" id="codingHours">
                                 <?php 
                                 $codingHours = $years * 365 * 5; // years * days in a year * daily coding hours
                                 echo '+' . number_format($codingHours); ?>
@@ -199,9 +195,9 @@ require_once __DIR__ . '/partials/header.php'; # config file
             </div>
 
             <div class="w-full lg:w-1/2">
-                <div class="p-4 lg:p-6 bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg">
-                    <div class="flex flex-col gap-2">
-                        <div class="min-h-[160px] sm:min-h-[180px] px-2 lg:px-4 py-4 flex flex-col justify-center">
+                <div class="p-4 lg:p-6 bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg h-full">
+                    <div class="flex flex-col gap-2 h-full">
+                        <div class="flex-1 px-2 lg:px-4 py-4 flex flex-col justify-center">
                             <p class="text-gray-700 dark:text-gray-500 text-lg sm:text-xl xl:text-3xl font-bold leading-relaxed">
                                 Let's <br/>
                                 talk about your <span class="brand-text">next</span> project.
@@ -209,7 +205,7 @@ require_once __DIR__ . '/partials/header.php'; # config file
                             <div class="mt-4 lg:mt-6">
                                 <span class="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 font-mono font-light">
                                     Send your ideas to <br class="sm:hidden"/>
-                                    <a href="mailto:gulgermallik@gmail.com" class="brand-text hover:underline">gulgermallik@gmail.com</a>
+                                    <a href="mailto:gulgermallik@gmail.com" class="brand-text hover:underline break-all sm:break-normal">gulgermallik@gmail.com</a>
                                 </span>
                             </div>
                         </div>

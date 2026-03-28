@@ -2,7 +2,13 @@
 DirectoryIndex index.php
 
 # Enable URL rewriting
+Options -MultiViews
 RewriteEngine On
+
+# API endpoints
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/articles/?$ api/articles.php [L,QSA]
 
 # Redirect to internal pages
 RewriteRule ^projects/([^/]+)?/?$ pages/article.php?type=project&slug=$1 [L,QSA]
@@ -16,27 +22,8 @@ RewriteRule ^blogs?/?$ pages/blogs.php [L,QSA]
 # director page
 RewriteRule ^director?/?$ pages/director.php [L,QSA]
 
-# Admin module
-RewriteRule ^admin/?$ pages/admin/dashboard.php [L,QSA]
-RewriteRule ^admin/login/?$ pages/admin/login.php [L,QSA]
-RewriteRule ^admin/auth/?$ pages/admin/auth.php [L,QSA]
-RewriteRule ^admin/dashboard/?$ pages/admin/dashboard.php [L,QSA]
-RewriteRule ^admin/content/?$ pages/admin/content.php [L,QSA]
-RewriteRule ^admin/content-details/?$ pages/admin/content-details.php [L,QSA]
-RewriteRule ^admin/skills/?$ pages/admin/skills.php [L,QSA]
-RewriteRule ^admin/resume/?$ pages/admin/resume.php [L,QSA]
-RewriteRule ^admin/services/?$ pages/admin/services.php [L,QSA]
-RewriteRule ^admin/files/?$ pages/admin/files.php [L,QSA]
-RewriteRule ^admin/profile/?$ pages/admin/profile.php [L,QSA]
-RewriteRule ^admin/logs/?$ pages/admin/logs.php [L,QSA]
-RewriteRule ^admin/logout/?$ pages/admin/logout.php [L,QSA]
-RewriteRule ^admin/cookie-consent/?$ pages/admin/cookie-consent.php [L,QSA]
-
 # Tools module
 RewriteRule ^tools/reachout?/?$ pages/tools/reachout.php [L,QSA]
-
-# pages
-RewriteRule ^privacy-policy?/?$ pages/privacy-policy.php [L,QSA]
 
 # Custom error pages
 ErrorDocument 401 /errors/401.php

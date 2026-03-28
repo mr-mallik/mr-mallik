@@ -12,7 +12,7 @@
             <a href="<?php echo url('blogs'); ?>" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Blog</a>
             <a href="<?= SOCIAL_LINKEDIN; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">LinkedIn</a>
             <a href="<?= SOCIAL_GITHUB; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">GitHub</a>
-            <a href="<?= ACADEMIC_PURE; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">PURE</a>
+            <!-- <a href="<?= ACADEMIC_PURE; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">PURE</a> -->
             <a href="<?= ACADEMIC_ORCID; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">ORCID</a>
             <a href="<?= SOCIAL_MEDIUM; ?>" target="_blank" class="hover:underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">Medium</a>
         </div>
@@ -28,6 +28,25 @@
     <!-- body ends -->
     
     <!-- Scripts -->
+    <script>
+        // Hide page loader once all resources (including images) are fully loaded
+        (function () {
+            function dismissLoader() {
+                var loader = document.getElementById('page-loader');
+                if (!loader) return;
+                loader.classList.add('loader-hidden');
+                setTimeout(function () { loader.style.display = 'none'; }, 420);
+            }
+            if (document.readyState === 'complete') {
+                dismissLoader();
+            } else {
+                window.addEventListener('load', dismissLoader);
+                // Fallback: dismiss after 8s even if some resources stall
+                setTimeout(dismissLoader, 8000);
+            }
+        })();
+    </script>
+    <script>window.APP_URL = '<?= rtrim(APP_URL, '/') ?>';</script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="<?= url('assets/js/app.js'); ?>"></script>
     <script>
