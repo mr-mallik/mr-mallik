@@ -1,9 +1,21 @@
 <?php
-require_once __DIR__ . '/includes/common.php';
+/**
+ * Sitemap Generator
+ * Generates sitemap.xml from live CMS content and static pages.
+ * Run from CLI: php scripts/generate-sitemap.php
+ */
 
-header('Content-Type: application/xml; charset=utf-8');
+// Must be run from CLI
+if (PHP_SAPI !== 'cli') {
+    http_response_code(403);
+    exit('This script must be run from the command line.' . PHP_EOL);
+}
 
-echo '<?xml version="1.0" encoding="UTF-8"?>';
+require_once __DIR__ . '/../includes/common.php';
+
+ob_start();
+
+echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -118,3 +130,15 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     ?>
     
 </urlset>
+<?php
+
+$xml      = ob_get_clean();
+$output   = __DIR__ . '/../sitemap.xml';
+$bytes    = file_put_contents($output, $xml);
+
+if ($bytes === false) {
+    fwrite(STDERR, 'Error: failed to write ' . $output . PHP_EOL);
+    exit(1);
+}
+
+echo 'sitemap.xml updated (' . $bytes . ' bytes)' . PHP_EOL;

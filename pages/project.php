@@ -13,7 +13,9 @@ $SEO = [
 require_once __DIR__ . '/../partials/header.php';
 $filterCategory = isset($_GET['category']) ? trim($_GET['category']) : null;
 $filterTag      = isset($_GET['tag'])      ? trim($_GET['tag'])      : null;
-$projects = cmsoneArticleList($filterCategory ?? 'project', $filterTag);
+$projects = cmsoneArticleList($filterCategory ?? 'project', $filterTag, 9, 1);
+$hasMore  = count($projects) > 8;
+$projects = array_slice($projects, 0, 8);
 
 // if no projects found, show a message
 if (empty($projects)) {
@@ -48,7 +50,13 @@ if (empty($projects)) {
     <?php endif; ?>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+        <div id="article-grid"
+             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
+             data-category="project"
+             data-tag="<?= htmlspecialchars($filterTag ?? '') ?>"
+             data-page="1"
+             data-limit="8"
+             data-url-prefix="<?= url('projects', false) ?>">
             <?php foreach ($projects as $project) : ?>
                 <div class="w-full" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-bg-radial rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
@@ -76,6 +84,12 @@ if (empty($projects)) {
             <?php endforeach; ?>
         </div>
     </div>
+
+    <?php if ($hasMore): ?>
+    <div id="scroll-sentinel" class="py-8 flex justify-center">
+        <div id="scroll-loader" class="hidden w-8 h-8 rounded-full border-4 border-gray-200 dark:border-gray-700 border-t-blue-500 animate-spin"></div>
+    </div>
+    <?php endif; ?>
 </section>
 
 <?php

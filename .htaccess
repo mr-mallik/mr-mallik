@@ -4,6 +4,9 @@ DirectoryIndex index.php
 # Enable URL rewriting
 RewriteEngine On
 
+# API endpoints
+RewriteRule ^api/articles/?$ api/articles.php [L,QSA]
+
 # Redirect to internal pages
 RewriteRule ^projects/([^/]+)?/?$ pages/article.php?type=project&slug=$1 [L,QSA]
 RewriteRule ^blogs/([^/]+)?/?$ pages/article.php?type=blog&slug=$1 [L,QSA]

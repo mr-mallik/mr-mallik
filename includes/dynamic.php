@@ -7,13 +7,21 @@ $CONN = DBConnect(DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD);
  * Pass $value to write, omit $value (null) to read.
  * Returns null on cache miss.
  */
-function _cmsCache($key, $value = null, $ttl = 300)
+function _cmsCache($key, $value = null, $ttl = 7200)
 {
     if (!CMS_CACHE_ENABLED) {
         return null;
     }
 
-    $file = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'mrmallik_' . $key . '.cache';
+    $dir = rtrim(BASE_URL, '/\\') . DIRECTORY_SEPARATOR . '.cache';
+
+    if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
+        // Block direct HTTP access
+        @file_put_contents($dir . DIRECTORY_SEPARATOR . '.htaccess', "Deny from all\n");
+    }
+
+    $file = $dir . DIRECTORY_SEPARATOR . 'cms_' . $key . '.json';
 
     // Write
     if ($value !== null) {
@@ -158,7 +166,7 @@ function cmsoneArticleList($category = null, $tag = null, $limit = 20, $page = 1
         return [];
     }
 
-    _cmsCache($cacheKey, $response['data'], 300);
+    _cmsCache($cacheKey, $response['data']);
     return $response['data'];
 }
 
@@ -177,7 +185,7 @@ function cmsoneArticleGet($slug)
         return null;
     }
 
-    _cmsCache($cacheKey, $response['data'], 600);
+    _cmsCache($cacheKey, $response['data']);
     return $response['data'];
 }
 
