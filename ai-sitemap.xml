@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- AI-Friendly Sitemap for https://www.mrmallik.com -->
+<!-- Generated: 2026-03-29 13:32:12 -->
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:ai="https://www.mrmallik.com/ns/ai-sitemap/1.0">
+
+    <!--
+        Site overview — for AI agents that read the XML as a whole
+        Name:        Gulger Mallik Portfolio
+        Author:      Gulger Mallik
+        Language:    en
+        Description: Personal portfolio of Gulger Mallik, a Software Engineer and Full Stack Developer.
+                     Contains project case studies, blog stories, and professional background.
+    -->
+
+    <url>
+        <loc>https://www.mrmallik.com/</loc>
+        <lastmod>2026-03-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <ai:content-type>homepage</ai:content-type>
+        <ai:title>Gulger Mallik – Software Engineer &amp; Full Stack Developer</ai:title>
+        <ai:description>The personal portfolio homepage of Gulger Mallik, a Software Engineer and Full Stack Developer. Showcases professional projects, blog stories, skills, and contact information.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, hiring managers, developers, collaborators</ai:audience>
+        <ai:topics>
+            <ai:topic>software engineering</ai:topic>
+            <ai:topic>full stack development</ai:topic>
+            <ai:topic>portfolio</ai:topic>
+            <ai:topic>PHP</ai:topic>
+            <ai:topic>JavaScript</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/about</loc>
+        <lastmod>2026-03-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+        <ai:content-type>webpage</ai:content-type>
+        <ai:title>About Gulger Mallik – Background &amp; Experience</ai:title>
+        <ai:description>Detailed professional and educational background of Gulger Mallik. Covers academic history at the University of Huddersfield, career journey, technical skills, and personal ethos.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, hiring managers, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>biography</ai:topic>
+            <ai:topic>software engineering</ai:topic>
+            <ai:topic>education</ai:topic>
+            <ai:topic>career</ai:topic>
+            <ai:topic>University of Huddersfield</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/projects</loc>
+        <lastmod>2026-03-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <ai:content-type>portfolio-index</ai:content-type>
+        <ai:title>Projects by Gulger Mallik – Software Development Portfolio</ai:title>
+        <ai:description>Index of all software development projects by Gulger Mallik. Includes web applications, automation tools, AI integrations, and enterprise systems.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, developers, clients, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>projects</ai:topic>
+            <ai:topic>software development</ai:topic>
+            <ai:topic>portfolio</ai:topic>
+            <ai:topic>web applications</ai:topic>
+            <ai:topic>case studies</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs</loc>
+        <lastmod>2026-03-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+        <ai:content-type>blog-index</ai:content-type>
+        <ai:title>Blog &amp; Stories by Gulger Mallik – Tech Insights</ai:title>
+        <ai:description>Index of blog posts and stories written by Gulger Mallik covering software engineering practices, career insights, technology trends, and personal professional experiences.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>blog</ai:topic>
+            <ai:topic>tech writing</ai:topic>
+            <ai:topic>software engineering</ai:topic>
+            <ai:topic>career development</ai:topic>
+            <ai:topic>technology</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/contact</loc>
+        <lastmod>2026-03-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>contact-page</ai:content-type>
+        <ai:title>Contact Gulger Mallik – Get in Touch</ai:title>
+        <ai:description>Contact page for Gulger Mallik. Use this page to reach out for project collaborations, job opportunities, or general enquiries.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, clients, collaborators</ai:audience>
+        <ai:topics>
+            <ai:topic>contact</ai:topic>
+            <ai:topic>hire</ai:topic>
+            <ai:topic>collaboration</ai:topic>
+            <ai:topic>enquiry</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/projects/chaos-of-traditional-job-hunting</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <ai:content-type>project-case-study</ai:content-type>
+        <ai:title>Chaos of Traditional Job Hunting</ai:title>
+        <ai:description>Discover how an AI-powered Job Application Tracker transformed my job search, streamlining organization, analyzing JD requirements, and optimizing applications.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, developers, clients, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>Next JS</ai:topic>
+            <ai:topic>Mongo DB</ai:topic>
+            <ai:topic>Vibe Coding</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/projects/visualizing-strategic-positioning</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <ai:content-type>project-case-study</ai:content-type>
+        <ai:title>Visualizing Strategic Positioning</ai:title>
+        <ai:description>Discover how a custom React and ApexCharts app visualizes strategic differentiation using Blue Ocean Strategy principles, identifying market gaps.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, developers, clients, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>React.js</ai:topic>
+            <ai:topic>Javascript</ai:topic>
+            <ai:topic>Business</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/projects/how-i-used-googles-antigravity-ai-tool</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <ai:content-type>project-case-study</ai:content-type>
+        <ai:title>How I used Google&apos;s Antigravity AI Tool</ai:title>
+        <ai:description>Explore the reality of Google&apos;s Antigravity AI tool. Discover how this powerful technology amplifies, rather than replaces, the role of the modern Software Engi</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, developers, clients, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>Artificial Intelligence</ai:topic>
+            <ai:topic>NLP</ai:topic>
+            <ai:topic>Vibe Coding</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/projects/building-the-digital-backbone-for-soil-carbon-innovation</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <ai:content-type>project-case-study</ai:content-type>
+        <ai:title>Building the Digital Backbone for Soil Carbon Innovation</ai:title>
+        <ai:description>Explore the three core technological assets powering the Tierrasphere initiative: the internal modeling tool, the frontend prototype, and the public-facing website.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, developers, clients, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>Machine Learning</ai:topic>
+            <ai:topic>Artificial Intelligence</ai:topic>
+            <ai:topic>Python</ai:topic>
+            <ai:topic>Business</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/projects/the-automated-test-management-and-asset-scheduling-system-atmas</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <ai:content-type>project-case-study</ai:content-type>
+        <ai:title>The Automated Test Management and Asset Scheduling System (ATMAS)</ai:title>
+        <ai:description>Explore the development, architecture, and achievements of the Automated Test Management and Asset Scheduling System (ATMAS) deployed at the University of Hudde</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, developers, clients, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>PHP</ai:topic>
+            <ai:topic>MySQL</ai:topic>
+            <ai:topic>Javascript</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/projects/crowther-audit-program</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <ai:content-type>project-case-study</ai:content-type>
+        <ai:title>Crowther Audit Program</ai:title>
+        <ai:description>Explore the Crowther Audit Program, a collaboration automating complex Excel audits using the ChatGPT API to boost efficiency and accuracy by 40%.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, developers, clients, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>Django</ai:topic>
+            <ai:topic>Python</ai:topic>
+            <ai:topic>Machine Learning</ai:topic>
+            <ai:topic>NLP</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/projects/business-management-suite-for-ramjan-interiors</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <ai:content-type>project-case-study</ai:content-type>
+        <ai:title>Business Management Suite for Ramjan Interiors</ai:title>
+        <ai:description>Discover how a custom Business Management Suite revolutionized Ramjan Interiors by integrating project management, inventory, and client relations into one efficient system.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, developers, clients, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>Javascript</ai:topic>
+            <ai:topic>PHP</ai:topic>
+            <ai:topic>CMS</ai:topic>
+            <ai:topic>MySQL</ai:topic>
+            <ai:topic>Business</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/projects/amanora-the-beauty-lounge</loc>
+        <lastmod>2026-03-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <ai:content-type>project-case-study</ai:content-type>
+        <ai:title>Amanora The Beauty Lounge</ai:title>
+        <ai:description>Explore the development journey of a robust, cross-platform booking and backend system tailored for Amanora The Beauty Lounge, ensuring seamless service management.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, developers, clients, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>React.js</ai:topic>
+            <ai:topic>PWA</ai:topic>
+            <ai:topic>Mobile APP</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/projects/project-deep-dive-lifepharma-e-commerce-platform</loc>
+        <lastmod>2026-03-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <ai:content-type>project-case-study</ai:content-type>
+        <ai:title>LifePharma E-commerce Platform</ai:title>
+        <ai:description>A detailed review of the LifePharma project, a final-year endeavor focused on developing a simulated pharmaceutical e-commerce platform, highlighting key features.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, developers, clients, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>PHP</ai:topic>
+            <ai:topic>MySQL</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/projects/dashboard-screen-builder-at-trellissoft-inc</loc>
+        <lastmod>2026-03-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <ai:content-type>project-case-study</ai:content-type>
+        <ai:title>Dashboard Screen Builder at Trellissoft, Inc.</ai:title>
+        <ai:description>Discover the Dashboard Screen Builder, a customizable data visualization tool developed at Trellissoft, Inc. to drive dynamic business insights and data-driven.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>recruiters, developers, clients, researchers</ai:audience>
+        <ai:topics>
+            <ai:topic>Business</ai:topic>
+            <ai:topic>PHP</ai:topic>
+            <ai:topic>Javascript</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/chaos-of-traditional-job-hunting</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>Chaos of Traditional Job Hunting</ai:title>
+        <ai:description>Discover how an AI-powered Job Application Tracker transformed my job search, streamlining organization, analyzing JD requirements, and optimizing applications.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>Next JS</ai:topic>
+            <ai:topic>Mongo DB</ai:topic>
+            <ai:topic>Vibe Coding</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/the-value-of-alumni-engagement-in-career-development</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>The Value of Alumni Engagement in Career Development</ai:title>
+        <ai:description>Reflecting on the rewarding experience of serving as an Alumni Panelist, sharing professional insights, and the value of career-launching opportunities.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>Experience</ai:topic>
+            <ai:topic>Leadership</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/how-i-used-googles-antigravity-ai-tool</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>How I used Google&apos;s Antigravity AI Tool</ai:title>
+        <ai:description>Explore the reality of Google&apos;s Antigravity AI tool. Discover how this powerful technology amplifies, rather than replaces, the role of the modern Software Engi</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>Artificial Intelligence</ai:topic>
+            <ai:topic>NLP</ai:topic>
+            <ai:topic>Vibe Coding</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/building-the-digital-backbone-for-soil-carbon-innovation</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>Building the Digital Backbone for Soil Carbon Innovation</ai:title>
+        <ai:description>Explore the three core technological assets powering the Tierrasphere initiative: the internal modeling tool, the frontend prototype, and the public-facing website.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>Machine Learning</ai:topic>
+            <ai:topic>Artificial Intelligence</ai:topic>
+            <ai:topic>Python</ai:topic>
+            <ai:topic>Business</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/building-a-home-and-a-career-abroad</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>Building a Home and a Career Abroad</ai:title>
+        <ai:description>From a one-way ticket to a staff designation: an international student shares the demanding but rewarding journey of pursuing a Master&apos;s in the UK.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>Experience</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/the-automated-test-management-and-asset-scheduling-system-atmas</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>The Automated Test Management and Asset Scheduling System (ATMAS)</ai:title>
+        <ai:description>Explore the development, architecture, and achievements of the Automated Test Management and Asset Scheduling System (ATMAS) deployed at the University of Hudde</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>PHP</ai:topic>
+            <ai:topic>MySQL</ai:topic>
+            <ai:topic>Javascript</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/earning-the-peer-commendation</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>Earning the Peer Commendation</ai:title>
+        <ai:description>Explore the significance of receiving the Peer Commendation for Exceptional Achievement in Computing and what it signifies about technical skill and teamwork.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>Experience</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/academic-rep</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>Academic Rep</ai:title>
+        <ai:description>Discover the crucial role of an Academic Representative in bridging student needs with faculty decisions, enhancing communication, and driving positive change.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>Leadership</ai:topic>
+            <ai:topic>Experience</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/conquering-the-master-in-computing</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>Conquering the Master in Computing</ai:title>
+        <ai:description>Celebrating the achievement of a Master in Computing with Distinction, highlighting academic rigor, advanced technical skills, and readiness for high-impact rol</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>blog</ai:topic>
+            <ai:topic>software engineering</ai:topic>
+            <ai:topic>career</ai:topic>
+            <ai:topic>technology</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/my-experience-as-a-placement-student</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>My Experience as a Placement Student</ai:title>
+        <ai:description>Undertaking a placement at the Centre for Precision Technology (CPT) at the University of Huddersfield.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>Experience</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/earning-a-distinction-in-computer-applications</loc>
+        <lastmod>2026-03-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>Earning a Distinction in Computer Applications</ai:title>
+        <ai:description>Reflecting on achieving a Distinction in my Bachelor of Computer Applications (BCA), the foundational skills gained in programming and algorithms are now poweri</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>blog</ai:topic>
+            <ai:topic>software engineering</ai:topic>
+            <ai:topic>career</ai:topic>
+            <ai:topic>technology</ai:topic>
+        </ai:topics>
+    </url>
+    <url>
+        <loc>https://www.mrmallik.com/blogs/my-techlipse-2019-experience-at-st-xaviers-college</loc>
+        <lastmod>2026-03-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <ai:content-type>blog-article</ai:content-type>
+        <ai:title>My Techlipse 2019 Experience at St. Xavier&apos;s College</ai:title>
+        <ai:description>Discover how the role of Student Coordinator for Techlipse 2019 honed essential organizational, project management, and leadership skills under pressure.</ai:description>
+        <ai:author>Gulger Mallik</ai:author>
+        <ai:language>en</ai:language>
+        <ai:audience>developers, students, professionals, tech enthusiasts</ai:audience>
+        <ai:topics>
+            <ai:topic>Leadership</ai:topic>
+            <ai:topic>Experience</ai:topic>
+        </ai:topics>
+    </url>
+</urlset>

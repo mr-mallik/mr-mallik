@@ -3,6 +3,8 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://mrmallik.com/sitemap.php
+Sitemap: https://mrmallik.com/sitemap.xml
+Sitemap: https://mrmallik.com/ai-sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
@@ -29,3 +31,13 @@ Allow: /site.webmanifest
 
 # SEO optimization
 Host: https://mrmallik.com
+
+# Allo AI Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
