@@ -1,9 +1,43 @@
-import { Github01Icon, Mail } from "@hugeicons/core-free-icons";
+import { Github01Icon, LinkedinIcon, Mail } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Showcase } from "@/components/showcase";
+import { ExperienceSection } from "@/components/experience-section";
 import { ProjectsSection } from "@/components/projects-section";
+
+const mailtoQuery = new URLSearchParams({
+  subject: "Lets Connect",
+  body: [
+    "Hi Gulger,",
+    "I came across your profile and would like to connect with you.",
+    "Best regards,",
+  ].join("\n"),
+}).toString().replace(/\+/g, "%20");
+
+const mailtoLink = `mailto:gulgermallik@gmail.com?${mailtoQuery}`;
+
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    handle: "mrmallik",
+    href: "https://www.linkedin.com/in/mrmallik/",
+    icon: LinkedinIcon,
+  },
+  {
+    name: "GitHub",
+    handle: "mr-mallik",
+    href: "https://github.com/mr-mallik",
+    icon: Github01Icon,
+  },
+  {
+    name: "Mail",
+    handle: "gulgermallik@gmail.com",
+    href: mailtoLink,
+    icon: Mail,
+  }
+]
 
 export default function Home() {
   return (
@@ -57,7 +91,7 @@ export default function Home() {
             across research and
             engineering. You can reach me via{" "}
             <Link
-              href="mailto:gulgermallik@gmail.com"
+              href={mailtoLink}
               className="inline-flex items-center gap-1 align-middle font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-700 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200"
             >
               <HugeiconsIcon icon={Mail} className="h-4 w-4 shrink-0" aria-hidden="true" /> email
@@ -87,9 +121,54 @@ export default function Home() {
             .
           </p>
 
+          <p className="text-sm leading-relaxed text-gray-700 sm:text-base sm:leading-relaxed dark:text-slate-300">
+            I share my learnings, milestones, and reflections on{" "}
+            <Link
+              href="/blogs"
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-700 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200"
+            >
+              blogs
+            </Link>
+            , a space where I publish practical notes and stories about software
+            engineering, applied research, and the evolving tech landscape.
+          </p>
+
         </header>
 
         <ProjectsSection limit={2} showViewAllLink />
+
+        <ExperienceSection />
+
+        <Showcase />
+
+        <section className="space-y-5">
+          <p className="text-sm leading-relaxed text-gray-700 sm:text-base sm:leading-relaxed dark:text-slate-300">
+            I am a social person and love connecting with like-minded individuals. If you want to chat about anything, 
+            feel free to reach out to me via the contact details above. I am always open to discussing new ideas, potential collaborations, 
+            or just having a friendly conversation about technology and research.
+          </p>
+
+          <div className="flex items-center gap-6 flex-wrap">
+            {socialLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 align-middle font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-700 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200"
+              >
+                <HugeiconsIcon icon={link.icon} className="h-4 w-4 shrink-0" aria-hidden="true" /> {link.handle}
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <footer className="text-center text-sm text-slate-500 dark:text-slate-400">
+          &copy; {new Date().getFullYear()} Gulger Mallik. All rights reserved.
+        </footer>
+        
       </div>
     </section>
   );
