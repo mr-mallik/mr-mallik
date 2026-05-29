@@ -1,0 +1,22 @@
+[
+  {
+    "degree": "Bachelor of Computer Applications (BCA)",
+    "institution": "St. Xaviers College",
+    "location": "Goa, India",
+    "grade": "Distinction",
+    "duration": "2016 - 2019"
+  },
+  {
+    "degree": "Master of Science in Computing (MSc Computing)",
+    "institution": "University of Huddersfield",
+    "location": "Huddersfield, UK",
+    "grade": "Distinction",
+    "duration": "2022 - 2023"
+  },
+  {
+    "degree": "Doctor of Philosophy in Artificial Intelligence (PhD AI)",
+    "institution": "University of Huddersfield",
+    "location": "Huddersfield, UK",
+    "duration": "2026 - Present"
+  }
+]

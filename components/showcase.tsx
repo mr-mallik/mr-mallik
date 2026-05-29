@@ -1,27 +1,14 @@
-import { ImagePlayIcon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
+import Link from "next/link";
+
+import showcaseItems from "@/data/showcase.json";
 
 type ShowcaseItem = {
   name: string;
-  image?: string;
+  image: string;
   url?: string;
+  description?: string;
 };
-
-const showcaseItems: ShowcaseItem[] = [
-  { name: "Tierrasphere", url: "https://www.tierrasphere.com/" },
-  { name: "Crowther", url: "https://www.crowther.co.uk/" },
-  { name: "MuscleMindStories", url: "https://www.crowther.co.uk/" },
-  { name: "Interview Prep AI", url: "https://www.crowther.co.uk/" },
-  { name: "AI Job Tracker", url: "https://www.crowther.co.uk/" },
-  { name: "University of Huddersfield", url: "https://www.crowther.co.uk/" },
-  { name: "Cosmokode Ltd", url: "https://www.crowther.co.uk/" },
-  { name: "Trellissoft Inc.", url: "https://www.crowther.co.uk/" },
-  { name: "Teaminertia Technologies", url: "https://www.crowther.co.uk/" },
-  { name: "Centre for Precision Technologies", url: "https://www.crowther.co.uk/" },
-  { name: "UKRI KTP", url: "https://www.crowther.co.uk/" },
-  { name: "AKTP", url: "https://www.crowther.co.uk/" },
-];
 
 export function Showcase() {
   return (
@@ -34,22 +21,36 @@ export function Showcase() {
 
       <div className="overflow-hidden">
         <div className="grid grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 sm:grid-cols-3 md:grid-cols-4">
-          {showcaseItems.map((item) => (
-            <div
-              key={item.name}
-              className="flex h-28 flex-col items-center justify-center bg-background px-3 text-center sm:h-32"
-            >
-              {item.image ? (
+          {(showcaseItems as ShowcaseItem[]).map((item) => {
+            const content = (
+              <div className="flex h-28 flex-col items-center justify-center bg-background px-3 text-center sm:h-32">
                 <Image
+                  title={`${item.description}`}
                   src={item.image}
                   alt={`${item.name} icon`}
+                  width={160}
                   height={36}
+                  className="max-h-10 w-auto object-contain grayscale brightness-0 opacity-60 dark:invert dark:opacity-70 sm:max-h-12"
                 />
-              ) : (
-                <HugeiconsIcon icon={ImagePlayIcon} />
-              )}
-            </div>
-          ))}
+              </div>
+            );
+
+            if (!item.url) {
+              return <div key={item.name}>{content}</div>;
+            }
+
+            return (
+              <Link
+                key={item.name}
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                className="transition hover:bg-slate-50 dark:hover:bg-slate-950/40"
+              >
+                {content}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

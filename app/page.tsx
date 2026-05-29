@@ -2,10 +2,18 @@ import { Github01Icon, LinkedinIcon, Mail } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import Link from "next/link";
+import localFont from "next/font/local";
 
 import { Showcase } from "@/components/showcase";
+import { EducationSection } from "@/components/education-section";
 import { ExperienceSection } from "@/components/experience-section";
 import { ProjectsSection } from "@/components/projects-section";
+
+const brittanySignature = localFont({
+  src: "../public/fonts/BrittanySignature.ttf",
+  fallback: ["cursive"],
+  display: "swap",
+});
 
 const mailtoQuery = new URLSearchParams({
   subject: "Lets Connect",
@@ -141,6 +149,8 @@ export default function Home() {
 
         <ExperienceSection />
 
+        <EducationSection />
+
         <Showcase />
 
         <section className="space-y-5">
@@ -165,8 +175,16 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="text-center text-sm text-slate-500 dark:text-slate-400">
-          &copy; {new Date().getFullYear()} Gulger Mallik. All rights reserved.
+        <footer className="flex flex-row justify-between py-4 text-sm text-slate-500 dark:text-slate-400">
+          <Link
+            href="/"
+            className={`${brittanySignature.className} text-2xl text-gray-400`}
+          >
+            mr mallik
+          </Link>
+          <div>
+            &copy; {new Date().getFullYear()} Gulger Mallik. All rights reserved.
+          </div>
         </footer>
         
       </div>

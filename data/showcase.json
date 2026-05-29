@@ -1,0 +1,50 @@
+[
+	{
+		"name": "Cosmokode Ltd",
+    "description": "Founding engineer of AI first product studio. We build AI powered products for businesses and startups.",
+		"image": "/images/showcase/cosmokode.png",
+		"url": "https://cosmokode.com"
+	},
+	{
+		"name": "Crowther",
+    "description": "A leading accounting firm providing comprehensive financial services.",
+		"image": "/images/showcase/crowther.svg",
+		"url": "https://www.crowther.accountants/"
+	},
+	{
+		"name": "Fitplanex",
+    "description": "A fitness platform offering personalized workout plans and nutrition guidance.",
+		"image": "/images/showcase/fitplanex.png",
+    "url": "https://www.fitplanex.com/"
+	},
+	{
+		"name": "Muscle Mind Stories",
+    "description": "A platform sharing inspiring stories of fitness journeys and transformations.",
+		"image": "/images/showcase/musclemindstories.png",
+    "url": "https://www.musclemindstories.com/"
+	},
+	{
+		"name": "Ramjan Interiors",
+    "description": "An interior design company specializing in modern and sustainable solutions.",
+		"image": "/images/showcase/ramjaninteriors.png",
+    "url": "https://www.ramjaninteriors.com/"
+	},
+	{
+		"name": "TierraSphere",
+    "description": "A company focused on sustainable environmental solutions.",
+		"image": "/images/showcase/TierraSphere.png",
+		"url": "https://www.tierrasphere.com/"
+	},
+	{
+		"name": "University of Huddersfield",
+    "description": "A leading university providing quality education and research opportunities.",
+		"image": "/images/showcase/universityofhuddersfield.svg",
+		"url": "https://www.hud.ac.uk/"
+	},
+  {
+		"name": "Job Application Tracker",
+    "description": "A web application to track and manage job applications effectively powered by AI.",
+		"image": "/images/showcase/jobapplicationtracker.png",
+		"url": "https://job-application-tracker-eta-lac.vercel.app/"
+	}
+]
