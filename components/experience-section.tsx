@@ -1,4 +1,5 @@
 import Link from "next/link";
+import workItems from "@/data/work.json";
 
 type Experience = {
   company: string;
@@ -6,45 +7,6 @@ type Experience = {
   period: string;
   url?: string;
 };
-
-const experiences: Experience[] = [
-  {
-    company: "University of Huddersfield",
-    role: "Research Technician",
-    period: "Mar 2026 - Present",
-    url: "https://www.hud.ac.uk/",
-  },
-  {
-    company: "University of Huddersfield",
-    role: "Research Assistant in Applied AI (UKRI)",
-    period: "Oct 2024 - Oct 2025",
-    url: "https://www.hud.ac.uk/",
-  },
-  {
-    company: "University of Huddersfield",
-    role: "Research Technician (AKTP)",
-    period: "Apr 2024 - Aug 2024",
-    url: "https://www.hud.ac.uk/",
-  },
-  {
-    company: "University of Huddersfield",
-    role: "Research and Development Engineer",
-    period: "Oct 2023 - Apr 2024",
-    url: "https://www.hud.ac.uk/",
-  },
-  {
-    company: "Trellissoft Inc.",
-    role: "Software Engineer",
-    period: "Mar 2022 - Aug 2022",
-    url: "https://www.trellissoft.com/",
-  },
-  {
-    company: "Teaminertia Technologies",
-    role: "Software Engineer",
-    period: "May 2019 - Mar 2022",
-    url: "https://www.teaminertia.com/",
-  },
-];
 
 export function ExperienceSection({
   limit,
@@ -55,6 +17,7 @@ export function ExperienceSection({
   heading?: boolean;
   showViewAllLink?: boolean;
 }) {
+  const experiences = workItems as Experience[];
   const visibleExperiences =
     typeof limit === "number" ? experiences.slice(0, limit) : experiences;
 
