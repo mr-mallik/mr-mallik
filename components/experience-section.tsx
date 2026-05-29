@@ -1,5 +1,6 @@
 import Link from "next/link";
 import workItems from "@/data/work.json";
+import { LINK_LABELS, ROUTES, SECTION_TITLES } from "@/app/constants";
 
 type Experience = {
   company: string;
@@ -25,15 +26,15 @@ export function ExperienceSection({
     <section className="space-y-5">
       {heading ? (
         <div className="flex items-center justify-between gap-4">
-          <h2 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-            Work Experience
+          <h2 className="ui-section-title tracking-tight">
+            {SECTION_TITLES.workExperience}
           </h2>
           {showViewAllLink ? (
             <Link
-              href="/experience"
-              className="text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-900 hover:decoration-slate-700 dark:text-slate-400 dark:decoration-slate-600 dark:hover:text-slate-100 dark:hover:decoration-slate-300"
+              href={ROUTES.resume}
+              className="ui-link-subtle text-sm font-medium"
             >
-              View all experience
+              {LINK_LABELS.resume}
             </Link>
           ) : null}
         </div>
@@ -49,10 +50,10 @@ export function ExperienceSection({
                 : ""
             }`}
           >
-            <p className="text-base text-slate-800 dark:text-slate-100">
+            <p className="ui-item-title text-base">
               {item.role}
             </p>
-            <p className="text-right text-sm text-slate-500 dark:text-slate-400">
+            <p className="ui-control-text text-right text-sm">
               {item.url ? (
                 <a href={item.url} target="_blank" rel="noopener noreferrer">
                   {item.company}

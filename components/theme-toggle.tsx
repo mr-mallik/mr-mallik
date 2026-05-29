@@ -12,7 +12,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="inline-flex items-center gap-2 text-sm font-medium text-slate-800 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 dark:text-slate-100"
+      className="ui-item-title inline-flex items-center gap-2 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >

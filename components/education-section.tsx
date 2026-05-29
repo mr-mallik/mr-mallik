@@ -1,4 +1,5 @@
 import educationItems from "@/data/education.json";
+import { SECTION_TITLES, STATUS_LABELS } from "@/app/constants";
 
 type EducationItem = {
   degree: string;
@@ -23,8 +24,8 @@ export function EducationSection() {
   return (
     <section className="space-y-5">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-          Education
+        <h2 className="ui-section-title tracking-tight">
+          {SECTION_TITLES.education}
         </h2>
       </div>
 
@@ -68,21 +69,21 @@ export function EducationSection() {
               />
 
               <article className="rounded-xl border border-slate-200 bg-background p-4 transition-transform duration-200 hover:-translate-y-0.5 dark:border-slate-800">
-                <p className="text-xs font-medium uppercase tracking-[0.08em] text-slate-500 dark:text-slate-400">
+                <p className="ui-meta-text uppercase tracking-[0.08em]">
                   {item.duration}
                 </p>
-                <h3 className="mt-2 text-base font-semibold leading-tight text-slate-900 dark:text-slate-100">
+                <h3 className="ui-item-title mt-2 font-semibold leading-tight text-base">
                   {item.degree}
                 </h3>
-                <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
+                <p className="ui-body-text mt-2 text-sm">
                   {item.institution}
                 </p>
-                <p className="text-sm text-slate-500 dark:text-slate-400">
+                <p className="ui-control-text text-sm">
                   {item.location}
                 </p>
                 {item.grade ? (
-                  <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-                    Grade: {item.grade}
+                  <p className="ui-control-text mt-2 text-sm">
+                    {STATUS_LABELS.educationGradePrefix} {item.grade}
                   </p>
                 ) : null}
               </article>

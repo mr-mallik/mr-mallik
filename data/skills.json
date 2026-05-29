@@ -1,0 +1,48 @@
+[
+	{
+		"category": "AI and Machine Learning",
+		"skills": [
+			"Explainable AI",
+			"Graph Neural Networks",
+			"Regression Modeling",
+			"Natural Language Processing",
+			"Generative AI",
+			"Multi-Criteria Decision Analysis",
+			"Decision Support Systems"
+		]
+	},
+	{
+		"category": "Data and Engineering",
+		"skills": [
+			"Data Pipeline Design",
+			"Exploratory Data Analysis",
+			"Real-Time Dashboard Development",
+			"Structured Data Processing",
+			"Unstructured Data Processing",
+			"Data Transformation"
+		]
+	},
+	{
+		"category": "Software Development",
+		"skills": [
+			"Full-Stack Web Development",
+			"Mobile Application Development",
+			"Object-Oriented Design",
+			"Agile Delivery",
+			"Sprint-Based Development",
+			"CMS Development",
+			"CRM Systems"
+		]
+	},
+	{
+		"category": "Research and Evaluation",
+		"skills": [
+			"Applied AI Research",
+			"Literature Review and Synthesis",
+			"Academic Writing",
+			"Human-in-the-Loop System Design",
+			"Empirical Evaluation",
+			"Model Interpretability"
+		]
+	}
+]

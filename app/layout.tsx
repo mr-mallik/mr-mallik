@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Footer } from "@/components/footer";
+import { SITE } from "@/app/constants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gulger Mallik ",
+  title: SITE.title,
   description: "",
 };
 
@@ -55,6 +57,7 @@ export default function RootLayout({
             <main className="w-full mx-auto flex-1 px-4 py-6 sm:px-6 sm:pb-8 lg:px-8">
               {children}
             </main>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>

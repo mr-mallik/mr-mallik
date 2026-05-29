@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import defaultSvg from "../public/default-project.svg";
+import { LINK_LABELS, ROUTES, SECTION_TITLES } from "@/app/constants";
 
 type Project = {
   name: string;
@@ -56,15 +57,15 @@ export function ProjectsSection({
     <section className="space-y-5">
       {heading ? (
         <div className="flex items-center justify-between gap-4">
-          <h2 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-            Projects
+          <h2 className="ui-section-title tracking-tight">
+            {SECTION_TITLES.projects}
           </h2>
           {showViewAllLink ? (
             <Link
-              href="/projects"
-              className="text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-900 hover:decoration-slate-700 dark:text-slate-400 dark:decoration-slate-600 dark:hover:text-slate-100 dark:hover:decoration-slate-300"
+              href={ROUTES.projects}
+              className="ui-link-subtle text-sm font-medium"
             >
-              View all projects
+              {LINK_LABELS.viewAllProjects}
             </Link>
           ) : null}
         </div>
@@ -85,10 +86,10 @@ export function ProjectsSection({
                 />
               </div>
               <div className="mt-auto pt-3">
-                <h3 className="text-lg tracking-tight text-slate-900 dark:text-slate-100">
+                <h3 className="ui-text-primary text-lg tracking-tight">
                   {project.name}
                 </h3>
-                <p className="mt-2 leading-relaxed text-slate-600 dark:text-slate-400">
+                <p className="ui-text-secondary mt-2 leading-relaxed">
                   {project.description}
                 </p>
               </div>

@@ -3,36 +3,84 @@
 		"company": "University of Huddersfield",
 		"role": "Research Technician",
 		"period": "Mar 2026 - Present",
-		"url": "https://www.hud.ac.uk/"
+		"location": "Huddersfield, UK",
+		"url": "https://www.hud.ac.uk/",
+		"summary": "Leading applied AI work on a sustainability decision support platform for housing and energy domains, combining generative AI and machine learning to produce transparent, evidence-based recommendations. Focused on multi-criteria trade-off analysis and practical outputs for real-world decision makers.",
+		"details": [
+			"Develop an AI-powered sustainability decision support platform across environmental and reliability criteria.",
+			"Integrate generative AI and machine learning models with real housing and energy datasets.",
+			"Produce explainable recommendations to support practitioner decisions.",
+			"Run multi-factor trade-off analysis to improve transparency and assessment quality."
+		]
 	},
 	{
 		"company": "University of Huddersfield",
 		"role": "Research Assistant in Applied AI (UKRI)",
 		"period": "Oct 2024 - Oct 2025",
-		"url": "https://www.hud.ac.uk/"
+		"location": "Huddersfield, UK",
+		"url": "https://www.hud.ac.uk/",
+		"summary": "Designed and evaluated machine learning solutions for complex multi-source decision problems in a UKRI-funded academic-industry collaboration. Built real-time dashboards for model interpretation and action, and contributed research outputs through literature synthesis and scholarly dissemination.",
+		"details": [
+			"Designed and evaluated graph neural network and regression models for complex decision tasks.",
+			"Built real-time dashboards to make AI outputs interpretable and actionable.",
+			"Reduced decision time and improved confidence for practitioners using model insights.",
+			"Conducted literature reviews and contributed to scholarly outputs in a funded KTP project."
+		]
 	},
 	{
 		"company": "University of Huddersfield",
 		"role": "Research Technician (AKTP)",
 		"period": "Apr 2024 - Aug 2024",
-		"url": "https://www.hud.ac.uk/"
+		"location": "Huddersfield, UK",
+		"url": "https://www.hud.ac.uk/",
+		"summary": "Built an end-to-end NLP workflow to automate financial audit processes, turning unstructured financial records into machine-readable data for reliable automated analysis. Emphasized traceability and compliance through auditable processing logic.",
+		"details": [
+			"Designed and implemented an end-to-end NLP pipeline for financial audit automation.",
+			"Converted heterogeneous unstructured documents into structured machine-readable datasets.",
+			"Reduced manual review effort and decision error in audit workflows.",
+			"Embedded traceable logic to support auditability and compliance requirements."
+		]
 	},
 	{
 		"company": "University of Huddersfield",
 		"role": "Research and Development Engineer",
 		"period": "Oct 2023 - Apr 2024",
-		"url": "https://www.hud.ac.uk/"
+		"location": "Huddersfield, UK",
+		"url": "https://www.hud.ac.uk/",
+		"summary": "Co-developed operational AI tooling for a research engineering environment, including intelligent asset management and test-plan generation. Supported advanced manufacturing research through data pipeline contributions for 3D object orientation detection under real-world constraints.",
+		"details": [
+			"Co-designed an intelligent asset management and test-plan generation system used in daily operations.",
+			"Streamlined engineering workflows in the research group through practical tooling.",
+			"Contributed to AI data pipelines for 3D object orientation detection.",
+			"Supported manufacturing-focused applications under noisy and constrained real-world data conditions."
+		]
 	},
 	{
 		"company": "Trellissoft Inc.",
 		"role": "Software Engineer",
 		"period": "Mar 2022 - Aug 2022",
-		"url": "https://www.trellissoft.com/"
+		"location": "Goa, India",
+		"url": "https://www.trellissoft.com/",
+		"summary": "Delivered product features and core software enhancements using structured object-oriented practices in sprint cycles. Contributed to technical decisions while maintaining quality and delivery timelines across collaborative engineering work.",
+		"details": [
+			"Enhanced core software systems using object-oriented development practices.",
+			"Implemented robust components aligned with sprint commitments and release timelines.",
+			"Contributed to feature design and technical decision-making with the engineering team.",
+			"Maintained software quality through disciplined implementation and review workflows."
+		]
 	},
 	{
 		"company": "Teaminertia Technologies",
 		"role": "Software Engineer",
 		"period": "May 2019 - Mar 2022",
-		"url": "https://www.teaminertia.com/"
+		"location": "Goa, India",
+		"url": "https://www.teaminertia.com/",
+		"summary": "Built and maintained web and mobile applications across CMS, CRM, and retail platforms for multiple clients. Designed scalable architectures, improved reliability, and supported team delivery by mentoring junior developers in fast-paced project environments.",
+		"details": [
+			"Developed and maintained client-facing web and mobile applications across CMS, CRM, and retail products.",
+			"Designed scalable application architectures to improve reliability and growth readiness.",
+			"Delivered features across multiple business domains in fast-paced client cycles.",
+			"Mentored junior developers and supported collaborative team execution."
+		]
 	}
 ]

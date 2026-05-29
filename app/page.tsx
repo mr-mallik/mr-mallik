@@ -2,46 +2,46 @@ import { Github01Icon, LinkedinIcon, Mail } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import Link from "next/link";
-import localFont from "next/font/local";
 
 import { Showcase } from "@/components/showcase";
 import { EducationSection } from "@/components/education-section";
 import { ExperienceSection } from "@/components/experience-section";
 import { ProjectsSection } from "@/components/projects-section";
-
-const brittanySignature = localFont({
-  src: "../public/fonts/BrittanySignature.ttf",
-  fallback: ["cursive"],
-  display: "swap",
-});
+import { PublicationsSection } from "@/components/publications-section";
+import {
+  EXTERNAL_LINKS,
+  LINK_LABELS,
+  MAIL,
+  PAGE_COPY,
+  PROFILE,
+  ROUTES,
+  SITE,
+  SOCIAL_HANDLES,
+} from "@/app/constants";
 
 const mailtoQuery = new URLSearchParams({
-  subject: "Lets Connect",
-  body: [
-    "Hi Gulger,",
-    "I came across your profile and would like to connect with you.",
-    "Best regards,",
-  ].join("\n"),
+  subject: MAIL.subject,
+  body: MAIL.bodyLines.join("\n"),
 }).toString().replace(/\+/g, "%20");
 
-const mailtoLink = `mailto:gulgermallik@gmail.com?${mailtoQuery}`;
+const mailtoLink = `mailto:${PROFILE.primaryEmail}?${mailtoQuery}`;
 
 const socialLinks = [
   {
     name: "LinkedIn",
-    handle: "mrmallik",
-    href: "https://www.linkedin.com/in/mrmallik/",
+    handle: SOCIAL_HANDLES.linkedIn,
+    href: PROFILE.linkedInUrl,
     icon: LinkedinIcon,
   },
   {
     name: "GitHub",
-    handle: "mr-mallik",
-    href: "https://github.com/mr-mallik",
+    handle: SOCIAL_HANDLES.github,
+    href: PROFILE.githubUrl,
     icon: Github01Icon,
   },
   {
     name: "Mail",
-    handle: "gulgermallik@gmail.com",
+    handle: PROFILE.primaryEmail,
     href: mailtoLink,
     icon: Mail,
   }
@@ -56,108 +56,116 @@ export default function Home() {
             <div className="h-12 w-12 rounded-full bg-gradient-to-br from-slate-200 to-slate-400 shadow-sm dark:from-slate-600 dark:to-slate-800">
               <Image
                 src="/images/gulger-mallik@1x1.webp"
-                alt="Profile picture of Gulger Mallik"
+                alt={PROFILE.profileImageAlt}
                 width={48}
                 height={48}
                 className="rounded-full"
               />
             </div>
             <div>
-              <h1 className="text-lg text-slate-900 dark:text-slate-100">
-                Gulger Mallik
+              <h1 className="ui-item-title text-base sm:text-lg">
+                {SITE.ownerName}
               </h1>
-              <p className="text-sm text-gray-500 dark:text-slate-400 sm:text-base">
-                Researcher at The <Link href="https://hud.ac.uk" target="_blank" rel="noreferrer">University of Huddersfield</Link>
+              <p className="ui-control-text sm:text-base">
+                {PAGE_COPY.homepageRolePrefix}{" "}
+                <Link href={PROFILE.affiliationUrl} target="_blank" rel="noreferrer">
+                  {PROFILE.affiliationName}
+                </Link>
               </p>
             </div>
           </div>
 
-          <p className="text-sm leading-relaxed text-gray-700 sm:text-base sm:leading-relaxed dark:text-slate-300">
-            I am a founding software engineer at{" "}
+          <p className="ui-body-text text-sm sm:text-base">
+            {PAGE_COPY.homeIntroCompanyPrefix}{" "}
             <Link
-              href="https://cosmokode.com"
+              href={EXTERNAL_LINKS.cosmokode}
               target="_blank"
               rel="noreferrer"
-              className="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-700 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200"
+              className="ui-link-subtle"
             >
               Cosmokode Ltd
             </Link>{" "}
-            building thoughtful tools for the
-            next layer of the web. I like to build systems that accelerate businesses and bring confidence in the era of Artificial Intelligence.
+            {PAGE_COPY.homeIntroCompanySuffix}
           </p>
 
-          <p className="text-sm leading-relaxed text-gray-700 sm:text-base sm:leading-relaxed dark:text-slate-300">
-            Previously, I worked with{" "}
+          <p className="ui-body-text text-sm sm:text-base">
+            {PAGE_COPY.homePreviousPrefix}{" "}
             <Link 
-              href="https://www.linkedin.com/in/mrmallik/"
+              href={PROFILE.linkedInUrl}
               target="_blank"
               rel="noreferrer"
-              className="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-700 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200"
+              className="ui-link-subtle"
               >
               product teams
             </Link>{" "}
-            across research and
-            engineering. You can reach me via{" "}
+            {PAGE_COPY.homePreviousSuffix}{" "}
             <Link
               href={mailtoLink}
-              className="inline-flex items-center gap-1 align-middle font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-700 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200"
+              className="ui-link-subtle inline-flex items-center gap-1 align-middle"
             >
               <HugeiconsIcon icon={Mail} className="h-4 w-4 shrink-0" aria-hidden="true" /> email
             </Link>{" "}
-            or see my code on{" "}
+            {PAGE_COPY.homeCodePrefix}{" "}
             <Link
-              href="https://github.com/mr-mallik"
+              href={PROFILE.githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1 align-middle font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-700 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200"
+              className="ui-link-subtle inline-flex items-center gap-1 align-middle"
             >
               <HugeiconsIcon icon={Github01Icon} className="h-4 w-4 shrink-0" aria-hidden="true" /> GitHub
             </Link>
             .
+            {" "}{PAGE_COPY.homeResumePrefix}{" "}
+            <Link
+              href={ROUTES.resume}
+              className="ui-link-subtle inline-flex items-center gap-1 align-middle"
+            >
+              {LINK_LABELS.pdfFormat}
+            </Link>
+            .
           </p>
 
-          <p className="text-sm leading-relaxed text-gray-700 sm:text-base sm:leading-relaxed dark:text-slate-300">
-            My research focuses on Explainable AI, Multi-critera Decision Making, and Sustainable Software Engineering, read my publications on{" "}
+          <p className="ui-body-text text-sm sm:text-base">
+            {PAGE_COPY.homeResearchPrefix}{" "}
             <Link
-              href="https://orcid.org/0009-0002-5110-8575"
+              href={PROFILE.orcidUrl}
               target="_blank"
               rel="noreferrer"
-              className="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-700 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200"
+              className="ui-link-subtle"
             >
               ORCiD
             </Link>
             .
           </p>
 
-          <p className="text-sm leading-relaxed text-gray-700 sm:text-base sm:leading-relaxed dark:text-slate-300">
-            I share my learnings, milestones, and reflections on{" "}
+          <p className="ui-body-text text-sm sm:text-base">
+            {PAGE_COPY.homeBlogPrefix}{" "}
             <Link
-              href="/blogs"
+              href={ROUTES.blogs}
               target="_blank"
               rel="noreferrer"
-              className="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-700 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200"
+              className="ui-link-subtle"
             >
-              blogs
+              {LINK_LABELS.blogs}
             </Link>
-            , a space where I publish practical notes and stories about software
-            engineering, applied research, and the evolving tech landscape.
+            {PAGE_COPY.homeBlogSuffix}
           </p>
 
         </header>
 
         <ProjectsSection limit={2} showViewAllLink />
 
-        <ExperienceSection />
+        <ExperienceSection showViewAllLink />
 
         <EducationSection />
+
+        <PublicationsSection limit={3} showViewAllLink />
 
         <Showcase />
 
         <section className="space-y-5">
-          <p className="text-sm leading-relaxed text-gray-700 sm:text-base sm:leading-relaxed dark:text-slate-300">
-            I am a social person and love connecting with like-minded individuals. If you want to chat about anything, 
-            feel free to reach out to me via the contact details above. I am always open to discussing new ideas, potential collaborations, 
-            or just having a friendly conversation about technology and research.
+          <p className="ui-body-text text-sm sm:text-base">
+            {PAGE_COPY.homeSocialParagraph}
           </p>
 
           <div className="flex items-center gap-6 flex-wrap">
@@ -167,26 +175,13 @@ export default function Home() {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1 align-middle font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-700 dark:text-slate-100 dark:decoration-slate-500 dark:hover:decoration-slate-200"
+                className="ui-link-subtle inline-flex items-center gap-1 align-middle"
               >
                 <HugeiconsIcon icon={link.icon} className="h-4 w-4 shrink-0" aria-hidden="true" /> {link.handle}
               </Link>
             ))}
           </div>
         </section>
-
-        <footer className="flex flex-row justify-between py-4 text-sm text-slate-500 dark:text-slate-400">
-          <Link
-            href="/"
-            className={`${brittanySignature.className} text-2xl text-gray-400`}
-          >
-            mr mallik
-          </Link>
-          <div>
-            &copy; {new Date().getFullYear()} Gulger Mallik. All rights reserved.
-          </div>
-        </footer>
-        
       </div>
     </section>
   );

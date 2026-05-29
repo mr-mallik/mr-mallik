@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SECTION_TITLES } from "@/app/constants";
 
 import showcaseItems from "@/data/showcase.json";
 
@@ -14,8 +15,8 @@ export function Showcase() {
   return (
     <section className="space-y-5">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-          Showcase
+        <h2 className="ui-section-title tracking-tight">
+          {SECTION_TITLES.showcase}
         </h2>
       </div>
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import localFont from "next/font/local";
 import { ThemeToggle } from "./theme-toggle";
+import { LINK_LABELS, ROUTES, SITE } from "@/app/constants";
 
 const brittanySignature = localFont({
   src: "../public/fonts/BrittanySignature.ttf",
@@ -15,18 +16,18 @@ export default function Navigation() {
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-2 py-2 sm:flex-row sm:items-center sm:justify-between sm:py-3">
         <div className="flex min-w-0 items-center py-2">
           <Link
-            href="/"
-            className={`${brittanySignature.className} text-2xl leading-none text-gray-400 sm:text-4xl dark:text-slate-500`}
+            href={ROUTES.home}
+            className={`${brittanySignature.className} ui-text-muted text-2xl leading-none sm:text-4xl`}
           >
-            mr mallik
+            {SITE.brandName}
           </Link>
         </div>
         <div className="flex flex-wrap items-center gap-3 text-sm sm:gap-5">
           <Link
-            href="/"
-            className="text-gray-500 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100"
+            href={ROUTES.home}
+            className="ui-nav-link"
           >
-            Home
+            {LINK_LABELS.home}
           </Link>
           <ThemeToggle />
         </div>
