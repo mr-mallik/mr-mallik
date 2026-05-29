@@ -63,7 +63,7 @@ export function ProjectsSection({
           {showViewAllLink ? (
             <Link
               href={ROUTES.projects}
-              className="ui-link-subtle text-sm font-medium"
+              className="ui-view-all-link"
             >
               {LINK_LABELS.viewAllProjects}
             </Link>
@@ -71,25 +71,26 @@ export function ProjectsSection({
         </div>
       ) : null}
       <div className="grid gap-4 sm:grid-cols-2">
-        {visibleProjects.map((project) => (
+        {visibleProjects.map((project, index) => (
           <Link
             key={project.name}
             href={project.href}
-            className="group flex aspect-[5/3] flex-col rounded-2xl border border-slate-200 bg-background p-1 shadow-sm transition hover:border-slate-300 hover:shadow-md dark:border-slate-800 dark:hover:border-slate-700"
+            className="group ui-project-card section-enter"
+            style={{ animationDelay: `${index * 60}ms` }}
           >
-            <div className="flex h-full flex-col rounded-xl border border-slate-200 bg-background p-4 sm:p-5 dark:border-slate-800">
+            <div className="flex h-full flex-col rounded-xl border border-[var(--ui-border-subtle)] bg-background p-4 sm:p-5">
               <div className="flex flex-[1.7] items-center justify-center">
                 <Image
                   src={defaultSvg}
                   alt={`${project.name} project image`}
-                  className="h-16 w-16 object-contain opacity-50 group-hover:opacity-75"
+                  className="h-16 w-16 object-contain opacity-40 transition-opacity duration-200 group-hover:opacity-70"
                 />
               </div>
               <div className="mt-auto pt-3">
-                <h3 className="ui-text-primary text-lg tracking-tight">
+                <h3 className="ui-item-title text-base tracking-tight">
                   {project.name}
                 </h3>
-                <p className="ui-text-secondary mt-2 leading-relaxed">
+                <p className="ui-body-text mt-1.5 text-sm leading-relaxed">
                   {project.description}
                 </p>
               </div>

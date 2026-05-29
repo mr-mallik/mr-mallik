@@ -32,7 +32,7 @@ export function ExperienceSection({
           {showViewAllLink ? (
             <Link
               href={ROUTES.resume}
-              className="ui-link-subtle text-sm font-medium"
+              className="ui-view-all-link"
             >
               {LINK_LABELS.resume}
             </Link>
@@ -44,24 +44,25 @@ export function ExperienceSection({
         {visibleExperiences.map((item, index) => (
           <div
             key={`${item.company}-${item.role}-${item.period}`}
-            className={`flex items-center justify-between gap-4 py-3 ${
+            className={`ui-experience-row section-enter ${
               index !== visibleExperiences.length - 1
-                ? "border-b border-slate-200 dark:border-slate-800"
+                ? "border-b border-[var(--ui-border-subtle)]"
                 : ""
             }`}
+            style={{ animationDelay: `${index * 55}ms` }}
           >
-            <p className="ui-item-title text-base">
+            <p className="ui-item-title text-sm sm:text-base">
               {item.role}
             </p>
-            <p className="ui-control-text text-right text-sm">
+            <p className="ui-control-text text-right text-xs sm:text-sm shrink-0">
               {item.url ? (
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                <a href={item.url} target="_blank" rel="noopener noreferrer" className=" font-medium">
                   {item.company}
                 </a>
               ) : (
                 item.company
               )}{" "}
-              / {item.period}
+              &bull; {item.period}
             </p>
           </div>
         ))}

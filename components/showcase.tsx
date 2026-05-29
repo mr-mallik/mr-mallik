@@ -11,6 +11,13 @@ type ShowcaseItem = {
   description?: string;
 };
 
+const ACCENT_CLASSES = [
+  "showcase-cell-blue",
+  "showcase-cell-violet",
+  "showcase-cell-emerald",
+  "showcase-cell-amber",
+] as const;
+
 export function Showcase() {
   return (
     <section className="space-y-5">
@@ -20,18 +27,25 @@ export function Showcase() {
         </h2>
       </div>
 
-      <div className="overflow-hidden">
-        <div className="grid grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 sm:grid-cols-3 md:grid-cols-4">
-          {(showcaseItems as ShowcaseItem[]).map((item) => {
+      <div className="overflow-hidden rounded-sm">
+        <div className="showcase-grid grid grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 sm:grid-cols-3 md:grid-cols-4">
+          {(showcaseItems as ShowcaseItem[]).map((item, index) => {
+            const accentClass = ACCENT_CLASSES[index % ACCENT_CLASSES.length];
+            const cellClass = `showcase-cell section-enter ${accentClass}`;
+            const delay = `${index * 40}ms`;
+
             const content = (
-              <div className="flex h-28 flex-col items-center justify-center bg-background px-3 text-center sm:h-32">
+              <div
+                className={`${cellClass} h-28 sm:h-32`}
+                style={{ animationDelay: delay }}
+              >
                 <Image
-                  title={`${item.description}`}
+                  title={item.description}
                   src={item.image}
                   alt={`${item.name} icon`}
                   width={160}
-                  height={36}
-                  className="max-h-10 w-auto object-contain grayscale brightness-0 opacity-60 dark:invert dark:opacity-70 sm:max-h-12"
+                  height={160}
+                  className="max-h-[72%] w-auto max-w-full object-contain grayscale brightness-0 opacity-55 dark:invert dark:opacity-65"
                 />
               </div>
             );
@@ -46,7 +60,6 @@ export function Showcase() {
                 href={item.url}
                 target="_blank"
                 rel="noreferrer"
-                className="transition hover:bg-slate-50 dark:hover:bg-slate-950/40"
               >
                 {content}
               </Link>

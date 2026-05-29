@@ -46,7 +46,7 @@ export function PublicationsSection({
           {showViewAllLink ? (
             <Link
               href={ROUTES.publications}
-              className="ui-link-subtle text-sm font-medium"
+              className="ui-view-all-link"
             >
               {LINK_LABELS.viewAllPublications}
             </Link>
@@ -61,7 +61,8 @@ export function PublicationsSection({
           {slicedPublications.map((publication) => (
             <article
               key={publication.title}
-              className="rounded-xl border border-slate-200 bg-background p-4 dark:border-slate-800"
+              className="ui-card section-enter"
+              style={{ animationDelay: `${slicedPublications.indexOf(publication) * 70}ms` }}
             >
               <div className="flex items-start gap-3">
                 <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-slate-200 bg-background dark:border-slate-700">
@@ -88,7 +89,7 @@ export function PublicationsSection({
                     {STATUS_LABELS.publicationStatusPrefix} {publication.status}
                     {publication.doi ? (
                       <>
-                        {" "}· {STATUS_LABELS.publicationDoiPrefix}{" "}
+                        {" "}&bull;{" "}{STATUS_LABELS.publicationDoiPrefix}{" "}
                         <Link
                           href={`https://doi.org/${publication.doi}`}
                           target="_blank"

@@ -7,11 +7,11 @@ export const SITE = {
 
 export const PROFILE = {
   primaryEmail: "gulgermallik@gmail.com",
-  resumeEmail: "hello@gulger.xyz",
   phone: "07767924720",
   websiteUrl: "https://mrmallik.com",
   websiteLabel: "mrmallik.com",
   linkedInUrl: "https://www.linkedin.com/in/mrmallik/",
+  linkedInDisplay: "linkedin.com/in/mrmallik/",
   githubUrl: "https://github.com/mr-mallik",
   orcidUrl: "https://orcid.org/0009-0002-5110-8575",
   affiliationName: "University of Huddersfield",

@@ -93,15 +93,21 @@ export default function ResumePage() {
       </div>
 
       <div className="resume-fade-in">
-        <header className="flex items-start justify-between gap-3">
-          <div>
-            <p className={`${brittanySignature.className} ui-title-signature`}>
-              {SITE.ownerName}
-            </p>
-          </div>
-
-          <p className="ui-control-text shrink-0 sm:text-right">
-            {PROFILE.phone} &bull; {PROFILE.resumeEmail} &bull;{" "}
+        <header className="flex flex-col items-center justify-center gap-3 text-center">
+          <h1 className="hero-name">
+            {SITE.ownerName}
+          </h1>
+          <p className="ui-control-text max-w-full sm:text-center">
+            {PROFILE.phone} &#124; {PROFILE.primaryEmail} &#124;{" "}
+            <Link
+              href={PROFILE.linkedInUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="ui-link"
+            >
+              {PROFILE.linkedInDisplay}
+            </Link>{" "}
+            &#124;{" "}
             <Link
               href={PROFILE.websiteUrl}
               target="_blank"
@@ -172,7 +178,7 @@ export default function ResumePage() {
 
             <p className="ui-meta-text mt-1">
               {item.period}
-              {item.location ? ` · ${item.location}` : ""}
+              {item.location ? <>{" "}&bull;{" "}{item.location}</> : null}
             </p>
 
             {viewMode === RESUME_VIEW_MODES.summarised ? (
@@ -249,7 +255,7 @@ export default function ResumePage() {
                   {STATUS_LABELS.publicationStatusPrefix} {publication.status}
                   {publication.doi ? (
                     <>
-                      {" "}· {STATUS_LABELS.publicationDoiPrefix}{" "}
+                      {" "}&bull;{" "}{STATUS_LABELS.publicationDoiPrefix}{" "}
                       <Link
                         href={`https://doi.org/${publication.doi}`}
                         target="_blank"

@@ -49,59 +49,67 @@ const socialLinks = [
 
 export default function Home() {
   return (
-    <section className="mx-auto w-full max-w-2xl py-4">
+    <section className="relative mx-auto w-full max-w-2xl py-4">
       <div className="space-y-10 sm:space-y-14">
         <header className="space-y-6">
-          <div className="flex items-center gap-4">
-            <div className="h-12 w-12 rounded-full bg-gradient-to-br from-slate-200 to-slate-400 shadow-sm dark:from-slate-600 dark:to-slate-800">
-              <Image
-                src="/images/gulger-mallik@1x1.webp"
-                alt={PROFILE.profileImageAlt}
-                width={48}
-                height={48}
-                className="rounded-full"
-              />
+          {/* Avatar + identity block */}
+          <div className="hero-fade-in flex items-center gap-5" style={{ animationDelay: "0ms" }}>
+            <div className="relative shrink-0 group cursor-default">
+              {/* Ambient glow on hover */}
+              <div className="absolute inset-0 scale-125 rounded-full bg-blue-300/30 blur-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100 dark:bg-blue-500/20" />
+              {/* Photo with ring */}
+              <div className="relative h-[72px] w-[72px] overflow-hidden rounded-full shadow-md ring-2 ring-blue-200/60 ring-offset-2 ring-offset-background transition-all duration-300 group-hover:ring-blue-300/90 group-hover:shadow-blue-100/60 dark:ring-blue-800/50 dark:ring-offset-background dark:group-hover:ring-blue-600/70">
+                <Image
+                  src="/images/gulger-mallik@1x1.png"
+                  alt={PROFILE.profileImageAlt}
+                  width={72}
+                  height={72}
+                  className="rounded-full transition-transform duration-500 group-hover:scale-[1.06]"
+                  priority
+                />
+              </div>
             </div>
             <div>
-              <h1 className="ui-item-title text-base sm:text-lg">
+              <h1 className="hero-name">
                 {SITE.ownerName}
               </h1>
-              <p className="ui-control-text sm:text-base">
+              <p className="hero-role mt-1">
                 {PAGE_COPY.homepageRolePrefix}{" "}
-                <Link href={PROFILE.affiliationUrl} target="_blank" rel="noreferrer">
+                <Link href={PROFILE.affiliationUrl} target="_blank" rel="noreferrer" className="hero-affiliation">
                   {PROFILE.affiliationName}
                 </Link>
               </p>
             </div>
           </div>
 
-          <p className="ui-body-text text-sm sm:text-base">
+          {/* Founding engineer intro — higher visual weight */}
+          <p className="hero-intro hero-fade-in" style={{ animationDelay: "90ms" }}>
             {PAGE_COPY.homeIntroCompanyPrefix}{" "}
             <Link
               href={EXTERNAL_LINKS.cosmokode}
               target="_blank"
               rel="noreferrer"
-              className="ui-link-subtle"
+              className="hero-inline-link"
             >
               Cosmokode Ltd
             </Link>{" "}
             {PAGE_COPY.homeIntroCompanySuffix}
           </p>
 
-          <p className="ui-body-text text-sm sm:text-base">
+          <p className="ui-body-text text-sm sm:text-base hero-fade-in" style={{ animationDelay: "180ms" }}>
             {PAGE_COPY.homePreviousPrefix}{" "}
-            <Link 
+            <Link
               href={PROFILE.linkedInUrl}
               target="_blank"
               rel="noreferrer"
-              className="ui-link-subtle"
-              >
+              className="hero-inline-link"
+            >
               product teams
             </Link>{" "}
             {PAGE_COPY.homePreviousSuffix}{" "}
             <Link
               href={mailtoLink}
-              className="ui-link-subtle inline-flex items-center gap-1 align-middle"
+              className="hero-inline-icon-link"
             >
               <HugeiconsIcon icon={Mail} className="h-4 w-4 shrink-0" aria-hidden="true" /> email
             </Link>{" "}
@@ -110,7 +118,7 @@ export default function Home() {
               href={PROFILE.githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="ui-link-subtle inline-flex items-center gap-1 align-middle"
+              className="hero-inline-icon-link"
             >
               <HugeiconsIcon icon={Github01Icon} className="h-4 w-4 shrink-0" aria-hidden="true" /> GitHub
             </Link>
@@ -118,33 +126,33 @@ export default function Home() {
             {" "}{PAGE_COPY.homeResumePrefix}{" "}
             <Link
               href={ROUTES.resume}
-              className="ui-link-subtle inline-flex items-center gap-1 align-middle"
+              className="hero-inline-link"
             >
               {LINK_LABELS.pdfFormat}
             </Link>
             .
           </p>
 
-          <p className="ui-body-text text-sm sm:text-base">
+          <p className="ui-body-text text-sm sm:text-base hero-fade-in" style={{ animationDelay: "250ms" }}>
             {PAGE_COPY.homeResearchPrefix}{" "}
             <Link
               href={PROFILE.orcidUrl}
               target="_blank"
               rel="noreferrer"
-              className="ui-link-subtle"
+              className="hero-inline-link"
             >
               ORCiD
             </Link>
             .
           </p>
 
-          <p className="ui-body-text text-sm sm:text-base">
+          <p className="ui-body-text text-sm sm:text-base hero-fade-in" style={{ animationDelay: "320ms" }}>
             {PAGE_COPY.homeBlogPrefix}{" "}
             <Link
               href={ROUTES.blogs}
               target="_blank"
               rel="noreferrer"
-              className="ui-link-subtle"
+              className="hero-inline-link"
             >
               {LINK_LABELS.blogs}
             </Link>

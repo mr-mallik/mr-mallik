@@ -17,7 +17,7 @@ export default function Navigation() {
         <div className="flex min-w-0 items-center py-2">
           <Link
             href={ROUTES.home}
-            className={`${brittanySignature.className} ui-text-muted text-2xl leading-none sm:text-4xl`}
+            className={`${brittanySignature.className} ui-brand-link ui-text-muted text-2xl leading-none sm:text-4xl`}
           >
             {SITE.brandName}
           </Link>

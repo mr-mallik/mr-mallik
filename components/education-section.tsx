@@ -68,7 +68,7 @@ export function EducationSection() {
                 }`}
               />
 
-              <article className="rounded-xl border border-slate-200 bg-background p-4 transition-transform duration-200 hover:-translate-y-0.5 dark:border-slate-800">
+              <article className="ui-card">
                 <p className="ui-meta-text uppercase tracking-[0.08em]">
                   {item.duration}
                 </p>
