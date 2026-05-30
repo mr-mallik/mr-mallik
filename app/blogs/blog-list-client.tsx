@@ -203,7 +203,7 @@ export default function BlogListClient({
             >
               <Link
                 href={`/blogs/${article.slug}`}
-                className="group flex items-start gap-5"
+                className="group flex items-start gap-3 sm:gap-5"
               >
                 <div className="min-w-0 flex-1 space-y-2">
                   <h2 className="ui-item-title text-[15px] font-semibold leading-snug transition-colors group-hover:text-[var(--ui-text-link)]">
@@ -250,13 +250,13 @@ export default function BlogListClient({
                 </div>
 
                 {article.featuredImage ? (
-                  <div className="relative hidden shrink-0 sm:block">
+                  <div className="relative shrink-0">
                     <Image
                       src={article.featuredImage}
                       alt={article.featuredImageAlt || article.title}
                       width={112}
                       height={75}
-                      className="h-[75px] w-[112px] rounded-md object-cover transition-opacity duration-200 group-hover:opacity-90"
+                      className="h-[60px] w-[84px] rounded-md object-cover transition-opacity duration-200 group-hover:opacity-90 sm:h-[75px] sm:w-[112px]"
                     />
                   </div>
                 ) : null}

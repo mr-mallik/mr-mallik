@@ -10,6 +10,8 @@ import CopyUrlButton from "@/components/copy-url-button";
 import Header from "@/components/header";
 import ProjectSectionJumpNav from "@/components/project-section-jump-nav";
 import ShareArticleButton from "@/components/share-article-button";
+import MobileSectionMenu from "@/components/mobile-section-menu";
+import ArticleTocNav from "@/components/article-toc-nav";
 import { getProjectBySlug } from "@/services/articles";
 
 type ProjectSlugParams = {
@@ -68,6 +70,14 @@ export default async function ProjectDetailPage({
 					))}
 			</Header>
 
+			{toc.length > 0 ? (
+				<div className="lg:hidden">
+					<MobileSectionMenu title="Project sections">
+						<ArticleTocNav items={toc} />
+					</MobileSectionMenu>
+				</div>
+			) : null}
+
 			<section className="overflow-hidden rounded-3xl border border-[var(--ui-border-soft)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_92%,var(--ui-border-subtle))_0%,var(--background)_100%)]">
 				<div className="grid gap-6 p-5 sm:p-7 lg:grid-cols-[minmax(0,1.2fr)_minmax(260px,0.8fr)] lg:items-center">
 					<div className="space-y-5 min-w-0">
@@ -105,7 +115,7 @@ export default async function ProjectDetailPage({
 						) : null}
 
 						{toc.length > 0 ? (
-							<div className="rounded-2xl border border-[var(--ui-border-soft)]/80 bg-background/70 p-3">
+							<div className="hidden rounded-2xl border border-[var(--ui-border-soft)]/80 bg-background/70 p-3 lg:block">
 								<ProjectSectionJumpNav items={toc} />
 							</div>
 						) : null}

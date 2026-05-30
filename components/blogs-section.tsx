@@ -56,7 +56,7 @@ export async function BlogsSection({
               className="section-enter py-5 first:pt-0 last:pb-0"
               style={{ animationDelay: `${index * 60}ms` }}
             >
-              <Link href={`/blogs/${article.slug}`} className="group flex items-start gap-4">
+              <Link href={`/blogs/${article.slug}`} className="group flex items-start gap-3 sm:gap-4">
                 <div className="min-w-0 flex-1 space-y-2">
                   <h3 className="ui-item-title leading-snug transition-colors group-hover:text-[var(--ui-text-link)]">
                     {article.title}
@@ -87,13 +87,13 @@ export async function BlogsSection({
                 </div>
 
                 {article.featuredImage ? (
-                  <div className="relative hidden shrink-0 sm:block">
+                  <div className="relative shrink-0">
                     <Image
                       src={article.featuredImage}
                       alt={article.featuredImageAlt || article.title}
                       width={88}
                       height={58}
-                      className="h-[58px] w-[88px] rounded-md object-cover transition-opacity duration-200 group-hover:opacity-90"
+                      className="h-[52px] w-[72px] rounded-md object-cover transition-opacity duration-200 group-hover:opacity-90 sm:h-[58px] sm:w-[88px]"
                     />
                   </div>
                 ) : null}

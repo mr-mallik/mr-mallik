@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { getArticleBySlug } from "@/services/articles";
 import ArticleTocNav from "@/components/article-toc-nav";
+import MobileSectionMenu from "@/components/mobile-section-menu";
 
 type BlogSlugParams = {
 	slug: string;
@@ -36,6 +37,14 @@ export default async function BlogArticleLayout({
 
 	return (
 		<section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 sm:py-8 lg:px-8">
+			{toc.length > 0 ? (
+				<div className="mb-5 lg:hidden">
+					<MobileSectionMenu title="On this page">
+						<ArticleTocNav items={toc} />
+					</MobileSectionMenu>
+				</div>
+			) : null}
+
 			<div className="grid gap-8 lg:grid-cols-[220px_minmax(0,1fr)_220px] lg:gap-10">
 				<aside className="hidden lg:block">
 					<div className="sticky top-20">
@@ -140,13 +149,6 @@ export default async function BlogArticleLayout({
 			</div>
 
 			<div className="mt-8 space-y-5 lg:hidden">
-				{toc.length > 0 ? (
-					<section className="rounded-2xl border border-[var(--ui-border-soft)] bg-background p-4">
-						<p className="ui-meta-text mb-3 uppercase tracking-wide">On this page</p>
-						<ArticleTocNav items={toc} />
-					</section>
-				) : null}
-
 				<section className="rounded-2xl border border-[var(--ui-border-soft)] bg-background p-4">
 					<p className="ui-meta-text mb-3 uppercase tracking-wide">Meta</p>
 					<div className="space-y-2">
