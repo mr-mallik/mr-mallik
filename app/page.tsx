@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Showcase } from "@/components/showcase";
+import { BlogsSection } from "@/components/blogs-section";
 import { EducationSection } from "@/components/education-section";
 import { ExperienceSection } from "@/components/experience-section";
 import { ProjectsSection } from "@/components/projects-section";
@@ -168,6 +169,8 @@ export default function Home() {
         <PublicationsSection limit={3} showViewAllLink />
 
         <Showcase />
+
+        <BlogsSection limit={3} showViewAllLink />
 
         <section className="space-y-5">
           <p className="ui-body-text text-sm sm:text-base">

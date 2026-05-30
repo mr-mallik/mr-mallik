@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft01Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
 import localFont from "next/font/local";
 import Link from "next/link";
 import {
@@ -16,6 +14,7 @@ import {
   SITE,
   STATUS_LABELS,
 } from "@/app/constants";
+import Header from "@/components/header";
 
 import educationItems from "@/data/education.json";
 import publicationsItems from "@/data/publications.json";
@@ -74,21 +73,16 @@ export default function ResumePage() {
   return (
     <div className="mx-auto max-w-[660px] px-6 pb-10 pt-12">
       <div className="resume-fade-in">
-        <div className="mb-10 flex items-center justify-between gap-3">
-          <Link
-            href={ROUTES.home}
-            className="ui-nav-link inline-flex items-center gap-1.5"
-          >
-            <HugeiconsIcon icon={ArrowLeft01Icon} className="h-[14px] w-[14px]" />
-            {LINK_LABELS.back}
-          </Link>
-          <button
-            type="button"
-            onClick={handleDownload}
-            className="ui-subtle-button"
-          >
-            {LINK_LABELS.download}
-          </button>
+        <div className="mb-10">
+          <Header link={ROUTES.home}>
+            <button
+              type="button"
+              onClick={handleDownload}
+              className="ui-subtle-button"
+            >
+              {LINK_LABELS.download}
+            </button>
+          </Header>
         </div>
       </div>
 

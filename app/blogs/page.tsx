@@ -1,9 +1,7 @@
 import Header from "@/components/header";
 import { PAGE_COPY, ROUTES, SECTION_TITLES } from "@/app/constants";
 import BlogListClient from "@/app/blogs/blog-list-client";
-import type { ArticlesResponse } from "@/app/blogs/types";
-import { cmsApi } from "@/services/cms";
-import { ApiError } from "@/services/api";
+import { getArticlesList } from "@/services/articles";
 
 // ─── Data fetching ────────────────────────────────────────────────────────────
 
@@ -15,26 +13,6 @@ type BlogPageProps = {
   searchParams?: Promise<BlogPageSearchParams> | BlogPageSearchParams;
 };
 
-async function fetchArticles(page = 1, limit = 10, tag?: string): Promise<{
-  articles: ArticlesResponse["data"];
-  meta?: ArticlesResponse["meta"];
-  error?: string;
-}> {
-  try {
-    const res = await cmsApi.get<ArticlesResponse>("/articles", {
-      query: { category: "blog", sort: "latest", page, limit, tag },
-      next: { revalidate: 3600 },
-    } as Parameters<typeof cmsApi.get>[1] & { next?: { revalidate: number } });
-    return { articles: res.data ?? [], meta: res.meta };
-  } catch (err) {
-    const message =
-      err instanceof ApiError
-        ? `Failed to load posts (${err.status})`
-        : "Something went wrong while loading posts.";
-    return { articles: [], error: message };
-  }
-}
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
@@ -44,7 +22,12 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     : resolvedSearchParams.tag;
   const activeTag = rawTag?.trim() ? rawTag.trim() : undefined;
 
-  const { articles, meta, error } = await fetchArticles(1, 10, activeTag);
+  const { articles, meta, error } = await getArticlesList({
+    category: "blog",
+    page: 1,
+    limit: 10,
+    tag: activeTag,
+  });
 
   return (
     <section className="mx-auto w-full max-w-2xl py-2 sm:py-8">
