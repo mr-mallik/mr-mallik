@@ -2,7 +2,21 @@ import { ProjectsSection } from "@/components/projects-section";
 import Header from "@/components/header";
 import { PAGE_COPY, ROUTES, SECTION_TITLES } from "@/app/constants";
 
-export default function ProjectsPage() {
+type ProjectsPageSearchParams = {
+  tag?: string | string[];
+};
+
+type ProjectsPageProps = {
+  searchParams?: Promise<ProjectsPageSearchParams> | ProjectsPageSearchParams;
+};
+
+export default async function ProjectsPage({ searchParams }: ProjectsPageProps) {
+  const resolvedSearchParams = await Promise.resolve(searchParams ?? {});
+  const rawTag = Array.isArray(resolvedSearchParams.tag)
+    ? resolvedSearchParams.tag[0]
+    : resolvedSearchParams.tag;
+  const activeTag = rawTag?.trim() ? rawTag.trim() : undefined;
+
   return (
     <section className="mx-auto w-full max-w-2xl py-2 sm:py-8">
       <div className="space-y-5 sm:space-y-7">
@@ -11,7 +25,7 @@ export default function ProjectsPage() {
           title={SECTION_TITLES.projects}
           description={PAGE_COPY.projectsPageDescription}
         />
-        <ProjectsSection heading={false} />
+        <ProjectsSection heading={false} initialTag={activeTag} />
       </div>
     </section>
   );

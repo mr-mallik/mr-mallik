@@ -150,8 +150,6 @@ export default function Home() {
             {PAGE_COPY.homeBlogPrefix}{" "}
             <Link
               href={ROUTES.blogs}
-              target="_blank"
-              rel="noreferrer"
               className="hero-inline-link"
             >
               {LINK_LABELS.blogs}

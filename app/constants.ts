@@ -48,6 +48,7 @@ export const SECTION_TITLES = {
   skills: "Skills",
   publications: "Publications",
   showcase: "Showcase",
+  blog: "Blog",
 } as const;
 
 export const LINK_LABELS = {
@@ -87,6 +88,8 @@ export const PAGE_COPY = {
     "Research publications and manuscripts exploring explainable AI and practical software systems.",
   experiencePageDescription:
     "Professional roles spanning applied AI research and software engineering.",
+  blogsPageDescription:
+    "Ideas, lessons, and reflections on software engineering, applied research, and the evolving tech landscape.",
   resumeViewModeLegend: "Experience view mode",
 } as const;
 

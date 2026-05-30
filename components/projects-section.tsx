@@ -1,57 +1,46 @@
 import Link from "next/link";
-import Image from "next/image";
-import defaultSvg from "../public/default-project.svg";
 import { LINK_LABELS, ROUTES, SECTION_TITLES } from "@/app/constants";
+import type { ArticlesResponse } from "@/app/blogs/types";
+import { ApiError } from "@/services/api";
+import { cmsApi } from "@/services/cms";
+import { ProjectsListClient } from "@/components/projects-list-client";
 
-type Project = {
-  name: string;
-  description: string;
-  href: string;
-};
+async function fetchProjects(page = 1, limit = 10, tag?: string): Promise<{
+  projects: ArticlesResponse["data"];
+  meta?: ArticlesResponse["meta"];
+  error?: string;
+}> {
+  try {
+    const res = await cmsApi.get<ArticlesResponse>("/articles", {
+      query: { category: "project", sort: "latest", page, limit, tag },
+      next: { revalidate: 3600 },
+    } as Parameters<typeof cmsApi.get>[1] & { next?: { revalidate: number } });
 
-const projects: Project[] = [
-  {
-    name: "Project 1",
-    description: "This is project 1 description.",
-    href: "#",
-  },
-  {
-    name: "Project 2",
-    description: "This is project 2 description.",
-    href: "#",
-  },
-  {
-    name: "Project 3",
-    description: "This is project 3 description.",
-    href: "#",
-  },
-  {
-    name: "Project 4",
-    description: "This is project 4 description.",
-    href: "#",
-  },
-  {
-    name: "Project 5",
-    description: "This is project 5 description.",
-    href: "#",
-  },
-  {
-    name: "Project 6",
-    description: "This is project 6 description.",
-    href: "#",
-  },
-];
+    return { projects: res.data ?? [], meta: res.meta };
+  } catch (err) {
+    const message =
+      err instanceof ApiError
+        ? `Failed to load projects (${err.status})`
+        : "Something went wrong while loading projects.";
 
-export function ProjectsSection({
+    return { projects: [], error: message };
+  }
+}
+
+export async function ProjectsSection({
   limit,
   heading = true,
   showViewAllLink = false,
+  initialTag,
 }: {
   limit?: number;
   heading?: boolean;
   showViewAllLink?: boolean;
+  initialTag?: string;
 }) {
-  const visibleProjects = typeof limit === "number" ? projects.slice(0, limit) : projects;
+  const pageLimit = typeof limit === "number" ? limit : 10;
+  const { projects, meta, error } = await fetchProjects(1, pageLimit, initialTag);
+  const canLoadMore = typeof limit !== "number";
 
   return (
     <section className="space-y-5">
@@ -70,34 +59,13 @@ export function ProjectsSection({
           ) : null}
         </div>
       ) : null}
-      <div className="grid gap-4 sm:grid-cols-2">
-        {visibleProjects.map((project, index) => (
-          <Link
-            key={project.name}
-            href={project.href}
-            className="group ui-project-card section-enter"
-            style={{ animationDelay: `${index * 60}ms` }}
-          >
-            <div className="flex h-full flex-col rounded-xl border border-[var(--ui-border-subtle)] bg-background p-4 sm:p-5">
-              <div className="flex flex-[1.7] items-center justify-center">
-                <Image
-                  src={defaultSvg}
-                  alt={`${project.name} project image`}
-                  className="h-16 w-16 object-contain opacity-40 transition-opacity duration-200 group-hover:opacity-70"
-                />
-              </div>
-              <div className="mt-auto pt-3">
-                <h3 className="ui-item-title text-base tracking-tight">
-                  {project.name}
-                </h3>
-                <p className="ui-body-text mt-1.5 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+      <ProjectsListClient
+        initialProjects={projects}
+        initialMeta={meta}
+        initialError={error}
+        initialTag={canLoadMore ? initialTag : undefined}
+        canLoadMore={canLoadMore}
+      />
     </section>
   );
 }
