@@ -342,6 +342,20 @@ export const getArticleBySlug = cache(async (slug: string) => {
   }
 });
 
+export const getProjectBySlug = cache(async (slug: string) => {
+  const article = await getArticleBySlug(slug);
+
+  if (!article) {
+    return null;
+  }
+
+  if (article.type && article.type !== "project") {
+    return null;
+  }
+
+  return article;
+});
+
 type GetArticlesParams = {
   category?: "blog" | "project";
   page?: number;
