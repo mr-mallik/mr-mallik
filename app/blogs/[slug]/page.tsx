@@ -9,6 +9,7 @@ import { ROUTES } from "@/app/constants";
 import { getArticleBySlug } from "@/services/articles";
 import Header from "@/components/header";
 import CopyUrlButton from "@/components/copy-url-button";
+import ShareArticleButton from "@/components/share-article-button";
 
 type BlogSlugParams = {
 	slug: string;
@@ -43,6 +44,11 @@ export default async function BlogDetailPage({
           ? article.excerpt
           : "Read this article on my blog."}
 			>
+				<ShareArticleButton
+					path={`/blogs/${article.slug}`}
+					title={article.title}
+					text={article.excerpt || undefined}
+				/>
 				<CopyUrlButton path={`/blogs/${article.slug}`} />
 				{article.addonLinks
 					?.slice()

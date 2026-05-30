@@ -9,6 +9,7 @@ import ArticleContentRenderer from "@/components/article-content-renderer";
 import CopyUrlButton from "@/components/copy-url-button";
 import Header from "@/components/header";
 import ProjectSectionJumpNav from "@/components/project-section-jump-nav";
+import ShareArticleButton from "@/components/share-article-button";
 import { getProjectBySlug } from "@/services/articles";
 
 type ProjectSlugParams = {
@@ -45,6 +46,11 @@ export default async function ProjectDetailPage({
 				title={project.title}
 				description={project.excerpt || "Explore this project in detail."}
 			>
+				<ShareArticleButton
+					path={`/projects/${project.slug}`}
+					title={project.title}
+					text={project.excerpt || undefined}
+				/>
 				<CopyUrlButton path={`/projects/${project.slug}`} />
 				{project.addonLinks
 					?.slice()
@@ -98,7 +104,11 @@ export default async function ProjectDetailPage({
 							</div>
 						) : null}
 
-						{toc.length > 0 ? <ProjectSectionJumpNav items={toc} /> : null}
+						{toc.length > 0 ? (
+							<div className="rounded-2xl border border-[var(--ui-border-soft)]/80 bg-background/70 p-3">
+								<ProjectSectionJumpNav items={toc} />
+							</div>
+						) : null}
 					</div>
 
 					{project.featuredImage ? (

@@ -13,21 +13,23 @@ const brittanySignature = localFont({
 export function Footer() {
   return (
     <footer className="w-full px-4 pb-6 sm:px-6 lg:px-8">
-      <div className="ui-footer ui-control-text mx-auto flex w-full max-w-2xl flex-row justify-between py-4 text-sm">
+      <div className="ui-footer ui-control-text mx-auto flex w-full max-w-2xl flex-col items-center gap-3 py-4 text-center text-sm sm:flex-row sm:items-center sm:justify-between sm:text-left">
         <Link
           href={ROUTES.home}
           className={`${brittanySignature.className} ui-brand-link ui-text-muted text-2xl`}
         >
           {SITE.brandName}
         </Link>
-        <div className="inline-flex items-center gap-2">
-          <span>Theme:</span>
-          
-          <div className="">
-            <ThemeToggle />
+        <div className="flex flex-col items-center gap-2 sm:items-end">
+          <div className="hidden items-center gap-2 sm:inline-flex">
+            <span>Theme:</span>
+
+            <div>
+              <ThemeToggle />
+            </div>
           </div>
-          
-          <span>&copy; {new Date().getFullYear()} {SITE.ownerName}. {SITE.copyrightSuffix}</span>
+
+          <span className="text-center sm:text-right">&copy; {new Date().getFullYear()} {SITE.ownerName}. {SITE.copyrightSuffix}</span>
         </div>
       </div>
     </footer>

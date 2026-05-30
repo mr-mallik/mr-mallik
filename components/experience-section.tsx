@@ -51,12 +51,26 @@ export function ExperienceSection({
             }`}
             style={{ animationDelay: `${index * 55}ms` }}
           >
-            <p className="ui-item-title text-sm sm:text-base">
-              {item.role}
-            </p>
-            <p className="ui-control-text text-right text-xs sm:text-sm shrink-0">
+            <div className="min-w-0 flex-1">
+              <p className="ui-item-title whitespace-nowrap text-sm sm:text-base">
+                {item.role}
+              </p>
+              <div className="ui-control-text mt-1 text-left text-xs sm:hidden">
+                <p>
+                  {item.url ? (
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="font-medium">
+                      {item.company}
+                    </a>
+                  ) : (
+                    item.company
+                  )}
+                </p>
+                <p className="mt-0.5">{item.period}</p>
+              </div>
+            </div>
+            <p className="ui-control-text hidden shrink-0 text-right text-sm sm:block">
               {item.url ? (
-                <a href={item.url} target="_blank" rel="noopener noreferrer" className=" font-medium">
+                <a href={item.url} target="_blank" rel="noopener noreferrer" className="font-medium">
                   {item.company}
                 </a>
               ) : (

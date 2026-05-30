@@ -138,6 +138,101 @@ export default async function BlogArticleLayout({
 					</div>
 				</aside>
 			</div>
+
+			<div className="mt-8 space-y-5 lg:hidden">
+				{toc.length > 0 ? (
+					<section className="rounded-2xl border border-[var(--ui-border-soft)] bg-background p-4">
+						<p className="ui-meta-text mb-3 uppercase tracking-wide">On this page</p>
+						<ArticleTocNav items={toc} />
+					</section>
+				) : null}
+
+				<section className="rounded-2xl border border-[var(--ui-border-soft)] bg-background p-4">
+					<p className="ui-meta-text mb-3 uppercase tracking-wide">Meta</p>
+					<div className="space-y-2">
+						{publishedDate ? <p className="ui-control-text">Published: {publishedDate}</p> : null}
+						{article.readCount ? <p className="ui-control-text">Reads: {article.readCount}</p> : null}
+						{article.type ? <p className="ui-control-text">Type: {article.type}</p> : null}
+					</div>
+				</section>
+
+				{tags.length > 0 ? (
+					<section className="rounded-2xl border border-[var(--ui-border-soft)] bg-background p-4">
+						<p className="ui-meta-text mb-3 uppercase tracking-wide">Tags</p>
+						<div className="flex flex-wrap gap-2">
+							{tags.map((tag) => (
+								<Link
+									key={tag.slug}
+									href={`/blogs?tag=${encodeURIComponent(tag.name)}`}
+									className="inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium transition-colors hover:opacity-80"
+									style={{
+										borderColor: tag.color || "var(--ui-border-soft)",
+										color: tag.color || "var(--ui-text-muted)",
+									}}
+								>
+									{tag.name}
+								</Link>
+							))}
+						</div>
+					</section>
+				) : null}
+
+				{related.length > 0 ? (
+					<section className="rounded-2xl border border-[var(--ui-border-soft)] bg-background p-4">
+						<p className="ui-meta-text mb-3 uppercase tracking-wide">Related</p>
+						<div className="space-y-2">
+							{related.slice(0, 5).map((item) => {
+								const href = item.type === "project" ? `/projects/${item.slug}` : `/blogs/${item.slug}`;
+
+								return (
+									<Link
+										key={item.id}
+										href={href}
+										className="flex items-center gap-2 rounded-md border border-[var(--ui-border-soft)] p-2 hover:border-[var(--ui-text-muted)]"
+									>
+										<div className="relative h-10 w-14 shrink-0 overflow-hidden rounded-sm bg-[var(--ui-border-subtle)]">
+											{item.featuredImage ? (
+												<Image
+													src={item.featuredImage}
+													alt={item.featuredImageAlt || item.title}
+													fill
+													sizes="56px"
+													className="object-cover"
+												/>
+											) : null}
+										</div>
+										<p className="ui-control-text line-clamp-2 leading-5 [overflow-wrap:anywhere]">
+											{item.title}
+										</p>
+									</Link>
+								);
+							})}
+						</div>
+					</section>
+				) : null}
+
+				{article.addonLinks && article.addonLinks.length > 0 ? (
+					<section className="rounded-2xl border border-[var(--ui-border-soft)] bg-background p-4">
+						<p className="ui-meta-text mb-3 uppercase tracking-wide">Links</p>
+						<div className="space-y-1.5">
+							{article.addonLinks
+								.slice()
+								.sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+								.map((link) => (
+									<a
+										key={`${link.type}-${link.url}`}
+										href={link.url}
+										target="_blank"
+										rel="noreferrer"
+										className="ui-control-text block truncate underline underline-offset-2 hover:text-[var(--ui-text-primary)]"
+									>
+										{link.label?.trim() || link.type}
+									</a>
+								))}
+						</div>
+					</section>
+				) : null}
+			</div>
 		</section>
 	);
 }
