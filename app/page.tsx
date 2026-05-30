@@ -130,7 +130,7 @@ export default function Home() {
             >
               {LINK_LABELS.pdfFormat}
             </Link>
-            .
+            {" "}{PAGE_COPY.homeResumeSuffix}.
           </p>
 
           <p className="ui-body-text text-sm sm:text-base hero-fade-in" style={{ animationDelay: "250ms" }}>

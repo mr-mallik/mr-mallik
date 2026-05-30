@@ -22,7 +22,11 @@ export function Footer() {
         </Link>
         <div className="inline-flex items-center gap-2">
           <span>Theme:</span>
-          <ThemeToggle />
+          
+          <div className="">
+            <ThemeToggle />
+          </div>
+          
           <span>&copy; {new Date().getFullYear()} {SITE.ownerName}. {SITE.copyrightSuffix}</span>
         </div>
       </div>

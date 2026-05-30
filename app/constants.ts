@@ -59,33 +59,34 @@ export const LINK_LABELS = {
   download: "Download",
   summarised: "summarised",
   detailed: "detailed",
-  pdfFormat: "PDF format",
+  pdfFormat: "resume",
   blogs: "blogs",
 } as const;
 
 export const PAGE_COPY = {
-  homepageRolePrefix: "Researcher at The",
-  homeIntroCompanyPrefix: "I am a founding software engineer at",
+  homepageRolePrefix: "Researcher at",
+  homeIntroCompanyPrefix: "I'm a founding software engineer at",
   homeIntroCompanySuffix:
-    "building thoughtful tools for the next layer of the web. I like to build systems that accelerate businesses and bring confidence in the era of Artificial Intelligence.",
-  homePreviousPrefix: "Previously, I worked with",
+    "where I help build thoughtful products for the next wave of the web. I enjoy creating systems that help teams move faster, make better decisions, and feel more confident using AI.",
+  homePreviousPrefix: "Before that, I worked with",
   homePreviousSuffix:
-    "across research and engineering. You can reach me via",
-  homeCodePrefix: "or see my code on",
-  homeResumePrefix: "A detailed resume is available for download in",
+    "across research and engineering. You can reach me through",
+  homeCodePrefix: "or explore my work on",
+  homeResumePrefix: "A more detailed",
+  homeResumeSuffix: "is available for download",
   homeResearchPrefix:
-    "My research focuses on Explainable AI, Multi-critera Decision Making, and Sustainable Software Engineering, read my publications on",
-  homeBlogPrefix: "I share my learnings, milestones, and reflections on",
+    "My research explores Explainable AI, Multi-critera Decision Making, and Sustainable Software Engineering. You can read my publications on",
+  homeBlogPrefix: "I share ideas, lessons, and progress on",
   homeBlogSuffix:
-    ", a space where I publish practical notes and stories about software engineering, applied research, and the evolving tech landscape.",
+    ", where I write practical notes and reflections on software engineering, applied research, and the evolving tech landscape.",
   homeSocialParagraph:
-    "I am a social person and love connecting with like-minded individuals. If you want to chat about anything, feel free to reach out to me via the contact details above. I am always open to discussing new ideas, potential collaborations, or just having a friendly conversation about technology and research.",
+    "I enjoy meeting thoughtful people and hearing new perspectives. If you'd like to talk about technology, research, or possible collaboration, feel free to reach out using the contact details above.",
   projectsPageDescription:
-    "A selection of projects across applied AI research and software engineering.",
+    "A selection of projects that bring applied AI research and software engineering together.",
   publicationsPageDescription:
-    "Research publications and manuscripts across explainable AI and applied software systems.",
+    "Research publications and manuscripts exploring explainable AI and practical software systems.",
   experiencePageDescription:
-    "Professional roles across applied AI research and software engineering.",
+    "Professional roles spanning applied AI research and software engineering.",
   resumeViewModeLegend: "Experience view mode",
 } as const;
 
