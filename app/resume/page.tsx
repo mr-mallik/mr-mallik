@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import localFont from "next/font/local";
 import Link from "next/link";
 import {
   LINK_LABELS,
@@ -20,12 +19,6 @@ import educationItems from "@/data/education.json";
 import publicationsItems from "@/data/publications.json";
 import skillsItems from "@/data/skills.json";
 import workItems from "@/data/work.json";
-
-const brittanySignature = localFont({
-  src: "../../public/fonts/BrittanySignature.ttf",
-  fallback: ["cursive"],
-  display: "swap",
-});
 
 type WorkItem = {
   company: string;

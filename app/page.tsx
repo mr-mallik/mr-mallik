@@ -19,6 +19,14 @@ import {
   SITE,
   SOCIAL_HANDLES,
 } from "@/app/constants";
+import { buildWebPageJsonLd, createPageMetadata, sanitizeJsonLd, SITE_DESCRIPTION, DEFAULT_OG_IMAGE_PATH } from "@/app/seo";
+
+export const metadata = createPageMetadata({
+  title: "AI Researcher, Software Engineer & Product Builder",
+  description: SITE_DESCRIPTION,
+  path: "/",
+  keywords: ["Gulger Mallik", "mrmallik", "AI researcher", "software engineer", "portfolio"],
+});
 
 const mailtoQuery = new URLSearchParams({
   subject: MAIL.subject,
@@ -51,6 +59,19 @@ const socialLinks = [
 export default function Home() {
   return (
     <section className="relative mx-auto w-full max-w-2xl py-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: sanitizeJsonLd(
+            buildWebPageJsonLd({
+              title: "AI Researcher, Software Engineer & Product Builder",
+              description: SITE_DESCRIPTION,
+              path: "/",
+              image: DEFAULT_OG_IMAGE_PATH,
+            }),
+          ),
+        }}
+      />
       <div className="space-y-10 sm:space-y-14">
         <header className="space-y-6">
           {/* Avatar + identity block */}

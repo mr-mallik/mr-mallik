@@ -1,10 +1,33 @@
+import type { Metadata } from "next";
+
 import { PAGE_COPY, ROUTES, SECTION_TITLES } from "@/app/constants";
 import Header from "@/components/header";
 import { PublicationsSection } from "@/components/publications-section";
+import { createPageMetadata, buildWebPageJsonLd, sanitizeJsonLd, DEFAULT_OG_IMAGE_PATH } from "@/app/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Publications",
+  description: PAGE_COPY.publicationsPageDescription,
+  path: ROUTES.publications,
+  keywords: ["publications", "research", "Gulger Mallik", "mrmallik", "explainable AI"],
+});
 
 export default function PublicationsPage() {
   return (
     <section className="mx-auto w-full max-w-2xl ">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: sanitizeJsonLd(
+            buildWebPageJsonLd({
+              title: "Publications",
+              description: PAGE_COPY.publicationsPageDescription,
+              path: ROUTES.publications,
+              image: DEFAULT_OG_IMAGE_PATH,
+            }),
+          ),
+        }}
+      />
       <div className="space-y-5 sm:space-y-7">
         <Header
           link={ROUTES.home}

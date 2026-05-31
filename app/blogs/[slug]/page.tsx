@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -10,10 +11,40 @@ import { getArticleBySlug } from "@/services/articles";
 import Header from "@/components/header";
 import CopyUrlButton from "@/components/copy-url-button";
 import ShareArticleButton from "@/components/share-article-button";
+import { buildBlogPostingJsonLd, buildBreadcrumbJsonLd, createPageMetadata, sanitizeJsonLd } from "@/app/seo";
 
 type BlogSlugParams = {
 	slug: string;
 };
+
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<BlogSlugParams> | BlogSlugParams;
+}): Promise<Metadata> {
+	const resolvedParams = await Promise.resolve(params);
+	const article = await getArticleBySlug(resolvedParams.slug);
+
+	if (!article) {
+		return {};
+	}
+
+	const description = article.excerpt || "Read this article on my blog.";
+	const tags = article.tagsData?.map((tag) => tag.name) ?? article.tagsText ?? [];
+
+	return createPageMetadata({
+		title: article.title,
+		description,
+		path: `/blogs/${article.slug}`,
+		image: article.featuredImage,
+		imageAlt: article.featuredImageAlt || article.title,
+		type: "article",
+		publishedTime: article.publishedAt,
+		modifiedTime: article.updatedAt,
+		keywords: tags,
+		section: "Blog",
+	});
+}
 
 export default async function BlogDetailPage({
 	params,
@@ -37,6 +68,34 @@ export default async function BlogDetailPage({
 
 	return (
 		<article className="mx-auto w-full max-w-3xl space-y-6">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: sanitizeJsonLd(
+						buildBreadcrumbJsonLd([
+							{ name: "Home", path: "/" },
+							{ name: "Blogs", path: ROUTES.blogs },
+							{ name: article.title, path: `/blogs/${article.slug}` },
+						]),
+					),
+				}}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: sanitizeJsonLd(
+						buildBlogPostingJsonLd({
+							title: article.title,
+							description: article.excerpt || "Read this article on my blog.",
+							path: `/blogs/${article.slug}`,
+							image: article.featuredImage,
+							publishedTime: article.publishedAt,
+							modifiedTime: article.updatedAt,
+							keywords: article.tagsData?.map((tag) => tag.name) ?? article.tagsText ?? [],
+						}),
+					),
+				}}
+			/>
 			<Header 
         link={ROUTES.blogs} 
         title={article.title} 

@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from "@/components/footer";
 import { SITE } from "@/app/constants";
+import { buildCosmokodeJsonLd, buildPersonJsonLd, buildWebSiteJsonLd, sanitizeJsonLd, SITE_DESCRIPTION, SITE_KEYWORDS } from "@/app/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +17,58 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: SITE.title,
-  description: "",
+  metadataBase: new URL("https://mrmallik.com"),
+  title: {
+    default: SITE.ownerName,
+    template: "%s | Gulger Mallik",
+  },
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
+  applicationName: SITE.brandName,
+  category: "portfolio",
+  authors: [{ name: SITE.ownerName, url: "https://mrmallik.com" }],
+  creator: SITE.ownerName,
+  publisher: SITE.ownerName,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    url: "https://mrmallik.com",
+    siteName: SITE.ownerName,
+    title: SITE.ownerName,
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: "/images/seo_image.png",
+        alt: "Gulger Mallik portfolio and research profile",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE.ownerName,
+    description: SITE_DESCRIPTION,
+    images: ["/images/seo_image.png"],
+  },
 };
 
 export default function RootLayout({
@@ -48,6 +99,24 @@ export default function RootLayout({
     document.documentElement.dataset.theme = theme;
   } catch {}
 })();`,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: sanitizeJsonLd(buildWebSiteJsonLd()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: sanitizeJsonLd(buildPersonJsonLd()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: sanitizeJsonLd(buildCosmokodeJsonLd()),
           }}
         />
       </head>

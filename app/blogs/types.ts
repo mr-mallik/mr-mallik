@@ -14,6 +14,7 @@ export type Article = {
   categories?: ArticleCategory[] | null;
   tags?: string[] | null;
   publishedAt: string;
+  updatedAt: string;
 };
 
 export type ArticlesResponse = {

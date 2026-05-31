@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -13,10 +14,40 @@ import ShareArticleButton from "@/components/share-article-button";
 import MobileSectionMenu from "@/components/mobile-section-menu";
 import ArticleTocNav from "@/components/article-toc-nav";
 import { getProjectBySlug } from "@/services/articles";
+import { buildBreadcrumbJsonLd, buildCreativeWorkJsonLd, createPageMetadata, sanitizeJsonLd } from "@/app/seo";
 
 type ProjectSlugParams = {
 	slug: string;
 };
+
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<ProjectSlugParams> | ProjectSlugParams;
+}): Promise<Metadata> {
+	const resolvedParams = await Promise.resolve(params);
+	const project = await getProjectBySlug(resolvedParams.slug);
+
+	if (!project) {
+		return {};
+	}
+
+	const description = project.excerpt || "Explore this project in detail.";
+	const tags = project.tagsData?.map((tag) => tag.name) ?? [];
+
+	return createPageMetadata({
+		title: project.title,
+		description,
+		path: `/projects/${project.slug}`,
+		image: project.featuredImage,
+		imageAlt: project.featuredImageAlt || project.title,
+		type: "article",
+		publishedTime: project.publishedAt,
+		modifiedTime: project.updatedAt,
+		keywords: tags,
+		section: "Projects",
+	});
+}
 
 export default async function ProjectDetailPage({
 	params,
@@ -43,6 +74,34 @@ export default async function ProjectDetailPage({
 
 	return (
 		<article className="space-y-8">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: sanitizeJsonLd(
+						buildBreadcrumbJsonLd([
+							{ name: "Home", path: "/" },
+							{ name: "Projects", path: ROUTES.projects },
+							{ name: project.title, path: `/projects/${project.slug}` },
+						]),
+					),
+				}}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: sanitizeJsonLd(
+						buildCreativeWorkJsonLd({
+							title: project.title,
+							description: project.excerpt || "Explore this project in detail.",
+							path: `/projects/${project.slug}`,
+							image: project.featuredImage,
+							publishedTime: project.publishedAt,
+							modifiedTime: project.updatedAt,
+							keywords: tags.map((tag) => tag.name),
+						}),
+					),
+				}}
+			/>
 			<Header
 				link={ROUTES.projects}
 				title={project.title}
