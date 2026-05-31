@@ -16,7 +16,7 @@ export function Footer() {
       <div className="ui-footer ui-control-text mx-auto flex w-full max-w-2xl flex-col items-center gap-3 py-4 text-center text-sm sm:flex-row sm:items-center sm:justify-between sm:text-left">
         <Link
           href={ROUTES.home}
-          className={`${brittanySignature.className} ui-brand-link ui-text-muted text-2xl`}
+          className={`${brittanySignature.className} ui-brand-link ui-text-muted text-4xl`}
         >
           {SITE.brandName}
         </Link>

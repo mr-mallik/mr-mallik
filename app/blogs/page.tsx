@@ -30,7 +30,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   });
 
   return (
-    <section className="mx-auto w-full max-w-2xl py-2 sm:py-8">
+    <section className="mx-auto w-full max-w-2xl ">
       <div className="space-y-5 sm:space-y-7">
         <Header
           link={ROUTES.home}

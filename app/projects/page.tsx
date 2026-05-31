@@ -18,7 +18,7 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
   const activeTag = rawTag?.trim() ? rawTag.trim() : undefined;
 
   return (
-    <section className="mx-auto w-full max-w-2xl py-2 sm:py-8">
+    <section className="mx-auto w-full max-w-2xl ">
       <div className="space-y-5 sm:space-y-7">
         <Header
           link={ROUTES.home}

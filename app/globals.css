@@ -141,8 +141,15 @@ body {
   color: var(--ui-text-primary);
 }
 
-.ui-section-title {
+.ui-resume-title {
   font-size: var(--ui-fs-section);
+  font-weight: 600;
+  color: var(--ui-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.ui-section-title {
+  font-size: var(--ui-fs-title);
   font-weight: 600;
   color: var(--ui-text-primary);
   letter-spacing: -0.01em;

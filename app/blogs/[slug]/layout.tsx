@@ -36,7 +36,7 @@ export default async function BlogArticleLayout({
 		: null;
 
 	return (
-		<section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 sm:py-8 lg:px-8">
+		<section className="mx-auto w-full max-w-7xl ">
 			{toc.length > 0 ? (
 				<div className="mb-5 lg:hidden">
 					<MobileSectionMenu title="On this page">

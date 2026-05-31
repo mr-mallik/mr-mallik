@@ -71,7 +71,7 @@ export default function ResumePage() {
   };
 
   return (
-    <div className="mx-auto max-w-[660px] px-6 pb-10 pt-12">
+    <div className="mx-auto max-w-[660px]">
       <div className="resume-fade-in">
         <div className="mb-10">
           <Header link={ROUTES.home}>
@@ -117,7 +117,7 @@ export default function ResumePage() {
       <section className="mt-10">
         <div className="resume-fade-in">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <p className="ui-section-title">{SECTION_TITLES.experience}</p>
+            <p className="ui-resume-title">{SECTION_TITLES.experience}</p>
             <fieldset className="ui-control-text flex items-center gap-4">
               <legend className="sr-only">{PAGE_COPY.resumeViewModeLegend}</legend>
               <label className="inline-flex cursor-pointer items-center gap-1.5">
@@ -194,7 +194,7 @@ export default function ResumePage() {
 
       <section className="mt-10">
         <div className="resume-fade-in">
-          <p className="ui-section-title">{SECTION_TITLES.education}</p>
+          <p className="ui-resume-title">{SECTION_TITLES.education}</p>
           <div className="ui-divider" />
         </div>
 
@@ -221,7 +221,7 @@ export default function ResumePage() {
 
       <section className="mt-10">
         <div className="resume-fade-in">
-          <p className="ui-section-title">{SECTION_TITLES.skills}</p>
+          <p className="ui-resume-title">{SECTION_TITLES.skills}</p>
           <div className="ui-divider" />
 
           <div className="ui-body-text mt-4">
@@ -237,7 +237,7 @@ export default function ResumePage() {
 
       <section className="mt-10">
         <div className="resume-fade-in">
-          <p className="ui-section-title">{SECTION_TITLES.publications}</p>
+          <p className="ui-resume-title">{SECTION_TITLES.publications}</p>
           <div className="ui-divider" />
 
           <div className="mt-4 space-y-4">

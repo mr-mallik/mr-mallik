@@ -198,7 +198,7 @@ export default function BlogListClient({
           {articles.map((article, index) => (
             <article
               key={article.id}
-              className="section-enter py-6 first:pt-0 last:pb-0"
+              className="section-enter rounded-xl px-3 py-6 transition-colors odd:bg-transparent even:bg-[color-mix(in_srgb,var(--ui-border-subtle)_22%,transparent)] first:pt-0 last:pb-0 dark:even:bg-[color-mix(in_srgb,var(--ui-border-subtle)_30%,transparent)] sm:px-4"
               style={{ animationDelay: `${index * 60}ms` }}
             >
               <Link
