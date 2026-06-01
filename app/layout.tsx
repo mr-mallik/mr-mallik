@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mrmallik.com"),
+  metadataBase: new URL(process.env.NEXT_APP_PUBLIC_URL || "https://mrmallik.com"),
   title: {
     default: SITE.ownerName,
     template: "%s | Gulger Mallik",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   keywords: SITE_KEYWORDS,
   applicationName: SITE.brandName,
   category: "portfolio",
-  authors: [{ name: SITE.ownerName, url: "https://mrmallik.com" }],
+  authors: [{ name: SITE.ownerName, url: process.env.NEXT_APP_PUBLIC_URL || "https://mrmallik.com" }],
   creator: SITE.ownerName,
   publisher: SITE.ownerName,
   formatDetection: {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://mrmallik.com",
+    url: process.env.NEXT_APP_PUBLIC_URL || "https://mrmallik.com",
     siteName: SITE.ownerName,
     title: SITE.ownerName,
     description: SITE_DESCRIPTION,

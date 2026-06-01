@@ -8,7 +8,7 @@ export const SITE = {
 export const PROFILE = {
   primaryEmail: "gulgermallik@gmail.com",
   phone: "07767924720",
-  websiteUrl: "https://mrmallik.com",
+  websiteUrl: process.env.NEXT_APP_PUBLIC_URL || "https://mrmallik.com",
   websiteLabel: "mrmallik.com",
   linkedInUrl: "https://www.linkedin.com/in/mrmallik/",
   linkedInDisplay: "linkedin.com/in/mrmallik/",
