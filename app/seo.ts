@@ -286,6 +286,11 @@ export function buildWebPageJsonLd({
     url: absoluteUrl(path),
     description,
     image: ogImage.url,
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: ogImage.url,
+      caption: ogImage.alt,
+    },
     inLanguage: "en-GB",
     isPartOf: {
       "@id": WEBSITE_ID,
@@ -334,7 +339,15 @@ export function buildBlogPostingJsonLd({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "@id": absoluteUrl(path),
-    mainEntityOfPage: absoluteUrl(path),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": absoluteUrl(path),
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: ogImage.url,
+        caption: ogImage.alt,
+      },
+    },
     headline: title,
     description,
     image: [ogImage.url],
@@ -375,7 +388,15 @@ export function buildCreativeWorkJsonLd({
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     "@id": absoluteUrl(path),
-    mainEntityOfPage: absoluteUrl(path),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": absoluteUrl(path),
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: ogImage.url,
+        caption: ogImage.alt,
+      },
+    },
     name: title,
     description,
     image: [ogImage.url],
@@ -394,11 +415,13 @@ export function buildCollectionPageJsonLd({
   title,
   description,
   path,
+  image,
   items,
 }: {
   title: string;
   description: string;
   path: string;
+  image?: string | null;
   items: Array<{
     name: string;
     path: string;
@@ -406,12 +429,20 @@ export function buildCollectionPageJsonLd({
     image?: string | null;
   }>;
 }): JsonLdValue {
+  const ogImage = buildOgImage(image, title);
+
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: title,
     description,
     url: absoluteUrl(path),
+    image: ogImage.url,
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: ogImage.url,
+      caption: ogImage.alt,
+    },
     inLanguage: "en-GB",
     isPartOf: {
       "@id": WEBSITE_ID,

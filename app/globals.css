@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #fcfcfc;
+  --background: #fff;
   --foreground: #171717;
   --ui-text-primary: #1f2937;
   --ui-text-secondary: #475569;
