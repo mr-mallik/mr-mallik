@@ -109,6 +109,22 @@ export default function ResumePage() {
 
       <section className="mt-10">
         <div className="resume-fade-in">
+          <p className="ui-resume-title">{SECTION_TITLES.skills}</p>
+          <div className="ui-divider" />
+
+          <div className="ui-body-text mt-4">
+            {skills.map((group, index) => (
+              <p key={group.category} className={index === 0 ? "" : "mt-2"}>
+                <span className="font-medium">{group.category}:</span>{" "}
+                {group.skills.join(", ")}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-10">
+        <div className="resume-fade-in">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p className="ui-resume-title">{SECTION_TITLES.experience}</p>
             <fieldset className="ui-control-text flex items-center gap-4">
@@ -210,22 +226,6 @@ export default function ResumePage() {
             </p>
           </div>
         ))}
-      </section>
-
-      <section className="mt-10">
-        <div className="resume-fade-in">
-          <p className="ui-resume-title">{SECTION_TITLES.skills}</p>
-          <div className="ui-divider" />
-
-          <div className="ui-body-text mt-4">
-            {skills.map((group, index) => (
-              <p key={group.category} className={index === 0 ? "" : "mt-2"}>
-                <span className="font-medium">{group.category}:</span>{" "}
-                {group.skills.join(", ")}
-              </p>
-            ))}
-          </div>
-        </div>
       </section>
 
       <section className="mt-10">

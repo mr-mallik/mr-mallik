@@ -13,6 +13,7 @@ import publicationsItems from "@/data/publications.json";
 
 type Publication = {
   title: string;
+  excerpt?: string;
   abstract: string;
   image?: string | null;
   doi?: string | null;
@@ -84,7 +85,11 @@ export function PublicationsSection({
 
                 <div className="min-w-0 flex-1">
                   <p className="ui-item-title">{publication.title}</p>
-                  <p className="ui-body-text mt-2 text-sm">{publication.abstract}</p>
+                  {publication.excerpt ? (
+                    <p className="ui-body-text mt-2 text-sm">{publication.excerpt}</p>
+                  ) : (
+                    <p className="ui-body-text mt-2 text-sm">{publication.abstract}</p>
+                  )}
                   <p className="ui-meta-text mt-2">
                     {STATUS_LABELS.publicationStatusPrefix} {publication.status}
                     {publication.doi ? (

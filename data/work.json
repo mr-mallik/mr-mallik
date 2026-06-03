@@ -1,8 +1,17 @@
 [
 	{
 		"company": "University of Huddersfield",
+		"role": "Doctoral Researcher",
+		"period": "Oct 2026 - Present",
+		"location": "Huddersfield, UK",
+		"url": "https://www.hud.ac.uk/",
+		"summary": "",
+		"details": []
+	},
+	{
+		"company": "University of Huddersfield",
 		"role": "Research Technician",
-		"period": "Mar 2026 - Present",
+		"period": "Mar 2026 - Sep 2026",
 		"location": "Huddersfield, UK",
 		"url": "https://www.hud.ac.uk/",
 		"summary": "Leading applied AI work on a sustainability decision support platform for housing and energy domains, combining generative AI and machine learning to produce transparent, evidence-based recommendations. Focused on multi-criteria trade-off analysis and practical outputs for real-world decision makers.",
