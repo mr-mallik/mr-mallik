@@ -251,13 +251,13 @@ export default function BlogListClient({
                 </div>
 
                 {article.featuredImage ? (
-                  <div className="relative shrink-0">
+                  <div className="relative shrink-0 overflow-hidden rounded-xl shadow-sm">
                     <Image
                       src={article.featuredImage}
                       alt={article.featuredImageAlt || article.title}
-                      width={112}
-                      height={75}
-                      className="h-[60px] w-[84px] rounded-md object-cover transition-opacity duration-200 group-hover:opacity-90 sm:h-[75px] sm:w-[112px]"
+                      width={128}
+                      height={86}
+                      className="h-[76px] w-[104px] object-cover transition duration-300 group-hover:scale-[1.05] group-hover:opacity-90 sm:h-[86px] sm:w-[128px]"
                     />
                   </div>
                 ) : null}

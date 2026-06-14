@@ -88,13 +88,13 @@ export async function BlogsSection({
                 </div>
 
                 {article.featuredImage ? (
-                  <div className="relative shrink-0">
+                  <div className="relative shrink-0 overflow-hidden rounded-lg shadow-sm">
                     <Image
                       src={article.featuredImage}
                       alt={article.featuredImageAlt || article.title}
-                      width={88}
-                      height={58}
-                      className="h-[52px] w-[72px] rounded-md object-cover transition-opacity duration-200 group-hover:opacity-90 sm:h-[58px] sm:w-[88px]"
+                      width={100}
+                      height={66}
+                      className="h-[60px] w-[84px] object-cover transition duration-300 group-hover:scale-[1.05] group-hover:opacity-90 sm:h-[66px] sm:w-[100px]"
                     />
                   </div>
                 ) : null}
