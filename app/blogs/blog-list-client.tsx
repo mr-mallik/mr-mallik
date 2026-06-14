@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import type { Article, ArticlesResponse } from "@/app/blogs/types";
+import { getTagColorClass } from "@/lib/tag-colors";
 
 const PAGE_SIZE = 10;
 
@@ -178,7 +179,7 @@ export default function BlogListClient({
       {activeTag ? (
         <div className="flex items-center gap-2 rounded-md border border-[var(--ui-border-soft)] bg-[var(--ui-bg-elevated)] p-2">
           <span className="ui-meta-text">Active tag:</span>
-          <span className="inline-flex items-center rounded-full border border-[var(--ui-border-soft)] px-2 py-0.5 text-[11px] font-medium text-[var(--ui-text-muted)]">
+          <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(activeTag)}`}>
             {activeTag}
           </span>
           <button
@@ -234,10 +235,10 @@ export default function BlogListClient({
 
                                 void applyTagFilter(tag);
                               }}
-                              className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${
+                              className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium transition-colors duration-150 ${
                                 activeTag === tag
-                                  ? "border-[var(--ui-text-link)] text-[var(--ui-text-link)]"
-                                  : "border-[var(--ui-border-soft)] text-[var(--ui-text-muted)]"
+                                  ? "border-[var(--ui-text-link)] bg-transparent text-[var(--ui-text-link)]"
+                                  : getTagColorClass(tag)
                               }`}
                             >
                               {tag}

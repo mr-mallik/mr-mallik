@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { LINK_LABELS, ROUTES, SECTION_TITLES } from "@/app/constants";
 import { getArticlesList } from "@/services/articles";
+import { getTagColorClass } from "@/lib/tag-colors";
 
 function formatDate(iso: string): string {
   const date = new Date(iso);
@@ -75,7 +76,7 @@ export async function BlogsSection({
                           {article.tags.slice(0, 2).map((tag) => (
                             <span
                               key={tag}
-                              className="inline-flex items-center rounded-full border border-[var(--ui-border-soft)] px-2 py-0.5 text-[11px] font-medium text-[var(--ui-text-muted)]"
+                              className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(tag)}`}
                             >
                               {tag}
                             </span>

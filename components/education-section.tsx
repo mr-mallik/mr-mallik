@@ -36,7 +36,7 @@ export function EducationSection() {
         />
         <div
           aria-hidden="true"
-          className="absolute bottom-2 left-[0.7rem] top-2 w-px origin-top bg-[var(--ui-text-muted)] opacity-50 transition-transform duration-500 md:hidden"
+          className="absolute bottom-2 left-[0.7rem] top-2 w-px origin-top bg-emerald-500 opacity-40 transition-transform duration-500 dark:bg-emerald-400 md:hidden"
           style={{ transform: `scaleY(${progressRatio})` }}
         />
         <div
@@ -45,7 +45,7 @@ export function EducationSection() {
         />
         <div
           aria-hidden="true"
-          className="absolute left-12 right-12 top-2 hidden h-px origin-left bg-[var(--ui-text-muted)] opacity-50 transition-transform duration-500 md:block"
+          className="absolute left-12 right-12 top-2 hidden h-px origin-left bg-emerald-500 opacity-40 transition-transform duration-500 dark:bg-emerald-400 md:block"
           style={{ transform: `scaleX(${progressRatio})` }}
         />
 
@@ -63,8 +63,8 @@ export function EducationSection() {
                 aria-hidden="true"
                 className={`absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border shadow-sm md:left-1/2 md:-translate-x-1/2 md:top-0 ${
                   isCompleted
-                    ? "timeline-dot-complete border-[var(--ui-text-primary)] bg-[var(--ui-text-primary)]"
-                    : "border-[var(--ui-border-soft)] bg-background"
+                    ? "timeline-dot-complete border-emerald-500 bg-emerald-500 dark:border-emerald-400 dark:bg-emerald-400"
+                    : "border-amber-400 bg-amber-50 dark:border-amber-500 dark:bg-amber-950/40"
                 }`}
               />
 
