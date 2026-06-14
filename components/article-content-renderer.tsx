@@ -30,6 +30,19 @@ function renderBlock(block: ParsedBlock, key: string): React.ReactNode {
     );
   }
 
+  if (block.kind === "code_block") {
+    return (
+      <pre
+        key={key}
+        className="overflow-x-auto rounded-lg border border-[var(--ui-border-soft)] bg-[var(--ui-border-subtle)] p-4 font-mono text-[13px] leading-6 text-[var(--ui-text-primary)]"
+      >
+        <code className={block.language ? `language-${block.language}` : undefined}>
+          {block.code}
+        </code>
+      </pre>
+    );
+  }
+
   if (block.kind === "blockquote") {
     return (
       <blockquote

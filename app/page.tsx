@@ -1,4 +1,4 @@
-import { Github01Icon, LinkedinIcon, Mail } from "@hugeicons/core-free-icons";
+import { LinkedinIcon, Github01Icon, Mail } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -118,7 +118,7 @@ export default function Home() {
             {PAGE_COPY.homeIntroCompanySuffix}
           </p>
 
-          <p className="ui-body-text text-sm sm:text-base hero-fade-in" style={{ animationDelay: "180ms" }}>
+          <p className="ui-body-text hero-fade-in" style={{ animationDelay: "180ms" }}>
             {PAGE_COPY.homePreviousPrefix}{" "}
             <Link
               href={PROFILE.linkedInUrl}
@@ -128,24 +128,8 @@ export default function Home() {
             >
               product teams
             </Link>{" "}
-            {PAGE_COPY.homePreviousSuffix}{" "}
-            <Link
-              href={mailtoLink}
-              className="hero-inline-icon-link"
-            >
-              <HugeiconsIcon icon={Mail} className="h-4 w-4 shrink-0" aria-hidden="true" /> email
-            </Link>{" "}
-            {PAGE_COPY.homeCodePrefix}{" "}
-            <Link
-              href={PROFILE.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="hero-inline-icon-link"
-            >
-              <HugeiconsIcon icon={Github01Icon} className="h-4 w-4 shrink-0" aria-hidden="true" /> GitHub
-            </Link>
-            .
-            {" "}{PAGE_COPY.homeResumePrefix}{" "}
+            across research and engineering.{" "}
+            {PAGE_COPY.homeResumePrefix}{" "}
             <Link
               href={ROUTES.resume}
               className="hero-inline-link"
@@ -155,7 +139,7 @@ export default function Home() {
             {" "}{PAGE_COPY.homeResumeSuffix}.
           </p>
 
-          <p className="ui-body-text text-sm sm:text-base hero-fade-in" style={{ animationDelay: "250ms" }}>
+          <p className="ui-body-text hero-fade-in" style={{ animationDelay: "250ms" }}>
             {PAGE_COPY.homeResearchPrefix}{" "}
             <Link
               href={PROFILE.orcidUrl}
@@ -168,7 +152,7 @@ export default function Home() {
             .
           </p>
 
-          <p className="ui-body-text text-sm sm:text-base hero-fade-in" style={{ animationDelay: "320ms" }}>
+          <p className="ui-body-text hero-fade-in" style={{ animationDelay: "320ms" }}>
             {PAGE_COPY.homeBlogPrefix}{" "}
             <Link
               href={ROUTES.blogs}
@@ -194,7 +178,7 @@ export default function Home() {
         <BlogsSection limit={3} showViewAllLink />
 
         <section className="space-y-5">
-          <p className="ui-body-text text-sm sm:text-base">
+          <p className="ui-body-text">
             {PAGE_COPY.homeSocialParagraph}
           </p>
 

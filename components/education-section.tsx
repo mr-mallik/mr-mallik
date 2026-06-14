@@ -32,20 +32,20 @@ export function EducationSection() {
       <div className="relative">
         <div
           aria-hidden="true"
-          className="absolute bottom-2 left-[0.7rem] top-2 w-px bg-slate-200 dark:bg-slate-800 md:hidden"
+          className="absolute bottom-2 left-[0.7rem] top-2 w-px bg-[var(--ui-border-subtle)] md:hidden"
         />
         <div
           aria-hidden="true"
-          className="absolute bottom-2 left-[0.7rem] top-2 w-px origin-top bg-slate-500 transition-transform duration-500 dark:bg-slate-300 md:hidden"
+          className="absolute bottom-2 left-[0.7rem] top-2 w-px origin-top bg-[var(--ui-text-muted)] opacity-50 transition-transform duration-500 md:hidden"
           style={{ transform: `scaleY(${progressRatio})` }}
         />
         <div
           aria-hidden="true"
-          className="absolute left-12 right-12 top-2 hidden h-px bg-slate-200 dark:bg-slate-800 md:block"
+          className="absolute left-12 right-12 top-2 hidden h-px bg-[var(--ui-border-subtle)] md:block"
         />
         <div
           aria-hidden="true"
-          className="absolute left-12 right-12 top-2 hidden h-px origin-left bg-slate-500 transition-transform duration-500 dark:bg-slate-300 md:block"
+          className="absolute left-12 right-12 top-2 hidden h-px origin-left bg-[var(--ui-text-muted)] opacity-50 transition-transform duration-500 md:block"
           style={{ transform: `scaleX(${progressRatio})` }}
         />
 
@@ -63,8 +63,8 @@ export function EducationSection() {
                 aria-hidden="true"
                 className={`absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border shadow-sm md:left-1/2 md:-translate-x-1/2 md:top-0 ${
                   isCompleted
-                    ? "timeline-dot-complete border-slate-700 bg-slate-700 dark:border-slate-200 dark:bg-slate-200"
-                    : "border-slate-300 bg-background dark:border-slate-600"
+                    ? "timeline-dot-complete border-[var(--ui-text-primary)] bg-[var(--ui-text-primary)]"
+                    : "border-[var(--ui-border-soft)] bg-background"
                 }`}
               />
 

@@ -80,6 +80,7 @@ export type ParsedBlock =
   | { kind: "heading"; level: number; text: string; id: string }
   | { kind: "blockquote"; text: string }
   | { kind: "image"; src: string; alt: string }
+  | { kind: "code_block"; code: string; language?: string }
   | { kind: "bulletList"; items: ParsedBlock[][] }
   | { kind: "orderedList"; items: ParsedBlock[][] };
 
@@ -168,6 +169,16 @@ function parseNodeList(
       if (src) {
         const alt = String(node.attrs?.alt ?? "").trim();
         blocks.push({ kind: "image", src, alt });
+      }
+      continue;
+    }
+
+    if (type === "code_block" || type === "codeBlock") {
+      const code = textFromNode(node);
+      if (code) {
+        const language =
+          typeof node.attrs?.language === "string" ? node.attrs.language : undefined;
+        blocks.push({ kind: "code_block", code, language });
       }
       continue;
     }
