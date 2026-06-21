@@ -30,7 +30,7 @@ export default function Navigation() {
   return (
     <>
       <nav className="sticky top-0 z-30 w-full border-b border-[var(--ui-border-subtle)] bg-background/90 px-4 backdrop-blur-sm sm:px-6 lg:px-8">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between py-3 sm:py-4">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between py-3 sm:py-4">
           {/* Logo */}
           <Link
             href={ROUTES.home}
@@ -46,7 +46,7 @@ export default function Navigation() {
               className="h-9 w-9 sm:h-10 sm:w-10 dark:invert"
               priority
             />
-            {/* <span className="ml-1 text-3xl font-bold">MR. MALLIK</span> */}
+            {/* <h1 className="ml-1 text-3xl font-bold">Dr. Mallik</h1> */}
           </Link>
 
           <div className="flex items-center gap-2 sm:gap-3">
@@ -63,7 +63,7 @@ export default function Navigation() {
               ))}
             </div>
 
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
 
             {/* Hamburger — mobile only */}
             <button
