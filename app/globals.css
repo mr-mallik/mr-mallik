@@ -157,7 +157,6 @@ body {
 }
 
 .ui-page-description {
-  max-width: 42rem;
   font-size: var(--ui-fs-md);
   line-height: 1.7;
   color: var(--ui-text-secondary);
@@ -291,6 +290,11 @@ body {
   color: var(--ui-text-primary);
 }
 .ui-nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.ui-nav-active {
+  color: var(--ui-text-primary);
   transform: scaleX(1);
 }
 
