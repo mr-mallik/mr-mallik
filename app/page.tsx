@@ -152,7 +152,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
+      <section className="py-8 mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
         <div className="mb-8 flex items-center justify-between">
           <h2 className="ui-section-title tracking-tight">
             I can help you with
@@ -173,14 +173,31 @@ export default function Page() {
           ))}
         </div>
       </section>
-      
-      <ProjectsSection limit={4} showViewAllLink />
 
+      <section className="py-8 mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
+        <div className="flex flex-row gap-4">
+          <div className="w-1/4 flex flex-col gap-6">
+            <h2 className="ui-section-title tracking-tight">
+              Selected Work
+            </h2>
+            <a
+                href={`mailto:${PROFILE.primaryEmail}`}
+                className="w-fit rounded-full bg-[var(--ui-text-primary)] px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-80"
+              >
+              See All
+            </a>
+          </div>
+          <div className="w-3/4">
+              <ProjectsSection heading={false} limit={4} showViewAllLink />
+          </div>
+        </div>
+      </section>
+      
       <BlogsSection limit={6} showViewAllLink />
 
       <PublicationsSection limit={3} showViewAllLink />
 
-      <section className="pb-6 text-center">
+      <section className="mx-auto max-w-7xl pb-16 px-6 md:px-10 lg:px-14 text-center">
         <p className="text-sm text-[var(--ui-text-muted)]">Have a project?</p>
         <h2 className="mt-2 text-4xl font-bold tracking-tight text-[var(--ui-text-primary)] md:text-5xl">
           Let&apos;s work together

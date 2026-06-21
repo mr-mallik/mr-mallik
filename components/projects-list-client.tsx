@@ -200,7 +200,7 @@ export function ProjectsListClient({
       ) : null}
 
       {projects.length > 0 ? (
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
           {projects.map((project, index) => (
             <Link
               key={project.id}
@@ -209,20 +209,20 @@ export function ProjectsListClient({
               style={{ animationDelay: `${index * 60}ms`, aspectRatio: "auto" }}
             >
               <div className="flex h-full flex-col rounded-xl border border-[var(--ui-border-subtle)] bg-background p-4 sm:p-5">
-                <div className="flex h-20 shrink-0 items-center justify-center">
+                <div className="w-full pb-2 rounded-t-lg h-64 bg-stone-100 dark:bg-stone-900/30 flex items-center justify-center">
                   {project.featuredImage ? (
                     <Image
                       src={project.featuredImage}
                       alt={project.featuredImageAlt || `${project.title} project image`}
-                      width={64}
-                      height={64}
-                      className="h-16 w-16 object-contain opacity-60 transition-opacity duration-200 group-hover:opacity-80"
+                      width={160}
+                      height={160}
+                      className="max-h-[80%] w-auto max-w-full object-contain"
                     />
                   ) : (
                     <Image
                       src={defaultSvg}
                       alt={`${project.title} project image`}
-                      className="h-16 w-16 object-contain opacity-40 transition-opacity duration-200 group-hover:opacity-70"
+                      className="max-h-[80%] w-auto max-w-full object-contain"
                     />
                   )}
                 </div>
