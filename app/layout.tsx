@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import Navigation from "@/components/navigation";
 import { SITE } from "@/app/constants";
 import { buildCosmokodeJsonLd, buildPersonJsonLd, buildWebSiteJsonLd, sanitizeJsonLd, SITE_DESCRIPTION, SITE_KEYWORDS } from "@/app/seo";
+import ScrollToTopButton from "@/components/scroll-to-top-button";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -121,15 +122,16 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full bg-background text-foreground transition-colors duration-200">
+      <body className="min-h-full bg-background mx-auto max-w-6xl text-foreground transition-colors duration-200">
         <ThemeProvider>
-          <div className="min-h-screen flex flex-col">
+          <div className="flex flex-col">
             <Navigation />
             <main className="w-full mx-auto flex-1 px-4 py-6 sm:px-6 sm:pb-8 lg:px-8">
               {children}
             </main>
             <Footer />
           </div>
+			    <ScrollToTopButton />
         </ThemeProvider>
       </body>
     </html>

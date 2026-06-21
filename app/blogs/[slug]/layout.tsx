@@ -6,7 +6,6 @@ import { getArticleBySlug } from "@/services/articles";
 import { getTagColorClass } from "@/lib/tag-colors";
 import ArticleTocNav from "@/components/article-toc-nav";
 import MobileSectionMenu from "@/components/mobile-section-menu";
-import ScrollToTopButton from "@/components/scroll-to-top-button";
 
 type BlogSlugParams = {
 	slug: string;
@@ -38,7 +37,7 @@ export default async function BlogArticleLayout({
 
 	return (
 		<>
-			<section className="mx-auto w-full max-w-7xl">
+			<section className="mx-auto w-full max-w-6xl">
 				{/* Mobile TOC trigger — shown above content on small screens */}
 				{toc.length > 0 ? (
 					<div className="mb-5 lg:hidden">
@@ -221,9 +220,6 @@ export default async function BlogArticleLayout({
 					) : null}
 				</div>
 			</section>
-
-			{/* Floating scroll-to-top */}
-			<ScrollToTopButton />
 		</>
 	);
 }

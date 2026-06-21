@@ -40,7 +40,7 @@ export default async function ProjectDetailLayout({
 		: null;
 
 	return (
-		<section className="mx-auto w-full max-w-6xl ">
+		<section className="mx-auto w-full">
 			<div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-10">
 				<main className="min-w-0">{children}</main>
 

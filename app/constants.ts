@@ -25,6 +25,7 @@ export const ROUTES = {
   projects: "/projects",
   publications: "/publications",
   blogs: "/blogs",
+  about: "/about",
 } as const;
 
 export const EXTERNAL_LINKS = {

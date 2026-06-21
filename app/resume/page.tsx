@@ -64,7 +64,7 @@ export default function ResumePage() {
   };
 
   return (
-    <div className="mx-auto max-w-[660px]">
+    <div className="max-w-2xl mx-auto w-full">
       <div className="resume-fade-in">
         <div className="mb-10">
           <Header link={ROUTES.home}>

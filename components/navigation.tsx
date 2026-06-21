@@ -8,6 +8,8 @@ import { ThemeToggle } from "./theme-toggle";
 import { ROUTES, SITE } from "@/app/constants";
 
 const NAV_LINKS = [
+  { label: "Home", href: ROUTES.home },
+  { label: "About Me", href: ROUTES.about },
   { label: "Blog", href: ROUTES.blogs },
   { label: "Projects", href: ROUTES.projects },
   { label: "Publications", href: ROUTES.publications },
@@ -30,13 +32,13 @@ export default function Navigation() {
   return (
     <>
       <nav className="sticky top-0 z-30 w-full border-b border-[var(--ui-border-subtle)] bg-background/90 px-4 backdrop-blur-sm sm:px-6 lg:px-8">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between py-3 sm:py-4">
+        <div className="mx-auto flex w-full items-center justify-between py-3 sm:py-4">
           {/* Logo */}
           <Link
             href={ROUTES.home}
             className="ui-brand-link shrink-0 flex items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-150 hover:bg-[var(--ui-border-subtle)]"
             onClick={close}
-            aria-label="MR. MALLIK — home"
+            aria-label="MR. MALLIK - home"
           >
             <Image
               src="/logo.png"
