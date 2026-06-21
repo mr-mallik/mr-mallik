@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Research and Development",
+    "description": " Applied AI and ML R&D to build intelligent, real‑world decision systems.",
+    "image": "/images/services/research-and-development.png",
+    "icon": "rnd"
+  },
+  {
+    "name": "Consulting",
+    "description": "Strategic AI guidance to help organisations adopt, build, and deploy effective ML solutions.",
+    "image": "/images/services/consulting.png",
+    "icon": "consulting"
+  },
+  {
+    "name": "Software Development",
+    "description": "Scalable software engineering with integrated AI capabilities and clean user experiences.",
+    "image": "/images/services/software-development.png",
+    "icon": "software-development"
+  },
+  {
+    "name": "Training and Workshops",
+    "description": "Practical AI and ML training sessions focused on hands‑on learning and real applications.",
+    "image": "/images/services/training-and-workshops.png",
+    "icon": "training-and-workshops"
+  }
+]

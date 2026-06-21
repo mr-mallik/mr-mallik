@@ -122,11 +122,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full bg-background mx-auto max-w-6xl text-foreground transition-colors duration-200">
+      <body className="min-h-full bg-background mx-auto text-foreground transition-colors duration-200">
         <ThemeProvider>
           <div className="flex flex-col">
             <Navigation />
-            <main className="w-full mx-auto flex-1 px-4 py-6 sm:px-6 sm:pb-8 lg:px-8">
+            <main className="w-full flex-1 mx-auto">
               {children}
             </main>
             <Footer />

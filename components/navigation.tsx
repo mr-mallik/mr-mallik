@@ -31,9 +31,8 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="sticky top-0 z-30 w-full border-b border-[var(--ui-border-subtle)] bg-background/90 px-4 backdrop-blur-sm sm:px-6 lg:px-8">
-        <div className="mx-auto flex w-full items-center justify-between py-3 sm:py-4">
-          {/* Logo */}
+      <nav className="sticky top-0 z-30 border-b border-[var(--ui-border-subtle)] bg-background/90 backdrop-blur-sm">
+        <div className="mx-auto max-w-7xl flex items-center justify-between py-2 sm:py-4 px-6 md:px-10 lg:px-14">
           <Link
             href={ROUTES.home}
             className="ui-brand-link shrink-0 flex items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-150 hover:bg-[var(--ui-border-subtle)]"
@@ -48,7 +47,7 @@ export default function Navigation() {
               className="h-9 w-9 sm:h-10 sm:w-10 dark:invert"
               priority
             />
-            {/* <h1 className="ml-1 text-3xl font-bold">Dr. Mallik</h1> */}
+
           </Link>
 
           <div className="flex items-center gap-2 sm:gap-3">
@@ -58,16 +57,16 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`ui-nav-link${pathname.startsWith(link.href) ? " ui-nav-active" : ""}`}
+                  className={`ui-nav-link
+                    ${pathname.at(0) === link.href ? " ui-nav-active" : ""}`}
                 >
                   {link.label}
                 </Link>
               ))}
             </div>
 
-            {/* <ThemeToggle /> */}
+            <ThemeToggle />
 
-            {/* Hamburger — mobile only */}
             <button
               type="button"
               onClick={() => setMobileOpen((open) => !open)}
