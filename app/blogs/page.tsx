@@ -51,7 +51,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   });
 
   return (
-    <section className="mx-auto w-full max-w-2xl ">
+    <section className="mx-auto w-full max-w-4xl px-6 md:px-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -31,7 +31,7 @@ export async function BlogsSection({
   });
 
   return (
-    <section className="mx-auto max-w-7xl px-6 md:px-10 lg:px-14 py-8 space-y-5">
+    <section className="space-y-5">
       {heading ? (
         <div className="flex items-center justify-between gap-4">
           <h2 className="ui-section-title tracking-tight">

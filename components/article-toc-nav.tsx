@@ -60,7 +60,7 @@ export default function ArticleTocNav({ items }: ArticleTocNavProps) {
 
             return (
               <li key={item.id} className="relative">
-                {/* Active accent — sits on top of the gray track */}
+                {/* Active accent - sits on top of the gray track */}
                 <span
                   className={`absolute bottom-0.5 left-0 top-0.5 w-0.5 rounded-full transition-all duration-200 ${
                     isActive ? "bg-[var(--ui-text-link)]" : "bg-transparent"

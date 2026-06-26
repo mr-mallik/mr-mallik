@@ -57,8 +57,11 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`ui-nav-link
-                    ${pathname.at(0) === link.href ? " ui-nav-active" : ""}`}
+                  className={`ui-nav-link ${
+                    (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href))
+                      ? "ui-nav-active"
+                      : ""
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -144,7 +147,7 @@ export default function Navigation() {
               href={link.href}
               onClick={close}
               className={`rounded-lg px-3 py-3 text-sm font-medium transition-colors duration-150 ${
-                pathname.startsWith(link.href)
+                (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href))
                   ? "bg-[var(--ui-border-subtle)] text-[var(--ui-text-primary)]"
                   : "text-[var(--ui-text-muted)] hover:bg-[var(--ui-border-subtle)] hover:text-[var(--ui-text-primary)]"
               }`}

@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ROUTES, PROFILE, SOCIAL_LINKS } from "@/app/constants";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { LinkedinIcon, Github01Icon } from "@hugeicons/core-free-icons";
+
+import { ROUTES, PROFILE } from "@/app/constants";
+import { createPageMetadata, SITE_DESCRIPTION } from "@/app/seo";
 
 import { ProjectsSection } from "@/components/projects-section";
 import { BlogsSection } from "@/components/blogs-section";
@@ -12,35 +17,53 @@ import achievements from "@/data/achievements.json";
 import showcase from "@/data/showcase.json";
 import services from "@/data/services.json";
 
+export const metadata: Metadata = createPageMetadata({
+  title: "AI Researcher & Software Engineer",
+  description: SITE_DESCRIPTION,
+  path: "/",
+  keywords: ["Gulger Mallik", "mrmallik", "AI researcher", "software engineer", "portfolio"],
+});
+
+const SERVICE_ICONS: Record<string, string> = {
+  "rnd": "🔬",
+  "consulting": "💬",
+  "software-development": "⚙️",
+  "training-and-workshops": "🎓",
+};
+
+const HERO_SOCIALS = [
+  { label: "LinkedIn", href: PROFILE.linkedInUrl, icon: LinkedinIcon, handle: "mrmallik" },
+  { label: "GitHub", href: PROFILE.githubUrl, icon: Github01Icon, handle: "mr-mallik" },
+];
+
 export default function Page() {
   return (
     <div className="flex flex-col gap-16 md:gap-24">
-      
-      <section className="pt-16 mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
-        <div className="flex flex-row gap-8 items-center">
-          <div className="flex flex-col gap-6 w-full md:w-1/2 sm:grid sm:grid-cols-2 md:flex md:flex-col">
-            <div className="flex items-center">
-              <Image
-                src="/images/gulger-mallik@1x1.png"
-                alt="Gulger Mallik"
-                width={52}
-                height={52}
-                className="rounded-full object-cover"
-                priority
-              />
-            </div>
-            <h1 className="text-7xl font-medium text-primary">
+
+      {/* ── Hero ── */}
+      <section className="mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-14">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
+          <div className="flex flex-col gap-6">
+            <Image
+              src="/images/gulger-mallik@1x1.png"
+              alt="Gulger Mallik"
+              width={52}
+              height={52}
+              className="rounded-full object-cover"
+              priority
+            />
+            <h1 className="text-5xl font-medium leading-tight text-[var(--ui-text-primary)] sm:text-6xl lg:text-7xl">
               Hello! I&apos;m
               <br />
               Gulger Mallik
             </h1>
           </div>
 
-          <div className="flex flex-col gap-8 w-full md:w-1/2 sm:grid sm:grid-cols-2 md:flex md:flex-col">
+          <div className="flex flex-col gap-6">
             <h2 className="text-xl font-medium leading-snug text-[var(--ui-text-primary)] sm:text-2xl">
               A Software Engineer &amp; AI Researcher based in Huddersfield, United Kingdom.
             </h2>
-            <p className="text-sm text-[var(--ui-text-muted)]">
+            <p className="text-sm leading-relaxed text-[var(--ui-text-muted)]">
               Passionate about building thoughtful digital products and advancing AI research for
               real-world impact.
             </p>
@@ -58,14 +81,33 @@ export default function Page() {
                 See my work
               </Link>
             </div>
+
+            <div className="flex items-center gap-5">
+              {HERO_SOCIALS.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-[var(--ui-text-muted)] transition-colors hover:text-[var(--ui-text-primary)]"
+                >
+                  <HugeiconsIcon icon={s.icon} className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  {s.handle}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
-        <div className="flex flex-row gap-6">
+      {/* ── Showcase ── */}
+      <section className="mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-14">
+        <div className="flex flex-wrap gap-6">
           {showcase.map((item) => (
-            <div key={item.name} className="grid place-items-center w-1/4 lg:w-1/6">
+            <div
+              key={item.name}
+              className="grid place-items-center w-[calc(25%-18px)] min-w-[80px] max-w-[160px] lg:w-[calc(16.666%-20px)]"
+            >
               <Image
                 src={item.image}
                 alt={item.name}
@@ -78,6 +120,7 @@ export default function Page() {
         </div>
       </section>
 
+      {/* ── Experience & Awards ── */}
       <section className="py-16 bg-stone-100 dark:bg-stone-900/30">
         <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
           <div className="grid gap-6 md:grid-cols-2">
@@ -86,8 +129,8 @@ export default function Page() {
                 Working experience
               </h3>
               <ul className="divide-y divide-[var(--ui-border-subtle)]">
-                {workItems.map((exp) => (
-                  <li key={exp.company} className="ui-experience-row">
+                {workItems.map((exp, index) => (
+                  <li key={`work-item-${index}`} className="ui-experience-row">
                     <div className="flex items-center gap-3">
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[var(--ui-border-soft)] bg-background">
                         {exp.logo ? (
@@ -118,8 +161,8 @@ export default function Page() {
                 Awards &amp; Recognition
               </h3>
               <ul className="divide-y divide-[var(--ui-border-subtle)]">
-                {achievements.map((award) => (
-                  <li key={award.title} className="ui-experience-row">
+                {achievements.map((award, index) => (
+                  <li key={`award-item-${index}`} className="ui-experience-row">
                     <div className="flex items-center gap-3">
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--ui-text-primary)] text-[10px] font-bold text-background">
                         {award.badge}
@@ -152,62 +195,77 @@ export default function Page() {
         </div>
       </section>
 
+      {/* ── Services ── */}
       <section className="py-8 mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
         <div className="mb-8 flex items-center justify-between">
-          <h2 className="ui-section-title tracking-tight">
-            I can help you with
-          </h2>
+          <h2 className="ui-section-title tracking-tight">I can help you with</h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (
-            <div key={service.name} className="border border-[var(--ui-border-subtle)] rounded-lg flex flex-col gap-2">
-              <div className="w-full pb-2 rounded-t-lg h-64 bg-stone-100 dark:bg-stone-900/30 flex items-center justify-center">
-                <h3 
-                  className="text-2xl p-4 font-semibold items-center text-center text-[var(--ui-text-primary)]">
-                    {service.name}
+            <div
+              key={service.name}
+              className="group border border-[var(--ui-border-subtle)] rounded-xl flex flex-col overflow-hidden transition-all duration-200 hover:border-[var(--ui-border-soft)] hover:shadow-sm"
+            >
+              <div className="relative w-full aspect-[4/3] bg-stone-100 dark:bg-stone-900/30 flex flex-col items-center justify-center gap-3 p-6">
+                <span className="text-4xl select-none" aria-hidden>
+                  {SERVICE_ICONS[service.icon] ?? "📌"}
+                </span>
+                <h3 className="text-base font-semibold text-center text-[var(--ui-text-primary)] leading-snug">
+                  {service.name}
                 </h3>
               </div>
-              <p className="p-4 text-sm text-[var(--ui-text-muted)]">{service.description}</p>
+              <p className="p-4 text-sm leading-relaxed text-[var(--ui-text-muted)]">
+                {service.description}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
+      {/* ── Selected Work ── */}
       <section className="py-8 mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
-        <div className="flex flex-row gap-4">
-          <div className="w-1/4 flex flex-col gap-6">
-            <h2 className="ui-section-title tracking-tight">
-              Selected Work
-            </h2>
-            <a
-                href={`mailto:${PROFILE.primaryEmail}`}
-                className="w-fit rounded-full bg-[var(--ui-text-primary)] px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-80"
-              >
-              See All
-            </a>
-          </div>
-          <div className="w-3/4">
-              <ProjectsSection heading={false} limit={4} showViewAllLink />
-          </div>
+        <div className="mb-8 flex items-center justify-between gap-4">
+          <h2 className="ui-section-title tracking-tight">Selected Work</h2>
+          <Link href={ROUTES.projects} className="ui-view-all-link">
+            View all projects
+          </Link>
         </div>
+        <ProjectsSection heading={false} limit={4} showViewAllLink />
       </section>
-      
-      <BlogsSection limit={6} showViewAllLink />
 
-      <PublicationsSection limit={3} showViewAllLink />
+      {/* ── Blog ── */}
+      <section className="mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
+        <BlogsSection limit={6} showViewAllLink />
+      </section>
 
-      <section className="mx-auto max-w-7xl pb-16 px-6 md:px-10 lg:px-14 text-center">
-        <p className="text-sm text-[var(--ui-text-muted)]">Have a project?</p>
-        <h2 className="mt-2 text-4xl font-bold tracking-tight text-[var(--ui-text-primary)] md:text-5xl">
+      {/* ── Publications ── */}
+      <section className="mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
+        <PublicationsSection limit={3} showViewAllLink />
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="mx-auto max-w-7xl px-6 md:px-10 lg:px-14 text-center">
+        <p className="text-sm text-[var(--ui-text-muted)]">Have a project in mind?</p>
+        <h2 className="mt-2 ui-section-title text-4xl md:text-5xl">
           Let&apos;s work together
         </h2>
-        <a
-          href={`mailto:${PROFILE.primaryEmail}`}
-          className="mt-6 inline-block rounded-full bg-[var(--ui-text-primary)] px-8 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
-        >
-          Get in touch
-        </a>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href={`mailto:${PROFILE.primaryEmail}`}
+            className="rounded-full bg-[var(--ui-text-primary)] px-8 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
+          >
+            Get in touch
+          </a>
+          <a
+            href={PROFILE.linkedInUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full border border-[var(--ui-border-soft)] px-8 py-3 text-sm font-medium text-[var(--ui-text-secondary)] transition-colors hover:border-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)]"
+          >
+            Connect on LinkedIn
+          </a>
+        </div>
       </section>
     </div>
   );

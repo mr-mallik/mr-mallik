@@ -39,7 +39,7 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
   const activeTag = rawTag?.trim() ? rawTag.trim() : undefined;
 
   return (
-    <section className="mx-auto w-full max-w-2xl ">
+    <section className="mx-auto w-full max-w-5xl px-6 md:px-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

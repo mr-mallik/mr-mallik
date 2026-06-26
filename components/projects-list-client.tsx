@@ -205,24 +205,25 @@ export function ProjectsListClient({
             <Link
               key={project.id}
               href={`/projects/${project.slug}`}
-              className="group ui-project-card section-enter min-w-0 min-h-[18rem]"
+              className="group ui-project-card section-enter min-w-0"
               style={{ animationDelay: `${index * 60}ms`, aspectRatio: "auto" }}
             >
               <div className="flex h-full flex-col rounded-xl border border-[var(--ui-border-subtle)] bg-background p-4 sm:p-5">
-                <div className="w-full pb-2 rounded-t-lg h-64 bg-stone-100 dark:bg-stone-900/30 flex items-center justify-center">
+                <div className="relative w-full aspect-video overflow-hidden rounded-lg bg-stone-100 dark:bg-stone-900/30">
                   {project.featuredImage ? (
                     <Image
                       src={project.featuredImage}
                       alt={project.featuredImageAlt || `${project.title} project image`}
-                      width={160}
-                      height={160}
-                      className="max-h-[80%] w-auto max-w-full object-contain"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-contain p-4"
                     />
                   ) : (
                     <Image
                       src={defaultSvg}
-                      alt={`${project.title} project image`}
-                      className="max-h-[80%] w-auto max-w-full object-contain"
+                      alt=""
+                      fill
+                      className="object-contain p-8 opacity-25"
                     />
                   )}
                 </div>

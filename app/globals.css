@@ -203,7 +203,7 @@ body {
 }
 .ui-link:hover { opacity: 0.75; }
 
-/* Subtle bold link — used across the whole site */
+/* Subtle bold link - used across the whole site */
 .ui-link-subtle {
   font-weight: 600;
   color: var(--ui-text-primary);
@@ -313,7 +313,7 @@ body {
    CARDS
 ══════════════════════════════════════════ */
 
-/* Shared card base — applied to article / div wrappers */
+/* Shared card base - applied to article / div wrappers */
 .ui-card {
   border-radius: 0.75rem;
   border: 1px solid var(--ui-border-soft);
@@ -330,7 +330,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* Project / showcase card — larger tile */
+/* Project / showcase card - larger tile */
 .ui-project-card {
   display: flex;
   flex-direction: column;
@@ -430,13 +430,13 @@ body {
   transform: scale(1.08);
 }
 
-/* Per-accent hover tints — light */
+/* Per-accent hover tints - light */
 .showcase-cell-blue:hover   { background: #eff6ff; }
 .showcase-cell-violet:hover { background: #f5f3ff; }
 .showcase-cell-emerald:hover { background: #ecfdf5; }
 .showcase-cell-amber:hover  { background: #fffbeb; }
 
-/* Per-accent hover tints — dark */
+/* Per-accent hover tints - dark */
 .dark .showcase-cell-blue:hover   { background: color-mix(in srgb, #1e3a5f 30%, var(--background)); }
 .dark .showcase-cell-violet:hover { background: color-mix(in srgb, #2e1a5f 30%, var(--background)); }
 .dark .showcase-cell-emerald:hover { background: color-mix(in srgb, #0a3326 30%, var(--background)); }

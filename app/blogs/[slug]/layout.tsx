@@ -38,7 +38,7 @@ export default async function BlogArticleLayout({
 	return (
 		<>
 			<section className="mx-auto w-full max-w-6xl">
-				{/* Mobile TOC trigger — shown above content on small screens */}
+				{/* Mobile TOC trigger - shown above content on small screens */}
 				{toc.length > 0 ? (
 					<div className="mb-5 lg:hidden">
 						<MobileSectionMenu title="On this page">
