@@ -4,20 +4,23 @@
 		"abstract": "This work combines machine learning with knowledge graph representations to improve explainable assessment of soil organic carbon in agroforestry systems.",
 		"image": null,
 		"doi": null,
-		"status": "Manuscript submitted"
+		"status": "Manuscript submitted",
+		"domains": ["XAI", "Knowledge Graphs", "Agroforestry"]
 	},
 	{
 		"title": "Bridging Organisational Data Silos through Multi-Agent Generative Systems and Integrated Relational Governance",
 		"abstract": "This study explores multi-agent generative approaches for unifying siloed organisational data through relational governance and interpretable cross-system integration.",
 		"image": null,
 		"doi": null,
-		"status": "Manuscript submitted"
+		"status": "Manuscript submitted",
+		"domains": ["Multi-Agent AI", "Data Governance", "Generative AI"]
 	},
 	{
 		"title": "ATMAS: Design, Implementation, and Evaluation of an Automated Test Management and Asset Scheduling System for a University Research Engineering Laboratory",
 		"abstract": "ATMAS presents an automated platform for test management and asset scheduling, replacing spreadsheet-driven workflows with a traceable and operationally efficient system.",
 		"image": null,
 		"doi": null,
-		"status": "Manuscript in Preparation"
+		"status": "Manuscript in preparation",
+		"domains": ["Software Engineering", "Research Systems", "Automation"]
 	}
 ]

@@ -17,6 +17,10 @@
   --ui-fs-section: 18px;
   --ui-fs-title: 26px;
 
+  /* ── Accent color ── */
+  --ui-accent: #4338ca;
+  --ui-accent-muted: #eef2ff;
+
   /* ── Motion tokens ── */
   --ui-ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
   --ui-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -35,6 +39,8 @@
   --ui-border-soft: #334155;
   /* Lighter blue so links pass WCAG AA on dark background */
   --ui-text-link: #4da3ff;
+  --ui-accent: #818cf8;
+  --ui-accent-muted: #1e1b4b;
 }
 
 @theme inline {
@@ -592,6 +598,35 @@ body {
 }
 .hero-inline-icon-link:hover svg {
   transform: scale(1.15);
+}
+
+/* ══════════════════════════════════════════
+   CREDENTIAL & RESEARCH TAG CHIPS
+══════════════════════════════════════════ */
+
+.credential-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  border: 1px solid var(--ui-border-soft);
+  color: var(--ui-text-muted);
+}
+
+.research-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: var(--ui-accent-muted);
+  color: var(--ui-accent);
 }
 
 /* ══════════════════════════════════════════

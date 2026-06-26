@@ -38,10 +38,10 @@ export default function Header({
           {title ? <h1 className="ui-page-title">{title}</h1> : null}
         </>
       ) : title ? (
-        <div className="flex items-baseline justify-between gap-4">
-          <h1 className="ui-page-title">{title}</h1>
+        <>
           {backLink}
-        </div>
+          <h1 className="ui-page-title">{title}</h1>
+        </>
       ) : (
         backLink
       )}
