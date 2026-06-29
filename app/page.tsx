@@ -7,7 +7,7 @@ import { LinkedinIcon, Github01Icon } from "@hugeicons/core-free-icons";
 import { ROUTES, PROFILE } from "@/app/constants";
 import { createPageMetadata, SITE_DESCRIPTION } from "@/app/seo";
 
-import { ProjectsSection } from "@/components/projects-section";
+import { HomeProjectsSection } from "@/components/home-projects-section";
 import { BlogsSection } from "@/components/blogs-section";
 import { PublicationsSection } from "@/components/publications-section";
 
@@ -16,6 +16,9 @@ import workItems from "@/data/work.json";
 import achievements from "@/data/achievements.json";
 import showcase from "@/data/showcase.json";
 import services from "@/data/services.json";
+import publications from "@/data/publications.json";
+
+const publicationsCount = publications.length;
 
 export const metadata: Metadata = createPageMetadata({
   title: "AI Researcher & Software Engineer",
@@ -41,61 +44,98 @@ export default function Page() {
     <div className="flex flex-col gap-16 md:gap-24">
 
       {/* ── Hero ── */}
-      <section className="mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-14">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
-          <div className="flex flex-col gap-6">
-            <Image
-              src="/images/gulger-mallik@1x1.png"
-              alt="Gulger Mallik"
-              width={52}
-              height={52}
-              className="rounded-full object-cover"
-              priority
-            />
-            <h1 className="text-5xl font-medium leading-tight text-[var(--ui-text-primary)] sm:text-6xl lg:text-7xl">
-              Hello! I&apos;m
-              <br />
-              Gulger Mallik
-            </h1>
-          </div>
+      <section style={{ background: "#fbf9fa" }} className="w-full dark:bg-stone-900/40">
+        <div className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-24 lg:px-14">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-end">
 
-          <div className="flex flex-col gap-6">
-            <h2 className="text-xl font-medium leading-snug text-[var(--ui-text-primary)] sm:text-2xl">
-              A Software Engineer &amp; AI Researcher based in Huddersfield, United Kingdom.
-            </h2>
-            <p className="text-sm leading-relaxed text-[var(--ui-text-muted)]">
-              Passionate about building thoughtful digital products and advancing AI research for
-              real-world impact.
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href={`mailto:${PROFILE.primaryEmail}`}
-                className="rounded-full bg-[var(--ui-text-primary)] px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-80"
-              >
-                Get in touch
-              </a>
-              <Link
-                href={ROUTES.projects}
-                className="text-sm font-medium text-[var(--ui-text-secondary)] transition-colors hover:text-[var(--ui-text-primary)]"
-              >
-                See my work
-              </Link>
+            {/* Left — portrait + socials */}
+            <div className="flex flex-col gap-6">
+              <div className="relative w-full max-w-sm overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/hero-image-v2.png"
+                  alt="Gulger Mallik"
+                  width={480}
+                  height={600}
+                  className="w-full object-cover"
+                  priority
+                />
+              </div>
+              <div className="flex items-center gap-5">
+                {HERO_SOCIALS.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-[var(--ui-text-muted)] transition-colors hover:text-[var(--ui-text-primary)]"
+                  >
+                    <HugeiconsIcon icon={s.icon} className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    {s.handle}
+                  </a>
+                ))}
+              </div>
             </div>
 
-            <div className="flex items-center gap-5">
-              {HERO_SOCIALS.map((s) => (
+            {/* Right — headline, description, stats */}
+            <div className="flex flex-col gap-8 md:pb-2">
+              <div className="flex flex-col gap-4">
+                <h1 className="text-4xl font-semibold leading-tight tracking-tight text-[var(--ui-text-primary)] sm:text-5xl lg:text-6xl">
+                  Software Engineer
+                  <br />
+                  <span style={{ color: "#d9ad90" }}>&amp; AI Researcher</span>
+                </h1>
+                <p className="max-w-md text-base leading-relaxed text-[var(--ui-text-secondary)]">
+                  Crafting intelligent digital products and advancing applied AI research for
+                  real-world impact. Based in Huddersfield, United Kingdom.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-6">
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-4xl font-bold tracking-tight text-[var(--ui-text-primary)]">
+                    {String(new Date().getFullYear() - 2019).padStart(2, "0")}
+                    <span style={{ color: "#d9ad90" }}>+</span>
+                  </span>
+                  <span className="text-xs font-medium uppercase tracking-widest text-[var(--ui-text-muted)]">
+                    Years
+                  </span>
+                </div>
+                <div className="w-px self-stretch bg-[var(--ui-border-subtle)]" />
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-4xl font-bold tracking-tight text-[var(--ui-text-primary)]">
+                    100<span style={{ color: "#d9ad90" }}>+</span>
+                  </span>
+                  <span className="text-xs font-medium uppercase tracking-widest text-[var(--ui-text-muted)]">
+                    Projects
+                  </span>
+                </div>
+                <div className="w-px self-stretch bg-[var(--ui-border-subtle)]" />
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-4xl font-bold tracking-tight text-[var(--ui-text-primary)]">
+                    {publicationsCount}
+                  </span>
+                  <span className="text-xs font-medium uppercase tracking-widest text-[var(--ui-text-muted)]">
+                    Publications
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4">
                 <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-[var(--ui-text-muted)] transition-colors hover:text-[var(--ui-text-primary)]"
+                  href={`mailto:${PROFILE.primaryEmail}`}
+                  className="rounded-full bg-[var(--ui-text-primary)] px-6 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-80"
                 >
-                  <HugeiconsIcon icon={s.icon} className="h-4 w-4 shrink-0" aria-hidden="true" />
-                  {s.handle}
+                  Get in touch
                 </a>
-              ))}
+                <Link
+                  href={ROUTES.projects}
+                  className="text-sm font-medium text-[var(--ui-text-secondary)] transition-colors hover:text-[var(--ui-text-primary)]"
+                >
+                  See my work →
+                </Link>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -224,15 +264,7 @@ export default function Page() {
       </section>
 
       {/* ── Selected Work ── */}
-      <section className="py-8 mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
-        <div className="mb-8 flex items-center justify-between gap-4">
-          <h2 className="ui-section-title tracking-tight">Selected Work</h2>
-          <Link href={ROUTES.projects} className="ui-view-all-link">
-            View all projects
-          </Link>
-        </div>
-        <ProjectsSection heading={false} limit={4} showViewAllLink />
-      </section>
+      <HomeProjectsSection />
 
       {/* ── Blog ── */}
       <section className="mx-auto max-w-7xl px-6 md:px-10 lg:px-14">

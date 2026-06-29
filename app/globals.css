@@ -18,8 +18,8 @@
   --ui-fs-title: 26px;
 
   /* ── Accent color ── */
-  --ui-accent: #4338ca;
-  --ui-accent-muted: #eef2ff;
+  --ui-accent: #d9ad90;
+  --ui-accent-muted: #faf3ee;
 
   /* ── Motion tokens ── */
   --ui-ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
@@ -39,8 +39,8 @@
   --ui-border-soft: #334155;
   /* Lighter blue so links pass WCAG AA on dark background */
   --ui-text-link: #4da3ff;
-  --ui-accent: #818cf8;
-  --ui-accent-muted: #1e1b4b;
+  --ui-accent: #d9ad90;
+  --ui-accent-muted: color-mix(in srgb, #d9ad90 18%, #1a1a1a);
 }
 
 @theme inline {

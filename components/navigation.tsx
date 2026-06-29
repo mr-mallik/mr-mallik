@@ -32,7 +32,7 @@ export default function Navigation() {
   return (
     <>
       <nav className="sticky top-0 z-30 border-b border-[var(--ui-border-subtle)] bg-background/90 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl flex items-center justify-between py-2 sm:py-4 px-6 md:px-10 lg:px-14">
+        <div className="mx-auto max-w-7xl flex items-center justify-between py-1 sm:py-2 px-6 md:px-10 lg:px-14">
           <Link
             href={ROUTES.home}
             className="ui-brand-link shrink-0 flex items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-150 hover:bg-[var(--ui-border-subtle)]"
@@ -44,9 +44,13 @@ export default function Navigation() {
               alt="MR. MALLIK"
               width={36}
               height={36}
-              className="h-9 w-9 sm:h-10 sm:w-10 dark:invert"
+              className="h-4 w-4 sm:h-6 sm:w-6 dark:invert"
               priority
             />
+
+            <span
+              className="ui-brand-text text-sm font-semibold sm:text-base tracking-wide uppercase"
+            >Gulger Mallik</span>
 
           </Link>
 
