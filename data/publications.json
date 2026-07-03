@@ -13,7 +13,7 @@
 		"image": null,
 		"doi": null,
 		"status": "Manuscript submitted",
-		"domains": ["Multi-Agent AI", "Data Governance", "Generative AI"]
+		"domains": ["Multi-Agent AI", "MCDM", "Generative AI"]
 	},
 	{
 		"title": "ATMAS: Design, Implementation, and Evaluation of an Automated Test Management and Asset Scheduling System for a University Research Engineering Laboratory",

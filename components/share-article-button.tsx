@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Share01Icon } from "@hugeicons/core-free-icons";
 
 type ShareArticleButtonProps = {
   path: string;
@@ -36,8 +38,8 @@ export default function ShareArticleButton({
   };
 
   return (
-    <button type="button" onClick={handleShare} className={className ?? "ui-subtle-button"}>
-      {shared ? "Shared" : "Share"}
+    <button type="button" onClick={handleShare} className={className ?? ""}>
+      {shared ? "Shared" : <HugeiconsIcon icon={Share01Icon} />}
     </button>
   );
 }

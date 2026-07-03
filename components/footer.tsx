@@ -3,16 +3,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { LinkedinIcon, Github01Icon } from "@hugeicons/core-free-icons";
 
 import { PROFILE, ROUTES, SITE } from "@/app/constants";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { brittanySignature } from "@/lib/fonts";
-
-const NAV_LINKS = [
-  { label: "About Me", href: ROUTES.about },
-  { label: "Projects", href: ROUTES.projects },
-  { label: "Blog", href: ROUTES.blogs },
-  { label: "Publications", href: ROUTES.publications },
-  { label: "Resume", href: ROUTES.resume },
-];
 
 const SOCIAL_LINKS = [
   { label: "LinkedIn", href: PROFILE.linkedInUrl, icon: LinkedinIcon },
@@ -22,8 +13,7 @@ const SOCIAL_LINKS = [
 export function Footer() {
   return (
     <footer className="ui-footer w-full">
-      <div className="ui-container ui-control-text py-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        {/* Brand */}
+      <div className="ui-container ui-control-text py-5 flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
         <Link
           href={ROUTES.home}
           className={`${brittanySignature.className} ui-brand-link ui-text-muted text-4xl shrink-0`}
@@ -32,13 +22,13 @@ export function Footer() {
         </Link>
 
         {/* Right column */}
-        <div className="flex flex-col gap-2 sm:items-end">
+        <div className="flex flex-col items-center gap-2 sm:items-end">
           {/* Theme + social icons */}
-          <div className="flex items-center gap-3">
-            <span className="hidden sm:inline text-[var(--ui-text-muted)]">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-end">
+            <span className="text-[var(--ui-text-muted)]">
               &copy; {new Date().getFullYear()} {SITE.ownerName}. {SITE.copyrightSuffix}
             </span>
-            <span className="text-[var(--ui-border-soft)]">|</span>
+            <span className="hidden sm:inline text-[var(--ui-border-soft)]">|</span>
             {SOCIAL_LINKS.map((s) => (
               <a
                 key={s.label}
