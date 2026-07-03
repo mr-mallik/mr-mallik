@@ -6,7 +6,7 @@ import type { ArticlesResponse } from "@/app/blogs/types";
 
 type SitemapArticle = ArticlesResponse["data"][number];
 
-async function fetchAllArticles(category: "blog" | "project"): Promise<SitemapArticle[]> {
+async function fetchAllArticles(type: "blog" | "project"): Promise<SitemapArticle[]> {
   const pageSize = 100;
   const collected: SitemapArticle[] = [];
   let page = 1;
@@ -14,7 +14,7 @@ async function fetchAllArticles(category: "blog" | "project"): Promise<SitemapAr
 
   while (page <= totalPages) {
     const response = await cmsApi.get<ArticlesResponse>("/articles", {
-      query: { category, sort: "latest", page, limit: pageSize },
+      query: { type, sort: "latest", page, limit: pageSize },
       next: { revalidate: 3600 },
     } as Parameters<typeof cmsApi.get>[1] & { next?: { revalidate: number } });
 

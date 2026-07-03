@@ -25,7 +25,7 @@ export async function BlogsSection({
   showViewAllLink?: boolean;
 }) {
   const { articles, error } = await getArticlesList({
-    category: "blog",
+    type: "blog",
     page: 1,
     limit,
   });

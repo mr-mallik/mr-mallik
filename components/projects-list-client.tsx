@@ -35,6 +35,7 @@ type ProjectsListClientProps = {
   initialMeta?: ArticlesResponse["meta"];
   initialError?: string;
   initialTag?: string;
+  initialCategory?: string;
   canLoadMore: boolean;
   columns?: 2 | 3;
   /** Hide items beyond this count on desktop (lg+) screens. */
@@ -46,6 +47,7 @@ export function ProjectsListClient({
   initialMeta,
   initialError,
   initialTag,
+  initialCategory,
   canLoadMore,
   columns = 2,
   desktopLimit,
@@ -57,6 +59,7 @@ export function ProjectsListClient({
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [error, setError] = useState<string | undefined>(initialError);
   const [activeTag, setActiveTag] = useState<string | undefined>(initialTag);
+  const [activeCategory, setActiveCategory] = useState<string | undefined>(initialCategory);
   const observerRef = useRef<HTMLDivElement | null>(null);
 
   const hasMore = useMemo(() => {
@@ -66,13 +69,13 @@ export function ProjectsListClient({
     return getHasMore(meta, projects.length);
   }, [canLoadMore, meta, projects.length]);
 
-  const setTagInUrl = useCallback(
-    (tag?: string) => {
+  const setParamInUrl = useCallback(
+    (key: "tag" | "category", value?: string) => {
       const params = new URLSearchParams(window.location.search);
-      if (tag) {
-        params.set("tag", tag);
+      if (value) {
+        params.set(key, value);
       } else {
-        params.delete("tag");
+        params.delete(key);
       }
 
       const queryString = params.toString();
@@ -82,9 +85,9 @@ export function ProjectsListClient({
     [pathname],
   );
 
-  const fetchPage = useCallback(async (page: number, tag?: string) => {
+  const fetchPage = useCallback(async (page: number, tag?: string, category?: string) => {
     const query = new URLSearchParams({
-      category: "project",
+      type: "project",
       sort: "latest",
       page: String(page),
       limit: String(PAGE_SIZE),
@@ -92,6 +95,10 @@ export function ProjectsListClient({
 
     if (tag) {
       query.set("tag", tag);
+    }
+
+    if (category) {
+      query.set("category", category);
     }
 
     const response = await fetch(`/api/articles?${query.toString()}`);
@@ -112,7 +119,7 @@ export function ProjectsListClient({
     setIsLoadingMore(true);
 
     try {
-      const payload = await fetchPage(nextPage, activeTag);
+      const payload = await fetchPage(nextPage, activeTag, activeCategory);
       const nextItems = payload.data ?? [];
 
       setProjects((prev) => {
@@ -136,21 +143,23 @@ export function ProjectsListClient({
     } finally {
       setIsLoadingMore(false);
     }
-  }, [activeTag, canLoadMore, currentPage, error, fetchPage, hasMore, isLoadingMore]);
+  }, [activeCategory, activeTag, canLoadMore, currentPage, error, fetchPage, hasMore, isLoadingMore]);
 
-  const applyTagFilter = useCallback(
-    async (tag?: string) => {
+  const applyFilters = useCallback(
+    async (tag?: string, category?: string) => {
       if (!canLoadMore) {
         return;
       }
 
       setActiveTag(tag);
-      setTagInUrl(tag);
+      setActiveCategory(category);
+      setParamInUrl("tag", tag);
+      setParamInUrl("category", category);
       setError(undefined);
       setIsLoadingMore(true);
 
       try {
-        const payload = await fetchPage(1, tag);
+        const payload = await fetchPage(1, tag, category);
         setProjects(payload.data ?? []);
         setMeta(payload.meta);
         setCurrentPage(payload.meta?.page ?? 1);
@@ -164,7 +173,7 @@ export function ProjectsListClient({
         setIsLoadingMore(false);
       }
     },
-    [canLoadMore, fetchPage, setTagInUrl],
+    [canLoadMore, fetchPage, setParamInUrl],
   );
 
   useEffect(() => {
@@ -189,16 +198,28 @@ export function ProjectsListClient({
 
   return (
     <div className="space-y-4">
-      {canLoadMore && activeTag ? (
-        <div className="flex items-center gap-2 rounded-md border border-[var(--ui-border-soft)] ui-bg-elevated p-2">
-          <span className="ui-meta-text">Active tag:</span>
-          <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(activeTag)}`}>
-            {activeTag}
-          </span>
+      {canLoadMore && (activeTag || activeCategory) ? (
+        <div className="flex flex-wrap items-center gap-2 rounded-md border border-[var(--ui-border-soft)] ui-bg-elevated p-2">
+          {activeTag ? (
+            <>
+              <span className="ui-meta-text">Active tag:</span>
+              <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(activeTag)}`}>
+                {activeTag}
+              </span>
+            </>
+          ) : null}
+          {activeCategory ? (
+            <>
+              <span className="ui-meta-text">Category:</span>
+              <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(activeCategory)}`}>
+                {activeCategory}
+              </span>
+            </>
+          ) : null}
           <button
             type="button"
             onClick={() => {
-              void applyTagFilter(undefined);
+              void applyFilters(undefined, undefined);
             }}
             className="ui-meta-text underline underline-offset-2"
           >
@@ -222,7 +243,7 @@ export function ProjectsListClient({
                         if (activeTag === tag) {
                           return;
                         }
-                        void applyTagFilter(tag);
+                        void applyFilters(tag, activeCategory);
                       }
                     : undefined
                 }
@@ -242,7 +263,7 @@ export function ProjectsListClient({
         </div>
       ) : (
         <p className="ui-meta-text">
-          {canLoadMore && activeTag
+          {canLoadMore && (activeTag || activeCategory)
             ? "No projects found for this filter."
             : "No projects published yet - check back soon."}
         </p>

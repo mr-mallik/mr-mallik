@@ -368,18 +368,20 @@ export const getProjectBySlug = cache(async (slug: string) => {
 });
 
 type GetArticlesParams = {
-  category?: "blog" | "project";
+  type?: "blog" | "project";
   page?: number;
   limit?: number;
   tag?: string;
+  category?: string;
   revalidate?: number;
 };
 
 export async function getArticlesList({
-  category = "blog",
+  type = "blog",
   page = 1,
   limit = 10,
   tag,
+  category,
   revalidate = 3600,
 }: GetArticlesParams = {}): Promise<{
   articles: ArticlesResponse["data"];
@@ -388,7 +390,7 @@ export async function getArticlesList({
 }> {
   try {
     const res = await cmsApi.get<ArticlesResponse>("/articles", {
-      query: { category, sort: "latest", page, limit, tag },
+      query: { type, sort: "latest", page, limit, tag, category },
       next: { revalidate },
     } as Parameters<typeof cmsApi.get>[1] & { next?: { revalidate: number } });
 
