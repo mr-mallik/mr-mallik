@@ -45,7 +45,7 @@ export function Showcase() {
                   alt={`${item.name} icon`}
                   width={160}
                   height={160}
-                  className="max-h-[72%] w-auto max-w-full object-contain grayscale brightness-0 opacity-55 dark:invert dark:opacity-65"
+                  className="h-auto max-h-[72%] w-auto max-w-full object-contain grayscale brightness-0 opacity-55 dark:invert dark:opacity-65"
                 />
               </div>
             );

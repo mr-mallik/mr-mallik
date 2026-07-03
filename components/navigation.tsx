@@ -32,7 +32,7 @@ export default function Navigation() {
   return (
     <>
       <nav className="sticky top-0 z-30 border-b border-[var(--ui-border-subtle)] bg-background/90 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl flex items-center justify-between py-1 sm:py-2 px-6 md:px-10 lg:px-14">
+        <div className="mx-auto max-w-7xl flex items-center justify-between py-2 sm:py-2 md:py-3 lg:py-4 px-6 md:px-10 lg:px-14">
           <Link
             href={ROUTES.home}
             className="ui-brand-link shrink-0 flex items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-150 hover:bg-[var(--ui-border-subtle)]"
@@ -48,9 +48,9 @@ export default function Navigation() {
               priority
             />
 
-            <span
-              className="ui-brand-text text-sm font-semibold sm:text-base tracking-wide uppercase"
-            >Gulger Mallik</span>
+            <span className="ui-brand-text text-sm font-bold tracking-widest uppercase sm:text-base">
+              Gulger <span style={{ color: "var(--ui-accent)" }}>Mallik</span>
+            </span>
 
           </Link>
 

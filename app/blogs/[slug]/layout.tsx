@@ -37,7 +37,7 @@ export default async function BlogArticleLayout({
 
 	return (
 		<>
-			<section className="mx-auto w-full max-w-6xl">
+			<section className="mx-auto w-full max-w-6xl py-4 sm:py-8 lg:py-12">
 				{/* Mobile TOC trigger - shown above content on small screens */}
 				{toc.length > 0 ? (
 					<div className="mb-5 lg:hidden">

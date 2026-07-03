@@ -126,7 +126,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="flex flex-col">
             <Navigation />
-            <main className="w-full flex-1 mx-auto py-12 sm:py-16 lg:py-20">
+            <main className="w-full flex-1 mx-auto">
               {children}
             </main>
             <Footer />

@@ -44,7 +44,7 @@ const socialLinks = [
 
 export default function AboutPage() {
   return (
-    <section className="relative mx-auto w-full max-w-3xl px-6 md:px-10">
+    <section className="relative w-full ui-container ui-container-prose py-4 sm:py-8 lg:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

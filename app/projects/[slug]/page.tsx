@@ -73,7 +73,7 @@ export default async function ProjectDetailPage({
 	const toc = project.parsedContent.toc;
 
 	return (
-		<article className="space-y-8">
+		<article className="w-full ui-container ui-container-narrow space-y-8">
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{

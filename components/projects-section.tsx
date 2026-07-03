@@ -32,11 +32,13 @@ export async function ProjectsSection({
   heading = true,
   showViewAllLink = false,
   initialTag,
+  columns = 2,
 }: {
   limit?: number;
   heading?: boolean;
   showViewAllLink?: boolean;
   initialTag?: string;
+  columns?: 2 | 3;
 }) {
   const pageLimit = typeof limit === "number" ? limit : 10;
   const { projects, meta, error } = await fetchProjects(1, pageLimit, initialTag);
@@ -65,6 +67,7 @@ export async function ProjectsSection({
         initialError={error}
         initialTag={canLoadMore ? initialTag : undefined}
         canLoadMore={canLoadMore}
+        columns={columns}
       />
     </section>
   );

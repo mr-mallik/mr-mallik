@@ -22,7 +22,7 @@ const SOCIAL_LINKS = [
 export function Footer() {
   return (
     <footer className="ui-footer w-full">
-      <div className="px-6 md:px-10 lg:px-14 max-w-7xl mx-auto ui-control-text py-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+      <div className="ui-container ui-control-text py-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         {/* Brand */}
         <Link
           href={ROUTES.home}
@@ -35,8 +35,9 @@ export function Footer() {
         <div className="flex flex-col gap-2 sm:items-end">
           {/* Theme + social icons */}
           <div className="flex items-center gap-3">
-            <span className="hidden sm:inline text-[var(--ui-text-muted)]">Theme:</span>
-            <ThemeToggle />
+            <span className="hidden sm:inline text-[var(--ui-text-muted)]">
+              &copy; {new Date().getFullYear()} {SITE.ownerName}. {SITE.copyrightSuffix}
+            </span>
             <span className="text-[var(--ui-border-soft)]">|</span>
             {SOCIAL_LINKS.map((s) => (
               <a
@@ -52,25 +53,6 @@ export function Footer() {
             ))}
           </div>
 
-          {/* Nav links */}
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            {NAV_LINKS.map((link, i) => (
-              <span key={link.href} className="flex items-center gap-2">
-                {i > 0 && <span className="text-[var(--ui-border-soft)]">&bull;</span>}
-                <Link
-                  href={link.href}
-                  className="text-[var(--ui-text-muted)] transition-colors hover:text-[var(--ui-text-primary)]"
-                >
-                  {link.label}
-                </Link>
-              </span>
-            ))}
-          </div>
-
-          {/* Copyright */}
-          <span className="text-[var(--ui-text-muted)] sm:text-right">
-            &copy; {new Date().getFullYear()} {SITE.ownerName}. {SITE.copyrightSuffix}
-          </span>
         </div>
       </div>
     </footer>

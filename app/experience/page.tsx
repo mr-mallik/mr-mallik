@@ -14,7 +14,7 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function ExperiencePage() {
   return (
-    <section className="mx-auto w-full max-w-2xl ">
+    <section className="w-full ui-container ui-container-prose">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

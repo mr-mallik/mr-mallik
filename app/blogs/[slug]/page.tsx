@@ -70,7 +70,7 @@ export default async function BlogDetailPage({
 		.sort((a, b) => (a.order ?? 0) - (b.order ?? 0)) ?? [];
 
 	return (
-		<article className="mx-auto w-full max-w-3xl px-6 md:px-10">
+		<article className="w-full ui-container ui-container-prose">
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{

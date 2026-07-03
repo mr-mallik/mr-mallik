@@ -177,7 +177,7 @@ export default function BlogListClient({
   return (
     <div className="space-y-4">
       {activeTag ? (
-        <div className="flex items-center gap-2 rounded-md border border-[var(--ui-border-soft)] bg-[var(--ui-bg-elevated)] p-2">
+        <div className="flex items-center gap-2 rounded-md border border-[var(--ui-border-soft)] ui-bg-elevated p-2">
           <span className="ui-meta-text">Active tag:</span>
           <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(activeTag)}`}>
             {activeTag}
@@ -202,18 +202,17 @@ export default function BlogListClient({
               className="section-enter rounded-xl px-3 py-6 transition-colors odd:bg-transparent even:bg-[color-mix(in_srgb,var(--ui-border-subtle)_22%,transparent)] first:pt-0 last:pb-0 dark:even:bg-[color-mix(in_srgb,var(--ui-border-subtle)_30%,transparent)] sm:px-4"
               style={{ animationDelay: `${index * 60}ms` }}
             >
-              <Link
-                href={`/blogs/${article.slug}`}
-                className="group flex items-start gap-3 sm:gap-5"
-              >
+              <div className="group flex items-start gap-3 sm:gap-5">
                 <div className="min-w-0 flex-1 space-y-2">
-                  <h2 className="ui-item-title text-[15px] font-semibold leading-snug transition-colors group-hover:text-[var(--ui-text-link)]">
-                    {article.title}
-                  </h2>
+                  <Link href={`/blogs/${article.slug}`} className="contents">
+                    <h2 className="ui-item-title text-[15px] font-semibold leading-snug transition-colors group-hover:text-[var(--ui-text-link)]">
+                      {article.title}
+                    </h2>
 
-                  {article.excerpt ? (
-                    <p className="ui-body-text line-clamp-2 text-sm">{article.excerpt}</p>
-                  ) : null}
+                    {article.excerpt ? (
+                      <p className="ui-body-text line-clamp-2 text-sm">{article.excerpt}</p>
+                    ) : null}
+                  </Link>
 
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1">
                     <span className="ui-meta-text">{formatDate(article.publishedAt)}</span>
@@ -225,10 +224,7 @@ export default function BlogListClient({
                             <button
                               key={tag}
                               type="button"
-                              onClick={(event) => {
-                                event.preventDefault();
-                                event.stopPropagation();
-
+                              onClick={() => {
                                 if (activeTag === tag) {
                                   return;
                                 }
@@ -251,7 +247,12 @@ export default function BlogListClient({
                 </div>
 
                 {article.featuredImage ? (
-                  <div className="relative shrink-0 overflow-hidden rounded-xl shadow-sm">
+                  <Link
+                    href={`/blogs/${article.slug}`}
+                    aria-hidden="true"
+                    tabIndex={-1}
+                    className="relative shrink-0 overflow-hidden rounded-xl shadow-sm"
+                  >
                     <Image
                       src={article.featuredImage}
                       alt={article.featuredImageAlt || article.title}
@@ -259,9 +260,9 @@ export default function BlogListClient({
                       height={86}
                       className="h-[76px] w-[104px] object-cover transition duration-300 group-hover:scale-[1.05] group-hover:opacity-90 sm:h-[86px] sm:w-[128px]"
                     />
-                  </div>
+                  </Link>
                 ) : null}
-              </Link>
+              </div>
             </article>
           ))}
         </div>

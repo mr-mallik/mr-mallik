@@ -256,7 +256,7 @@ export default function ResumePage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto w-full px-6 md:px-10">
+    <div className="">
       <div className="resume-fade-in">
         <div className="mb-10">
           <Header link={ROUTES.home}>

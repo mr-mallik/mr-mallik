@@ -1,15 +1,18 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import defaultSvg from "../public/default-project.svg";
 import type { Article, ArticlesResponse } from "@/app/blogs/types";
 import { getTagColorClass } from "@/lib/tag-colors";
+import { ProjectCard } from "@/components/project-card";
 
 const PAGE_SIZE = 10;
+
+const GRID_COLUMN_CLASSES: Record<2 | 3, string> = {
+  2: "md:grid-cols-2 lg:grid-cols-2",
+  3: "md:grid-cols-3 lg:grid-cols-3",
+};
 
 function getHasMore(meta: ArticlesResponse["meta"], loaded: number): boolean {
   if (!meta) {
@@ -33,6 +36,7 @@ type ProjectsListClientProps = {
   initialError?: string;
   initialTag?: string;
   canLoadMore: boolean;
+  columns?: 2 | 3;
 };
 
 export function ProjectsListClient({
@@ -41,6 +45,7 @@ export function ProjectsListClient({
   initialError,
   initialTag,
   canLoadMore,
+  columns = 2,
 }: ProjectsListClientProps) {
   const pathname = usePathname();
   const [projects, setProjects] = useState<Article[]>(initialProjects);
@@ -182,7 +187,7 @@ export function ProjectsListClient({
   return (
     <div className="space-y-4">
       {canLoadMore && activeTag ? (
-        <div className="flex items-center gap-2 rounded-md border border-[var(--ui-border-soft)] bg-[var(--ui-bg-elevated)] p-2">
+        <div className="flex items-center gap-2 rounded-md border border-[var(--ui-border-soft)] ui-bg-elevated p-2">
           <span className="ui-meta-text">Active tag:</span>
           <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(activeTag)}`}>
             {activeTag}
@@ -200,73 +205,24 @@ export function ProjectsListClient({
       ) : null}
 
       {projects.length > 0 ? (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
+        <div className={`grid grid-cols-1 gap-6 ${GRID_COLUMN_CLASSES[columns]}`}>
           {projects.map((project, index) => (
-            <Link
+            <ProjectCard
               key={project.id}
-              href={`/projects/${project.slug}`}
-              className="group ui-project-card section-enter min-w-0"
-              style={{ animationDelay: `${index * 60}ms`, aspectRatio: "auto" }}
-            >
-              <div className="flex h-full flex-col rounded-xl border border-[var(--ui-border-subtle)] bg-background p-4 sm:p-5">
-                <div className="relative w-full aspect-video overflow-hidden rounded-lg bg-stone-100 dark:bg-stone-900/30">
-                  {project.featuredImage ? (
-                    <Image
-                      src={project.featuredImage}
-                      alt={project.featuredImageAlt || `${project.title} project image`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-contain p-4"
-                    />
-                  ) : (
-                    <Image
-                      src={defaultSvg}
-                      alt=""
-                      fill
-                      className="object-contain p-8 opacity-25"
-                    />
-                  )}
-                </div>
-                <div className="min-w-0 pt-3 space-y-2">
-                  <h3 className="ui-item-title line-clamp-2 text-base tracking-tight [overflow-wrap:anywhere]">
-                    {project.title}
-                  </h3>
-                  {project.excerpt ? (
-                    <p className="ui-body-text mt-1.5 text-sm leading-relaxed line-clamp-4 [overflow-wrap:anywhere]">
-                      {project.excerpt}
-                    </p>
-                  ) : null}
-
-                  {project.tags && project.tags.length > 0 ? (
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {project.tags.slice(0, 3).map((tag) => (
-                        <button
-                          key={tag}
-                          type="button"
-                          onClick={(event) => {
-                            event.preventDefault();
-                            event.stopPropagation();
-
-                            if (!canLoadMore || activeTag === tag) {
-                              return;
-                            }
-
-                            void applyTagFilter(tag);
-                          }}
-                          className={`inline-flex max-w-full items-center truncate rounded-full border px-2 py-0.5 text-[11px] font-medium transition-colors duration-150 ${
-                            activeTag === tag
-                              ? "border-[var(--ui-text-link)] bg-transparent text-[var(--ui-text-link)]"
-                              : getTagColorClass(tag)
-                          }`}
-                        >
-                          {tag}
-                        </button>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-            </Link>
+              project={project}
+              index={index}
+              activeTag={activeTag}
+              onTagClick={
+                canLoadMore
+                  ? (tag) => {
+                      if (activeTag === tag) {
+                        return;
+                      }
+                      void applyTagFilter(tag);
+                    }
+                  : undefined
+              }
+            />
           ))}
         </div>
       ) : (
