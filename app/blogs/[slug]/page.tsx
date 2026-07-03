@@ -102,7 +102,7 @@ export default async function BlogDetailPage({
 
 			{/* ── Article header ── */}
 			<header className="mb-8 space-y-4">
-				<h1 className="text-[clamp(1.625rem,3vw,2.375rem)] font-semibold leading-tight tracking-tight text-[var(--ui-text-primary)]">
+				<h1 className="text-[clamp(1.625rem,3vw,2.375rem)] font-semibold leading-tight  text-[var(--ui-text-primary)]">
 					{article.title}
 				</h1>
 

@@ -22,7 +22,7 @@ export function Showcase() {
   return (
     <section className="space-y-5">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="ui-section-title tracking-tight">
+        <h2 className="ui-section-title ">
           {SECTION_TITLES.showcase}
         </h2>
       </div>

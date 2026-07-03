@@ -39,7 +39,7 @@ export function ProjectCard({ project, index, activeTag, onTagClick }: ProjectCa
             )}
           </div>
           <div className="min-w-0 pt-3 space-y-2">
-            <h3 className="ui-item-title line-clamp-2 text-base tracking-tight [overflow-wrap:anywhere]">
+            <h3 className="ui-item-title line-clamp-2 text-base  [overflow-wrap:anywhere]">
               {project.title}
             </h3>
             {project.excerpt ? (

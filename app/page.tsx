@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { LinkedinIcon, Github01Icon, Email } from "@hugeicons/core-free-icons";
+import { LinkedinIcon, Github01Icon, Email, ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 
 import { ROUTES, PROFILE } from "@/app/constants";
 import { createPageMetadata, SITE_DESCRIPTION } from "@/app/seo";
@@ -18,7 +18,7 @@ import showcase from "@/data/showcase.json";
 import services from "@/data/services.json";
 import publications from "@/data/publications.json";
 
-const publicationsCount = publications.length;
+const publicationsCount = String(publications.length).padStart(2, "0");
 
 export const metadata: Metadata = createPageMetadata({
   title: "AI Researcher & Software Engineer",
@@ -27,13 +27,6 @@ export const metadata: Metadata = createPageMetadata({
   keywords: ["Gulger Mallik", "mrmallik", "AI researcher", "software engineer", "portfolio"],
 });
 
-const SERVICE_ICONS: Record<string, string> = {
-  "rnd": "🔬",
-  "consulting": "💬",
-  "software-development": "⚙️",
-  "training-and-workshops": "🎓",
-};
-
 const HERO_SOCIALS = [
   { label: "LinkedIn", href: PROFILE.linkedInUrl, icon: LinkedinIcon, handle: "mrmallik" },
   { label: "GitHub", href: PROFILE.githubUrl, icon: Github01Icon, handle: "mr-mallik" },
@@ -41,8 +34,8 @@ const HERO_SOCIALS = [
 
 export default function Page() {
   return (
-    <div className="flex flex-col gap-16 md:gap-24">
-      <div className="flex flex-col gap-8 lg:min-h-[calc(100svh-var(--ui-nav-h)-5rem)] lg:justify-center lg:gap-10">
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8">
         <section className="w-full bg-[var(--ui-bg-elevated)]">
           <div className="ui-container py-16 md:py-24 lg:py-10 xl:py-14">
             <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-end">
@@ -77,7 +70,7 @@ export default function Page() {
               {/* Right - headline, description, stats */}
               <div className="flex flex-col gap-8 md:pb-2">
                 <div className="flex flex-col gap-4">
-                  <h1 className="text-4xl font-semibold leading-tight tracking-tight text-[var(--ui-text-primary)] sm:text-5xl lg:text-5xl xl:text-6xl">
+                  <h1 className="text-4xl font-semibold leading-tight  text-[var(--ui-text-primary)] sm:text-5xl lg:text-5xl xl:text-6xl">
                     Software Engineer
                     <br />
                     <span style={{ color: "var(--ui-accent)" }}>&amp; AI Researcher</span>
@@ -90,7 +83,7 @@ export default function Page() {
 
                 <div className="flex flex-wrap gap-6">
                   <div className="flex flex-col gap-0.5">
-                    <span className="text-4xl font-bold tracking-tight text-[var(--ui-text-primary)]">
+                    <span className="text-4xl font-bold  text-[var(--ui-text-primary)]">
                       {String(new Date().getFullYear() - 2019).padStart(2, "0")}
                       {/* <span style={{ color: "var(--ui-accent)" }}>+</span> */}
                     </span>
@@ -100,7 +93,7 @@ export default function Page() {
                   </div>
                   <div className="w-px self-stretch bg-[var(--ui-border-subtle)]" />
                   <div className="flex flex-col gap-0.5">
-                    <span className="text-4xl font-bold tracking-tight text-[var(--ui-text-primary)]">
+                    <span className="text-4xl font-bold  text-[var(--ui-text-primary)]">
                       100<span style={{ color: "var(--ui-accent)" }}>+</span>
                     </span>
                     <span className="text-xs font-medium uppercase tracking-widest text-[var(--ui-text-muted)]">
@@ -109,7 +102,7 @@ export default function Page() {
                   </div>
                   <div className="w-px self-stretch bg-[var(--ui-border-subtle)]" />
                   <div className="flex flex-col gap-0.5">
-                    <span className="text-4xl font-bold tracking-tight text-[var(--ui-text-primary)] gap-2 flex items-center ">
+                    <span className="text-4xl font-bold  text-[var(--ui-text-primary)] gap-2 flex items-center ">
                       {publicationsCount} 
                       <span className="text-xs font-medium uppercase tracking-widest text-[var(--ui-text-muted)]">
                         Academic
@@ -133,7 +126,8 @@ export default function Page() {
                     href={ROUTES.projects}
                     className="text-sm font-medium text-[var(--ui-text-secondary)] transition-colors hover:text-[var(--ui-text-primary)]"
                   >
-                    See my work →
+                    See my work &nbsp;
+                    <HugeiconsIcon icon={ArrowUpRight01Icon} className="inline-block h-4 w-4" aria-hidden="true" />
                   </Link>
                 </div>
               </div>
@@ -197,7 +191,7 @@ export default function Page() {
 
             <div>
               <h3 className="ui-resume-title mb-6">
-                Awards &amp; Recognition
+                Leadership &amp; Recognition
               </h3>
               <ul className="divide-y divide-[var(--ui-border-subtle)]">
                 {achievements.map((award, index) => (
@@ -234,46 +228,63 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ── Services ── */}
       <section className="ui-section-py-sm ui-container">
-        <div className="mb-8 flex items-center justify-between">
-          <h2 className="ui-section-title tracking-tight">I can help you with</h2>
+        <div className="mb-12 flex items-center justify-between">
+          <h2 className="ui-section-title">
+            I can help you with
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          {services.map((service, index) => (
             <div
               key={service.name}
-              className="group border border-[var(--ui-border-subtle)] rounded-xl flex flex-col overflow-hidden transition-all duration-200 hover:border-[var(--ui-border-soft)] hover:shadow-sm"
+              className="group flex flex-col gap-4 pb-6 md:pb-0 border-b md:border-b-0 md:border-r md:border-[var(--ui-border-subtle)] md:pr-8 last:border-r-0
+              hover:scale-105 transition-all ease-in-out duration-300
+              cursor-pointer
+              "
             >
-              <div className="relative w-full aspect-[4/3] ui-bg-elevated flex flex-col items-center justify-center gap-3 p-6">
-                <span className="text-4xl select-none" aria-hidden>
-                  {SERVICE_ICONS[service.icon] ?? "📌"}
+              <div>
+                <span className="text-5xl md:text-6xl font-bold text-[var(--ui-accent)]">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="text-base font-semibold text-center text-[var(--ui-text-primary)] leading-snug">
+              </div>
+              <div className="flex flex-col gap-3 flex-1">
+                <h3 className="text-lg md:text-xl font-semibold text-[var(--ui-text-primary)] uppercase tracking-wide">
                   {service.name}
                 </h3>
+                <p className="text-sm md:text-base text-[var(--ui-text-secondary)] leading-relaxed">
+                  {service.description}
+                </p>
               </div>
-              <p className="p-4 text-sm leading-relaxed text-[var(--ui-text-muted)]">
-                {service.description}
-              </p>
+              <div className="flex items-center gap-2 ">
+                <div 
+                  className="mt-2 flex items-center justify-center w-10 h-10 rounded-full border border-[var(--ui-accent)] text-[var(--ui-text-muted)] hover:border-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)] transition-all self-start">
+                  <HugeiconsIcon icon={ArrowUpRight01Icon} className="h-4 w-4" aria-hidden="true" />
+                </div>
+                <Link
+                  href={service.link}
+                  className="text-sm font-medium text-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)] transition-colors"
+                >
+                  {service.text}
+                </Link>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── Selected Work ── */}
-      <section className="ui-container">
+      <section className="ui-container ui-section-py-sm">
         <ProjectsSection limit={3} showViewAllLink columns={3} />
       </section>
 
-      {/* ── Blog ── */}
-      <section className="ui-container">
-        <BlogsSection limit={6} showViewAllLink />
+      <section className="ui-section-py-sm ui-bg-elevated">
+        <div className="ui-container">
+          <BlogsSection limit={6} showViewAllLink />
+        </div>
       </section>
 
-      {/* ── Publications ── */}
-      <section className="ui-container">
+      <section className="ui-container ui-section-py-sm">
         <PublicationsSection limit={3} showViewAllLink />
       </section>
 

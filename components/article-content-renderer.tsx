@@ -12,8 +12,8 @@ function renderBlock(block: ParsedBlock, key: string): React.ReactNode {
   if (block.kind === "heading") {
     const className =
       block.level <= 2
-        ? "ui-item-title mt-10 text-2xl font-semibold tracking-tight"
-        : "ui-item-title mt-8 text-xl font-semibold tracking-tight";
+        ? "ui-item-title mt-10 text-2xl font-semibold "
+        : "ui-item-title mt-8 text-xl font-semibold ";
 
     if (block.level <= 2) {
       return (
