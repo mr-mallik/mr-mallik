@@ -353,6 +353,52 @@ export const getArticleBySlug = cache(async (slug: string) => {
   }
 });
 
+export type ArticleAsset = {
+  id: string;
+  mediaId?: string;
+  type?: string;
+  url: string;
+  mimeType?: string;
+  alt?: string;
+  caption?: string;
+  order?: number;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+type ArticleAssetsResponse = {
+  success?: boolean;
+  data?: {
+    article?: { id: string; slug: string; title: string };
+    assets?: ArticleAsset[];
+  };
+};
+
+export const getArticleAssets = cache(async (slug: string): Promise<ArticleAsset[]> => {
+  const trimmedSlug = slug.trim();
+  if (!trimmedSlug) {
+    return [];
+  }
+
+  try {
+    const response = await cmsApi.get<ArticleAssetsResponse>(
+      `/articles/${trimmedSlug}/assets`,
+      {
+        next: { revalidate: 900 },
+      } as Parameters<typeof cmsApi.get>[1] & { next?: { revalidate: number } },
+    );
+
+    const assets = Array.isArray(response?.data?.assets) ? response.data.assets : [];
+
+    return assets
+      .filter((asset) => Boolean(asset?.url))
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+  } catch {
+    // The gallery is an enhancement; hide it rather than failing the page.
+    return [];
+  }
+});
+
 export const getProjectBySlug = cache(async (slug: string) => {
   const article = await getArticleBySlug(slug);
 

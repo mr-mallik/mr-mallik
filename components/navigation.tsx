@@ -49,7 +49,7 @@ export default function Navigation() {
               priority
             />
 
-            <span className="ui-brand-text text-sm font-bold tracking-widest uppercase sm:text-base">
+            <span className="ui-brand-text text-lg md:text-xl lg:text-2xl font-bold tracking-widest uppercase">
               Gulger <span style={{ color: "var(--ui-accent)" }}>Mallik</span>
             </span>
 
