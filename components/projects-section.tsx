@@ -33,12 +33,15 @@ export async function ProjectsSection({
   showViewAllLink = false,
   initialTag,
   columns = 2,
+  desktopLimit,
 }: {
   limit?: number;
   heading?: boolean;
   showViewAllLink?: boolean;
   initialTag?: string;
   columns?: 2 | 3;
+  /** Hide items beyond this count on desktop (lg+) screens. */
+  desktopLimit?: number;
 }) {
   const pageLimit = typeof limit === "number" ? limit : 10;
   const { projects, meta, error } = await fetchProjects(1, pageLimit, initialTag);
@@ -68,6 +71,7 @@ export async function ProjectsSection({
         initialTag={canLoadMore ? initialTag : undefined}
         canLoadMore={canLoadMore}
         columns={columns}
+        desktopLimit={desktopLimit}
       />
     </section>
   );

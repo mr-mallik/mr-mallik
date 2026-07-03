@@ -11,7 +11,7 @@ const PAGE_SIZE = 10;
 
 const GRID_COLUMN_CLASSES: Record<2 | 3, string> = {
   2: "md:grid-cols-2 lg:grid-cols-2",
-  3: "md:grid-cols-3 lg:grid-cols-3",
+  3: "md:grid-cols-2 lg:grid-cols-3",
 };
 
 function getHasMore(meta: ArticlesResponse["meta"], loaded: number): boolean {
@@ -37,6 +37,8 @@ type ProjectsListClientProps = {
   initialTag?: string;
   canLoadMore: boolean;
   columns?: 2 | 3;
+  /** Hide items beyond this count on desktop (lg+) screens. */
+  desktopLimit?: number;
 };
 
 export function ProjectsListClient({
@@ -46,6 +48,7 @@ export function ProjectsListClient({
   initialTag,
   canLoadMore,
   columns = 2,
+  desktopLimit,
 }: ProjectsListClientProps) {
   const pathname = usePathname();
   const [projects, setProjects] = useState<Article[]>(initialProjects);
@@ -206,24 +209,36 @@ export function ProjectsListClient({
 
       {projects.length > 0 ? (
         <div className={`grid grid-cols-1 gap-6 ${GRID_COLUMN_CLASSES[columns]}`}>
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              activeTag={activeTag}
-              onTagClick={
-                canLoadMore
-                  ? (tag) => {
-                      if (activeTag === tag) {
-                        return;
+          {projects.map((project, index) => {
+            const card = (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                activeTag={activeTag}
+                onTagClick={
+                  canLoadMore
+                    ? (tag) => {
+                        if (activeTag === tag) {
+                          return;
+                        }
+                        void applyTagFilter(tag);
                       }
-                      void applyTagFilter(tag);
-                    }
-                  : undefined
-              }
-            />
-          ))}
+                    : undefined
+                }
+              />
+            );
+
+            if (typeof desktopLimit === "number" && index >= desktopLimit) {
+              return (
+                <div key={project.id} className="h-full lg:hidden">
+                  {card}
+                </div>
+              );
+            }
+
+            return card;
+          })}
         </div>
       ) : (
         <p className="ui-meta-text">

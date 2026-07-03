@@ -28,7 +28,7 @@ export function Showcase() {
       </div>
 
       <div className="overflow-hidden rounded-sm">
-        <div className="showcase-grid grid grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 sm:grid-cols-3 md:grid-cols-4">
+        <div className="showcase-grid grid grid-cols-3 gap-px bg-slate-200 dark:bg-slate-800 lg:grid-cols-4">
           {(showcaseItems as ShowcaseItem[]).map((item, index) => {
             const accentClass = ACCENT_CLASSES[index % ACCENT_CLASSES.length];
             const cellClass = `showcase-cell section-enter ${accentClass}`;

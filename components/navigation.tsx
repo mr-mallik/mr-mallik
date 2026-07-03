@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { label: "Projects", href: ROUTES.projects },
   { label: "Publications", href: ROUTES.publications },
   { label: "Resume", href: ROUTES.resume },
+  { label: "Contact", href: ROUTES.contact },
 ] as const;
 
 export default function Navigation() {
@@ -72,7 +73,7 @@ export default function Navigation() {
               ))}
             </div>
 
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
 
             <button
               type="button"

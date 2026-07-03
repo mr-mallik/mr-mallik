@@ -1,6 +1,6 @@
 [
   {
-    "name": "Research & Development",
+    "name": "Research",
     "description": "Turn research questions into working AI systems - from exploratory prototypes to peer-reviewed results.",
     "image": "/images/services/research-and-development.png",
     "icon": "rnd",
@@ -16,7 +16,7 @@
     "icon": "consulting"
   },
   {
-    "name": "Software Development",
+    "name": "Software",
     "description": "Build reliable, scalable software - from API backends to full-stack products with AI capabilities baked in.",
     "image": "/images/services/software-development.png",
     "icon": "software-development",
@@ -24,7 +24,7 @@
     "link": "/contact?type=development"
   },
   {
-    "name": "Training & Workshops",
+    "name": "Workshops",
     "description": "Give your team the confidence to work with AI - through hands-on sessions grounded in real applications.",
     "image": "/images/services/training-and-workshops.png",
     "icon": "training-and-workshops",

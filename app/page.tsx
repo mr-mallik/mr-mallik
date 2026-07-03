@@ -38,7 +38,7 @@ export default function Page() {
       <div className="flex flex-col gap-8">
         <section className="w-full bg-[var(--ui-bg-elevated)]">
           <div className="ui-container py-16 md:py-24 lg:py-10 xl:py-14">
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-end">
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-8 md:items-center lg:gap-12 lg:items-end">
 
               <div className="flex flex-col gap-6">
                 <div className="relative w-full max-w-sm overflow-hidden rounded-2xl lg:max-w-[280px] xl:max-w-sm flex flex-col items-center justify-center">
@@ -67,10 +67,9 @@ export default function Page() {
                 </div>
               </div>
 
-              {/* Right - headline, description, stats */}
-              <div className="flex flex-col gap-8 md:pb-2">
+              <div className="flex flex-col gap-8 lg:pb-2">
                 <div className="flex flex-col gap-4">
-                  <h1 className="text-4xl font-semibold leading-tight  text-[var(--ui-text-primary)] sm:text-5xl lg:text-5xl xl:text-6xl">
+                  <h1 className="text-4xl font-semibold leading-tight text-[var(--ui-text-primary)] sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl">
                     Software Engineer
                     <br />
                     <span style={{ color: "var(--ui-accent)" }}>&amp; AI Researcher</span>
@@ -81,7 +80,7 @@ export default function Page() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-6">
+                <div className="flex gap-6">
                   <div className="flex flex-col gap-0.5">
                     <span className="text-4xl font-bold  text-[var(--ui-text-primary)]">
                       {String(new Date().getFullYear() - 2019).padStart(2, "0")}
@@ -136,18 +135,18 @@ export default function Page() {
           </div>
         </section>
         <section className="w-full ui-container">
-          <div className="flex flex-wrap gap-6">
+          <div className="grid grid-cols-3 items-center gap-6 lg:grid-cols-6">
             {showcase.map((item) => (
               <div
                 key={item.name}
-                className="grid place-items-center w-[calc(25%-18px)] min-w-[80px] max-w-[160px] lg:w-[calc(16.666%-20px)]"
+                className="grid place-items-center"
               >
                 <Image
                   src={item.image}
                   alt={item.name}
                   width={160}
                   height={160}
-                  className="h-auto max-h-[80%] w-auto max-w-full object-contain grayscale brightness-0 opacity-80 dark:invert"
+                  className="h-auto max-h-16 w-auto max-w-full object-contain grayscale brightness-0 opacity-80 dark:invert"
                 />
               </div>
             ))}
@@ -235,36 +234,31 @@ export default function Page() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-8 md:gap-x-10 lg:gap-12">
           {services.map((service, index) => (
             <div
               key={service.name}
-              className="group flex flex-col gap-4 pb-6 md:pb-0 border-b md:border-b-0 md:border-r md:border-[var(--ui-border-subtle)] md:pr-8 last:border-r-0
+              className="group flex min-w-0 flex-col gap-4 pb-6 lg:pb-0 border-b lg:border-b-0 lg:border-r lg:border-[var(--ui-border-subtle)] lg:pr-8 last:border-r-0
               hover:scale-105 transition-all ease-in-out duration-300
               cursor-pointer
               "
             >
-              <div>
-                <span className="text-5xl md:text-6xl font-bold text-[var(--ui-accent)]">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-              </div>
               <div className="flex flex-col gap-3 flex-1">
-                <h3 className="text-lg md:text-xl font-semibold text-[var(--ui-text-primary)] uppercase tracking-wide">
+                <h3 className="flex min-h-[2.75em] items-center break-words text-[clamp(1rem,0.55rem_+_1.5vw,1.875rem)] leading-snug uppercase font-bold text-[var(--ui-accent)]">
                   {service.name}
                 </h3>
                 <p className="text-sm md:text-base text-[var(--ui-text-secondary)] leading-relaxed">
                   {service.description}
                 </p>
               </div>
-              <div className="flex items-center gap-2 ">
-                <div 
-                  className="mt-2 flex items-center justify-center w-10 h-10 rounded-full border border-[var(--ui-accent)] text-[var(--ui-text-muted)] hover:border-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)] transition-all self-start">
-                  <HugeiconsIcon icon={ArrowUpRight01Icon} className="h-4 w-4" aria-hidden="true" />
+              <div className="flex items-center gap-2">
+                <div
+                  className="mt-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--ui-accent)] text-[var(--ui-text-muted)] hover:border-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)] transition-all self-start sm:h-10 sm:w-10">
+                  <HugeiconsIcon icon={ArrowUpRight01Icon} className="h-4 w-4 shrink-0" aria-hidden="true" />
                 </div>
                 <Link
                   href={service.link}
-                  className="text-sm font-medium text-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)] transition-colors"
+                  className="min-w-0 text-sm font-medium text-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)] transition-colors"
                 >
                   {service.text}
                 </Link>
@@ -275,7 +269,7 @@ export default function Page() {
       </section>
 
       <section className="ui-container ui-section-py-sm">
-        <ProjectsSection limit={3} showViewAllLink columns={3} />
+        <ProjectsSection limit={4} showViewAllLink columns={3} desktopLimit={3} />
       </section>
 
       <section className="ui-section-py-sm ui-bg-elevated">

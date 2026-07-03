@@ -26,6 +26,7 @@ export const ROUTES = {
   publications: "/publications",
   blogs: "/blogs",
   about: "/about",
+  contact: "/contact",
 } as const;
 
 export const EXTERNAL_LINKS = {
