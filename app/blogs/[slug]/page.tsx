@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Calendar03Icon, ViewIcon } from "@hugeicons/core-free-icons";
 
+import AddonLink from "@/components/addon-link";
 import ArticleContentRenderer from "@/components/article-content-renderer";
 import CopyUrlButton from "@/components/copy-url-button";
 import ShareArticleButton from "@/components/share-article-button";
@@ -140,15 +140,7 @@ export default async function BlogDetailPage({
 						/>
 						<CopyUrlButton path={`/blogs/${article.slug}`} />
 						{addonLinks.map((item) => (
-							<Link
-								key={`${item.type}-${item.url}`}
-								href={item.url}
-								target="_blank"
-								rel="noreferrer"
-								className="ui-subtle-button"
-							>
-								{item.label?.trim() || item.type}
-							</Link>
+							<AddonLink key={`${item.type}-${item.url}`} item={item} />
 						))}
 					</div>
 				</div>

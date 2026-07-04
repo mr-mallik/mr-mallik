@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { LinkedinIcon, Github01Icon, Email, ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
+import { LinkedinIcon, Github01Icon, IdIcon, Email, ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 
 import { ROUTES, PROFILE } from "@/app/constants";
 import { createPageMetadata, SITE_DESCRIPTION } from "@/app/seo";
@@ -30,6 +30,7 @@ export const metadata: Metadata = createPageMetadata({
 const HERO_SOCIALS = [
   { label: "LinkedIn", href: PROFILE.linkedInUrl, icon: LinkedinIcon, handle: "mrmallik" },
   { label: "GitHub", href: PROFILE.githubUrl, icon: Github01Icon, handle: "mr-mallik" },
+  { label: "ORCiD", href: PROFILE.orcidUrl, icon: IdIcon, handle: "ORCiD" },
 ];
 
 export default function Page() {

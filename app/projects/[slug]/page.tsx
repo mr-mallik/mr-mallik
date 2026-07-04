@@ -6,6 +6,7 @@ import { Calendar03Icon, RefreshIcon, ViewIcon } from "@hugeicons/core-free-icon
 import { HugeiconsIcon } from "@hugeicons/react";
 
 import { ROUTES } from "@/app/constants";
+import AddonLink from "@/components/addon-link";
 import ArticleContentRenderer from "@/components/article-content-renderer";
 import CopyUrlButton from "@/components/copy-url-button";
 import Header from "@/components/header";
@@ -186,15 +187,7 @@ export default async function ProjectDetailPage({
 								?.slice()
 								.sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
 								.map((item) => (
-									<Link
-										key={`${item.type}-${item.url}`}
-										href={item.url}
-										target="_blank"
-										rel="noreferrer"
-										className="ui-subtle-button"
-									>
-										{item.label?.trim() || item.type}
-									</Link>
+									<AddonLink key={`${item.type}-${item.url}`} item={item} />
 								))}
 						</div>
 					</div>
