@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { LINK_LABELS, ROUTES, SECTION_TITLES } from "@/app/constants";
 import { getArticlesList } from "@/services/articles";
+import { getTagColorClass } from "@/lib/tag-colors";
 
 function formatDate(iso: string): string {
   const date = new Date(iso);
@@ -24,7 +25,7 @@ export async function BlogsSection({
   showViewAllLink?: boolean;
 }) {
   const { articles, error } = await getArticlesList({
-    category: "blog",
+    type: "blog",
     page: 1,
     limit,
   });
@@ -33,7 +34,7 @@ export async function BlogsSection({
     <section className="space-y-5">
       {heading ? (
         <div className="flex items-center justify-between gap-4">
-          <h2 className="ui-section-title tracking-tight">
+          <h2 className="ui-section-title ">
             {SECTION_TITLES.blog}
           </h2>
           {showViewAllLink ? (
@@ -75,7 +76,7 @@ export async function BlogsSection({
                           {article.tags.slice(0, 2).map((tag) => (
                             <span
                               key={tag}
-                              className="inline-flex items-center rounded-full border border-[var(--ui-border-soft)] px-2 py-0.5 text-[11px] font-medium text-[var(--ui-text-muted)]"
+                              className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(tag)}`}
                             >
                               {tag}
                             </span>
@@ -87,13 +88,13 @@ export async function BlogsSection({
                 </div>
 
                 {article.featuredImage ? (
-                  <div className="relative shrink-0">
+                  <div className="relative shrink-0 overflow-hidden rounded-lg shadow-sm">
                     <Image
                       src={article.featuredImage}
                       alt={article.featuredImageAlt || article.title}
-                      width={88}
-                      height={58}
-                      className="h-[52px] w-[72px] rounded-md object-cover transition-opacity duration-200 group-hover:opacity-90 sm:h-[58px] sm:w-[88px]"
+                      width={100}
+                      height={66}
+                      className="h-[60px] w-[84px] object-cover transition duration-300 group-hover:scale-[1.05] group-hover:opacity-90 sm:h-[66px] sm:w-[100px]"
                     />
                   </div>
                 ) : null}

@@ -14,61 +14,77 @@ export default function ArticleTocNav({ items }: ArticleTocNavProps) {
   const ids = useMemo(() => items.map((item) => item.id), [items]);
 
   useEffect(() => {
-    if (ids.length === 0) {
-      return;
-    }
+    if (ids.length === 0) return;
 
     const headingElements = ids
       .map((id) => document.getElementById(id))
-      .filter((element): element is HTMLElement => Boolean(element));
+      .filter((el): el is HTMLElement => Boolean(el));
 
-    if (headingElements.length === 0) {
-      return;
-    }
+    if (headingElements.length === 0) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
-          .filter((entry) => entry.isIntersecting)
+          .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
         if (visible[0]?.target?.id) {
           setActiveId(visible[0].target.id);
         }
       },
-      {
-        rootMargin: "-18% 0px -65% 0px",
-        threshold: [0.1, 0.25, 0.5, 0.75, 1],
-      },
+      { rootMargin: "-18% 0px -65% 0px", threshold: [0.1, 0.25, 0.5, 0.75, 1] },
     );
 
-    headingElements.forEach((element) => observer.observe(element));
-
+    headingElements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, [ids]);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const target = document.getElementById(id);
+    if (!target) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({ behavior: reduced ? "instant" : "smooth", block: "start" });
+    history.pushState(null, "", `#${id}`);
+  };
+
   return (
     <nav aria-label="Table of contents">
-      <ul className="space-y-2">
-        {items.map((item) => {
-          const isActive = activeId === item.id;
+      <div className="relative">
+        {/* Track line */}
+        <div className="absolute bottom-0 left-0 top-0 w-px bg-[var(--ui-border-subtle)]" />
 
-          return (
-            <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                className={`ui-control-text block truncate transition-colors hover:text-[var(--ui-text-primary)] ${
-                  isActive ? "font-semibold text-[var(--ui-text-primary)]" : ""
-                }`}
-                style={{ paddingLeft: `${(item.level - 1) * 10}px` }}
-                aria-current={isActive ? "location" : undefined}
-              >
-                {item.text}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+        <ul className="space-y-0">
+          {items.map((item) => {
+            const isActive = activeId === item.id;
+            const indent = Math.max(0, item.level - 2) * 10;
+
+            return (
+              <li key={item.id} className="relative">
+                {/* Active accent - sits on top of the gray track */}
+                <span
+                  className={`absolute bottom-0.5 left-0 top-0.5 w-0.5 rounded-full transition-all duration-200 ${
+                    isActive ? "bg-[var(--ui-text-link)]" : "bg-transparent"
+                  }`}
+                />
+
+                <a
+                  href={`#${item.id}`}
+                  onClick={(e) => handleClick(e, item.id)}
+                  className={`block truncate py-[5px] text-[12.5px] leading-snug transition-colors duration-150 ${
+                    isActive
+                      ? "font-semibold text-[var(--ui-text-primary)]"
+                      : "text-[var(--ui-text-muted)] hover:text-[var(--ui-text-secondary)]"
+                  } ${item.level > 2 ? "opacity-90" : ""}`}
+                  style={{ paddingLeft: `${indent + 14}px` }}
+                  aria-current={isActive ? "location" : undefined}
+                >
+                  {item.text}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </nav>
   );
 }

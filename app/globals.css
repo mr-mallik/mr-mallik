@@ -8,16 +8,30 @@
   --ui-text-primary: #1f2937;
   --ui-text-secondary: #475569;
   --ui-text-muted: #64748b;
-  --ui-text-link: #007aff;
+  /* Darkened from #007aff (3.92:1 on --background, fails WCAG AA at body text size) */
+  --ui-text-link: #0069d9;
   --ui-border-subtle: #ebeaea;
   --ui-border-soft: #e2e8f0;
-  --ui-fs-xs: 12px;
-  --ui-fs-sm: 13px;
-  --ui-fs-md: 14px;
-  --ui-fs-section: 15px;
-  --ui-fs-title: 24px;
+  --ui-fs-xs: 14px;
+  --ui-fs-sm: 15px;
+  --ui-fs-md: 16px;
+  --ui-fs-section: 18px;
+  --ui-fs-title: 26px;
 
-  /* ── Motion tokens ── */
+  /*  Accent color  */
+  --ui-accent: #b16e41;
+  --ui-accent-muted: #faf3ee;
+
+  /*  Elevated surface (cards, tiles, image placeholders)  */
+  --ui-bg-elevated: #f5f5f4;
+
+  /*  Layout rhythm  */
+  --ui-nav-h: 3.0625rem;
+  --ui-space-section-sm: 3rem;
+  --ui-space-section-md: 4rem;
+  --ui-space-section-lg: 6rem;
+
+  /*  Motion tokens  */
   --ui-ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
   --ui-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ui-duration-fast: 0.15s;
@@ -33,6 +47,11 @@
   --ui-text-muted: #94a3b8;
   --ui-border-subtle: #1e293b;
   --ui-border-soft: #334155;
+  /* Lighter blue so links pass WCAG AA on dark background */
+  --ui-text-link: #4da3ff;
+  --ui-accent: #d8ad90;
+  --ui-accent-muted: color-mix(in srgb, #d8ad90 18%, #1a1a1a);
+  --ui-bg-elevated: rgba(28, 25, 23, 0.3);
 }
 
 @theme inline {
@@ -58,13 +77,8 @@ body {
 }
 
 @keyframes timeline-dot-pulse {
-  0%, 100% { box-shadow: 0 0 0 0   rgba(23, 23, 23, 0.35); }
-  70%       { box-shadow: 0 0 0 8px rgba(23, 23, 23, 0);    }
-}
-
-@keyframes timeline-dot-pulse-dark {
-  0%, 100% { box-shadow: 0 0 0 0   rgba(237, 237, 237, 0.35); }
-  70%       { box-shadow: 0 0 0 8px rgba(237, 237, 237, 0);    }
+  0%, 100% { box-shadow: 0 0 0 0   rgba(16, 185, 129, 0.5); }
+  70%       { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);   }
 }
 
 @keyframes hero-entrance {
@@ -82,7 +96,7 @@ body {
   to   { opacity: 1; }
 }
 
-/* ── Reduced-motion: skip all entrance animations ── */
+/*  Reduced-motion: skip all entrance animations  */
 @media (prefers-reduced-motion: reduce) {
   .hero-fade-in,
   .section-enter,
@@ -105,10 +119,6 @@ body {
 
 .timeline-dot-complete {
   animation: timeline-dot-pulse 2s ease-out infinite;
-}
-
-.dark .timeline-dot-complete {
-  animation-name: timeline-dot-pulse-dark;
 }
 
 .hero-fade-in {
@@ -164,7 +174,6 @@ body {
 }
 
 .ui-page-description {
-  max-width: 42rem;
   font-size: var(--ui-fs-md);
   line-height: 1.7;
   color: var(--ui-text-secondary);
@@ -199,9 +208,43 @@ body {
 .ui-text-secondary { color: var(--ui-text-secondary);  }
 .ui-text-muted     { color: var(--ui-text-muted);      }
 
+.ui-bg-elevated { background: var(--ui-bg-elevated); }
+
+/* ══════════════════════════════════════════
+   LAYOUT / CONTAINERS
+══════════════════════════════════════════ */
+
+.ui-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem; /* 7xl */
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px)  { .ui-container { padding-inline: 2.5rem; } }
+@media (min-width: 1024px) { .ui-container { padding-inline: 3.5rem; } }
+
+.ui-container-narrow { max-width: 64rem; } /* 5xl */
+.ui-container-prose  { max-width: 48rem; } /* 3xl */
+
+.ui-section-py-sm { padding-block: var(--ui-space-section-sm); }
+.ui-section-py-md { padding-block: var(--ui-space-section-md); }
+.ui-section-py-lg { padding-block: var(--ui-space-section-lg); }
+
 /* ══════════════════════════════════════════
    LINKS
 ══════════════════════════════════════════ */
+
+/* Shared focus ring for text-style links/nav */
+.ui-link:focus-visible,
+.ui-link-subtle:focus-visible,
+.ui-view-all-link:focus-visible,
+.ui-back-link:focus-visible,
+.ui-nav-link:focus-visible,
+.ui-brand-link:focus-visible {
+  outline: 2px solid var(--ui-text-link);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 
 /* Plain coloured link */
 .ui-link {
@@ -211,7 +254,7 @@ body {
 }
 .ui-link:hover { opacity: 0.75; }
 
-/* Subtle bold link — used across the whole site */
+/* Subtle bold link - used across the whole site */
 .ui-link-subtle {
   font-weight: 600;
   color: var(--ui-text-primary);
@@ -285,11 +328,11 @@ body {
 .ui-nav-link::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -3px;
   left: 0;
   width: 100%;
-  height: 1px;
-  background: var(--ui-text-primary);
+  height: 2px;
+  background: var(--ui-accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--ui-duration-base) var(--ui-ease-out);
@@ -298,6 +341,14 @@ body {
   color: var(--ui-text-primary);
 }
 .ui-nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.ui-nav-active {
+  color: var(--ui-text-primary);
+  font-weight: 600;
+}
+.ui-nav-active::after {
   transform: scaleX(1);
 }
 
@@ -315,7 +366,7 @@ body {
    CARDS
 ══════════════════════════════════════════ */
 
-/* Shared card base — applied to article / div wrappers */
+/* Shared card base - applied to article / div wrappers */
 .ui-card {
   border-radius: 0.75rem;
   border: 1px solid var(--ui-border-soft);
@@ -332,7 +383,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* Project / showcase card — larger tile */
+/* Project / showcase card - larger tile */
 .ui-project-card {
   display: flex;
   flex-direction: column;
@@ -398,16 +449,7 @@ body {
   transform: scale(1.05);
 }
 
-/* ── Showcase cell ── */
-
-/* Grid separator pulse */
-@keyframes showcase-separator-pulse {
-  0%, 100% { opacity: 1;    }
-  50%       { opacity: 0.45; }
-}
-.showcase-grid {
-  animation: showcase-separator-pulse 4s ease-in-out infinite;
-}
+/*  Showcase cell  */
 
 /* Shared cell base */
 .showcase-cell {
@@ -441,13 +483,13 @@ body {
   transform: scale(1.08);
 }
 
-/* Per-accent hover tints — light */
+/* Per-accent hover tints - light */
 .showcase-cell-blue:hover   { background: #eff6ff; }
 .showcase-cell-violet:hover { background: #f5f3ff; }
 .showcase-cell-emerald:hover { background: #ecfdf5; }
 .showcase-cell-amber:hover  { background: #fffbeb; }
 
-/* Per-accent hover tints — dark */
+/* Per-accent hover tints - dark */
 .dark .showcase-cell-blue:hover   { background: color-mix(in srgb, #1e3a5f 30%, var(--background)); }
 .dark .showcase-cell-violet:hover { background: color-mix(in srgb, #2e1a5f 30%, var(--background)); }
 .dark .showcase-cell-emerald:hover { background: color-mix(in srgb, #0a3326 30%, var(--background)); }
@@ -478,7 +520,7 @@ body {
 
 /* Theme toggle */
 .ui-theme-toggle {
-  display: inline-flex;
+  /* display: inline-flex; */
   align-items: center;
   gap: 0.5rem;
   font-size: var(--ui-fs-sm);
@@ -603,4 +645,90 @@ body {
 }
 .hero-inline-icon-link:hover svg {
   transform: scale(1.15);
+}
+
+/* ══════════════════════════════════════════
+   CREDENTIAL & RESEARCH TAG CHIPS
+══════════════════════════════════════════ */
+
+.credential-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  border: 1px solid var(--ui-border-soft);
+  color: var(--ui-text-muted);
+}
+
+.research-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: var(--ui-accent-muted);
+  color: var(--ui-accent);
+}
+
+/* ══════════════════════════════════════════
+   BLOG LIST
+══════════════════════════════════════════ */
+
+/* Alternating row tint for blog / article lists */
+.blog-row-alt {
+  background: color-mix(in srgb, var(--ui-border-subtle) 22%, transparent);
+}
+
+/* ══════════════════════════════════════════
+   PRINT
+══════════════════════════════════════════ */
+
+@media print {
+  /* Hide chrome */
+  nav,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Force white canvas and black text so dark mode doesn't print as black pages */
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Reset any tinted backgrounds on sections */
+  * {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Kill entrance animations so nothing is invisible on print */
+  .hero-fade-in,
+  .section-enter,
+  .timeline-item,
+  .resume-fade-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Ensure links print as black text (not blue) */
+  a {
+    color: #000000 !important;
+    text-decoration: underline;
+  }
+
+  /* Page break helpers */
+  section {
+    page-break-inside: avoid;
+  }
 }

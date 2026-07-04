@@ -1,14 +1,18 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import defaultSvg from "../public/default-project.svg";
 import type { Article, ArticlesResponse } from "@/app/blogs/types";
+import { getTagColorClass } from "@/lib/tag-colors";
+import { ProjectCard } from "@/components/project-card";
 
 const PAGE_SIZE = 10;
+
+const GRID_COLUMN_CLASSES: Record<2 | 3, string> = {
+  2: "md:grid-cols-2 lg:grid-cols-2",
+  3: "md:grid-cols-2 lg:grid-cols-3",
+};
 
 function getHasMore(meta: ArticlesResponse["meta"], loaded: number): boolean {
   if (!meta) {
@@ -31,7 +35,11 @@ type ProjectsListClientProps = {
   initialMeta?: ArticlesResponse["meta"];
   initialError?: string;
   initialTag?: string;
+  initialCategory?: string;
   canLoadMore: boolean;
+  columns?: 2 | 3;
+  /** Hide items beyond this count on desktop (lg+) screens. */
+  desktopLimit?: number;
 };
 
 export function ProjectsListClient({
@@ -39,7 +47,10 @@ export function ProjectsListClient({
   initialMeta,
   initialError,
   initialTag,
+  initialCategory,
   canLoadMore,
+  columns = 2,
+  desktopLimit,
 }: ProjectsListClientProps) {
   const pathname = usePathname();
   const [projects, setProjects] = useState<Article[]>(initialProjects);
@@ -48,6 +59,7 @@ export function ProjectsListClient({
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [error, setError] = useState<string | undefined>(initialError);
   const [activeTag, setActiveTag] = useState<string | undefined>(initialTag);
+  const [activeCategory, setActiveCategory] = useState<string | undefined>(initialCategory);
   const observerRef = useRef<HTMLDivElement | null>(null);
 
   const hasMore = useMemo(() => {
@@ -57,13 +69,13 @@ export function ProjectsListClient({
     return getHasMore(meta, projects.length);
   }, [canLoadMore, meta, projects.length]);
 
-  const setTagInUrl = useCallback(
-    (tag?: string) => {
+  const setParamInUrl = useCallback(
+    (key: "tag" | "category", value?: string) => {
       const params = new URLSearchParams(window.location.search);
-      if (tag) {
-        params.set("tag", tag);
+      if (value) {
+        params.set(key, value);
       } else {
-        params.delete("tag");
+        params.delete(key);
       }
 
       const queryString = params.toString();
@@ -73,9 +85,9 @@ export function ProjectsListClient({
     [pathname],
   );
 
-  const fetchPage = useCallback(async (page: number, tag?: string) => {
+  const fetchPage = useCallback(async (page: number, tag?: string, category?: string) => {
     const query = new URLSearchParams({
-      category: "project",
+      type: "project",
       sort: "latest",
       page: String(page),
       limit: String(PAGE_SIZE),
@@ -83,6 +95,10 @@ export function ProjectsListClient({
 
     if (tag) {
       query.set("tag", tag);
+    }
+
+    if (category) {
+      query.set("category", category);
     }
 
     const response = await fetch(`/api/articles?${query.toString()}`);
@@ -103,7 +119,7 @@ export function ProjectsListClient({
     setIsLoadingMore(true);
 
     try {
-      const payload = await fetchPage(nextPage, activeTag);
+      const payload = await fetchPage(nextPage, activeTag, activeCategory);
       const nextItems = payload.data ?? [];
 
       setProjects((prev) => {
@@ -127,21 +143,23 @@ export function ProjectsListClient({
     } finally {
       setIsLoadingMore(false);
     }
-  }, [activeTag, canLoadMore, currentPage, error, fetchPage, hasMore, isLoadingMore]);
+  }, [activeCategory, activeTag, canLoadMore, currentPage, error, fetchPage, hasMore, isLoadingMore]);
 
-  const applyTagFilter = useCallback(
-    async (tag?: string) => {
+  const applyFilters = useCallback(
+    async (tag?: string, category?: string) => {
       if (!canLoadMore) {
         return;
       }
 
       setActiveTag(tag);
-      setTagInUrl(tag);
+      setActiveCategory(category);
+      setParamInUrl("tag", tag);
+      setParamInUrl("category", category);
       setError(undefined);
       setIsLoadingMore(true);
 
       try {
-        const payload = await fetchPage(1, tag);
+        const payload = await fetchPage(1, tag, category);
         setProjects(payload.data ?? []);
         setMeta(payload.meta);
         setCurrentPage(payload.meta?.page ?? 1);
@@ -155,7 +173,7 @@ export function ProjectsListClient({
         setIsLoadingMore(false);
       }
     },
-    [canLoadMore, fetchPage, setTagInUrl],
+    [canLoadMore, fetchPage, setParamInUrl],
   );
 
   useEffect(() => {
@@ -180,16 +198,28 @@ export function ProjectsListClient({
 
   return (
     <div className="space-y-4">
-      {canLoadMore && activeTag ? (
-        <div className="flex items-center gap-2 rounded-md border border-[var(--ui-border-soft)] bg-[var(--ui-bg-elevated)] p-2">
-          <span className="ui-meta-text">Active tag:</span>
-          <span className="inline-flex items-center rounded-full border border-[var(--ui-border-soft)] px-2 py-0.5 text-[11px] font-medium text-[var(--ui-text-muted)]">
-            {activeTag}
-          </span>
+      {canLoadMore && (activeTag || activeCategory) ? (
+        <div className="flex flex-wrap items-center gap-2 rounded-md border border-[var(--ui-border-soft)] ui-bg-elevated p-2">
+          {activeTag ? (
+            <>
+              <span className="ui-meta-text">Active tag:</span>
+              <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(activeTag)}`}>
+                {activeTag}
+              </span>
+            </>
+          ) : null}
+          {activeCategory ? (
+            <>
+              <span className="ui-meta-text">Category:</span>
+              <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(activeCategory)}`}>
+                {activeCategory}
+              </span>
+            </>
+          ) : null}
           <button
             type="button"
             onClick={() => {
-              void applyTagFilter(undefined);
+              void applyFilters(undefined, undefined);
             }}
             className="ui-meta-text underline underline-offset-2"
           >
@@ -199,77 +229,41 @@ export function ProjectsListClient({
       ) : null}
 
       {projects.length > 0 ? (
-        <div className="grid gap-4 sm:grid-cols-2">
-          {projects.map((project, index) => (
-            <Link
-              key={project.id}
-              href={`/projects/${project.slug}`}
-              className="group ui-project-card section-enter min-w-0 min-h-[18rem]"
-              style={{ animationDelay: `${index * 60}ms`, aspectRatio: "auto" }}
-            >
-              <div className="flex h-full flex-col rounded-xl border border-[var(--ui-border-subtle)] bg-background p-4 sm:p-5">
-                <div className="flex h-20 shrink-0 items-center justify-center">
-                  {project.featuredImage ? (
-                    <Image
-                      src={project.featuredImage}
-                      alt={project.featuredImageAlt || `${project.title} project image`}
-                      width={64}
-                      height={64}
-                      className="h-16 w-16 object-contain opacity-60 transition-opacity duration-200 group-hover:opacity-80"
-                    />
-                  ) : (
-                    <Image
-                      src={defaultSvg}
-                      alt={`${project.title} project image`}
-                      className="h-16 w-16 object-contain opacity-40 transition-opacity duration-200 group-hover:opacity-70"
-                    />
-                  )}
+        <div className={`grid grid-cols-1 gap-6 ${GRID_COLUMN_CLASSES[columns]}`}>
+          {projects.map((project, index) => {
+            const card = (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                activeTag={activeTag}
+                onTagClick={
+                  canLoadMore
+                    ? (tag) => {
+                        if (activeTag === tag) {
+                          return;
+                        }
+                        void applyFilters(tag, activeCategory);
+                      }
+                    : undefined
+                }
+              />
+            );
+
+            if (typeof desktopLimit === "number" && index >= desktopLimit) {
+              return (
+                <div key={project.id} className="h-full lg:hidden">
+                  {card}
                 </div>
-                <div className="min-w-0 pt-3 space-y-2">
-                  <h3 className="ui-item-title line-clamp-2 text-base tracking-tight [overflow-wrap:anywhere]">
-                    {project.title}
-                  </h3>
-                  {project.excerpt ? (
-                    <p className="ui-body-text mt-1.5 text-sm leading-relaxed line-clamp-4 [overflow-wrap:anywhere]">
-                      {project.excerpt}
-                    </p>
-                  ) : null}
+              );
+            }
 
-                  {project.tags && project.tags.length > 0 ? (
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {project.tags.slice(0, 3).map((tag) => (
-                        <button
-                          key={tag}
-                          type="button"
-                          onClick={(event) => {
-                            event.preventDefault();
-                            event.stopPropagation();
-
-                            if (!canLoadMore || activeTag === tag) {
-                              return;
-                            }
-
-                            void applyTagFilter(tag);
-                          }}
-                          className={`inline-flex max-w-full items-center truncate rounded-full border px-2 py-0.5 text-[11px] font-medium ${
-                            activeTag === tag
-                              ? "border-[var(--ui-text-link)] text-[var(--ui-text-link)]"
-                              : "border-[var(--ui-border-soft)] text-[var(--ui-text-muted)]"
-                          }`}
-                        >
-                          {tag}
-                        </button>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-            </Link>
-          ))}
+            return card;
+          })}
         </div>
       ) : (
         <p className="ui-meta-text">
-          {canLoadMore && activeTag
+          {canLoadMore && (activeTag || activeCategory)
             ? "No projects found for this filter."
             : "No projects published yet - check back soon."}
         </p>

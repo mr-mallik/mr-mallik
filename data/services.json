@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Research",
+    "description": "Turn research questions into working AI systems - from exploratory prototypes to peer-reviewed results.",
+    "image": "/images/services/research-and-development.png",
+    "icon": "rnd",
+    "text": "Request a Quote",
+    "link": "/contact?type=research"
+  },
+  {
+    "name": "Consulting",
+    "description": "Cut through AI hype with a clear, actionable adoption strategy tailored to your organisation's goals.",
+    "image": "/images/services/consulting.png",
+    "text": "Book a Consultation",
+    "link": "/contact?type=consulting",
+    "icon": "consulting"
+  },
+  {
+    "name": "Software",
+    "description": "Build reliable, scalable software - from API backends to full-stack products with AI capabilities baked in.",
+    "image": "/images/services/software-development.png",
+    "icon": "software-development",
+    "text": "Request a Quote",
+    "link": "/contact?type=development"
+  },
+  {
+    "name": "Workshops",
+    "description": "Give your team the confidence to work with AI - through hands-on sessions grounded in real applications.",
+    "image": "/images/services/training-and-workshops.png",
+    "icon": "training-and-workshops",
+    "text": "Request a Quote",
+    "link": "/contact?type=training"
+  }
+]

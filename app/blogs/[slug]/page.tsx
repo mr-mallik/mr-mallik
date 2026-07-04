@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Calendar03Icon, ViewIcon } from "@hugeicons/core-free-icons";
 
+import AddonLink from "@/components/addon-link";
 import ArticleContentRenderer from "@/components/article-content-renderer";
-import { ROUTES } from "@/app/constants";
-import { getArticleBySlug } from "@/services/articles";
-import Header from "@/components/header";
 import CopyUrlButton from "@/components/copy-url-button";
 import ShareArticleButton from "@/components/share-article-button";
+import { ROUTES } from "@/app/constants";
+import { getArticleBySlug } from "@/services/articles";
 import { buildBlogPostingJsonLd, buildBreadcrumbJsonLd, createPageMetadata, sanitizeJsonLd } from "@/app/seo";
 
 type BlogSlugParams = {
@@ -66,8 +65,12 @@ export default async function BlogDetailPage({
 		})
 		: null;
 
+	const addonLinks = article.addonLinks
+		?.slice()
+		.sort((a, b) => (a.order ?? 0) - (b.order ?? 0)) ?? [];
+
 	return (
-		<article className="mx-auto w-full max-w-3xl space-y-6">
+		<article className="w-full ui-container ui-container-prose">
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{
@@ -96,55 +99,56 @@ export default async function BlogDetailPage({
 					),
 				}}
 			/>
-			<Header 
-        link={ROUTES.blogs} 
-        title={article.title} 
-        description={article.excerpt
-          ? article.excerpt
-          : "Read this article on my blog."}
-			>
-				<ShareArticleButton
-					path={`/blogs/${article.slug}`}
-					title={article.title}
-					text={article.excerpt || undefined}
-				/>
-				<CopyUrlButton path={`/blogs/${article.slug}`} />
-				{article.addonLinks
-					?.slice()
-					.sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-					.map((item) => (
-						<Link
-							key={`${item.type}-${item.url}`}
-							href={item.url}
-							target="_blank"
-							rel="noreferrer"
-							className="ui-subtle-button"
-						>
-							{item.label?.trim() || item.type}
-						</Link>
-					))}
-			</Header>
 
-			<div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-					{publishedDate ? (
-						<span className="ui-meta-text inline-flex items-center gap-1.5">
-							<HugeiconsIcon icon={Calendar03Icon} className="h-3.5 w-3.5" />
-							{publishedDate}
-						</span>
-					) : null}
-					{article.readCount ? (
-						<>
-							<span className="ui-meta-text opacity-40">&bull;</span>
+			{/* ── Article header ── */}
+			<header className="mb-8 space-y-4">
+				<h1 className="text-[clamp(1.625rem,3vw,2.375rem)] font-semibold leading-tight  text-[var(--ui-text-primary)]">
+					{article.title}
+				</h1>
+
+				{article.excerpt ? (
+					<p className="text-[var(--ui-text-secondary)] text-base leading-relaxed sm:text-[17px]">
+						{article.excerpt}
+					</p>
+				) : null}
+
+				{/* Meta bar: date + reads on left, actions on right */}
+				<div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-t border-[var(--ui-border-subtle)] py-2.5">
+					<div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+						{publishedDate ? (
 							<span className="ui-meta-text inline-flex items-center gap-1.5">
-								<HugeiconsIcon icon={ViewIcon} className="h-3.5 w-3.5" />
-								{article.readCount} reads
+								<HugeiconsIcon icon={Calendar03Icon} className="h-3.5 w-3.5" aria-hidden="true" />
+								{publishedDate}
 							</span>
-						</>
-					) : null}
-				</div>
+						) : null}
+						{article.readCount ? (
+							<>
+								<span className="ui-meta-text opacity-40">&bull;</span>
+								<span className="ui-meta-text inline-flex items-center gap-1.5">
+									<HugeiconsIcon icon={ViewIcon} className="h-3.5 w-3.5" aria-hidden="true" />
+									{article.readCount.toLocaleString()} reads
+								</span>
+							</>
+						) : null}
+					</div>
 
+					<div className="flex flex-wrap items-center gap-2">
+						<ShareArticleButton
+							path={`/blogs/${article.slug}`}
+							title={article.title}
+							text={article.excerpt || undefined}
+						/>
+						<CopyUrlButton path={`/blogs/${article.slug}`} />
+						{addonLinks.map((item) => (
+							<AddonLink key={`${item.type}-${item.url}`} item={item} />
+						))}
+					</div>
+				</div>
+			</header>
+
+			{/* ── Featured image ── */}
 			{article.featuredImage ? (
-				<div className="relative overflow-hidden rounded-xl border border-[var(--ui-border-soft)]">
+				<div className="mb-8 overflow-hidden rounded-xl border border-[var(--ui-border-soft)]">
 					<Image
 						src={article.featuredImage}
 						alt={article.featuredImageAlt || article.title}
@@ -156,6 +160,7 @@ export default async function BlogDetailPage({
 				</div>
 			) : null}
 
+			{/* ── Content ── */}
 			<ArticleContentRenderer blocks={article.parsedContent.blocks} />
 		</article>
 	);

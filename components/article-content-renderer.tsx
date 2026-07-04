@@ -12,8 +12,8 @@ function renderBlock(block: ParsedBlock, key: string): React.ReactNode {
   if (block.kind === "heading") {
     const className =
       block.level <= 2
-        ? "ui-item-title mt-10 text-2xl font-semibold tracking-tight"
-        : "ui-item-title mt-8 text-xl font-semibold tracking-tight";
+        ? "ui-item-title mt-10 text-2xl font-semibold "
+        : "ui-item-title mt-8 text-xl font-semibold ";
 
     if (block.level <= 2) {
       return (
@@ -27,6 +27,19 @@ function renderBlock(block: ParsedBlock, key: string): React.ReactNode {
       <h3 key={key} id={block.id} className={className}>
         {block.text}
       </h3>
+    );
+  }
+
+  if (block.kind === "code_block") {
+    return (
+      <pre
+        key={key}
+        className="overflow-x-auto rounded-lg border border-[var(--ui-border-soft)] bg-[var(--ui-border-subtle)] p-4 font-mono text-[13px] leading-6 text-[var(--ui-text-primary)]"
+      >
+        <code className={block.language ? `language-${block.language}` : undefined}>
+          {block.code}
+        </code>
+      </pre>
     );
   }
 

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import type { Article, ArticlesResponse } from "@/app/blogs/types";
+import { getTagColorClass } from "@/lib/tag-colors";
 
 const PAGE_SIZE = 10;
 
@@ -40,6 +41,7 @@ type BlogListClientProps = {
   initialMeta?: ArticlesResponse["meta"];
   initialError?: string;
   initialTag?: string;
+  initialCategory?: string;
 };
 
 export default function BlogListClient({
@@ -47,6 +49,7 @@ export default function BlogListClient({
   initialMeta,
   initialError,
   initialTag,
+  initialCategory,
 }: BlogListClientProps) {
   const pathname = usePathname();
   const [articles, setArticles] = useState<Article[]>(initialArticles);
@@ -55,6 +58,7 @@ export default function BlogListClient({
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [error, setError] = useState<string | undefined>(initialError);
   const [activeTag, setActiveTag] = useState<string | undefined>(initialTag);
+  const [activeCategory, setActiveCategory] = useState<string | undefined>(initialCategory);
   const observerRef = useRef<HTMLDivElement | null>(null);
 
   const hasMore = useMemo(
@@ -62,12 +66,12 @@ export default function BlogListClient({
     [meta, articles.length],
   );
 
-  const setTagInUrl = useCallback((tag?: string) => {
+  const setParamInUrl = useCallback((key: "tag" | "category", value?: string) => {
     const params = new URLSearchParams(window.location.search);
-    if (tag) {
-      params.set("tag", tag);
+    if (value) {
+      params.set(key, value);
     } else {
-      params.delete("tag");
+      params.delete(key);
     }
 
     const queryString = params.toString();
@@ -75,9 +79,9 @@ export default function BlogListClient({
     window.history.replaceState(null, "", nextUrl);
   }, [pathname]);
 
-  const fetchPage = useCallback(async (page: number, tag?: string) => {
+  const fetchPage = useCallback(async (page: number, tag?: string, category?: string) => {
     const query = new URLSearchParams({
-      category: "blog",
+      type: "blog",
       sort: "latest",
       page: String(page),
       limit: String(PAGE_SIZE),
@@ -85,6 +89,10 @@ export default function BlogListClient({
 
     if (tag) {
       query.set("tag", tag);
+    }
+
+    if (category) {
+      query.set("category", category);
     }
 
     const response = await fetch(`/api/articles?${query.toString()}`);
@@ -105,7 +113,7 @@ export default function BlogListClient({
     setIsLoadingMore(true);
 
     try {
-      const payload = await fetchPage(nextPage, activeTag);
+      const payload = await fetchPage(nextPage, activeTag, activeCategory);
       const nextItems = payload.data ?? [];
 
       setArticles((prev) => {
@@ -129,16 +137,18 @@ export default function BlogListClient({
     } finally {
       setIsLoadingMore(false);
     }
-  }, [activeTag, currentPage, error, fetchPage, hasMore, isLoadingMore]);
+  }, [activeCategory, activeTag, currentPage, error, fetchPage, hasMore, isLoadingMore]);
 
-  const applyTagFilter = useCallback(async (tag?: string) => {
+  const applyFilters = useCallback(async (tag?: string, category?: string) => {
     setActiveTag(tag);
-    setTagInUrl(tag);
+    setActiveCategory(category);
+    setParamInUrl("tag", tag);
+    setParamInUrl("category", category);
     setError(undefined);
     setIsLoadingMore(true);
 
     try {
-      const payload = await fetchPage(1, tag);
+      const payload = await fetchPage(1, tag, category);
       setArticles(payload.data ?? []);
       setMeta(payload.meta);
       setCurrentPage(payload.meta?.page ?? 1);
@@ -151,7 +161,7 @@ export default function BlogListClient({
     } finally {
       setIsLoadingMore(false);
     }
-  }, [fetchPage, setTagInUrl]);
+  }, [fetchPage, setParamInUrl]);
 
   useEffect(() => {
     const target = observerRef.current;
@@ -175,16 +185,28 @@ export default function BlogListClient({
 
   return (
     <div className="space-y-4">
-      {activeTag ? (
-        <div className="flex items-center gap-2 rounded-md border border-[var(--ui-border-soft)] bg-[var(--ui-bg-elevated)] p-2">
-          <span className="ui-meta-text">Active tag:</span>
-          <span className="inline-flex items-center rounded-full border border-[var(--ui-border-soft)] px-2 py-0.5 text-[11px] font-medium text-[var(--ui-text-muted)]">
-            {activeTag}
-          </span>
+      {activeTag || activeCategory ? (
+        <div className="flex flex-wrap items-center gap-2 rounded-md border border-[var(--ui-border-soft)] ui-bg-elevated p-2">
+          {activeTag ? (
+            <>
+              <span className="ui-meta-text">Active tag:</span>
+              <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(activeTag)}`}>
+                {activeTag}
+              </span>
+            </>
+          ) : null}
+          {activeCategory ? (
+            <>
+              <span className="ui-meta-text">Category:</span>
+              <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${getTagColorClass(activeCategory)}`}>
+                {activeCategory}
+              </span>
+            </>
+          ) : null}
           <button
             type="button"
             onClick={() => {
-              void applyTagFilter(undefined);
+              void applyFilters(undefined, undefined);
             }}
             className="ui-meta-text underline underline-offset-2"
           >
@@ -201,18 +223,17 @@ export default function BlogListClient({
               className="section-enter rounded-xl px-3 py-6 transition-colors odd:bg-transparent even:bg-[color-mix(in_srgb,var(--ui-border-subtle)_22%,transparent)] first:pt-0 last:pb-0 dark:even:bg-[color-mix(in_srgb,var(--ui-border-subtle)_30%,transparent)] sm:px-4"
               style={{ animationDelay: `${index * 60}ms` }}
             >
-              <Link
-                href={`/blogs/${article.slug}`}
-                className="group flex items-start gap-3 sm:gap-5"
-              >
+              <div className="group flex items-start gap-3 sm:gap-5">
                 <div className="min-w-0 flex-1 space-y-2">
-                  <h2 className="ui-item-title text-[15px] font-semibold leading-snug transition-colors group-hover:text-[var(--ui-text-link)]">
-                    {article.title}
-                  </h2>
+                  <Link href={`/blogs/${article.slug}`} className="contents">
+                    <h2 className="ui-item-title text-[15px] font-semibold leading-snug transition-colors group-hover:text-[var(--ui-text-link)]">
+                      {article.title}
+                    </h2>
 
-                  {article.excerpt ? (
-                    <p className="ui-body-text line-clamp-2 text-sm">{article.excerpt}</p>
-                  ) : null}
+                    {article.excerpt ? (
+                      <p className="ui-body-text line-clamp-2 text-sm">{article.excerpt}</p>
+                    ) : null}
+                  </Link>
 
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1">
                     <span className="ui-meta-text">{formatDate(article.publishedAt)}</span>
@@ -224,20 +245,17 @@ export default function BlogListClient({
                             <button
                               key={tag}
                               type="button"
-                              onClick={(event) => {
-                                event.preventDefault();
-                                event.stopPropagation();
-
+                              onClick={() => {
                                 if (activeTag === tag) {
                                   return;
                                 }
 
-                                void applyTagFilter(tag);
+                                void applyFilters(tag, activeCategory);
                               }}
-                              className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${
+                              className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium transition-colors duration-150 ${
                                 activeTag === tag
-                                  ? "border-[var(--ui-text-link)] text-[var(--ui-text-link)]"
-                                  : "border-[var(--ui-border-soft)] text-[var(--ui-text-muted)]"
+                                  ? "border-[var(--ui-text-link)] bg-transparent text-[var(--ui-text-link)]"
+                                  : getTagColorClass(tag)
                               }`}
                             >
                               {tag}
@@ -250,23 +268,28 @@ export default function BlogListClient({
                 </div>
 
                 {article.featuredImage ? (
-                  <div className="relative shrink-0">
+                  <Link
+                    href={`/blogs/${article.slug}`}
+                    aria-hidden="true"
+                    tabIndex={-1}
+                    className="relative shrink-0 overflow-hidden rounded-xl shadow-sm"
+                  >
                     <Image
                       src={article.featuredImage}
                       alt={article.featuredImageAlt || article.title}
-                      width={112}
-                      height={75}
-                      className="h-[60px] w-[84px] rounded-md object-cover transition-opacity duration-200 group-hover:opacity-90 sm:h-[75px] sm:w-[112px]"
+                      width={128}
+                      height={86}
+                      className="h-[76px] w-[104px] object-cover transition duration-300 group-hover:scale-[1.05] group-hover:opacity-90 sm:h-[86px] sm:w-[128px]"
                     />
-                  </div>
+                  </Link>
                 ) : null}
-              </Link>
+              </div>
             </article>
           ))}
         </div>
       ) : (
         <p className="ui-meta-text">
-          {activeTag ? "No posts found for this filter." : "No posts published yet - check back soon."}
+          {activeTag || activeCategory ? "No posts found for this filter." : "No posts published yet - check back soon."}
         </p>
       )}
 

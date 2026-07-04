@@ -14,6 +14,7 @@
 		"period": "Mar 2026 - Sep 2026",
 		"location": "Huddersfield, UK",
 		"url": "https://www.hud.ac.uk/",
+		"logo": "/images/companies/university-of-huddersfield-logo.jpg",
 		"summary": "Leading applied AI work on a sustainability decision support platform for housing and energy domains, combining generative AI and machine learning to produce transparent, evidence-based recommendations. Focused on multi-criteria trade-off analysis and practical outputs for real-world decision makers.",
 		"details": [
 			"Develop an AI-powered sustainability decision support platform across environmental and reliability criteria.",
@@ -28,6 +29,7 @@
 		"period": "Oct 2024 - Oct 2025",
 		"location": "Huddersfield, UK",
 		"url": "https://www.hud.ac.uk/",
+		"logo": "/images/companies/university-of-huddersfield-logo.jpg",
 		"summary": "Designed and evaluated machine learning solutions for complex multi-source decision problems in a UKRI-funded academic-industry collaboration. Built real-time dashboards for model interpretation and action, and contributed research outputs through literature synthesis and scholarly dissemination.",
 		"details": [
 			"Designed and evaluated graph neural network and regression models for complex decision tasks.",
@@ -38,10 +40,11 @@
 	},
 	{
 		"company": "University of Huddersfield",
-		"role": "Research Technician (AKTP)",
+		"role": "Research Technician",
 		"period": "Apr 2024 - Aug 2024",
 		"location": "Huddersfield, UK",
 		"url": "https://www.hud.ac.uk/",
+		"logo": "/images/companies/university-of-huddersfield-logo.jpg",
 		"summary": "Built an end-to-end NLP workflow to automate financial audit processes, turning unstructured financial records into machine-readable data for reliable automated analysis. Emphasized traceability and compliance through auditable processing logic.",
 		"details": [
 			"Designed and implemented an end-to-end NLP pipeline for financial audit automation.",
@@ -56,6 +59,7 @@
 		"period": "Oct 2023 - Apr 2024",
 		"location": "Huddersfield, UK",
 		"url": "https://www.hud.ac.uk/",
+		"logo": "/images/companies/university-of-huddersfield-logo.jpg",
 		"summary": "Co-developed operational AI tooling for a research engineering environment, including intelligent asset management and test-plan generation. Supported advanced manufacturing research through data pipeline contributions for 3D object orientation detection under real-world constraints.",
 		"details": [
 			"Co-designed an intelligent asset management and test-plan generation system used in daily operations.",
@@ -70,6 +74,7 @@
 		"period": "Mar 2022 - Aug 2022",
 		"location": "Goa, India",
 		"url": "https://www.trellissoft.com/",
+		"logo": "/images/companies/trellissoft-logo.jpg",
 		"summary": "Delivered product features and core software enhancements using structured object-oriented practices in sprint cycles. Contributed to technical decisions while maintaining quality and delivery timelines across collaborative engineering work.",
 		"details": [
 			"Enhanced core software systems using object-oriented development practices.",
@@ -84,6 +89,7 @@
 		"period": "May 2019 - Mar 2022",
 		"location": "Goa, India",
 		"url": "https://www.teaminertia.com/",
+		"logo": "/images/companies/team-inertia-technologies-logo.jpg",
 		"summary": "Built and maintained web and mobile applications across CMS, CRM, and retail platforms for multiple clients. Designed scalable architectures, improved reliability, and supported team delivery by mentoring junior developers in fast-paced project environments.",
 		"details": [
 			"Developed and maintained client-facing web and mobile applications across CMS, CRM, and retail products.",

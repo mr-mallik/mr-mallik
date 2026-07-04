@@ -10,27 +10,36 @@ import { buildCollectionPageJsonLd, createPageMetadata, sanitizeJsonLd } from "@
 
 type BlogPageSearchParams = {
   tag?: string | string[];
+  category?: string | string[];
 };
 
 type BlogPageProps = {
   searchParams?: Promise<BlogPageSearchParams> | BlogPageSearchParams;
 };
 
+function firstParam(value?: string | string[]): string | undefined {
+  const raw = Array.isArray(value) ? value[0] : value;
+  return raw?.trim() ? raw.trim() : undefined;
+}
+
 export async function generateMetadata({ searchParams }: BlogPageProps): Promise<Metadata> {
   const resolvedSearchParams = await Promise.resolve(searchParams ?? {});
-  const rawTag = Array.isArray(resolvedSearchParams.tag)
-    ? resolvedSearchParams.tag[0]
-    : resolvedSearchParams.tag;
-  const activeTag = rawTag?.trim() ? rawTag.trim() : undefined;
+  const activeTag = firstParam(resolvedSearchParams.tag);
+  const activeCategory = firstParam(resolvedSearchParams.category);
+  const activeFilter = activeTag ?? activeCategory;
 
   return createPageMetadata({
-    title: activeTag ? `Blogs tagged ${activeTag}` : "Blogs",
-    description: activeTag
-      ? `Posts tagged ${activeTag} from Gulger Mallik's blog on software engineering, applied AI, and research.`
+    title: activeTag
+      ? `Blogs tagged ${activeTag}`
+      : activeCategory
+        ? `Blogs in ${activeCategory}`
+        : "Blogs",
+    description: activeFilter
+      ? `Posts about ${activeFilter} from Gulger Mallik's blog on software engineering, applied AI, and research.`
       : PAGE_COPY.blogsPageDescription,
     path: ROUTES.blogs,
-    keywords: activeTag ? [activeTag] : ["blogs", "software engineering blog", "applied AI", "research notes"],
-    noIndex: Boolean(activeTag),
+    keywords: activeFilter ? [activeFilter] : ["blogs", "software engineering blog", "applied AI", "research notes"],
+    noIndex: Boolean(activeFilter),
   });
 }
 
@@ -38,20 +47,19 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const resolvedSearchParams = await Promise.resolve(searchParams ?? {});
-  const rawTag = Array.isArray(resolvedSearchParams.tag)
-    ? resolvedSearchParams.tag[0]
-    : resolvedSearchParams.tag;
-  const activeTag = rawTag?.trim() ? rawTag.trim() : undefined;
+  const activeTag = firstParam(resolvedSearchParams.tag);
+  const activeCategory = firstParam(resolvedSearchParams.category);
 
   const { articles, meta, error } = await getArticlesList({
-    category: "blog",
+    type: "blog",
     page: 1,
     limit: 10,
     tag: activeTag,
+    category: activeCategory,
   });
 
   return (
-    <section className="mx-auto w-full max-w-2xl ">
+    <section className="w-full ui-container ui-container-narrow py-4 sm:py-8 lg:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -82,6 +90,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           initialMeta={meta}
           initialError={error}
           initialTag={activeTag}
+          initialCategory={activeCategory}
         />
       </div>
     </section>

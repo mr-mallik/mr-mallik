@@ -1,35 +1,48 @@
 import Link from "next/link";
-import localFont from "next/font/local";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { LinkedinIcon, Github01Icon } from "@hugeicons/core-free-icons";
 
-import { ROUTES, SITE } from "@/app/constants";
-import {ThemeToggle} from "@/components/theme-toggle";
+import { PROFILE, ROUTES, SITE } from "@/app/constants";
+import { brittanySignature } from "@/lib/fonts";
 
-const brittanySignature = localFont({
-  src: "../public/fonts/BrittanySignature.ttf",
-  fallback: ["cursive"],
-  display: "swap",
-});
+const SOCIAL_LINKS = [
+  { label: "LinkedIn", href: PROFILE.linkedInUrl, icon: LinkedinIcon },
+  { label: "GitHub", href: PROFILE.githubUrl, icon: Github01Icon },
+];
 
 export function Footer() {
   return (
-    <footer className="w-full px-4 pb-6 sm:px-6 lg:px-8">
-      <div className="ui-footer ui-control-text mx-auto flex w-full max-w-2xl flex-col items-center gap-3 py-4 text-center text-sm sm:flex-row sm:items-center sm:justify-between sm:text-left">
+    <footer className="ui-footer w-full">
+      <div className="ui-container ui-control-text py-5 flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
         <Link
           href={ROUTES.home}
-          className={`${brittanySignature.className} ui-brand-link ui-text-muted text-4xl`}
+          className={`${brittanySignature.className} ui-brand-link ui-text-muted text-4xl shrink-0`}
         >
           {SITE.brandName}
         </Link>
-        <div className="flex flex-col items-center gap-2 sm:items-end">
-          <div className="hidden items-center gap-2 sm:inline-flex">
-            <span>Theme:</span>
 
-            <div>
-              <ThemeToggle />
-            </div>
+        {/* Right column */}
+        <div className="flex flex-col items-center gap-2 sm:items-end">
+          {/* Theme + social icons */}
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-end">
+            <span className="text-[var(--ui-text-muted)]">
+              &copy; {new Date().getFullYear()} {SITE.ownerName}. {SITE.copyrightSuffix}
+            </span>
+            <span className="hidden sm:inline text-[var(--ui-border-soft)]">|</span>
+            {SOCIAL_LINKS.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.label}
+                className="text-[var(--ui-text-muted)] transition-colors hover:text-[var(--ui-text-primary)]"
+              >
+                <HugeiconsIcon icon={s.icon} className="h-4 w-4" />
+              </a>
+            ))}
           </div>
 
-          <span className="text-center sm:text-right">&copy; {new Date().getFullYear()} {SITE.ownerName}. {SITE.copyrightSuffix}</span>
         </div>
       </div>
     </footer>

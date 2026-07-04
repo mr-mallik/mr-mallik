@@ -80,6 +80,7 @@ export type ParsedBlock =
   | { kind: "heading"; level: number; text: string; id: string }
   | { kind: "blockquote"; text: string }
   | { kind: "image"; src: string; alt: string }
+  | { kind: "code_block"; code: string; language?: string }
   | { kind: "bulletList"; items: ParsedBlock[][] }
   | { kind: "orderedList"; items: ParsedBlock[][] };
 
@@ -168,6 +169,16 @@ function parseNodeList(
       if (src) {
         const alt = String(node.attrs?.alt ?? "").trim();
         blocks.push({ kind: "image", src, alt });
+      }
+      continue;
+    }
+
+    if (type === "code_block" || type === "codeBlock") {
+      const code = textFromNode(node);
+      if (code) {
+        const language =
+          typeof node.attrs?.language === "string" ? node.attrs.language : undefined;
+        blocks.push({ kind: "code_block", code, language });
       }
       continue;
     }
@@ -342,6 +353,52 @@ export const getArticleBySlug = cache(async (slug: string) => {
   }
 });
 
+export type ArticleAsset = {
+  id: string;
+  mediaId?: string;
+  type?: string;
+  url: string;
+  mimeType?: string;
+  alt?: string;
+  caption?: string;
+  order?: number;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+type ArticleAssetsResponse = {
+  success?: boolean;
+  data?: {
+    article?: { id: string; slug: string; title: string };
+    assets?: ArticleAsset[];
+  };
+};
+
+export const getArticleAssets = cache(async (slug: string): Promise<ArticleAsset[]> => {
+  const trimmedSlug = slug.trim();
+  if (!trimmedSlug) {
+    return [];
+  }
+
+  try {
+    const response = await cmsApi.get<ArticleAssetsResponse>(
+      `/articles/${trimmedSlug}/assets`,
+      {
+        next: { revalidate: 900 },
+      } as Parameters<typeof cmsApi.get>[1] & { next?: { revalidate: number } },
+    );
+
+    const assets = Array.isArray(response?.data?.assets) ? response.data.assets : [];
+
+    return assets
+      .filter((asset) => Boolean(asset?.url))
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+  } catch {
+    // The gallery is an enhancement; hide it rather than failing the page.
+    return [];
+  }
+});
+
 export const getProjectBySlug = cache(async (slug: string) => {
   const article = await getArticleBySlug(slug);
 
@@ -357,18 +414,20 @@ export const getProjectBySlug = cache(async (slug: string) => {
 });
 
 type GetArticlesParams = {
-  category?: "blog" | "project";
+  type?: "blog" | "project";
   page?: number;
   limit?: number;
   tag?: string;
+  category?: string;
   revalidate?: number;
 };
 
 export async function getArticlesList({
-  category = "blog",
+  type = "blog",
   page = 1,
   limit = 10,
   tag,
+  category,
   revalidate = 3600,
 }: GetArticlesParams = {}): Promise<{
   articles: ArticlesResponse["data"];
@@ -377,7 +436,7 @@ export async function getArticlesList({
 }> {
   try {
     const res = await cmsApi.get<ArticlesResponse>("/articles", {
-      query: { category, sort: "latest", page, limit, tag },
+      query: { type, sort: "latest", page, limit, tag, category },
       next: { revalidate },
     } as Parameters<typeof cmsApi.get>[1] & { next?: { revalidate: number } });
 

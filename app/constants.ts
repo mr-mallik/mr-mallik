@@ -25,6 +25,8 @@ export const ROUTES = {
   projects: "/projects",
   publications: "/publications",
   blogs: "/blogs",
+  about: "/about",
+  contact: "/contact",
 } as const;
 
 export const EXTERNAL_LINKS = {
@@ -41,13 +43,13 @@ export const MAIL = {
 } as const;
 
 export const SECTION_TITLES = {
-  projects: "Projects",
+  projects: "Selected Works",
   workExperience: "Work Experience",
   experience: "Experience",
   education: "Education",
   skills: "Skills",
   publications: "Publications",
-  showcase: "Showcase",
+  showcase: "Worked alongside",
   blog: "Blog",
 } as const;
 
@@ -92,6 +94,27 @@ export const PAGE_COPY = {
     "Ideas, lessons, and reflections on software engineering, applied research, and the evolving tech landscape.",
   resumeViewModeLegend: "Experience view mode",
 } as const;
+
+export const SOCIAL_LINKS = [
+  {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/mrmallik/",
+    "handle": "mrmallik",
+    "icon": "Linkedin02Icon"
+  },
+  {
+    "label": "GitHub",
+    "url": "https://github.com/mr-mallik",
+    "handle": "mr-mallik",
+    "icon": "GithubIcon"
+  },
+  {
+    "label": "Gmail",
+    "url": "mailto:gulgermallik@gmail.com",
+    "handle": "gulgermallik@gmail.com",
+    "icon": "MailAtSign01Icon"
+  },
+] as const;
 
 export const SOCIAL_HANDLES = {
   linkedIn: "mrmallik",

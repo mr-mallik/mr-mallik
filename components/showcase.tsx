@@ -22,13 +22,13 @@ export function Showcase() {
   return (
     <section className="space-y-5">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="ui-section-title tracking-tight">
+        <h2 className="ui-section-title ">
           {SECTION_TITLES.showcase}
         </h2>
       </div>
 
       <div className="overflow-hidden rounded-sm">
-        <div className="showcase-grid grid grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 sm:grid-cols-3 md:grid-cols-4">
+        <div className="showcase-grid grid grid-cols-3 gap-px bg-slate-200 dark:bg-slate-800 lg:grid-cols-4">
           {(showcaseItems as ShowcaseItem[]).map((item, index) => {
             const accentClass = ACCENT_CLASSES[index % ACCENT_CLASSES.length];
             const cellClass = `showcase-cell section-enter ${accentClass}`;
@@ -45,7 +45,7 @@ export function Showcase() {
                   alt={`${item.name} icon`}
                   width={160}
                   height={160}
-                  className="max-h-[72%] w-auto max-w-full object-contain grayscale brightness-0 opacity-55 dark:invert dark:opacity-65"
+                  className="h-auto max-h-[72%] w-auto max-w-full object-contain grayscale brightness-0 opacity-55 dark:invert dark:opacity-65"
                 />
               </div>
             );

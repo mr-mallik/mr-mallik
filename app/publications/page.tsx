@@ -14,7 +14,7 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function PublicationsPage() {
   return (
-    <section className="mx-auto w-full max-w-2xl ">
+    <section className="w-full ui-container ui-container-narrow py-4 sm:py-8 lg:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

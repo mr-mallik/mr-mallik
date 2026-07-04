@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Link05Icon } from "@hugeicons/core-free-icons";
 
 type CopyUrlButtonProps = {
   path: string;
@@ -24,8 +26,8 @@ export default function CopyUrlButton({ path, className }: CopyUrlButtonProps) {
   };
 
   return (
-    <button type="button" onClick={handleCopy} className={className ?? "ui-subtle-button"}>
-      {copied ? "Copied" : "Copy URL"}
+    <button type="button" onClick={handleCopy} className={className ?? ""}>
+      {copied ? "Copied" : <HugeiconsIcon icon={Link05Icon} />}
     </button>
   );
 }

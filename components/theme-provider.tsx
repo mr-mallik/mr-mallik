@@ -41,7 +41,14 @@ function applyTheme(theme: Theme) {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => getPreferredTheme());
+  // Always start at "light" so the client's first hydration pass matches the
+  // server-rendered HTML (window/localStorage aren't available during SSR).
+  // The real preference is applied right after mount below.
+  const [theme, setThemeState] = useState<Theme>("light");
+
+  useEffect(() => {
+    setThemeState(getPreferredTheme());
+  }, []);
 
   useEffect(() => {
     applyTheme(theme);

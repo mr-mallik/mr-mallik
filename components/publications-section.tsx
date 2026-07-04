@@ -18,6 +18,7 @@ type Publication = {
   image?: string | null;
   doi?: string | null;
   status: string;
+  domains?: string[];
 };
 
 export function PublicationsSection({
@@ -25,11 +26,13 @@ export function PublicationsSection({
   startFrom = 0,
   heading = true,
   showViewAllLink = false,
+  compact = false,
 }: {
   limit?: number;
   startFrom?: number;
   heading?: boolean;
   showViewAllLink?: boolean;
+  compact?: boolean;
 }) {
   const publications = publicationsItems as Publication[];
   const slicedPublications =
@@ -41,7 +44,7 @@ export function PublicationsSection({
     <section className="space-y-5">
       {heading ? (
         <div className="flex items-center justify-between gap-4">
-          <h2 className="ui-section-title tracking-tight">
+          <h2 className="ui-section-title ">
             {SECTION_TITLES.publications}
           </h2>
           {showViewAllLink ? (
@@ -57,6 +60,43 @@ export function PublicationsSection({
 
       {slicedPublications.length === 0 ? (
         <p className="ui-meta-text">No additional publications to show yet.</p>
+      ) : compact ? (
+        <div className="space-y-5">
+          {slicedPublications.map((publication, i) => (
+            <article
+              key={publication.title}
+              className="section-enter"
+              style={{ animationDelay: `${i * 70}ms` }}
+            >
+              {publication.domains && publication.domains.length > 0 ? (
+                <div className="mb-2 flex flex-wrap gap-1.5">
+                  {publication.domains.map((d) => (
+                    <span key={d} className="research-tag">{d}</span>
+                  ))}
+                </div>
+              ) : null}
+              <p className="text-sm font-medium leading-snug text-[var(--ui-text-primary)]">
+                {publication.title}
+              </p>
+              <p className="mt-1.5 text-xs text-[var(--ui-text-muted)]">
+                {publication.status}
+                {publication.doi ? (
+                  <>
+                    {" "}&bull;{" "}
+                    <Link
+                      href={`https://doi.org/${publication.doi}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="ui-link"
+                    >
+                      {publication.doi}
+                    </Link>
+                  </>
+                ) : null}
+              </p>
+            </article>
+          ))}
+        </div>
       ) : (
         <div className="space-y-4">
           {slicedPublications.map((publication) => (
@@ -84,6 +124,13 @@ export function PublicationsSection({
                 </div>
 
                 <div className="min-w-0 flex-1">
+                  {publication.domains && publication.domains.length > 0 ? (
+                    <div className="mb-2 flex flex-wrap gap-1.5">
+                      {publication.domains.map((d) => (
+                        <span key={d} className="research-tag">{d}</span>
+                      ))}
+                    </div>
+                  ) : null}
                   <p className="ui-item-title">{publication.title}</p>
                   {publication.excerpt ? (
                     <p className="ui-body-text mt-2 text-sm">{publication.excerpt}</p>

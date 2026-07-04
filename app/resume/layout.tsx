@@ -21,7 +21,7 @@ export default function ResumeLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section>
+    <section className="w-full ui-container ui-container-narrow py-4 sm:py-8 lg:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

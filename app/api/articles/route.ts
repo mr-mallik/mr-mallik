@@ -8,13 +8,14 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const page = Math.max(1, Number(searchParams.get("page") ?? "1") || 1);
   const limit = Math.min(50, Math.max(1, Number(searchParams.get("limit") ?? "10") || 10));
-  const category = searchParams.get("category") ?? "blog";
+  const type = searchParams.get("type") ?? "blog";
   const sort = searchParams.get("sort") ?? "latest";
   const tag = searchParams.get("tag")?.trim() || undefined;
+  const category = searchParams.get("category")?.trim() || undefined;
 
   try {
     const response = await cmsApi.get<ArticlesResponse>("/articles", {
-      query: { page, limit, category, sort, tag },
+      query: { page, limit, type, sort, tag, category },
       next: { revalidate: 300 },
     } as Parameters<typeof cmsApi.get>[1] & { next?: { revalidate: number } });
 
