@@ -76,7 +76,8 @@ export default function Page() {
                     <span style={{ color: "var(--ui-accent)" }}>&amp; AI Researcher</span>
                   </h1>
                   <p className="max-w-md text-base leading-relaxed text-[var(--ui-text-secondary)]">
-                    Crafting intelligent digital products and advancing applied AI research for
+                    I&apos;m <strong className="font-medium text-[var(--ui-text-primary)]">Gulger Mallik</strong> — crafting
+                    intelligent digital products and advancing applied AI research for
                     real-world impact. Based in Huddersfield, United Kingdom.
                   </p>
                 </div>

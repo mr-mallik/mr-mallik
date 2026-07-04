@@ -54,6 +54,7 @@ export const metadata: Metadata = {
     type: "website",
     url: process.env.NEXT_APP_PUBLIC_URL || "https://mrmallik.com",
     siteName: SITE.ownerName,
+    locale: "en_GB",
     title: SITE.ownerName,
     description: SITE_DESCRIPTION,
     images: [

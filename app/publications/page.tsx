@@ -3,7 +3,15 @@ import type { Metadata } from "next";
 import { PAGE_COPY, ROUTES, SECTION_TITLES } from "@/app/constants";
 import Header from "@/components/header";
 import { PublicationsSection } from "@/components/publications-section";
-import { createPageMetadata, buildWebPageJsonLd, sanitizeJsonLd, DEFAULT_OG_IMAGE_PATH } from "@/app/seo";
+import {
+  createPageMetadata,
+  buildScholarlyArticlesJsonLd,
+  buildWebPageJsonLd,
+  sanitizeJsonLd,
+  DEFAULT_OG_IMAGE_PATH,
+} from "@/app/seo";
+
+import publications from "@/data/publications.json";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Publications",
@@ -25,6 +33,14 @@ export default function PublicationsPage() {
               path: ROUTES.publications,
               image: DEFAULT_OG_IMAGE_PATH,
             }),
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: sanitizeJsonLd(
+            buildScholarlyArticlesJsonLd(publications, ROUTES.publications),
           ),
         }}
       />

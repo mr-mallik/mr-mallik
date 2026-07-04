@@ -8,7 +8,7 @@ import { createPageMetadata, buildWebPageJsonLd, sanitizeJsonLd, DEFAULT_OG_IMAG
 export const metadata: Metadata = createPageMetadata({
   title: "Experience",
   description: PAGE_COPY.experiencePageDescription,
-  path: ROUTES.resume,
+  path: ROUTES.experience,
   keywords: ["experience", "work experience", "Gulger Mallik", "mrmallik"],
 });
 
@@ -22,7 +22,7 @@ export default function ExperiencePage() {
             buildWebPageJsonLd({
               title: "Experience",
               description: PAGE_COPY.experiencePageDescription,
-              path: ROUTES.resume,
+              path: ROUTES.experience,
               image: DEFAULT_OG_IMAGE_PATH,
             }),
           ),

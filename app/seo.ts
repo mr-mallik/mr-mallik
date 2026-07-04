@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { EXTERNAL_LINKS, PROFILE, SITE } from "@/app/constants";
+import { EXTERNAL_LINKS, LOCATION, NAME_VARIANTS, PROFILE, SITE } from "@/app/constants";
 
 const SITE_URL = new URL(PROFILE.websiteUrl);
 
@@ -15,6 +15,10 @@ export const SITE_KEYWORDS = [
   "Gulger Mallik",
   "mrmallik",
   "mr mallik",
+  ...NAME_VARIANTS,
+  "Gulger Mallik Huddersfield",
+  "Gulger Mallik AI researcher",
+  "Gulger Mallik Cosmokode",
   "software engineer",
   "AI researcher",
   "researcher",
@@ -164,6 +168,7 @@ export function createPageMetadata({
       type,
       url: absoluteUrl(path),
       siteName: SITE.ownerName,
+      locale: "en_GB",
       title,
       description,
       images: [
@@ -194,22 +199,52 @@ export function buildPersonJsonLd(): JsonLdValue {
     "@type": "Person",
     "@id": PERSON_ID,
     name: SITE.ownerName,
-    alternateName: [SITE.brandName, "mrmallik"],
+    givenName: "Gulger",
+    familyName: "Mallik",
+    honorificPrefix: "Mr",
+    alternateName: [SITE.brandName, "mrmallik", ...NAME_VARIANTS],
+    description:
+      "Gulger Mallik is an AI researcher at the University of Huddersfield and founding software engineer at Cosmokode Ltd, working on explainable AI, multi-criteria decision making, and sustainable software engineering.",
+    disambiguatingDescription:
+      "AI researcher and software engineer based in Huddersfield, United Kingdom, also known online as mrmallik.",
     url: PROFILE.websiteUrl,
     image: absoluteUrl("/images/gulger-mallik@1x1.png"),
+    email: `mailto:${PROFILE.primaryEmail}`,
     sameAs: PERSON_SAME_AS,
-    jobTitle: "Founder and Director",
-    worksFor: {
-      "@type": "Organization",
-      "@id": absoluteUrl("#cosmokode"),
-      name: "Cosmokode Ltd",
-      url: EXTERNAL_LINKS.cosmokode,
-      founder: {
-        "@id": PERSON_ID,
+    jobTitle: ["AI Researcher", "Software Engineer", "Founder and Director"],
+    homeLocation: {
+      "@type": "Place",
+      name: `${LOCATION.locality}, ${LOCATION.countryLabel}`,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: LOCATION.locality,
+        addressRegion: LOCATION.region,
+        addressCountry: LOCATION.country,
       },
-      employee: {
-        "@id": PERSON_ID,
+    },
+    worksFor: [
+      {
+        "@type": "Organization",
+        "@id": absoluteUrl("#cosmokode"),
+        name: "Cosmokode Ltd",
+        url: EXTERNAL_LINKS.cosmokode,
+        founder: {
+          "@id": PERSON_ID,
+        },
+        employee: {
+          "@id": PERSON_ID,
+        },
       },
+      {
+        "@type": "CollegeOrUniversity",
+        name: PROFILE.affiliationName,
+        url: PROFILE.affiliationUrl,
+      },
+    ],
+    affiliation: {
+      "@type": "CollegeOrUniversity",
+      name: PROFILE.affiliationName,
+      url: PROFILE.affiliationUrl,
     },
     alumniOf: {
       "@type": "CollegeOrUniversity",
@@ -298,6 +333,8 @@ export function buildWebPageJsonLd({
     about: {
       "@id": PERSON_ID,
     },
+    // Google's profile-page structured data reads mainEntity, not about.
+    ...(type === "ProfilePage" ? { mainEntity: { "@id": PERSON_ID } } : {}),
   };
 }
 
@@ -408,6 +445,53 @@ export function buildCreativeWorkJsonLd({
     dateModified: modifiedTime ?? publishedTime ?? undefined,
     inLanguage: "en-GB",
     keywords,
+  };
+}
+
+export function buildScholarlyArticlesJsonLd(
+  publications: Array<{
+    title: string;
+    excerpt?: string | null;
+    abstract?: string | null;
+    doi?: string | null;
+    status?: string | null;
+    domains?: string[];
+  }>,
+  path: string,
+): JsonLdValue {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    url: absoluteUrl(path),
+    itemListElement: publications.map((publication, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "ScholarlyArticle",
+        headline: publication.title,
+        name: publication.title,
+        ...(publication.excerpt ? { description: publication.excerpt } : {}),
+        ...(publication.abstract ? { abstract: publication.abstract } : {}),
+        ...(publication.doi
+          ? {
+              sameAs: `https://doi.org/${publication.doi}`,
+              identifier: {
+                "@type": "PropertyValue",
+                propertyID: "DOI",
+                value: publication.doi,
+              },
+            }
+          : {}),
+        ...(publication.status ? { creativeWorkStatus: publication.status } : {}),
+        ...(publication.domains && publication.domains.length > 0
+          ? { keywords: publication.domains }
+          : {}),
+        author: {
+          "@id": PERSON_ID,
+        },
+        inLanguage: "en-GB",
+      },
+    })),
   };
 }
 

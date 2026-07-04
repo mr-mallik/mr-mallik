@@ -5,6 +5,25 @@ export const SITE = {
   copyrightSuffix: "All rights reserved.",
 } as const;
 
+// Spellings people actually type when searching for Gulger Mallik.
+// Surfaced in structured data, llms.txt, and visible copy so search and
+// answer engines resolve them to the same person.
+export const NAME_VARIANTS = [
+  "Mr Mallik",
+  "Gulgar Mallik",
+  "Gulger Malik",
+  "Gulgar Malik",
+  "Gulger Mallick",
+  "Gulzar Mallik",
+] as const;
+
+export const LOCATION = {
+  locality: "Huddersfield",
+  region: "England",
+  country: "GB",
+  countryLabel: "United Kingdom",
+} as const;
+
 export const PROFILE = {
   primaryEmail: "gulgermallik@gmail.com",
   phone: "07767924720",
@@ -24,6 +43,7 @@ export const ROUTES = {
   resume: "/resume",
   projects: "/projects",
   publications: "/publications",
+  experience: "/experience",
   blogs: "/blogs",
   about: "/about",
   contact: "/contact",
