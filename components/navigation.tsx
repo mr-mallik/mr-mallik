@@ -49,7 +49,7 @@ export default function Navigation() {
               priority
             />
 
-            <span className="ui-brand-text text-lg md:text-xl lg:text-2xl font-bold tracking-widest uppercase">
+            <span className="ui-brand-text text-lg lg:text-2xl font-bold tracking-widest uppercase whitespace-nowrap">
               Gulger <span style={{ color: "var(--ui-accent)" }}>Mallik</span>
             </span>
 
@@ -57,12 +57,12 @@ export default function Navigation() {
 
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Desktop nav links */}
-            <div className="hidden items-center gap-4 sm:flex">
+            <div className="hidden items-center gap-2.5 md:flex lg:gap-4">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`ui-nav-link ${
+                  className={`ui-nav-link whitespace-nowrap ${
                     (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href))
                       ? "ui-nav-active"
                       : ""
@@ -80,7 +80,7 @@ export default function Navigation() {
               onClick={() => setMobileOpen((open) => !open)}
               aria-expanded={mobileOpen}
               aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
-              className="ui-theme-toggle sm:hidden"
+              className="ui-theme-toggle md:hidden"
             >
               <svg
                 width="18"
@@ -103,7 +103,7 @@ export default function Navigation() {
 
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 z-40 bg-black/30 backdrop-blur-[2px] transition-opacity duration-300 sm:hidden ${
+        className={`fixed inset-0 z-40 bg-black/30 backdrop-blur-[2px] transition-opacity duration-300 md:hidden ${
           mobileOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={close}
@@ -112,7 +112,7 @@ export default function Navigation() {
 
       {/* Right-side drawer */}
       <div
-        className={`fixed right-0 top-0 z-50 flex h-full w-64 flex-col border-l border-[var(--ui-border-subtle)] bg-background shadow-2xl transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:hidden ${
+        className={`fixed right-0 top-0 z-50 flex h-full w-64 flex-col border-l border-[var(--ui-border-subtle)] bg-background shadow-2xl transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
         aria-label="Navigation menu"

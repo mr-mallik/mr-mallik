@@ -1,4 +1,4 @@
-import { LinkedinIcon, Github01Icon, Mail } from "@hugeicons/core-free-icons";
+import { LinkedinIcon, Github01Icon, Mail, IdIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,8 +10,8 @@ import {
   PROFILE,
   ROUTES,
   SITE,
-  SOCIAL_HANDLES,
 } from "@/app/constants";
+import { Pronunciation } from "@/components/pronunciation";
 import {
   buildWebPageJsonLd,
   createPageMetadata,
@@ -37,14 +37,15 @@ const mailtoQuery = new URLSearchParams({
 const mailtoLink = `mailto:${PROFILE.primaryEmail}?${mailtoQuery}`;
 
 const socialLinks = [
-  { name: "LinkedIn", handle: SOCIAL_HANDLES.linkedIn, href: PROFILE.linkedInUrl, icon: LinkedinIcon },
-  { name: "GitHub", handle: SOCIAL_HANDLES.github, href: PROFILE.githubUrl, icon: Github01Icon },
-  { name: "Email", handle: PROFILE.primaryEmail, href: mailtoLink, icon: Mail },
+  { name: "LinkedIn", href: PROFILE.linkedInUrl, icon: LinkedinIcon },
+  { name: "GitHub", href: PROFILE.githubUrl, icon: Github01Icon },
+  { name: "Email", href: mailtoLink, icon: Mail },
+  { name: "ORCiD", href: PROFILE.orcidUrl, icon: IdIcon },
 ];
 
 export default function AboutPage() {
   return (
-    <section className="relative w-full ui-container ui-container-prose py-4 sm:py-8 lg:py-12">
+    <section className="relative w-full ui-container py-4 sm:py-8 lg:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -60,42 +61,80 @@ export default function AboutPage() {
         }}
       />
 
-      <div className="space-y-10 sm:space-y-14">
-        {/* Avatar + identity */}
-        <div className="hero-fade-in flex items-center gap-5" style={{ animationDelay: "0ms" }}>
-          <div className="relative shrink-0 group cursor-default">
-            <div className="absolute inset-0 scale-125 rounded-full bg-blue-300/30 blur-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100 dark:bg-blue-500/20" />
-            <div className="relative h-[72px] w-[72px] overflow-hidden rounded-full shadow-md ring-2 ring-blue-200/60 ring-offset-2 ring-offset-background transition-all duration-300 group-hover:ring-blue-300/90 group-hover:shadow-blue-100/60 dark:ring-blue-800/50 dark:ring-offset-background dark:group-hover:ring-blue-600/70">
-              <Image
-                src="/images/gulger-mallik@1x1.png"
-                alt={PROFILE.profileImageAlt}
-                width={72}
-                height={72}
-                className="rounded-full transition-transform duration-500 group-hover:scale-[1.06]"
-                priority
-              />
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        {/* Profile card over beige backdrop */}
+        <div
+          className="hero-fade-in relative flex justify-center py-10 sm:py-14"
+          style={{ animationDelay: "0ms" }}
+        >
+          <div
+            className="absolute inset-y-0 inset-x-0 bg-[#eadfd2] sm:right-16 dark:bg-[#2a2420]"
+            aria-hidden="true"
+          />
+          <div className="relative w-[280px] bg-[#f7f2ec] shadow-xl sm:w-[320px] sm:translate-x-6 dark:bg-[#1f1b18]">
+            <div className="flex flex-col items-center px-8 pb-9 pt-10 text-center">
+              <div className="h-40 w-40 overflow-hidden rounded-full bg-[var(--ui-bg-elevated)] sm:h-44 sm:w-44">
+                <Image
+                  src="/images/hero-image.png"
+                  alt={PROFILE.profileImageAlt}
+                  width={176}
+                  height={176}
+                  className="h-full w-full object-cover"
+                  priority
+                />
+              </div>
+              <h1 className="mt-8 text-xl font-bold tracking-tight text-[var(--ui-text-primary)]">
+                Mr. {SITE.ownerName}
+              </h1>
+              <Pronunciation />
+              <div className="mt-5 h-px w-10 bg-[var(--ui-text-primary)]" aria-hidden="true" />
+              <p className="mt-5 text-sm uppercase tracking-[0.18em] text-[var(--ui-text-secondary)]">
+                Researcher :{" "}
+                <Link
+                  href={PROFILE.affiliationUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-[var(--ui-text-primary)]"
+                >
+                  {PROFILE.affiliationName}
+                </Link>
+              </p>
             </div>
-          </div>
-          <div>
-            <h1 className="hero-name">{SITE.ownerName}</h1>
-            <p className="hero-role mt-1">
-              {PAGE_COPY.homepageRolePrefix}{" "}
-              <Link
-                href={PROFILE.affiliationUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="hero-affiliation"
-              >
-                {PROFILE.affiliationName}
-              </Link>
-            </p>
+            <div className="flex items-center justify-center gap-9 bg-white py-4 dark:bg-[#171310]">
+              {socialLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={link.name}
+                  className="text-[var(--ui-text-primary)] transition-opacity hover:opacity-60"
+                >
+                  <HugeiconsIcon icon={link.icon} className="h-5 w-5" aria-hidden="true" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Personal narrative */}
+        {/* Greeting + narrative */}
         <div className="space-y-5">
-          <p className="hero-intro hero-fade-in" style={{ animationDelay: "90ms" }}>
-            {PAGE_COPY.homeIntroCompanyPrefix}{" "}
+          <p
+            className="hero-fade-in font-serif text-6xl text-[var(--ui-text-primary)] sm:text-7xl"
+            style={{ animationDelay: "90ms" }}
+          >
+            Hello
+          </p>
+          <h2
+            className="hero-fade-in pt-2 text-2xl font-medium text-[var(--ui-text-primary)]"
+            style={{ animationDelay: "150ms" }}
+          >
+            A Bit About Me
+          </h2>
+
+          <p className="ui-body-text hero-fade-in" style={{ animationDelay: "210ms" }}>
+            I am <strong className="text-[var(--ui-text-primary)]">{SITE.ownerName}</strong>,{" "}
+            {PAGE_COPY.homeIntroCompanyPrefix.replace("I'm ", "")}{" "}
             <Link
               href={EXTERNAL_LINKS.cosmokode}
               target="_blank"
@@ -107,7 +146,7 @@ export default function AboutPage() {
             {PAGE_COPY.homeIntroCompanySuffix}
           </p>
 
-          <p className="ui-body-text hero-fade-in" style={{ animationDelay: "180ms" }}>
+          <p className="ui-body-text hero-fade-in" style={{ animationDelay: "270ms" }}>
             My research explores Explainable AI, Multi-Criteria Decision Making, and Sustainable
             Software Engineering - areas where I believe rigorous thinking leads to better products.
             I publish through{" "}
@@ -119,41 +158,30 @@ export default function AboutPage() {
             >
               ORCiD
             </Link>{" "}
-            and keep a{" "}
-            <Link href={ROUTES.resume} className="hero-inline-link">
-              full resume
-            </Link>{" "}
-            available for download.
-          </p>
-
-          <p className="ui-body-text hero-fade-in" style={{ animationDelay: "250ms" }}>
-            Outside of work, I write about the things I find interesting - software, AI, and what
-            it means to build things responsibly. You can find those thoughts on my{" "}
+            and write about software, AI, and building things responsibly on my{" "}
             <Link href={ROUTES.blogs} className="hero-inline-link">
               blog
             </Link>
             .
           </p>
 
-          <p className="ui-body-text hero-fade-in" style={{ animationDelay: "320ms" }}>
-            {PAGE_COPY.homeSocialParagraph}
-          </p>
-        </div>
-
-        {/* Social / contact */}
-        <div className="flex flex-wrap items-center gap-6">
-          {socialLinks.map((link) => (
+          <div
+            className="hero-fade-in flex flex-wrap items-center gap-4 pt-3"
+            style={{ animationDelay: "330ms" }}
+          >
             <Link
-              key={link.name}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-              className="ui-link-subtle inline-flex items-center gap-1.5 align-middle"
+              href={ROUTES.resume}
+              className="flex items-center rounded-full bg-[var(--ui-text-primary)] px-8 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
             >
-              <HugeiconsIcon icon={link.icon} className="h-4 w-4 shrink-0" aria-hidden="true" />
-              {link.handle}
+              Resume
             </Link>
-          ))}
+            <Link
+              href={ROUTES.projects}
+              className="flex items-center rounded-full border border-[var(--ui-border-soft)] px-8 py-3 text-sm font-medium text-[var(--ui-text-secondary)] transition-colors hover:border-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)]"
+            >
+              Projects
+            </Link>
+          </div>
         </div>
       </div>
     </section>
