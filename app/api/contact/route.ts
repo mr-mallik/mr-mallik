@@ -3,6 +3,11 @@ import nodemailer from "nodemailer";
 
 import { PROFILE } from "@/app/constants";
 import services from "@/data/services.json";
+import {
+  assessRecaptchaToken,
+  isRecaptchaConfigured,
+  RECAPTCHA_CONTACT_ACTION,
+} from "@/lib/recaptcha";
 
 const MAX_FIELD_LENGTH = 200;
 const MAX_MESSAGE_LENGTH = 5000;
@@ -22,6 +27,7 @@ type ContactPayload = {
   email?: unknown;
   service?: unknown;
   message?: unknown;
+  recaptchaToken?: unknown;
 };
 
 function asTrimmedString(value: unknown, maxLength: number): string | null {
@@ -81,6 +87,38 @@ export async function POST(request: Request) {
       { success: false, message: "Please select a valid service." },
       { status: 400 },
     );
+  }
+
+  if (isRecaptchaConfigured()) {
+    const token = typeof payload.recaptchaToken === "string" ? payload.recaptchaToken : null;
+
+    if (!token) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "We couldn't confirm you're human. Please refresh the page and try again.",
+        },
+        { status: 400 },
+      );
+    }
+
+    try {
+      const verdict = await assessRecaptchaToken(token, RECAPTCHA_CONTACT_ACTION);
+      if (!verdict.ok) {
+        console.warn(`Contact form: reCAPTCHA rejected submission. ${verdict.reason}`);
+        return NextResponse.json(
+          {
+            success: false,
+            message: "We couldn't confirm you're human. Please refresh the page and try again.",
+          },
+          { status: 400 },
+        );
+      }
+    } catch (err) {
+      // Assessment API unreachable/misconfigured: let the message through rather
+      // than lock out legitimate visitors, but log loudly so it gets fixed.
+      console.error("Contact form: reCAPTCHA assessment failed, accepting without verification.", err);
+    }
   }
 
   const port = Number(SMTP_PORT);
