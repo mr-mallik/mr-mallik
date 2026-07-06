@@ -2,21 +2,31 @@
   {
     "badge": "UoH",
     "title": "General Member of Ethics Committee for AI and Data Science",
+    "description": "Member of the Ethics Committee for AI and Data Science at the University of Huddersfield, contributing to ethical considerations in AI research and applications.",
     "date": "July 2026"
   },
   {
     "badge": "UoH",
     "title": "Researcher on UKRI‑funded AI for Carbon Capture & Storage",
+    "description": "Conducting research on AI applications for carbon capture and storage, funded by the UK Research and Innovation (UKRI) program.",
     "date": "October 2025"
   },
   {
     "badge": "UoH",
     "title": "Exceptional Achievement in Computing",
+    "description": "Recognized for outstanding performance and contributions in the field of computing at the University of Huddersfield.",
     "date": "June 2024"
   },
   {
     "badge": "SU",
     "title": "Academic Representative for MSc",
+    "description": "Served as the academic representative for the MSc program, advocating for student interests and facilitating communication between students and faculty.",
     "date": "September 2022"
+  },
+  {
+    "badge": "SXC",
+    "title": "Student Cordinator for Techlipse 2K19",
+    "description": "Coordinated student activities and events for Techlipse 2K19, ensuring smooth execution and engagement.",
+    "date": "September 2019"
   }
 ]

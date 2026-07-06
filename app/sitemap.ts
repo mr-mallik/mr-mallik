@@ -41,49 +41,41 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: PROFILE.websiteUrl,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${PROFILE.websiteUrl}${ROUTES.resume}`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${PROFILE.websiteUrl}${ROUTES.projects}`,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${PROFILE.websiteUrl}${ROUTES.publications}`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${PROFILE.websiteUrl}${ROUTES.about}`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${PROFILE.websiteUrl}${ROUTES.experience}`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${PROFILE.websiteUrl}${ROUTES.contact}`,
-      lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.6,
     },
     {
       url: `${PROFILE.websiteUrl}${ROUTES.blogs}`,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },

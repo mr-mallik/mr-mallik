@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from "@/components/footer";
 import Navigation from "@/components/navigation";
-import { SITE } from "@/app/constants";
+import { PROFILE, SITE } from "@/app/constants";
 import { buildCosmokodeJsonLd, buildPersonJsonLd, buildWebSiteJsonLd, sanitizeJsonLd, SITE_DESCRIPTION, SITE_KEYWORDS } from "@/app/seo";
 import ScrollToTopButton from "@/components/scroll-to-top-button";
 
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: "/images/seo_image.png",
+        url: "/images/seo_image.jpg",
         alt: "Gulger Mallik portfolio and research profile",
         width: 1200,
         height: 630,
@@ -68,9 +68,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: PROFILE.twitterHandle,
+    creator: PROFILE.twitterHandle,
     title: SITE.ownerName,
     description: SITE_DESCRIPTION,
-    images: ["/images/seo_image.png"],
+    images: ["/images/seo_image.jpg"],
   },
 };
 

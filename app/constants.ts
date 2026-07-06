@@ -27,12 +27,17 @@ export const LOCATION = {
 export const PROFILE = {
   primaryEmail: "gulgermallik@gmail.com",
   phone: "07767924720",
+  // Server-only: NEXT_APP_PUBLIC_URL is not NEXT_PUBLIC_-prefixed, so it is
+  // undefined in the browser bundle. Client components must use
+  // websiteCanonicalUrl instead or they will hydration-mismatch.
   websiteUrl: process.env.NEXT_APP_PUBLIC_URL || "https://mrmallik.com",
+  websiteCanonicalUrl: "https://mrmallik.com",
   websiteLabel: "mrmallik.com",
   linkedInUrl: "https://www.linkedin.com/in/mrmallik/",
   linkedInDisplay: "linkedin.com/in/mrmallik/",
   githubUrl: "https://github.com/mr-mallik",
   orcidUrl: "https://orcid.org/0009-0002-5110-8575",
+  twitterHandle: "@gulger_mallik",
   affiliationName: "University of Huddersfield",
   affiliationUrl: "https://hud.ac.uk",
   profileImageAlt: "Profile picture of Gulger Mallik",
@@ -66,6 +71,7 @@ export const SECTION_TITLES = {
   projects: "Selected Works",
   workExperience: "Work Experience",
   experience: "Experience",
+  achievements: "Achievements",
   education: "Education",
   skills: "Skills",
   publications: "Publications",

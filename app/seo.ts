@@ -4,7 +4,7 @@ import { EXTERNAL_LINKS, LOCATION, NAME_VARIANTS, PROFILE, SITE } from "@/app/co
 
 const SITE_URL = new URL(PROFILE.websiteUrl);
 
-export const DEFAULT_OG_IMAGE_PATH = "/images/seo_image.png";
+export const DEFAULT_OG_IMAGE_PATH = "/images/seo_image.jpg";
 export const DEFAULT_OG_IMAGE_URL = new URL(DEFAULT_OG_IMAGE_PATH, SITE_URL).toString();
 export const DEFAULT_OG_IMAGE_ALT = `${SITE.ownerName} portfolio, research, and software engineering profile`;
 
@@ -186,6 +186,8 @@ export function createPageMetadata({
     },
     twitter: {
       card: "summary_large_image",
+      site: PROFILE.twitterHandle,
+      creator: PROFILE.twitterHandle,
       title,
       description,
       images: [ogImage.url],

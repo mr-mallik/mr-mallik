@@ -208,7 +208,7 @@ export default function Page() {
                         <p className="text-xs text-[var(--ui-text-muted)]">{award.date}</p>
                       </div>
                     </div>
-                    <svg
+                    {/* <svg
                       className="h-4 w-4 shrink-0 text-[var(--ui-text-muted)]"
                       viewBox="0 0 16 16"
                       fill="none"
@@ -220,7 +220,7 @@ export default function Page() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
-                    </svg>
+                    </svg> */}
                   </li>
                 ))}
               </ul>

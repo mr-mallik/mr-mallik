@@ -15,6 +15,7 @@ import {
 } from "@/app/constants";
 import Header from "@/components/header";
 
+import achievementItems from "@/data/achievements.json";
 import educationItems from "@/data/education.json";
 import publicationsItems from "@/data/publications.json";
 import skillsItems from "@/data/skills.json";
@@ -28,6 +29,13 @@ type WorkItem = {
   url?: string;
   summary: string;
   details: string[];
+};
+
+type AchievementItem = {
+  badge: string;
+  title: string;
+  description: string;
+  date: string;
 };
 
 type EducationItem = {
@@ -60,6 +68,7 @@ function esc(str: string): string {
 
 function buildResumeHtml(
   items: WorkItem[],
+  achievements: AchievementItem[],
   education: EducationItem[],
   skills: SkillCategory[],
   publications: Publication[],
@@ -78,6 +87,19 @@ function buildResumeHtml(
       <ul class="entry-list">
         ${item.details.map((d) => `<li>${esc(d)}</li>`).join("\n        ")}
       </ul>
+    </div>`,
+    )
+    .join("\n");
+
+  const achievementRows = achievements
+    .map(
+      (item) => `
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">${esc(item.title)}</span>
+        <span class="entry-meta">${esc(item.date)}</span>
+      </div>
+      <p class="entry-abstract">${esc(item.description)}</p>
     </div>`,
     )
     .join("\n");
@@ -202,19 +224,22 @@ function buildResumeHtml(
   <header class="resume-header">
     <p class="resume-name">${esc(SITE.ownerName)}</p>
     <p class="resume-contact">
-      ${esc(PROFILE.phone)}
-      <span>|</span>
       <a href="mailto:${esc(PROFILE.primaryEmail)}">${esc(PROFILE.primaryEmail)}</a>
       <span>|</span>
       <a href="${esc(PROFILE.linkedInUrl)}">${esc(PROFILE.linkedInDisplay)}</a>
       <span>|</span>
-      <a href="${esc(PROFILE.websiteUrl)}">${esc(PROFILE.websiteLabel)}</a>
+      <a href="${esc(PROFILE.websiteCanonicalUrl)}">${esc(PROFILE.websiteLabel)}</a>
     </p>
   </header>
 
   <section class="section">
     <h2 class="section-title">Experience</h2>
     ${experienceRows}
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Achievements</h2>
+    ${achievementRows}
   </section>
 
   <section class="section">
@@ -240,12 +265,13 @@ export default function ResumePage() {
     RESUME_VIEW_MODES.summarised,
   );
   const items = workItems as WorkItem[];
+  const achievements = achievementItems as AchievementItem[];
   const education = educationItems as EducationItem[];
   const publications = publicationsItems as Publication[];
   const skills = skillsItems as SkillCategory[];
 
   const handleDownload = () => {
-    const html = buildResumeHtml(items, education, skills, publications);
+    const html = buildResumeHtml(items, achievements, education, skills, publications);
     const blob = new Blob([html], { type: "text/html;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
@@ -275,7 +301,7 @@ export default function ResumePage() {
         <header className="flex flex-col items-center justify-center gap-3 text-center">
           <h1 className="hero-name">{SITE.ownerName}</h1>
           <p className="ui-control-text max-w-full sm:text-center">
-            {PROFILE.phone} &#124; {PROFILE.primaryEmail} &#124;{" "}
+            {PROFILE.primaryEmail} &#124;{" "}
             <Link
               href={PROFILE.linkedInUrl}
               target="_blank"
@@ -286,7 +312,7 @@ export default function ResumePage() {
             </Link>{" "}
             &#124;{" "}
             <Link
-              href={PROFILE.websiteUrl}
+              href={PROFILE.websiteCanonicalUrl}
               target="_blank"
               rel="noreferrer"
               className="ui-link"
@@ -379,6 +405,23 @@ export default function ResumePage() {
                 ))}
               </ul>
             ) : null}
+          </div>
+        ))}
+      </section>
+
+      <section className="mt-10">
+        <div className="resume-fade-in">
+          <p className="ui-resume-title">{SECTION_TITLES.achievements}</p>
+          <div className="ui-divider" />
+        </div>
+
+        {achievements.map((item) => (
+          <div key={`${item.title}-${item.date}`} className="resume-fade-in mt-6">
+            <p className="ui-item-title">{item.title}</p>
+            <p className="ui-meta-text mt-1">{item.date}</p>
+            <div className="ui-body-text mt-3">
+              <p>{item.description}</p>
+            </div>
           </div>
         ))}
       </section>
