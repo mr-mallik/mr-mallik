@@ -237,7 +237,7 @@ export default function Page() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-8 md:gap-x-10 lg:gap-12">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div
               key={service.name}
               className="group flex min-w-0 flex-col gap-4 pb-6 lg:pb-0 border-b lg:border-b-0 lg:border-r lg:border-[var(--ui-border-subtle)] lg:pr-8 last:border-r-0

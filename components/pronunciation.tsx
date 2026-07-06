@@ -5,7 +5,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { useState } from "react";
 
 // Phonetic respelling spoken by the synthesiser so "Gulger" comes out as "Gul-jar".
-const SPOKEN_NAME = "Gul jar Maa llik";
+const SPOKEN_NAME = "Gul jar";
 
 export function Pronunciation() {
   const [speaking, setSpeaking] = useState(false);
@@ -14,11 +14,11 @@ export function Pronunciation() {
     if (!("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(SPOKEN_NAME);
-    utterance.lang = "en-US";
-    const americanVoice = window.speechSynthesis
+    utterance.lang = "en-GB";
+    const britishVoice = window.speechSynthesis
       .getVoices()
-      .find((voice) => voice.lang.replace("_", "-").startsWith("en-US"));
-    if (americanVoice) utterance.voice = americanVoice;
+      .find((voice) => voice.lang.replace("_", "-").startsWith("en-GB"));
+    if (britishVoice) utterance.voice = britishVoice;
     utterance.onend = () => setSpeaking(false);
     utterance.onerror = () => setSpeaking(false);
     setSpeaking(true);
@@ -35,7 +35,7 @@ export function Pronunciation() {
       }`}
     >
       <HugeiconsIcon icon={VolumeHighIcon} className="h-4 w-4 shrink-0" aria-hidden="true" />
-      <span>&ldquo;Gul-jar Maa-llik&rdquo;</span>
+      <span>&ldquo;Gul-jar&rdquo;</span>
     </button>
   );
 }

@@ -1,6 +1,8 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
+
 import { LinkedinIcon, Github01Icon, Mail, IdIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -11,6 +13,7 @@ import {
   ROUTES,
   SITE,
 } from "@/app/constants";
+import { FlipAvatar } from "@/components/flip-avatar";
 import { Pronunciation } from "@/components/pronunciation";
 import {
   buildWebPageJsonLd,
@@ -35,6 +38,13 @@ const mailtoQuery = new URLSearchParams({
   .replace(/\+/g, "%20");
 
 const mailtoLink = `mailto:${PROFILE.primaryEmail}?${mailtoQuery}`;
+
+// Contact card served from public/cards/gulger.vcf; its content is embedded in the
+// QR code on the flipped avatar so phones offer to save the contact directly on scan.
+const contactVcard = readFileSync(
+  path.join(process.cwd(), "public", "cards", "gulger.vcf"),
+  "utf8",
+);
 
 const socialLinks = [
   { name: "LinkedIn", href: PROFILE.linkedInUrl, icon: LinkedinIcon },
@@ -73,16 +83,11 @@ export default function AboutPage() {
           />
           <div className="relative w-[280px] bg-[#f7f2ec] shadow-xl sm:w-[320px] sm:translate-x-6 dark:bg-[#1f1b18]">
             <div className="flex flex-col items-center px-8 pb-9 pt-10 text-center">
-              <div className="h-40 w-40 overflow-hidden rounded-full bg-[var(--ui-bg-elevated)] sm:h-44 sm:w-44">
-                <Image
-                  src="/images/hero-image.png"
-                  alt={PROFILE.profileImageAlt}
-                  width={176}
-                  height={176}
-                  className="h-full w-full object-cover"
-                  priority
-                />
-              </div>
+              <FlipAvatar
+                src="/images/hero-image.png"
+                alt={PROFILE.profileImageAlt}
+                vcard={contactVcard}
+              />
               <h1 className="mt-8 text-xl font-bold tracking-tight text-[var(--ui-text-primary)]">
                 Mr. {SITE.ownerName}
               </h1>

@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeToggle } from "./theme-toggle";
-import { ROUTES, SITE } from "@/app/constants";
+import { ROUTES } from "@/app/constants";
 
 const NAV_LINKS = [
   { label: "Home", href: ROUTES.home },
