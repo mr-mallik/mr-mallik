@@ -45,7 +45,7 @@ export default function Navigation() {
               alt="MR. MALLIK"
               width={36}
               height={36}
-              className="h-4 w-4 sm:h-6 sm:w-6 dark:invert"
+              className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 rounded-full"
               priority
             />
 
