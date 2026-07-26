@@ -35,7 +35,7 @@ const HERO_SOCIALS = [
 
 export default function Page() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 ">
       <div className="flex flex-col gap-8">
         <section className="w-full bg-[var(--ui-bg-elevated)]">
           <div className="ui-container py-16 md:py-24 lg:py-10 xl:py-14">

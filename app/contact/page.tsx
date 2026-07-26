@@ -59,7 +59,7 @@ export default async function Page({
     : null;
 
   return (
-    <div className="ui-container ui-section-py-sm">
+    <div className="ui-container ui-container-narrow ui-section-py-sm">
       <div className="grid gap-10 md:grid-cols-[260px_1fr] lg:grid-cols-[300px_1fr] lg:gap-14">
         <aside className="flex flex-col gap-5 hidden md:flex">
           <Image

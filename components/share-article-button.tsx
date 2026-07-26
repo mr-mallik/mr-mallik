@@ -39,7 +39,7 @@ export default function ShareArticleButton({
 
   return (
     <button type="button" onClick={handleShare} className={className ?? ""}>
-      {shared ? "Shared" : <HugeiconsIcon icon={Share01Icon} />}
+      {shared ? <span className="text-blue-500">Shared</span> : <HugeiconsIcon icon={Share01Icon} />}
     </button>
   );
 }

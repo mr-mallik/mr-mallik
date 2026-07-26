@@ -27,7 +27,7 @@ export default function CopyUrlButton({ path, className }: CopyUrlButtonProps) {
 
   return (
     <button type="button" onClick={handleCopy} className={className ?? ""}>
-      {copied ? "Copied" : <HugeiconsIcon icon={Link05Icon} />}
+      {copied ? <span className="text-green-500">Copied URL</span> : <HugeiconsIcon icon={Link05Icon} />}
     </button>
   );
 }
