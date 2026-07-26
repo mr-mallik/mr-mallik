@@ -35,6 +35,7 @@ type AchievementItem = {
   badge: string;
   title: string;
   description: string;
+  organization?: string;
   date: string;
 };
 
@@ -224,7 +225,9 @@ export default function ResumePage() {
         {achievements.map((item) => (
           <div id={item.title} key={`${item.title}-${item.date}`} className="resume-fade-in mt-6">
             <p className="ui-item-title">{item.title}</p>
-            <p className="ui-meta-text mt-1">{item.date}</p>
+            <p className="ui-meta-text mt-1">
+              {item.organization}{" "} &#8226; {" "} {item.date}
+            </p>
             <div className="ui-body-text mt-3">
               <p>{item.description}</p>
             </div>

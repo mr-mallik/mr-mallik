@@ -27,6 +27,7 @@ type AchievementItem = {
   badge: string;
   title: string;
   description: string;
+  organization?: string;
   date: string;
 };
 
@@ -289,8 +290,8 @@ export async function GET() {
 
   for (const item of achievements) {
     addNewPageIfNeeded(60);
-    
-    page.drawText(cleanText(item.title), {
+
+     page.drawText(cleanText(item.title), {
       x: margin,
       y,
       size: 11,
@@ -298,15 +299,16 @@ export async function GET() {
       color: rgb(0, 0, 0),
     });
     y -= 12;
-
-    page.drawText(cleanText(item.date), {
+    
+    const metaText = cleanText(`${item.organization}${item.date ? ` - ${item.date}` : ""}`);
+    page.drawText(metaText, {
       x: margin,
       y,
       size: 9,
       font: helvetica,
       color: rgb(0.4, 0.4, 0.4),
     });
-    y -= 12;
+    y -= 15;
 
     const cleanedDesc = cleanText(item.description);
     const lines = wrapText(cleanedDesc, maxWidth, helvetica, 9);
