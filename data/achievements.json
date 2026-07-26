@@ -1,25 +1,36 @@
 [
   {
     "badge": "UoH",
+    "title": "General Member SCE Research Ethics Committee",
+    "organization": "University of Huddersfield",
+    "description": "General member of the School of Computing and Engineering (SCE) Research Ethics Committee, contributing to the ethical review and approval of research projects.",
+    "date": "July 2026"
+  },
+  {
+    "badge": "UoH",
     "title": "Researcher on UKRI funded AI for Carbon Capture & Storage",
+    "organization": "University of Huddersfield",
     "description": "Conducting research on AI applications for carbon capture and storage, funded by the UK Research and Innovation (UKRI) program.",
     "date": "October 2025"
   },
   {
     "badge": "UoH",
     "title": "Exceptional Achievement in Computing",
+    "organization": "University of Huddersfield",
     "description": "Recognized for outstanding performance and contributions in the field of computing at the University of Huddersfield.",
     "date": "June 2024"
   },
   {
     "badge": "SU",
     "title": "Academic Representative for MSc",
+    "organization": "Student Union, University of Huddersfield",
     "description": "Served as the academic representative for the MSc program, advocating for student interests and facilitating communication between students and faculty.",
     "date": "September 2022"
   },
   {
     "badge": "SXC",
     "title": "Student Cordinator for Techlipse 2K19",
+    "organization": "St. Xavier's College, Goa",
     "description": "Coordinated student activities and events for Techlipse 2K19, ensuring smooth execution and engagement.",
     "date": "September 2019"
   }

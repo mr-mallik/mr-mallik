@@ -222,7 +222,7 @@ export default function ResumePage() {
         </div>
 
         {achievements.map((item) => (
-          <div key={`${item.title}-${item.date}`} className="resume-fade-in mt-6">
+          <div id={item.title} key={`${item.title}-${item.date}`} className="resume-fade-in mt-6">
             <p className="ui-item-title">{item.title}</p>
             <p className="ui-meta-text mt-1">{item.date}</p>
             <div className="ui-body-text mt-3">

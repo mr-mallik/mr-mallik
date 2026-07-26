@@ -205,22 +205,29 @@ export default function Page() {
                         <p className="text-sm font-semibold text-[var(--ui-text-primary)]">
                           {award.title}
                         </p>
-                        <p className="text-xs text-[var(--ui-text-muted)]">{award.date}</p>
+                        <p className="text-xs text-[var(--ui-text-muted)]">{award.date}
+                          {award.organization ? <> @ <span className="font-semibold"> {award.organization}</span></> : ""}
+                        </p>
                       </div>
                     </div>
-                    {/* <svg
-                      className="h-4 w-4 shrink-0 text-[var(--ui-text-muted)]"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
+                    <Link
+                      href={`/resume?#${award.title}`}
+                      className="ml-auto flex items-center gap-1 text-[var(--ui-text-muted)] transition-colors hover:text-[var(--ui-text-primary)]"
                     >
-                      <path
-                        d="M3 13L13 3M13 3H7M13 3V9"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg> */}
+                      <svg
+                        className="h-4 w-4 shrink-0 text-[var(--ui-text-muted)]"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <path
+                          d="M3 13L13 3M13 3H7M13 3V9"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </Link>
                   </li>
                 ))}
               </ul>
