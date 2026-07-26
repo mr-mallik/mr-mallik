@@ -35,7 +35,7 @@ export default function AddonLink({ item }: { item: ArticleAddonLink }) {
 			rel="noreferrer"
 			title={label}
 			aria-label={label}
-			className="inline-flex items-center gap-1.5"
+			className="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
 		>
 			<HugeiconsIcon icon={knownIcon ?? LinkSquare02Icon} />
 			{knownIcon ? null : <span className="ui-control-text">{label}</span>}

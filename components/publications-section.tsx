@@ -109,6 +109,7 @@ export function PublicationsSection({
                 <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-slate-200 bg-background dark:border-slate-700">
                   {publication.image ? (
                     <Image
+                      loading="eager"
                       src={publication.image}
                       alt={`${publication.title} publication image`}
                       width={24}
@@ -138,7 +139,14 @@ export function PublicationsSection({
                     <p className="ui-body-text mt-2 text-sm">{publication.abstract}</p>
                   )}
                   <p className="ui-meta-text mt-2">
-                    {STATUS_LABELS.publicationStatusPrefix} {publication.status}
+                    {STATUS_LABELS.publicationStatusPrefix}{" "}
+                    {publication.status.toLowerCase().includes("published") ? (
+                      <span className="text-green-600 dark:text-green-400">{publication.status}</span>
+                    ) : publication.status.toLowerCase().includes("submitted") ? (
+                      <span className="text-yellow-600 dark:text-yellow-400">{publication.status}</span>
+                    ) : publication.status.toLowerCase().includes("review") ? (
+                      <span className="text-orange-600 dark:text-orange-400">{publication.status}</span>
+                    ) : publication.status}
                     {publication.doi ? (
                       <>
                         {" "}&bull;{" "}{STATUS_LABELS.publicationDoiPrefix}{" "}

@@ -127,6 +127,7 @@ export default async function ProjectDetailPage({
 						{project.featuredImage ? (
 							<div className="order-2 overflow-hidden rounded-2xl bg-background lg:order-3">
 								<Image
+									loading="eager"
 									src={project.featuredImage}
 									alt={project.featuredImageAlt || project.title}
 									width={1200}
@@ -163,6 +164,7 @@ export default async function ProjectDetailPage({
 								{tags.map((tag) => (
 									<Link
 										key={tag.slug}
+										data-color={tag.color || "default"}
 										href={`/projects?tag=${encodeURIComponent(tag.name)}`}
 										className="inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium transition-opacity hover:opacity-80"
 										style={{
@@ -224,6 +226,7 @@ export default async function ProjectDetailPage({
 											<div className="relative h-12 w-16 shrink-0 overflow-hidden rounded-md bg-[var(--ui-border-subtle)]">
 												{item.featuredImage ? (
 													<Image
+														loading="eager"
 														src={item.featuredImage}
 														alt={item.featuredImageAlt || item.title}
 														fill

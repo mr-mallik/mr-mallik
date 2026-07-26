@@ -31,7 +31,7 @@ export default function ArticleTocNav({ items }: ArticleTocNavProps) {
           setActiveId(visible[0].target.id);
         }
       },
-      { rootMargin: "-18% 0px -65% 0px", threshold: [0.1, 0.25, 0.5, 0.75, 1] },
+      { rootMargin: "-18% 0px -55% 0px", threshold: [0.1, 0.25, 0.5, 0.75, 1] },
     );
 
     headingElements.forEach((el) => observer.observe(el));
