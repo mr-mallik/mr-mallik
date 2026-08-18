@@ -15,6 +15,9 @@ import {
 } from "@/app/constants";
 import { FlipAvatar } from "@/components/flip-avatar";
 import { Pronunciation } from "@/components/pronunciation";
+import { Reveal } from "@/components/motion/reveal";
+import { Parallax } from "@/components/motion/parallax";
+import { MotionLink } from "@/components/motion/motion-link";
 import {
   buildWebPageJsonLd,
   createPageMetadata,
@@ -73,11 +76,9 @@ export default function AboutPage() {
 
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Profile card over beige backdrop */}
-        <div
-          className="hero-fade-in relative flex justify-center py-10 sm:py-14"
-          style={{ animationDelay: "0ms" }}
-        >
-          <div
+        <Reveal index={0} direction="left" className="relative flex justify-center py-10 sm:py-14">
+          <Parallax
+            offset={16}
             className="absolute inset-y-0 inset-x-0 bg-[#eadfd2] sm:right-16 dark:bg-[#2a2420]"
             aria-hidden="true"
           />
@@ -120,24 +121,20 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Greeting + narrative */}
         <div className="space-y-5">
-          <p
-            className="hero-fade-in font-serif text-6xl text-[var(--ui-text-primary)] sm:text-7xl"
-            style={{ animationDelay: "90ms" }}
-          >
+          <Reveal as="p" index={1} className="font-serif text-6xl text-[var(--ui-text-primary)] sm:text-7xl">
             Hello
-          </p>
-          <h2
-            className="hero-fade-in pt-2 text-2xl font-medium text-[var(--ui-text-primary)]"
-            style={{ animationDelay: "150ms" }}
-          >
-            A Bit About Me
-          </h2>
+          </Reveal>
+          <Reveal as="div" index={2} className="pt-2">
+            <h2 className="text-2xl font-medium text-[var(--ui-text-primary)]">
+              A Bit About Me
+            </h2>
+          </Reveal>
 
-          <p className="ui-body-text hero-fade-in" style={{ animationDelay: "210ms" }}>
+          <Reveal as="p" index={3} className="ui-body-text">
             I am <strong className="text-[var(--ui-text-primary)]">{SITE.ownerName}</strong>,{" "}
             {PAGE_COPY.homeIntroCompanyPrefix.replace("I'm ", "")}{" "}
             <Link
@@ -149,9 +146,9 @@ export default function AboutPage() {
               Cosmokode Ltd
             </Link>{" "}
             {PAGE_COPY.homeIntroCompanySuffix}
-          </p>
+          </Reveal>
 
-          <p className="ui-body-text hero-fade-in" style={{ animationDelay: "270ms" }}>
+          <Reveal as="p" index={4} className="ui-body-text">
             My research explores Explainable AI, Multi-Criteria Decision Making, and Sustainable
             Software Engineering - areas where I believe rigorous thinking leads to better products.
             I publish through{" "}
@@ -168,25 +165,26 @@ export default function AboutPage() {
               blog
             </Link>
             .
-          </p>
+          </Reveal>
 
-          <div
-            className="hero-fade-in flex flex-wrap items-center gap-4 pt-3"
-            style={{ animationDelay: "330ms" }}
-          >
-            <Link
+          <Reveal index={5} className="flex flex-wrap items-center gap-4 pt-3">
+            <MotionLink
               href={ROUTES.resume}
               className="flex items-center rounded-full bg-[var(--ui-text-primary)] px-8 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
             >
               Resume
-            </Link>
-            <Link
+            </MotionLink>
+            <MotionLink
               href={ROUTES.projects}
               className="flex items-center rounded-full border border-[var(--ui-border-soft)] px-8 py-3 text-sm font-medium text-[var(--ui-text-secondary)] transition-colors hover:border-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)]"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
             >
               Projects
-            </Link>
-          </div>
+            </MotionLink>
+          </Reveal>
         </div>
       </div>
     </section>

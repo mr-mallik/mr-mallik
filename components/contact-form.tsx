@@ -4,6 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import Script from "next/script";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { SentIcon } from "@hugeicons/core-free-icons";
+import { motion } from "motion/react";
 
 import { PROFILE } from "@/app/constants";
 import {
@@ -324,14 +325,16 @@ export function ContactForm({ services, initialType }: ContactFormProps) {
       </div>
 
       <div className="flex flex-wrap items-center gap-3 border-t border-[var(--ui-border-subtle)] px-5 py-3">
-        <button
+        <motion.button
           type="submit"
           disabled={status === "sending"}
           className="flex items-center rounded-full bg-[var(--ui-accent)] cursor-pointer px-6 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60"
+          whileHover={status === "sending" ? undefined : { scale: 1.04 }}
+          whileTap={status === "sending" ? undefined : { scale: 0.96 }}
         >
           <HugeiconsIcon icon={SentIcon} className="mr-2 h-4 w-4" aria-hidden="true" />
           {status === "sending" ? "Sending..." : "Send message"}
-        </button>
+        </motion.button>
         {status === "sent" ? (
           <span className="text-xs font-medium text-[var(--ui-accent)]" role="status">
             Message sent - thank you! I&apos;ll get back to you soon.

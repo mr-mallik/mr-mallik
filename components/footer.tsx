@@ -4,6 +4,7 @@ import { LinkedinIcon, Github01Icon } from "@hugeicons/core-free-icons";
 
 import { PROFILE, ROUTES, SITE } from "@/app/constants";
 import { brittanySignature } from "@/lib/fonts";
+import { Reveal } from "@/components/motion/reveal";
 
 const SOCIAL_LINKS = [
   { label: "LinkedIn", href: PROFILE.linkedInUrl, icon: LinkedinIcon },
@@ -12,7 +13,7 @@ const SOCIAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="ui-footer w-full">
+    <Reveal as="footer" amount={0.1} className="ui-footer w-full">
       <div className="ui-container ui-control-text py-5 flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
         <Link
           href={ROUTES.home}
@@ -45,6 +46,6 @@ export function Footer() {
 
         </div>
       </div>
-    </footer>
+    </Reveal>
   );
 }

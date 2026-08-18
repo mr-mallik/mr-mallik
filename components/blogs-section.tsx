@@ -4,6 +4,7 @@ import Link from "next/link";
 import { LINK_LABELS, ROUTES, SECTION_TITLES } from "@/app/constants";
 import { getArticlesList } from "@/services/articles";
 import { getTagColorClass } from "@/lib/tag-colors";
+import { Reveal } from "@/components/motion/reveal";
 
 function formatDate(iso: string): string {
   const date = new Date(iso);
@@ -52,10 +53,12 @@ export async function BlogsSection({
       ) : (
         <div className="divide-y divide-[var(--ui-border-subtle)]">
           {articles.map((article, index) => (
-            <article
+            <Reveal
               key={article.id}
-              className="section-enter py-5 first:pt-0 last:pb-0"
-              style={{ animationDelay: `${index * 60}ms` }}
+              as="article"
+              index={index}
+              step={0.06}
+              className="py-5 first:pt-0 last:pb-0"
             >
               <Link href={`/blogs/${article.slug}`} className="group flex items-start gap-3 sm:gap-4">
                 <div className="min-w-0 flex-1 space-y-2">
@@ -99,7 +102,7 @@ export async function BlogsSection({
                   </div>
                 ) : null}
               </Link>
-            </article>
+            </Reveal>
           ))}
         </div>
       )}

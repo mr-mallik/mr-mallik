@@ -1,6 +1,7 @@
 import Link from "next/link";
 import workItems from "@/data/work.json";
 import { LINK_LABELS, ROUTES, SECTION_TITLES } from "@/app/constants";
+import { Reveal } from "@/components/motion/reveal";
 
 type Experience = {
   company: string;
@@ -42,14 +43,15 @@ export function ExperienceSection({
 
       <div className="">
         {visibleExperiences.map((item, index) => (
-          <div
+          <Reveal
             key={`${item.company}-${item.role}-${item.period}`}
-            className={`ui-experience-row section-enter ${
+            index={index}
+            step={0.055}
+            className={`ui-experience-row ${
               index !== visibleExperiences.length - 1
                 ? "border-b border-[var(--ui-border-subtle)]"
                 : ""
             }`}
-            style={{ animationDelay: `${index * 55}ms` }}
           >
             <div className="min-w-0 flex-1">
               <p className="ui-item-title whitespace-nowrap text-sm sm:text-base">
@@ -78,7 +80,7 @@ export function ExperienceSection({
               )}{" "}
               &bull; {item.period}
             </p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

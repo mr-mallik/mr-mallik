@@ -10,6 +10,9 @@ import { createPageMetadata, SITE_DESCRIPTION } from "@/app/seo";
 import { ProjectsSection } from "@/components/projects-section";
 import { BlogsSection } from "@/components/blogs-section";
 import { PublicationsSection } from "@/components/publications-section";
+import { Reveal } from "@/components/motion/reveal";
+import { Parallax } from "@/components/motion/parallax";
+import { MotionLink, MotionAnchor, ctaHoverTap } from "@/components/motion/motion-link";
 
 // data imports
 import workItems from "@/data/work.json";
@@ -42,7 +45,7 @@ export default function Page() {
             <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-8 md:items-center lg:gap-12 lg:items-end">
 
               <div className="flex flex-col gap-6">
-                <div className="relative w-full max-w-sm overflow-hidden rounded-2xl lg:max-w-[280px] xl:max-w-sm flex flex-col items-center justify-center">
+                <Parallax offset={22} className="relative w-full max-w-sm overflow-hidden rounded-2xl lg:max-w-[280px] xl:max-w-sm flex flex-col items-center justify-center">
                   <Image
                     src="/images/hero-image-v2.png"
                     alt="Gulger Mallik"
@@ -65,11 +68,11 @@ export default function Page() {
                       </a>
                     ))}
                   </div>
-                </div>
+                </Parallax>
               </div>
 
               <div className="flex flex-col gap-8 lg:pb-2">
-                <div className="flex flex-col gap-4">
+                <Reveal index={0} className="flex flex-col gap-4">
                   <h1 className="text-4xl font-semibold leading-tight text-[var(--ui-text-primary)] sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl">
                     Software Engineer
                     <br />
@@ -80,9 +83,9 @@ export default function Page() {
                     intelligent digital products and advancing applied AI research for
                     real-world impact. Based in Huddersfield, United Kingdom.
                   </p>
-                </div>
+                </Reveal>
 
-                <div className="flex gap-6">
+                <Reveal index={1} className="flex gap-6">
                   <div className="flex flex-col gap-0.5">
                     <span className="text-4xl font-bold  text-[var(--ui-text-primary)]">
                       {String(new Date().getFullYear() - 2019).padStart(2, "0")}
@@ -104,7 +107,7 @@ export default function Page() {
                   <div className="w-px self-stretch bg-[var(--ui-border-subtle)]" />
                   <div className="flex flex-col gap-0.5">
                     <span className="text-4xl font-bold  text-[var(--ui-text-primary)] gap-2 flex items-center ">
-                      {publicationsCount} 
+                      {publicationsCount}
                       <span className="text-xs font-medium uppercase tracking-widest text-[var(--ui-text-muted)]">
                         Academic
                       </span>
@@ -113,24 +116,27 @@ export default function Page() {
                       Publications
                     </span>
                   </div>
-                </div>
+                </Reveal>
 
-                <div className="flex flex-wrap items-center gap-4">
-                  <a
+                <Reveal index={2} className="flex flex-wrap items-center gap-4">
+                  <MotionAnchor
                     href={`mailto:${PROFILE.primaryEmail}`}
                     className="flex items-center rounded-full bg-[var(--ui-text-primary)] px-6 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-80"
+                    {...ctaHoverTap}
                   >
                     <HugeiconsIcon icon={Email} className="mr-2 h-4 w-4" aria-hidden="true" />
                     Get in touch
-                  </a>
-                  <Link
+                  </MotionAnchor>
+                  <MotionLink
                     href={ROUTES.projects}
                     className="text-sm font-medium text-[var(--ui-text-secondary)] transition-colors hover:text-[var(--ui-text-primary)]"
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.15 }}
                   >
                     See my work &nbsp;
                     <HugeiconsIcon icon={ArrowUpRight01Icon} className="inline-block h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </div>
+                  </MotionLink>
+                </Reveal>
               </div>
 
             </div>
@@ -138,10 +144,15 @@ export default function Page() {
         </section>
         <section className="w-full ui-container">
           <div className="grid grid-cols-3 items-center gap-6 lg:grid-cols-6">
-            {showcase.map((item) => (
-              <div
+            {showcase.map((item, index) => (
+              <Reveal
                 key={item.name}
+                index={index}
+                step={0.05}
+                duration={0.5}
+                scale
                 className="grid place-items-center"
+                whileHover={{ scale: 1.08 }}
               >
                 <Image
                   src={item.image}
@@ -150,7 +161,7 @@ export default function Page() {
                   height={160}
                   className="h-auto max-h-16 w-auto max-w-full object-contain grayscale brightness-0 opacity-80 dark:invert"
                 />
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>
@@ -164,7 +175,7 @@ export default function Page() {
               </h3>
               <ul className="divide-y divide-[var(--ui-border-subtle)]">
                 {workItems.map((exp, index) => (
-                  <li key={`work-item-${index}`} className="ui-experience-row">
+                  <Reveal key={`work-item-${index}`} as="li" index={index} step={0.06} direction="left" className="ui-experience-row">
                     <div className="flex items-center gap-3">
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[var(--ui-border-soft)] bg-background">
                         {exp.logo ? (
@@ -185,7 +196,7 @@ export default function Page() {
                         <p className="text-xs text-[var(--ui-text-muted)]">{exp.period}</p>
                       </div>
                     </div>
-                  </li>
+                  </Reveal>
                 ))}
               </ul>
             </div>
@@ -196,7 +207,7 @@ export default function Page() {
               </h3>
               <ul className="divide-y divide-[var(--ui-border-subtle)]">
                 {achievements.map((award, index) => (
-                  <li key={`award-item-${index}`} className="ui-experience-row">
+                  <Reveal key={`award-item-${index}`} as="li" index={index} step={0.06} direction="right" className="ui-experience-row">
                     <div className="flex items-center gap-3">
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--ui-text-primary)] text-[10px] font-bold text-background">
                         {award.badge}
@@ -228,7 +239,7 @@ export default function Page() {
                         />
                       </svg>
                     </Link>
-                  </li>
+                  </Reveal>
                 ))}
               </ul>
             </div>
@@ -244,11 +255,14 @@ export default function Page() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-8 md:gap-x-10 lg:gap-12">
-          {services.map((service) => (
-            <div
+          {services.map((service, index) => (
+            <Reveal
               key={service.name}
+              index={index}
+              step={0.07}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
               className="group flex min-w-0 flex-col gap-4 pb-6 lg:pb-0 border-b lg:border-b-0 lg:border-r lg:border-[var(--ui-border-subtle)] lg:pr-8 last:border-r-0
-              hover:scale-105 transition-all ease-in-out duration-300
               cursor-pointer
               "
             >
@@ -272,7 +286,7 @@ export default function Page() {
                   {service.text}
                 </Link>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -291,30 +305,32 @@ export default function Page() {
         <PublicationsSection limit={3} showViewAllLink />
       </section>
 
-      <section className="ui-container text-center pb-8 sm:pb-12 lg:pb-16">
+      <Reveal as="section" className="ui-container text-center pb-8 sm:pb-12 lg:pb-16">
         <p className="text-sm text-[var(--ui-text-muted)]">Have a project in mind?</p>
         <h2 className="mt-2 ui-section-title text-4xl md:text-5xl">
           Let&apos;s work together
         </h2>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-          <a
+          <MotionAnchor
             href={`mailto:${PROFILE.primaryEmail}`}
             className="flex items-center rounded-full bg-[var(--ui-text-primary)] px-8 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
+            {...ctaHoverTap}
           >
             <HugeiconsIcon icon={Email} className="mr-2 h-4 w-4" aria-hidden="true" />
             Get in touch
-          </a>
-          <a
+          </MotionAnchor>
+          <MotionAnchor
             href={PROFILE.linkedInUrl}
             target="_blank"
             rel="noreferrer"
             className="flex items-center rounded-full border border-[var(--ui-border-soft)] px-8 py-3 text-sm font-medium text-[var(--ui-text-secondary)] transition-colors hover:border-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)]"
+            {...ctaHoverTap}
           >
             <HugeiconsIcon icon={LinkedinIcon} className="mr-2 h-4 w-4" aria-hidden="true" />
             Connect on LinkedIn
-          </a>
+          </MotionAnchor>
         </div>
-      </section>
+      </Reveal>
     </div>
   );
 }

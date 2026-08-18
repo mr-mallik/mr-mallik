@@ -1,5 +1,6 @@
 import educationItems from "@/data/education.json";
 import { SECTION_TITLES, STATUS_LABELS } from "@/app/constants";
+import { Reveal } from "@/components/motion/reveal";
 
 type EducationItem = {
   degree: string;
@@ -54,10 +55,11 @@ export function EducationSection() {
             const isCompleted = Boolean(item.grade);
 
             return (
-              <div
+              <Reveal
                 key={`${item.degree}-${item.duration}`}
-                className="timeline-item relative pl-7 md:pl-0 md:pt-6"
-                style={{ animationDelay: `${index * 90}ms` }}
+                index={index}
+                step={0.09}
+                className="relative pl-7 md:pl-0 md:pt-6"
               >
               <span
                 aria-hidden="true"
@@ -87,7 +89,7 @@ export function EducationSection() {
                   </p>
                 ) : null}
               </article>
-              </div>
+              </Reveal>
             );
           })}
         </div>

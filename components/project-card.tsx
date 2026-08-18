@@ -4,6 +4,7 @@ import Link from "next/link";
 import defaultSvg from "../public/default-project.svg";
 import type { Article } from "@/app/blogs/types";
 import { getTagColorClass } from "@/lib/tag-colors";
+import { Reveal } from "@/components/motion/reveal";
 
 type ProjectCardProps = {
   project: Article;
@@ -14,9 +15,12 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project, index, activeTag, onTagClick }: ProjectCardProps) {
   return (
-    <div
-      className="group ui-project-card section-enter min-w-0"
-      style={{ animationDelay: `${index * 60}ms`, aspectRatio: "auto" }}
+    <Reveal
+      index={index}
+      step={0.06}
+      whileHover={{ y: -4 }}
+      className="group ui-project-card min-w-0"
+      style={{ aspectRatio: "auto" }}
     >
       <div className="flex h-full flex-col rounded-xl border border-[var(--ui-border-subtle)] bg-background p-4 sm:p-5">
         <Link href={`/projects/${project.slug}`} className="contents">
@@ -78,6 +82,6 @@ export function ProjectCard({ project, index, activeTag, onTagClick }: ProjectCa
           </div>
         ) : null}
       </div>
-    </div>
+    </Reveal>
   );
 }

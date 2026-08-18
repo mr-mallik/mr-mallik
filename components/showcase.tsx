@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SECTION_TITLES } from "@/app/constants";
+import { Reveal } from "@/components/motion/reveal";
 
 import showcaseItems from "@/data/showcase.json";
 
@@ -31,13 +32,16 @@ export function Showcase() {
         <div className="showcase-grid grid grid-cols-3 gap-px bg-slate-200 dark:bg-slate-800 lg:grid-cols-4">
           {(showcaseItems as ShowcaseItem[]).map((item, index) => {
             const accentClass = ACCENT_CLASSES[index % ACCENT_CLASSES.length];
-            const cellClass = `showcase-cell section-enter ${accentClass}`;
-            const delay = `${index * 40}ms`;
+            const cellClass = `showcase-cell ${accentClass}`;
 
             const content = (
-              <div
+              <Reveal
+                as="div"
+                index={index}
+                step={0.04}
+                scale
+                whileHover={{ scale: 1.08 }}
                 className={`${cellClass} h-28 sm:h-32`}
-                style={{ animationDelay: delay }}
               >
                 <Image
                   title={item.description}
@@ -47,7 +51,7 @@ export function Showcase() {
                   height={160}
                   className="h-auto max-h-[72%] w-auto max-w-full object-contain grayscale brightness-0 opacity-55 dark:invert dark:opacity-65"
                 />
-              </div>
+              </Reveal>
             );
 
             if (!item.url) {
