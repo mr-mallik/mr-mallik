@@ -26,7 +26,9 @@ export const LOCATION = {
 
 export const PROFILE = {
   primaryEmail: "gulgermallik@gmail.com",
+  workEmail: "g.mallik3@hud.ac.uk",
   phone: "07767924720",
+  phoneInternational: "+447767924720",
   // Server-only: NEXT_PUBLIC_APP_URL is not NEXT_PUBLIC_-prefixed, so it is
   // undefined in the browser bundle. Client components must use
   // websiteCanonicalUrl instead or they will hydration-mismatch.
@@ -41,6 +43,8 @@ export const PROFILE = {
   affiliationName: "University of Huddersfield",
   affiliationUrl: "https://hud.ac.uk",
   profileImageAlt: "Profile picture of Gulger Mallik",
+  youTubeUrl: "https://www.youtube.com/@its_mrmallik",
+  youtubeDisplay: "youtube.com/@its_mrmallik",
 } as const;
 
 export const ROUTES = {
@@ -52,7 +56,12 @@ export const ROUTES = {
   blogs: "/blogs",
   about: "/about",
   contact: "/contact",
+  links: "/links",
+  contactCard: "/links/contact.vcf",
 } as const;
+
+// Routes rendered without the site navigation, footer, and scroll helpers.
+export const STANDALONE_ROUTES = [ROUTES.links] as const;
 
 export const EXTERNAL_LINKS = {
   cosmokode: "https://cosmokode.com",

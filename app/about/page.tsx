@@ -95,7 +95,7 @@ export default function AboutPage() {
               <Pronunciation />
               <div className="mt-5 h-px w-10 bg-[var(--ui-text-primary)]" aria-hidden="true" />
               <p className="mt-5 text-sm uppercase tracking-[0.18em] text-[var(--ui-text-secondary)]">
-                Researcher :{" "}
+                {PAGE_COPY.homepageRolePrefix}{" "}
                 <Link
                   href={PROFILE.affiliationUrl}
                   target="_blank"

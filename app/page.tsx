@@ -177,7 +177,7 @@ export default function Page() {
                 {workItems.map((exp, index) => (
                   <Reveal key={`work-item-${index}`} as="li" index={index} step={0.06} direction="left" className="ui-experience-row">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden border border-[var(--ui-border-soft)] bg-background">
+                      <div className="flex h-9 w-9 shrink-0 items-center rounded-lg justify-center overflow-hidden border border-[var(--ui-border-soft)] bg-background">
                         {exp.logo ? (
                           <Image
                             src={exp.logo}

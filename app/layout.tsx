@@ -9,6 +9,7 @@ import { PROFILE, SITE } from "@/app/constants";
 import { buildCosmokodeJsonLd, buildPersonJsonLd, buildWebSiteJsonLd, sanitizeJsonLd, SITE_DESCRIPTION, SITE_KEYWORDS } from "@/app/seo";
 import ScrollToTopButton from "@/components/scroll-to-top-button";
 import { ScrollProgressBar } from "@/components/motion/scroll-progress";
+import { SiteChrome } from "@/components/site-chrome";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -128,15 +129,23 @@ export default function RootLayout({
       <body className="min-h-full bg-background mx-auto text-foreground transition-colors duration-200">
         <ThemeProvider>
           <MotionConfig reducedMotion="user">
-            <ScrollProgressBar />
+            <SiteChrome>
+              <ScrollProgressBar />
+            </SiteChrome>
             <div className="flex flex-col">
-              <Navigation />
+              <SiteChrome>
+                <Navigation />
+              </SiteChrome>
               <main className="w-full flex-1 mx-auto">
                 {children}
               </main>
-              <Footer />
+              <SiteChrome>
+                <Footer />
+              </SiteChrome>
             </div>
-            <ScrollToTopButton />
+            <SiteChrome>
+              <ScrollToTopButton />
+            </SiteChrome>
           </MotionConfig>
         </ThemeProvider>
       </body>

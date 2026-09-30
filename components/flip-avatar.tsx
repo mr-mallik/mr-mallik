@@ -5,14 +5,18 @@ import { QRCodeSVG } from "qrcode.react";
 import { useState } from "react";
 import { motion } from "motion/react";
 
+import { cn } from "@/lib/utils";
+
 type FlipAvatarProps = {
   src: string;
   alt: string;
   /** vCard payload encoded in the QR code so phones offer to save the contact on scan. */
   vcard: string;
+  /** Background classes for an optional ring around the photo; it flips away with the photo. */
+  ringClassName?: string;
 };
 
-export function FlipAvatar({ src, alt, vcard }: FlipAvatarProps) {
+export function FlipAvatar({ src, alt, vcard, ringClassName }: FlipAvatarProps) {
   const [flipped, setFlipped] = useState(false);
 
   return (
@@ -31,16 +35,31 @@ export function FlipAvatar({ src, alt, vcard }: FlipAvatarProps) {
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ type: "spring", stiffness: 260, damping: 26 }}
       >
-        <div className="absolute inset-0 overflow-hidden rounded-full bg-[var(--ui-bg-elevated)] backface-hidden">
-          <Image
-            src={src}
-            alt={alt}
-            width={176}
-            height={176}
-            className="h-full w-full object-cover"
-            priority
-          />
-        </div>
+        {ringClassName ? (
+          <div className={cn("absolute inset-0 rounded-full p-1 shadow-xl backface-hidden", ringClassName)}>
+            <div className="h-full w-full rounded-full bg-background p-1">
+              <Image
+                src={src}
+                alt={alt}
+                width={176}
+                height={176}
+                className="h-full w-full rounded-full object-cover"
+                priority
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="absolute inset-0 overflow-hidden rounded-full bg-[var(--ui-bg-elevated)] backface-hidden">
+            <Image
+              src={src}
+              alt={alt}
+              width={176}
+              height={176}
+              className="h-full w-full object-cover"
+              priority
+            />
+          </div>
+        )}
         {/* QR codes need a light background to scan reliably, so the back stays white in dark mode too. */}
         <div className="absolute inset-0 rotate-y-180 rounded-2xl bg-white p-4 shadow-md backface-hidden">
           <QRCodeSVG

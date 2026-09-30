@@ -41,7 +41,7 @@ export default function Navigation() {
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
             <Link
               href={ROUTES.home}
-              className="ui-brand-link shrink-0 flex items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-150 hover:bg-[var(--ui-border-subtle)]"
+              className="ui-brand-link shrink-0 flex items-center gap-2 rounded-lg px-2 py-1 duration-150]"
               onClick={close}
               aria-label="MR. MALLIK - home"
             >
