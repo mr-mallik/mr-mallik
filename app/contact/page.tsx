@@ -23,7 +23,7 @@ export const metadata: Metadata = createPageMetadata({
 const SERVICE_ITEMS: ServiceItem[] = services.map((service) => ({
   label: service.name,
   value:
-    new URL(service.link, "https://mrmallik.com").searchParams.get("type") ??
+    new URL(service.link, "https://www.mrmallik.com").searchParams.get("type") ??
     service.name.toLowerCase(),
 }));
 

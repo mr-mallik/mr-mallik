@@ -14,7 +14,7 @@ const MAX_MESSAGE_LENGTH = 5000;
 
 const SERVICE_LABELS = new Map(
   services.map((service) => [
-    new URL(service.link, "https://mrmallik.com").searchParams.get("type") ??
+    new URL(service.link, "https://www.mrmallik.com").searchParams.get("type") ??
       service.name.toLowerCase(),
     service.name,
   ]),

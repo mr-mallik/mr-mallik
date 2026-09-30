@@ -32,8 +32,8 @@ export const PROFILE = {
   // Server-only: NEXT_PUBLIC_APP_URL is not NEXT_PUBLIC_-prefixed, so it is
   // undefined in the browser bundle. Client components must use
   // websiteCanonicalUrl instead or they will hydration-mismatch.
-  websiteUrl: process.env.NEXT_PUBLIC_APP_URL || "https://mrmallik.com",
-  websiteCanonicalUrl: "https://mrmallik.com",
+  websiteUrl: process.env.NEXT_PUBLIC_APP_URL || "https://www.mrmallik.com",
+  websiteCanonicalUrl: "https://www.mrmallik.com",
   websiteLabel: "mrmallik.com",
   linkedInUrl: "https://www.linkedin.com/in/mrmallik/",
   linkedInDisplay: "linkedin.com/in/mrmallik/",

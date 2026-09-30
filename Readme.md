@@ -20,7 +20,7 @@ I'm always on the lookout for exciting collaborations and new opportunities. Whe
 
 - **Email**: [gulgermallik@gmail.com](gulgermallik@gmail.com)
 - **LinkedIn**: [linkedin.com/in/mrmallik](https://www.linkedin.com/in/mrmallik)
-- **Website**: [mrmallik.com](https://mrmallik.com)
+- **Website**: [mrmallik.com](https://www.mrmallik.com)
 - **Medium**: [mrmallik.medium.com](https://mrmallik.medium.com)
 
 Looking forward to connecting with you! 😊
