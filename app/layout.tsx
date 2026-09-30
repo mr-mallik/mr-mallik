@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { MotionConfig } from "motion/react";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from "@/components/footer";
@@ -7,6 +8,7 @@ import Navigation from "@/components/navigation";
 import { PROFILE, SITE } from "@/app/constants";
 import { buildCosmokodeJsonLd, buildPersonJsonLd, buildWebSiteJsonLd, sanitizeJsonLd, SITE_DESCRIPTION, SITE_KEYWORDS } from "@/app/seo";
 import ScrollToTopButton from "@/components/scroll-to-top-button";
+import { ScrollProgressBar } from "@/components/motion/scroll-progress";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_APP_PUBLIC_URL || "https://mrmallik.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://mrmallik.com"),
   title: {
     default: SITE.ownerName,
     template: "%s | Gulger Mallik",
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
   keywords: SITE_KEYWORDS,
   applicationName: SITE.brandName,
   category: "portfolio",
-  authors: [{ name: SITE.ownerName, url: process.env.NEXT_APP_PUBLIC_URL || "https://mrmallik.com" }],
+  authors: [{ name: SITE.ownerName, url: process.env.NEXT_PUBLIC_APP_URL || "https://mrmallik.com" }],
   creator: SITE.ownerName,
   publisher: SITE.ownerName,
   formatDetection: {
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: process.env.NEXT_APP_PUBLIC_URL || "https://mrmallik.com",
+    url: process.env.NEXT_PUBLIC_APP_URL || "https://mrmallik.com",
     siteName: SITE.ownerName,
     locale: "en_GB",
     title: SITE.ownerName,
@@ -125,14 +127,17 @@ export default function RootLayout({
       </head>
       <body className="min-h-full bg-background mx-auto text-foreground transition-colors duration-200">
         <ThemeProvider>
-          <div className="flex flex-col">
-            <Navigation />
-            <main className="w-full flex-1 mx-auto">
-              {children}
-            </main>
-            <Footer />
-          </div>
-			    <ScrollToTopButton />
+          <MotionConfig reducedMotion="user">
+            <ScrollProgressBar />
+            <div className="flex flex-col">
+              <Navigation />
+              <main className="w-full flex-1 mx-auto">
+                {children}
+              </main>
+              <Footer />
+            </div>
+            <ScrollToTopButton />
+          </MotionConfig>
         </ThemeProvider>
       </body>
     </html>

@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { Reveal } from "@/components/motion/reveal";
 
 const testimonialAvatars = [
   "/images/gulger-mallik@1x1.png",
@@ -10,11 +11,16 @@ const testimonialAvatars = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="rounded-2xl bg-stone-50 p-8 text-center dark:bg-stone-900/30 md:p-12">
+    <Reveal as="section" className="rounded-2xl bg-stone-50 p-8 text-center dark:bg-stone-900/30 md:p-12">
         <div className="mb-6 flex justify-center -space-x-2">
           {testimonialAvatars.map((src, i) => (
-            <div
+            <Reveal
               key={i}
+              as="div"
+              index={i}
+              step={0.08}
+              direction="none"
+              scale
               className="h-10 w-10 overflow-hidden rounded-full border-2 border-background"
             >
               <Image
@@ -24,7 +30,7 @@ export default function TestimonialsSection() {
                 height={40}
                 className="h-full w-full object-cover"
               />
-            </div>
+            </Reveal>
           ))}
         </div>
 
@@ -40,6 +46,6 @@ export default function TestimonialsSection() {
           </p>
           <p className="text-xs text-[var(--ui-text-muted)]">TechStartup Inc.</p>
         </div>
-      </section>
+      </Reveal>
   )
 }

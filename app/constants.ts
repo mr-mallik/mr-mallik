@@ -27,10 +27,10 @@ export const LOCATION = {
 export const PROFILE = {
   primaryEmail: "gulgermallik@gmail.com",
   phone: "07767924720",
-  // Server-only: NEXT_APP_PUBLIC_URL is not NEXT_PUBLIC_-prefixed, so it is
+  // Server-only: NEXT_PUBLIC_APP_URL is not NEXT_PUBLIC_-prefixed, so it is
   // undefined in the browser bundle. Client components must use
   // websiteCanonicalUrl instead or they will hydration-mismatch.
-  websiteUrl: process.env.NEXT_APP_PUBLIC_URL || "https://mrmallik.com",
+  websiteUrl: process.env.NEXT_PUBLIC_APP_URL || "https://mrmallik.com",
   websiteCanonicalUrl: "https://mrmallik.com",
   websiteLabel: "mrmallik.com",
   linkedInUrl: "https://www.linkedin.com/in/mrmallik/",

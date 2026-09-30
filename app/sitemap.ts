@@ -6,6 +6,9 @@ import type { ArticlesResponse } from "@/app/blogs/types";
 
 type SitemapArticle = ArticlesResponse["data"][number];
 
+// Regenerate hourly so CMS entries appear even if the CMS was unreachable at build time.
+export const revalidate = 3600;
+
 async function fetchAllArticles(type: "blog" | "project"): Promise<SitemapArticle[]> {
   const pageSize = 100;
   const collected: SitemapArticle[] = [];
@@ -32,10 +35,19 @@ async function fetchAllArticles(type: "blog" | "project"): Promise<SitemapArticl
   return collected;
 }
 
+async function safeFetchAllArticles(type: "blog" | "project"): Promise<SitemapArticle[]> {
+  try {
+    return await fetchAllArticles(type);
+  } catch (err) {
+    console.error(`[sitemap] Failed to fetch ${type} articles:`, err);
+    return [];
+  }
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [blogs, projects] = await Promise.all([
-    fetchAllArticles("blog"),
-    fetchAllArticles("project"),
+    safeFetchAllArticles("blog"),
+    safeFetchAllArticles("project"),
   ]);
 
   const staticPages: MetadataRoute.Sitemap = [

@@ -10,6 +10,7 @@ import {
   STATUS_LABELS,
 } from "@/app/constants";
 import publicationsItems from "@/data/publications.json";
+import { Reveal } from "@/components/motion/reveal";
 
 type Publication = {
   title: string;
@@ -63,11 +64,7 @@ export function PublicationsSection({
       ) : compact ? (
         <div className="space-y-5">
           {slicedPublications.map((publication, i) => (
-            <article
-              key={publication.title}
-              className="section-enter"
-              style={{ animationDelay: `${i * 70}ms` }}
-            >
+            <Reveal key={publication.title} as="article" index={i} step={0.07}>
               {publication.domains && publication.domains.length > 0 ? (
                 <div className="mb-2 flex flex-wrap gap-1.5">
                   {publication.domains.map((d) => (
@@ -94,17 +91,13 @@ export function PublicationsSection({
                   </>
                 ) : null}
               </p>
-            </article>
+            </Reveal>
           ))}
         </div>
       ) : (
         <div className="space-y-4">
-          {slicedPublications.map((publication) => (
-            <article
-              key={publication.title}
-              className="ui-card section-enter"
-              style={{ animationDelay: `${slicedPublications.indexOf(publication) * 70}ms` }}
-            >
+          {slicedPublications.map((publication, i) => (
+            <Reveal key={publication.title} as="article" index={i} step={0.07} className="ui-card">
               <div className="flex items-start gap-3">
                 <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-slate-200 bg-background dark:border-slate-700">
                   {publication.image ? (
@@ -163,7 +156,7 @@ export function PublicationsSection({
                   </p>
                 </div>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       )}

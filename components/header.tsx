@@ -2,6 +2,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowLeft01Icon } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 import { LINK_LABELS } from "@/app/constants";
+import { Reveal } from "@/components/motion/reveal";
 
 export default function Header({
   link,
@@ -26,26 +27,28 @@ export default function Header({
   );
 
   return (
-    <header className="flex flex-col gap-3">
-      {children ? (
-        <>
-          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-            {backLink}
-            <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto sm:justify-end">
-              {children}
+    <Reveal as="section" duration={0.5} className="flex flex-col gap-3">
+      <header className="flex flex-col gap-3">
+        {children ? (
+          <>
+            <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+              {backLink}
+              <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto sm:justify-end">
+                {children}
+              </div>
             </div>
-          </div>
-          {title ? <h1 className="ui-page-title">{title}</h1> : null}
-        </>
-      ) : title ? (
-        <>
-          {backLink}
-          <h1 className="ui-page-title">{title}</h1>
-        </>
-      ) : (
-        backLink
-      )}
-      {description ? <p className="ui-page-description">{description}</p> : null}
-    </header>
+            {title ? <h1 className="ui-page-title">{title}</h1> : null}
+          </>
+        ) : title ? (
+          <>
+            {backLink}
+            <h1 className="ui-page-title">{title}</h1>
+          </>
+        ) : (
+          backLink
+        )}
+        {description ? <p className="ui-page-description">{description}</p> : null}
+      </header>
+    </Reveal>
   );
 }

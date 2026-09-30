@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { QRCodeSVG } from "qrcode.react";
 import { useState } from "react";
+import { motion } from "motion/react";
 
 type FlipAvatarProps = {
   src: string;
@@ -15,18 +16,20 @@ export function FlipAvatar({ src, alt, vcard }: FlipAvatarProps) {
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <button
+    <motion.button
       type="button"
       onClick={() => setFlipped((value) => !value)}
       aria-pressed={flipped}
       aria-label={flipped ? "Show profile photo" : "Show QR code to save contact"}
       title={flipped ? "Tap to show photo" : "Tap to reveal contact QR code"}
       className="relative h-40 w-40 cursor-pointer perspective-[900px] sm:h-44 sm:w-44"
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
     >
-      <div
-        className={`relative h-full w-full transition-transform duration-700 transform-3d ${
-          flipped ? "rotate-y-180" : ""
-        }`}
+      <motion.div
+        className="relative h-full w-full transform-3d"
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ type: "spring", stiffness: 260, damping: 26 }}
       >
         <div className="absolute inset-0 overflow-hidden rounded-full bg-[var(--ui-bg-elevated)] backface-hidden">
           <Image
@@ -49,7 +52,7 @@ export function FlipAvatar({ src, alt, vcard }: FlipAvatarProps) {
             aria-hidden="true"
           />
         </div>
-      </div>
-    </button>
+      </motion.div>
+    </motion.button>
   );
 }

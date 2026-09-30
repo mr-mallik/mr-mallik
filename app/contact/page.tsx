@@ -6,6 +6,7 @@ import { LinkedinIcon, Github01Icon, Mail01Icon } from "@hugeicons/core-free-ico
 import { PROFILE, SITE } from "@/app/constants";
 import { createPageMetadata } from "@/app/seo";
 import { ContactForm, type ServiceItem } from "@/components/contact-form";
+import { Reveal } from "@/components/motion/reveal";
 
 import services from "@/data/services.json";
 
@@ -61,7 +62,7 @@ export default async function Page({
   return (
     <div className="ui-container ui-container-narrow ui-section-py-sm">
       <div className="grid gap-10 md:grid-cols-[260px_1fr] lg:grid-cols-[300px_1fr] lg:gap-14">
-        <aside className="flex flex-col gap-5 hidden md:flex">
+        <Reveal as="aside" direction="left" className="flex flex-col gap-5 hidden md:flex">
           <Image
             src="/images/hero-image-v2.png"
             alt={PROFILE.profileImageAlt}
@@ -98,9 +99,11 @@ export default async function Page({
               </li>
             ))}
           </ul>
-        </aside>
+        </Reveal>
 
-        <ContactForm services={SERVICE_ITEMS} initialType={initialType} />
+        <Reveal direction="right" delay={0.1}>
+          <ContactForm services={SERVICE_ITEMS} initialType={initialType} />
+        </Reveal>
       </div>
     </div>
   );

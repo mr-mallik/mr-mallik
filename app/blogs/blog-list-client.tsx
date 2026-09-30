@@ -4,9 +4,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "motion/react";
 
 import type { Article, ArticlesResponse } from "@/app/blogs/types";
 import { getTagColorClass } from "@/lib/tag-colors";
+
+const EASE_SPRING = [0.16, 1, 0.3, 1] as const;
 
 const PAGE_SIZE = 10;
 
@@ -218,10 +221,13 @@ export default function BlogListClient({
       {articles.length > 0 ? (
         <div className="divide-y divide-[var(--ui-border-subtle)]">
           {articles.map((article, index) => (
-            <article
+            <motion.article
               key={article.id}
-              className="section-enter rounded-xl px-3 py-6 transition-colors odd:bg-transparent even:bg-[color-mix(in_srgb,var(--ui-border-subtle)_22%,transparent)] first:pt-0 last:pb-0 dark:even:bg-[color-mix(in_srgb,var(--ui-border-subtle)_30%,transparent)] sm:px-4"
-              style={{ animationDelay: `${index * 60}ms` }}
+              className="rounded-xl px-3 py-6 transition-colors odd:bg-transparent even:bg-[color-mix(in_srgb,var(--ui-border-subtle)_22%,transparent)] first:pt-0 last:pb-0 dark:even:bg-[color-mix(in_srgb,var(--ui-border-subtle)_30%,transparent)] sm:px-4"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: (index % PAGE_SIZE) * 0.06, ease: EASE_SPRING }}
             >
               <div className="group flex items-start gap-3 sm:gap-5">
                 <div className="min-w-0 flex-1 space-y-2">
@@ -284,7 +290,7 @@ export default function BlogListClient({
                   </Link>
                 ) : null}
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       ) : (
