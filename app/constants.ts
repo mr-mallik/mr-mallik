@@ -26,7 +26,7 @@ export const LOCATION = {
 
 export const PROFILE = {
   primaryEmail: "gulgermallik@gmail.com",
-  workEmail: "g.mallik3@hud.ac.uk",
+  workEmail: "gulger.mallik@hud.ac.uk",
   phone: "07767924720",
   phoneInternational: "+447767924720",
   // Server-only: NEXT_PUBLIC_APP_URL is not NEXT_PUBLIC_-prefixed, so it is
