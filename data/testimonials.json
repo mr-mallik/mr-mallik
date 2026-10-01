@@ -1,0 +1,66 @@
+[
+    {
+        "name":  "George Baryannis",
+        "role":  "Professor of Artificial Intelligence",
+        "organization":  "University of Huddersfield",
+        "linkedin":  "https://www.linkedin.com/in/george-baryannis-759b1851/",
+        "quote":  "One of our top MSc Computing graduates. He mastered new areas of AI from scratch and delivered a prototype that exceeded our industry partner's requirements.",
+        "avatar":  ""
+    },
+    {
+        "name":  "Paul Grech",
+        "role":  "Data Intelligence Manager",
+        "organization":  "Together Housing",
+        "linkedin":  "https://uk.linkedin.com/in/paul-grech-09367256",
+        "quote":  "Gulger is deeply knowledgeable and genuinely committed. He sets clear expectations from day one and brought real innovation and creativity to our AI project.",
+        "avatar":  ""
+    },
+    {
+        "name":  "Kristian",
+        "role":  "Senior Accounts Manager",
+        "organization":  "BK Plus",
+        "linkedin":  "",
+        "quote":  "Gulger built AI software that sped up our audit preparation and measurably cut time on large jobs. Hard-working, easy to work with, and he gets the job done.",
+        "avatar":  ""
+    },
+    {
+        "name":  "Veda Salkar",
+        "role":  "Co-founder",
+        "organization":  "Cosmokode",
+        "linkedin":  "https://www.linkedin.com/in/vedasalkar/",
+        "quote":  "An exceptional problem-solver who stays calm under pressure, Gulger is always patient and ready to help his teammates. An excellent colleague and an asset to any team.",
+        "avatar":  ""
+    },
+    {
+        "name":  "Amrit Roy",
+        "role":  "Software Engineer",
+        "organization":  "TrellisSoft",
+        "linkedin":  "https://www.linkedin.com/in/amrit-roy-97b2779a/",
+        "quote":  "A key member of our team for over a year, Gulger solved complex issues and managed projects effectively under pressure. Dedicated and results-driven.",
+        "avatar":  ""
+    },
+    {
+        "name":  "Ashley Cusack",
+        "role":  "Research Fellow",
+        "organization":  "University of Huddersfield",
+        "linkedin":  "https://www.linkedin.com/in/ashcusack/",
+        "quote":  "Ready to work and learn from day one, Gulger quickly became a key member of our team. His attention to detail and methodical approach are an example for all.",
+        "avatar":  ""
+    },
+    {
+        "name":  "Gary Allen",
+        "role":  "Senior Lecturer",
+        "organization":  "University of Huddersfield",
+        "linkedin":  "https://www.linkedin.com/in/gary-allen-5145172b4/",
+        "quote":  "Hard-working, quick to learn, and enthusiastic about his subject, with outstanding project work. I'd recommend him to any employer without reservation.",
+        "avatar":  ""
+    },
+    {
+        "name":  "Sangeet Saha",
+        "role":  "Lecturer in Embedded Systems",
+        "organization":  "University of Essex",
+        "linkedin":  "https://www.linkedin.com/in/sangeet-saha-a677924b/",
+        "quote":  "Gulger's dedication, strong work ethic, and ability to collaborate effectively make him an asset to any team.",
+        "avatar":  ""
+    }
+]

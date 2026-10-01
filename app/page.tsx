@@ -4,12 +4,13 @@ import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { LinkedinIcon, Github01Icon, IdIcon, Email, ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 
-import { ROUTES, PROFILE } from "@/app/constants";
+import { ROUTES, PROFILE, SECTION_IDS } from "@/app/constants";
 import { createPageMetadata, SITE_DESCRIPTION } from "@/app/seo";
 
 import { ProjectsSection } from "@/components/projects-section";
 import { BlogsSection } from "@/components/blogs-section";
 import { PublicationsSection } from "@/components/publications-section";
+import TestimonialsSection from "@/components/testimonials-section";
 import { Reveal } from "@/components/motion/reveal";
 import { Parallax } from "@/components/motion/parallax";
 import { MotionLink, MotionAnchor, ctaHoverTap } from "@/components/motion/motion-link";
@@ -289,6 +290,13 @@ export default function Page() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      <section
+        id={SECTION_IDS.testimonials}
+        className="ui-section-py-sm scroll-mt-[var(--ui-nav-h)] overflow-hidden"
+      >
+        <TestimonialsSection />
       </section>
 
       <section className="ui-container ui-section-py-sm">

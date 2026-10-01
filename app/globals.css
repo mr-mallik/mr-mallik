@@ -96,6 +96,42 @@ body {
   to   { opacity: 1; }
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/*  Infinite horizontal scroller: the track holds two identical copies
+    and slides by half its width, so the loop is seamless.  */
+.ui-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.ui-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 60s) linear infinite;
+}
+
+.ui-marquee-reverse .ui-marquee-track {
+  animation-direction: reverse;
+}
+
+.ui-marquee:hover .ui-marquee-track,
+.ui-marquee:focus-within .ui-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-marquee {
+    overflow-x: auto;
+  }
+  .ui-marquee-track {
+    animation: none;
+  }
+}
+
 /*  Reduced-motion: skip all entrance animations  */
 @media (prefers-reduced-motion: reduce) {
   .hero-fade-in,

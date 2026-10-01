@@ -60,11 +60,17 @@ export const ROUTES = {
   contactCard: "/links/contact.vcf",
 } as const;
 
+// Shareable in-page anchors, e.g. mrmallik.com/#kind-words
+export const SECTION_IDS = {
+  testimonials: "kind-words",
+} as const;
+
 // Routes rendered without the site navigation, footer, and scroll helpers.
 export const STANDALONE_ROUTES = [ROUTES.links] as const;
 
 export const EXTERNAL_LINKS = {
   cosmokode: "https://cosmokode.com",
+  testimonialForm: "https://forms.gle/ne3uAGKhF3f38ZAP7",
 } as const;
 
 export const MAIL = {
@@ -85,6 +91,7 @@ export const SECTION_TITLES = {
   skills: "Skills",
   publications: "Publications",
   showcase: "Worked alongside",
+  testimonials: "Kind words",
   blog: "Blog",
 } as const;
 
