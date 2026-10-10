@@ -134,11 +134,11 @@ export function PublicationsSection({
                   <p className="ui-meta-text mt-2">
                     {STATUS_LABELS.publicationStatusPrefix}{" "}
                     {publication.status.toLowerCase().includes("published") ? (
-                      <span className="text-green-600 dark:text-green-400">{publication.status}</span>
+                      <span className="text-green-700 dark:text-green-400">{publication.status}</span>
                     ) : publication.status.toLowerCase().includes("submitted") ? (
-                      <span className="text-yellow-600 dark:text-yellow-400">{publication.status}</span>
+                      <span className="text-yellow-700 dark:text-yellow-400">{publication.status}</span>
                     ) : publication.status.toLowerCase().includes("review") ? (
-                      <span className="text-orange-600 dark:text-orange-400">{publication.status}</span>
+                      <span className="text-orange-700 dark:text-orange-400">{publication.status}</span>
                     ) : publication.status}
                     {publication.doi ? (
                       <>

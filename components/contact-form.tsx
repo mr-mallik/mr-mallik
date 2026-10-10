@@ -100,7 +100,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
     return null;
   }
   return (
-    <p id={id} role="alert" className="mt-1.5 text-xs text-[var(--ui-accent)]">
+    <p id={id} role="alert" className="mt-1.5 text-xs text-[var(--ui-danger)]">
       {message}
     </p>
   );
@@ -330,7 +330,7 @@ export function ContactForm({ services, initialType }: ContactFormProps) {
         <motion.button
           type="submit"
           disabled={status === "sending"}
-          className="flex items-center rounded-full bg-[var(--ui-accent)] cursor-pointer px-6 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60"
+          className="flex items-center rounded-full bg-[var(--ui-accent-strong)] cursor-pointer px-6 py-2.5 text-sm font-medium text-[var(--ui-on-accent)] transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60"
           whileHover={status === "sending" ? undefined : { scale: 1.04 }}
           whileTap={status === "sending" ? undefined : { scale: 0.96 }}
         >
@@ -338,7 +338,7 @@ export function ContactForm({ services, initialType }: ContactFormProps) {
           {status === "sending" ? "Sending..." : "Send message"}
         </motion.button>
         {status === "sent" ? (
-          <span className="text-xs font-medium text-[var(--ui-accent)]" role="status">
+          <span className="text-xs font-medium text-[var(--ui-success)]" role="status">
             Message sent – thank you! I&apos;ll get back to you soon.
           </span>
         ) : (
@@ -347,14 +347,14 @@ export function ContactForm({ services, initialType }: ContactFormProps) {
           </span>
         )}
         {error ? (
-          <span className="text-xs text-[var(--ui-accent)]" role="alert">
+          <span className="text-xs text-[var(--ui-danger)]" role="alert">
             {error}
           </span>
         ) : null}
       </div>
 
       {RECAPTCHA_SITE_KEY ? (
-        <p className="border-t border-[var(--ui-border-subtle)] px-5 py-2 text-[10px] leading-relaxed text-[var(--ui-text-muted)]">
+        <p className="border-t border-[var(--ui-border-subtle)] px-5 py-2 text-xs leading-relaxed text-[var(--ui-text-muted)]">
           This site is protected by reCAPTCHA Enterprise; the Google{" "}
           <a
             href="https://policies.google.com/privacy"

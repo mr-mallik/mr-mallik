@@ -27,13 +27,13 @@ function TestimonialCard({ item, hidden }: { item: Testimonial; hidden: boolean 
       aria-hidden={hidden || undefined}
       className="mr-5 flex w-[300px] shrink-0 flex-col justify-between gap-6 rounded-2xl border border-[var(--ui-border-subtle)] bg-[var(--ui-bg-elevated)] p-6 sm:w-[380px]"
     >
-      <blockquote className="text-[15px] leading-relaxed text-[var(--ui-text-secondary)]">
+      <blockquote className="text-base leading-relaxed text-[var(--ui-text-secondary)]">
         &ldquo;{item.quote}&rdquo;
       </blockquote>
 
       <div className="flex items-center gap-3">
         <div
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--ui-border-soft)] bg-[var(--ui-accent-muted)] text-xs font-bold text-[var(--ui-accent)]"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--ui-border-soft)] bg-[var(--ui-accent-muted)] text-xs font-bold text-[var(--ui-accent-strong)]"
           aria-hidden="true"
         >
           {initials(item.name)}
@@ -46,7 +46,7 @@ function TestimonialCard({ item, hidden }: { item: Testimonial; hidden: boolean 
                 target="_blank"
                 rel="noreferrer"
                 tabIndex={hidden ? -1 : undefined}
-                className="transition-colors hover:text-[var(--ui-accent)]"
+                className="transition-colors hover:text-[var(--ui-accent-strong)]"
               >
                 {item.name}
               </a>

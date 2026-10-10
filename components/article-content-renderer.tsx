@@ -3,7 +3,7 @@ import type { ParsedBlock } from "@/services/articles";
 function renderBlock(block: ParsedBlock, key: string): React.ReactNode {
   if (block.kind === "paragraph") {
     return (
-      <p key={key} className="ui-body-text text-[15px] leading-8 [overflow-wrap:anywhere]">
+      <p key={key} className="ui-body-text [overflow-wrap:anywhere]">
         {block.text}
       </p>
     );
@@ -47,7 +47,7 @@ function renderBlock(block: ParsedBlock, key: string): React.ReactNode {
     return (
       <blockquote
         key={key}
-        className="border-l-2 border-[var(--ui-border-soft)] pl-4 italic ui-body-text text-[15px] leading-7"
+        className="border-l-2 border-[var(--ui-border-soft)] pl-4 italic ui-body-text"
       >
         {block.text}
       </blockquote>
@@ -75,7 +75,7 @@ function renderBlock(block: ParsedBlock, key: string): React.ReactNode {
       : "list-disc";
 
   return (
-    <ListTag key={key} className={`${listClass} space-y-3 pl-6 ui-body-text text-[15px] leading-7`}>
+    <ListTag key={key} className={`${listClass} space-y-3 pl-6 ui-body-text`}>
       {block.items.map((itemBlocks, index) => (
         <li key={`${key}-${index}`} className="space-y-2">
           {itemBlocks.map((itemBlock, innerIndex) =>

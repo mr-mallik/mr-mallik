@@ -82,7 +82,7 @@ export default function Page() {
                     <br />
                     <span style={{ color: "var(--ui-accent)" }}>&amp; AI Researcher</span>
                   </h1>
-                  <p className="max-w-md text-base leading-relaxed text-[var(--ui-text-secondary)]">
+                  <p className="max-w-md text-lg leading-relaxed text-[var(--ui-text-secondary)]">
                     I&apos;m <strong className="font-medium text-[var(--ui-text-primary)]">Gulger Mallik</strong>. I build
                     AI-powered software and research explainable AI that helps people make
                     better decisions in areas like housing, energy, supply chain, and sustainability. Based in
@@ -214,7 +214,7 @@ export default function Page() {
                 {achievementsWithOffset.map((award, index) => (
                   <Reveal key={`award-item-${index}`} as="li" index={index} step={0.06} direction="right" className="ui-experience-row">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--ui-text-primary)] text-[10px] font-bold text-background">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--ui-text-primary)] text-[11px] font-bold text-background">
                         {award.badge}
                       </div>
                       <div>
@@ -273,7 +273,7 @@ export default function Page() {
             >
               <Link href={service.link} className="flex flex-1 flex-col gap-4">
               <div className="flex flex-col gap-3 flex-1">
-                <h3 className="flex min-h-[2.75em] items-center break-words text-[clamp(1rem,0.55rem_+_1.5vw,1.875rem)] leading-snug uppercase font-bold text-[var(--ui-accent)]">
+                <h3 className="flex min-h-[2.75em] items-center break-words text-[clamp(1rem,0.55rem_+_1.5vw,1.875rem)] leading-snug uppercase font-bold text-[var(--ui-accent-strong)] md:text-[var(--ui-accent)]">
                   {service.name}
                 </h3>
                 <p className="text-sm md:text-base text-[var(--ui-text-secondary)] leading-relaxed">

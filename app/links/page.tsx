@@ -99,9 +99,9 @@ export default function LinksPage() {
         }}
       />
 
-      {/* Beige backdrop echoing the about page card */}
+      {/* Accent-tint backdrop echoing the about page card */}
       <div
-        className="absolute inset-x-0 top-0 h-32 bg-[#eadfd2] sm:h-40 dark:bg-[#2a2420]"
+        className="absolute inset-x-0 top-0 h-32 bg-[var(--ui-accent-muted)] sm:h-40"
         aria-hidden="true"
       />
 

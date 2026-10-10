@@ -232,7 +232,7 @@ export default function BlogListClient({
               <div className="group flex items-start gap-3 sm:gap-5">
                 <div className="min-w-0 flex-1 space-y-2">
                   <Link href={`/blogs/${article.slug}`} className="contents">
-                    <h2 className="ui-item-title text-[15px] font-semibold leading-snug transition-colors group-hover:text-[var(--ui-text-link)]">
+                    <h2 className="ui-item-title leading-snug transition-colors group-hover:text-[var(--ui-text-link)]">
                       {article.title}
                     </h2>
 

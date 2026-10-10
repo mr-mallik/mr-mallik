@@ -31,7 +31,7 @@ export function Pronunciation() {
       onClick={speak}
       aria-label="Hear how Gulger is pronounced"
       className={`mt-2 inline-flex items-center gap-1.5 text-sm transition-colors hover:text-[var(--ui-text-primary)] ${
-        speaking ? "text-[var(--ui-accent)]" : "text-[var(--ui-text-muted)]"
+        speaking ? "text-[var(--ui-accent-strong)]" : "text-[var(--ui-text-muted)]"
       }`}
     >
       <HugeiconsIcon icon={VolumeHighIcon} className="h-4 w-4 shrink-0" aria-hidden="true" />

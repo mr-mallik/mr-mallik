@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist_Mono, Inter } from "next/font/google";
 import { MotionConfig } from "motion/react";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -11,9 +11,19 @@ import ScrollToTopButton from "@/components/scroll-to-top-button";
 import { ScrollProgressBar } from "@/components/motion/scroll-progress";
 import { SiteChrome } from "@/components/site-chrome";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Body and UI text.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+// Display serif for page and section headings; opsz keeps it crisp from 18px to 64px.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  axes: ["opsz"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -88,7 +98,7 @@ export default function RootLayout({
     <html
       lang="en-GB"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${fraunces.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
         <script

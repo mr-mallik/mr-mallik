@@ -55,7 +55,7 @@ export default function Navigation() {
               />
 
               <span className="ui-brand-text text-lg lg:text-2xl font-bold tracking-widest uppercase whitespace-nowrap">
-                Gulger <span style={{ color: "var(--ui-accent)" }}>Mallik</span>
+                Gulger <span className="text-[var(--ui-accent-strong)] lg:text-[var(--ui-accent)]">Mallik</span>
               </span>
             </Link>
           </motion.div>

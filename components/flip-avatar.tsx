@@ -66,7 +66,7 @@ export function FlipAvatar({ src, alt, vcard, ringClassName }: FlipAvatarProps) 
             value={vcard}
             level="M"
             bgColor="#ffffff"
-            fgColor="#171310"
+            fgColor="#141414"
             className="h-full w-full"
             aria-hidden="true"
           />

@@ -73,10 +73,10 @@ export default function AboutPage() {
         <Reveal index={0} direction="left" className="relative flex justify-center py-10 sm:py-14">
           <Parallax
             offset={16}
-            className="absolute inset-y-0 inset-x-0 bg-[#eadfd2] sm:right-16 dark:bg-[#2a2420]"
+            className="absolute inset-y-0 inset-x-0 bg-[var(--ui-accent-muted)] sm:right-16"
             aria-hidden="true"
           />
-          <div className="relative w-[280px] bg-[#f7f2ec] shadow-xl sm:w-[320px] sm:translate-x-6 dark:bg-[#1f1b18]">
+          <div className="relative w-[280px] border border-[var(--ui-border-subtle)] bg-background shadow-xl sm:w-[320px] sm:translate-x-6">
             <div className="flex flex-col items-center px-8 pb-9 pt-10 text-center">
               <FlipAvatar
                 src="/images/hero-image.png"
@@ -100,7 +100,7 @@ export default function AboutPage() {
                 </Link>
               </p>
             </div>
-            <div className="flex items-center justify-center gap-9 bg-white py-4 dark:bg-[#171310]">
+            <div className="flex items-center justify-center gap-9 bg-[var(--ui-bg-elevated)] py-4">
               {socialLinks.map((link) => (
                 <Link
                   key={link.name}
