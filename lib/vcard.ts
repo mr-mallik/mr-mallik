@@ -35,7 +35,7 @@ export function buildContactVcard({ compact = false }: VcardOptions = {}): strin
     `N:${escapeText(familyName)};${escapeText(givenName)};;;`,
     `FN:${escapeText(SITE.ownerName)}`,
     `ORG:${escapeText(PROFILE.affiliationName)}`,
-    `TITLE:${escapeText(PAGE_COPY.homepageRolePrefix.replace(/ at$/, ""))}`,
+    `TITLE:${escapeText(PAGE_COPY.roleTitle)}`,
     `TEL;TYPE=CELL:${PROFILE.phoneInternational}`,
     `EMAIL;TYPE=INTERNET,HOME,pref:${PROFILE.primaryEmail}`,
     `EMAIL;TYPE=INTERNET,WORK:${PROFILE.workEmail}`,

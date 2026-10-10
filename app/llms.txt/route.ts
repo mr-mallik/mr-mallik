@@ -7,7 +7,7 @@ export async function GET() {
     "Portfolio, research profile, resume, projects, publications, and blog articles for Gulger Mallik (mrmallik).",
     "",
     "## Identity",
-    `Gulger Mallik (pronounced "Gul-jar Maa-llik") is an AI researcher at the University of Huddersfield and founding software engineer at Cosmokode Ltd, based in Huddersfield, United Kingdom.`,
+    `Gulger Mallik (pronounced "Gul-jar Maa-llik") is a PhD researcher in artificial intelligence at the University of Huddersfield and co-founder of Cosmokode Ltd, based in Huddersfield, United Kingdom.`,
     `The name is sometimes misspelled as ${NAME_VARIANTS.filter((v) => v !== "Mr Mallik").join(", ")}; all refer to the same person, who also goes by Mr Mallik and mrmallik online.`,
     "",
     "## Key pages",

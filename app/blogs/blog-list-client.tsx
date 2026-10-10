@@ -295,7 +295,7 @@ export default function BlogListClient({
         </div>
       ) : (
         <p className="ui-meta-text">
-          {activeTag || activeCategory ? "No posts found for this filter." : "No posts published yet - check back soon."}
+          {activeTag || activeCategory ? "No posts found for this filter." : "No posts published yet – check back soon."}
         </p>
       )}
 

@@ -126,7 +126,7 @@ export default async function BlogDetailPage({
 								<span className="ui-meta-text opacity-40">&bull;</span>
 								<span className="ui-meta-text inline-flex items-center gap-1.5">
 									<HugeiconsIcon icon={ViewIcon} className="h-3.5 w-3.5" aria-hidden="true" />
-									{article.readCount.toLocaleString()} reads
+									{article.readCount.toLocaleString("en-GB")} reads
 								</span>
 							</>
 						) : null}

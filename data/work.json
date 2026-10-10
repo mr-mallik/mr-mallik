@@ -2,7 +2,7 @@
 	{
 		"company": "University of Huddersfield",
 		"role": "Research Technician",
-		"period": "Mar 2026 - Present",
+		"period": "Mar 2026 – Present",
 		"location": "Huddersfield, UK",
 		"url": "https://www.hud.ac.uk/",
 		"logo": "/images/companies/university-of-huddersfield-logo.jpg",
@@ -17,7 +17,7 @@
 	{
 		"company": "University of Huddersfield",
 		"role": "Research Assistant in Applied AI (UKRI)",
-		"period": "Oct 2024 - Oct 2025",
+		"period": "Oct 2024 – Oct 2025",
 		"location": "Huddersfield, UK",
 		"url": "https://www.hud.ac.uk/",
 		"logo": "/images/companies/university-of-huddersfield-logo.jpg",
@@ -32,11 +32,11 @@
 	{
 		"company": "University of Huddersfield",
 		"role": "Research Technician",
-		"period": "Apr 2024 - Aug 2024",
+		"period": "Apr 2024 – Aug 2024",
 		"location": "Huddersfield, UK",
 		"url": "https://www.hud.ac.uk/",
 		"logo": "/images/companies/university-of-huddersfield-logo.jpg",
-		"summary": "Built an end-to-end NLP workflow to automate financial audit processes, turning unstructured financial records into machine-readable data for reliable automated analysis. Emphasized traceability and compliance through auditable processing logic.",
+		"summary": "Built an end-to-end NLP workflow to automate financial audit processes, turning unstructured financial records into machine-readable data for reliable automated analysis. Emphasised traceability and compliance through auditable processing logic.",
 		"details": [
 			"Designed and implemented an end-to-end NLP pipeline for financial audit automation.",
 			"Converted heterogeneous unstructured documents into structured machine-readable datasets.",
@@ -47,7 +47,7 @@
 	{
 		"company": "University of Huddersfield",
 		"role": "Research and Development Engineer",
-		"period": "Oct 2023 - Apr 2024",
+		"period": "Oct 2023 – Apr 2024",
 		"location": "Huddersfield, UK",
 		"url": "https://www.hud.ac.uk/",
 		"logo": "/images/companies/university-of-huddersfield-logo.jpg",
@@ -62,7 +62,7 @@
 	{
 		"company": "Trellissoft Inc.",
 		"role": "Software Engineer",
-		"period": "Mar 2022 - Aug 2022",
+		"period": "Mar 2022 – Aug 2022",
 		"location": "Goa, India",
 		"url": "https://www.trellissoft.com/",
 		"logo": "/images/companies/trellissoft-logo.jpg",
@@ -77,7 +77,7 @@
 	{
 		"company": "Teaminertia Technologies",
 		"role": "Software Engineer",
-		"period": "May 2019 - Mar 2022",
+		"period": "May 2019 – Mar 2022",
 		"location": "Goa, India",
 		"url": "https://www.teaminertia.com/",
 		"logo": "/images/companies/team-inertia-technologies-logo.jpg",

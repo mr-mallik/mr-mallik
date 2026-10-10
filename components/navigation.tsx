@@ -9,7 +9,7 @@ import { ROUTES } from "@/app/constants";
 
 const NAV_LINKS = [
   { label: "Home", href: ROUTES.home },
-  { label: "About Me", href: ROUTES.about },
+  { label: "About me", href: ROUTES.about },
   { label: "Blog", href: ROUTES.blogs },
   { label: "Projects", href: ROUTES.projects },
   { label: "Publications", href: ROUTES.publications },
@@ -43,11 +43,11 @@ export default function Navigation() {
               href={ROUTES.home}
               className="ui-brand-link shrink-0 flex items-center gap-2 rounded-lg px-2 py-1 duration-150]"
               onClick={close}
-              aria-label="MR. MALLIK - home"
+              aria-label="Gulger Mallik – home"
             >
               <Image
                 src="/logo.png"
-                alt="MR. MALLIK"
+                alt=""
                 width={36}
                 height={36}
                 className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 rounded-full"
@@ -124,20 +124,9 @@ export default function Navigation() {
       <AnimatePresence>
         {mobileOpen ? (
           <>
-            {/* Backdrop */}
+            {/* Full-screen panel sliding in from the right */}
             <motion.div
-              className="fixed inset-0 z-40 bg-black/30 backdrop-blur-[2px] md:hidden"
-              onClick={close}
-              aria-hidden="true"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-            />
-
-            {/* Right-side drawer */}
-            <motion.div
-              className="fixed right-0 top-0 z-50 flex h-full w-64 flex-col border-l border-[var(--ui-border-subtle)] bg-background shadow-2xl md:hidden"
+              className="fixed inset-0 z-50 flex h-dvh w-full flex-col bg-background md:hidden"
               aria-label="Navigation menu"
               role="dialog"
               aria-modal="true"
@@ -172,23 +161,25 @@ export default function Navigation() {
               </div>
 
               {/* Drawer nav links */}
-              <nav className="flex flex-col px-2 py-3">
+              {/* Links share the remaining viewport height evenly, centred horizontally. */}
+              <nav className="flex flex-1 flex-col items-center justify-evenly px-6 py-6">
                 {NAV_LINKS.map((link, index) => {
                   const active = isActive(link.href);
                   return (
                     <motion.div
                       key={link.href}
-                      initial={{ opacity: 0, x: 16 }}
+                      initial={{ opacity: 0, x: 24 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.04, ease: EASE_SPRING }}
+                      transition={{ duration: 0.3, delay: 0.1 + index * 0.04, ease: EASE_SPRING }}
                     >
                       <Link
                         href={link.href}
                         onClick={close}
-                        className={`block rounded-lg px-3 py-3 text-sm font-medium transition-colors duration-150 ${
+                        aria-current={active ? "page" : undefined}
+                        className={`block px-4 py-2 text-center text-2xl font-semibold transition-colors duration-150 ${
                           active
-                            ? "bg-[var(--ui-border-subtle)] text-[var(--ui-text-primary)]"
-                            : "text-[var(--ui-text-muted)] hover:bg-[var(--ui-border-subtle)] hover:text-[var(--ui-text-primary)]"
+                            ? "text-[var(--ui-accent)]"
+                            : "text-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)]"
                         }`}
                       >
                         {link.label}

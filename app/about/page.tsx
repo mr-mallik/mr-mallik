@@ -1,6 +1,3 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
-
 import { LinkedinIcon, Github01Icon, Mail, IdIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
@@ -25,9 +22,10 @@ import {
   SITE_DESCRIPTION,
   DEFAULT_OG_IMAGE_PATH,
 } from "@/app/seo";
+import { buildContactVcard } from "@/lib/vcard";
 
 export const metadata = createPageMetadata({
-  title: "About - AI Researcher, Software Engineer & Product Builder",
+  title: "About – AI Researcher, Software Engineer & Product Builder",
   description: SITE_DESCRIPTION,
   path: ROUTES.about,
   keywords: ["Gulger Mallik", "mrmallik", "AI researcher", "software engineer", "about"],
@@ -42,18 +40,14 @@ const mailtoQuery = new URLSearchParams({
 
 const mailtoLink = `mailto:${PROFILE.primaryEmail}?${mailtoQuery}`;
 
-// Contact card served from public/cards/gulger.vcf; its content is embedded in the
-// QR code on the flipped avatar so phones offer to save the contact directly on scan.
-const contactVcard = readFileSync(
-  path.join(process.cwd(), "public", "cards", "gulger.vcf"),
-  "utf8",
-);
+// Embedded in the flipped avatar's QR code so phone cameras offer to save the contact on scan.
+const contactVcard = buildContactVcard({ compact: true });
 
 const socialLinks = [
   { name: "LinkedIn", href: PROFILE.linkedInUrl, icon: LinkedinIcon },
   { name: "GitHub", href: PROFILE.githubUrl, icon: Github01Icon },
   { name: "Email", href: mailtoLink, icon: Mail },
-  { name: "ORCiD", href: PROFILE.orcidUrl, icon: IdIcon },
+  { name: "ORCID", href: PROFILE.orcidUrl, icon: IdIcon },
 ];
 
 export default function AboutPage() {
@@ -64,7 +58,7 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{
           __html: sanitizeJsonLd(
             buildWebPageJsonLd({
-              title: "About - Gulger Mallik",
+              title: "About – Gulger Mallik",
               description: SITE_DESCRIPTION,
               path: ROUTES.about,
               image: DEFAULT_OG_IMAGE_PATH,
@@ -90,7 +84,7 @@ export default function AboutPage() {
                 vcard={contactVcard}
               />
               <h1 className="mt-8 text-xl font-bold tracking-tight text-[var(--ui-text-primary)]">
-                Mr. {SITE.ownerName}
+                {SITE.ownerName}
               </h1>
               <Pronunciation />
               <div className="mt-5 h-px w-10 bg-[var(--ui-text-primary)]" aria-hidden="true" />
@@ -130,7 +124,7 @@ export default function AboutPage() {
           </Reveal>
           <Reveal as="div" index={2} className="pt-2">
             <h2 className="text-2xl font-medium text-[var(--ui-text-primary)]">
-              A Bit About Me
+              A bit about me
             </h2>
           </Reveal>
 
@@ -144,23 +138,23 @@ export default function AboutPage() {
               className="hero-inline-link"
             >
               Cosmokode Ltd
-            </Link>{" "}
+            </Link>
             {PAGE_COPY.homeIntroCompanySuffix}
           </Reveal>
 
           <Reveal as="p" index={4} className="ui-body-text">
             My research explores Explainable AI, Multi-Criteria Decision Making, and Sustainable
-            Software Engineering - areas where I believe rigorous thinking leads to better products.
-            I publish through{" "}
+            Software Engineering – areas where I believe rigorous thinking leads to better products.
+            My publications are listed on{" "}
             <Link
               href={PROFILE.orcidUrl}
               target="_blank"
               rel="noreferrer"
               className="hero-inline-link"
             >
-              ORCiD
-            </Link>{" "}
-            and write about software, AI, and building things responsibly on my{" "}
+              ORCID
+            </Link>
+            , and I write about software, AI, and building things responsibly on my{" "}
             <Link href={ROUTES.blogs} className="hero-inline-link">
               blog
             </Link>

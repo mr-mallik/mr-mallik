@@ -4,7 +4,8 @@ import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { LinkedinIcon, Github01Icon, IdIcon, Email, ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 
-import { ROUTES, PROFILE, SECTION_IDS } from "@/app/constants";
+import { ROUTES, PROFILE, SECTION_IDS, SECTION_TITLES } from "@/app/constants";
+import { slugify } from "@/lib/utils";
 import { createPageMetadata, SITE_DESCRIPTION } from "@/app/seo";
 
 import { ProjectsSection } from "@/components/projects-section";
@@ -23,6 +24,8 @@ import services from "@/data/services.json";
 import publications from "@/data/publications.json";
 
 const publicationsCount = String(publications.length).padStart(2, "0");
+// Show one fewer achievement than work items so the two columns balance visually.
+const achievementsWithOffset = achievements.slice(0, workItems.length - 1);
 
 export const metadata: Metadata = createPageMetadata({
   title: "AI Researcher & Software Engineer",
@@ -34,7 +37,7 @@ export const metadata: Metadata = createPageMetadata({
 const HERO_SOCIALS = [
   { label: "LinkedIn", href: PROFILE.linkedInUrl, icon: LinkedinIcon, handle: "mrmallik" },
   { label: "GitHub", href: PROFILE.githubUrl, icon: Github01Icon, handle: "mr-mallik" },
-  { label: "ORCiD", href: PROFILE.orcidUrl, icon: IdIcon, handle: "ORCiD" },
+  { label: "ORCID", href: PROFILE.orcidUrl, icon: IdIcon, handle: "ORCID" },
 ];
 
 export default function Page() {
@@ -80,9 +83,10 @@ export default function Page() {
                     <span style={{ color: "var(--ui-accent)" }}>&amp; AI Researcher</span>
                   </h1>
                   <p className="max-w-md text-base leading-relaxed text-[var(--ui-text-secondary)]">
-                    I&apos;m <strong className="font-medium text-[var(--ui-text-primary)]">Gulger Mallik</strong> — crafting
-                    intelligent digital products and advancing applied AI research for
-                    real-world impact. Based in Huddersfield, United Kingdom.
+                    I&apos;m <strong className="font-medium text-[var(--ui-text-primary)]">Gulger Mallik</strong>. I build
+                    AI-powered software and research explainable AI that helps people make
+                    better decisions in areas like housing, energy, supply chain, and sustainability. Based in
+                    Huddersfield, United Kingdom.
                   </p>
                 </Reveal>
 
@@ -110,11 +114,11 @@ export default function Page() {
                     <span className="text-4xl font-bold  text-[var(--ui-text-primary)] gap-2 flex items-center ">
                       {publicationsCount}
                       <span className="text-xs font-medium uppercase tracking-widest text-[var(--ui-text-muted)]">
-                        Academic
+                        Research
                       </span>
                     </span>
                     <span className="text-xs font-medium uppercase tracking-widest text-[var(--ui-text-muted)]">
-                      Publications
+                      Papers
                     </span>
                   </div>
                 </Reveal>
@@ -171,9 +175,9 @@ export default function Page() {
         <div className="ui-container">
           <div className="grid gap-6 md:grid-cols-2">
             <div>
-              <h3 className="ui-resume-title mb-6">
-                Working experience
-              </h3>
+              <h2 className="ui-resume-title mb-6">
+                {SECTION_TITLES.workExperience}
+              </h2>
               <ul className="divide-y divide-[var(--ui-border-subtle)]">
                 {workItems.map((exp, index) => (
                   <Reveal key={`work-item-${index}`} as="li" index={index} step={0.06} direction="left" className="ui-experience-row">
@@ -203,11 +207,11 @@ export default function Page() {
             </div>
 
             <div>
-              <h3 className="ui-resume-title mb-6">
-                Leadership &amp; Recognition
-              </h3>
+              <h2 className="ui-resume-title mb-6">
+                Leadership &amp; recognition
+              </h2>
               <ul className="divide-y divide-[var(--ui-border-subtle)]">
-                {achievements.map((award, index) => (
+                {achievementsWithOffset.map((award, index) => (
                   <Reveal key={`award-item-${index}`} as="li" index={index} step={0.06} direction="right" className="ui-experience-row">
                     <div className="flex items-center gap-3">
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--ui-text-primary)] text-[10px] font-bold text-background">
@@ -218,16 +222,18 @@ export default function Page() {
                           {award.title}
                         </p>
                         <p className="text-xs text-[var(--ui-text-muted)]">{award.date}
-                          {award.organization ? <> @ <span className="font-semibold"> {award.organization}</span></> : ""}
+                          {award.organization ? <> &middot; <span className="font-semibold">{award.organization}</span></> : ""}
                         </p>
                       </div>
                     </div>
                     <Link
-                      href={`/resume?#${award.title}`}
+                      href={`${ROUTES.resume}#${slugify(award.title)}`}
+                      aria-label={`${award.title} on resume`}
                       className="ml-auto flex items-center gap-1 text-[var(--ui-text-muted)] transition-colors hover:text-[var(--ui-text-primary)]"
                     >
                       <svg
                         className="h-4 w-4 shrink-0 text-[var(--ui-text-muted)]"
+                        aria-hidden="true"
                         viewBox="0 0 16 16"
                         fill="none"
                         stroke="currentColor"
@@ -263,10 +269,9 @@ export default function Page() {
               step={0.07}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="group flex min-w-0 flex-col gap-4 pb-6 lg:pb-0 border-b lg:border-b-0 lg:border-r lg:border-[var(--ui-border-subtle)] lg:pr-8 last:border-r-0
-              cursor-pointer
-              "
+              className="group flex min-w-0 flex-col pb-6 lg:pb-0 border-b lg:border-b-0 lg:border-r lg:border-[var(--ui-border-subtle)] lg:pr-8 last:border-r-0"
             >
+              <Link href={service.link} className="flex flex-1 flex-col gap-4">
               <div className="flex flex-col gap-3 flex-1">
                 <h3 className="flex min-h-[2.75em] items-center break-words text-[clamp(1rem,0.55rem_+_1.5vw,1.875rem)] leading-snug uppercase font-bold text-[var(--ui-accent)]">
                   {service.name}
@@ -277,16 +282,14 @@ export default function Page() {
               </div>
               <div className="flex items-center gap-2">
                 <div
-                  className="mt-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--ui-accent)] text-[var(--ui-text-muted)] hover:border-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)] transition-all self-start sm:h-10 sm:w-10">
+                  className="mt-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--ui-accent)] text-[var(--ui-text-muted)] group-hover:border-[var(--ui-text-muted)] group-hover:text-[var(--ui-text-primary)] transition-all self-start sm:h-10 sm:w-10">
                   <HugeiconsIcon icon={ArrowUpRight01Icon} className="h-4 w-4 shrink-0" aria-hidden="true" />
                 </div>
-                <Link
-                  href={service.link}
-                  className="min-w-0 text-sm font-medium text-[var(--ui-text-muted)] hover:text-[var(--ui-text-primary)] transition-colors"
-                >
+                <span className="min-w-0 text-sm font-medium text-[var(--ui-text-muted)] group-hover:text-[var(--ui-text-primary)] transition-colors">
                   {service.text}
-                </Link>
+                </span>
               </div>
+              </Link>
             </Reveal>
           ))}
         </div>

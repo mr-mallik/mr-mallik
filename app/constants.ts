@@ -74,7 +74,7 @@ export const EXTERNAL_LINKS = {
 } as const;
 
 export const MAIL = {
-  subject: "Lets Connect",
+  subject: "Let's connect",
   bodyLines: [
     "Hi Gulger,",
     "I came across your profile and would like to connect with you.",
@@ -83,8 +83,8 @@ export const MAIL = {
 } as const;
 
 export const SECTION_TITLES = {
-  projects: "Selected Works",
-  workExperience: "Work Experience",
+  projects: "Selected works",
+  workExperience: "Work experience",
   experience: "Experience",
   achievements: "Achievements",
   education: "Education",
@@ -102,30 +102,18 @@ export const LINK_LABELS = {
   viewAllProjects: "View all projects",
   viewAllPublications: "View all publications",
   download: "Download",
-  summarised: "summarised",
-  detailed: "detailed",
+  summarised: "Summarised",
+  detailed: "Detailed",
   pdfFormat: "resume",
-  blogs: "blogs",
+  viewAllPosts: "View all posts",
 } as const;
 
 export const PAGE_COPY = {
-  homepageRolePrefix: "Researcher at",
-  homeIntroCompanyPrefix: "I'm a founding software engineer at",
+  roleTitle: "PhD Researcher",
+  homepageRolePrefix: "PhD Researcher at the",
+  homeIntroCompanyPrefix: "I'm a co-founder of",
   homeIntroCompanySuffix:
-    "where I help build thoughtful products for the next wave of the web. I enjoy creating systems that help teams move faster, make better decisions, and feel more confident using AI.",
-  homePreviousPrefix: "Before that, I worked with",
-  homePreviousSuffix:
-    "across research and engineering. You can reach me through",
-  homeCodePrefix: "or explore my work on",
-  homeResumePrefix: "A more detailed",
-  homeResumeSuffix: "is available for download",
-  homeResearchPrefix:
-    "My research explores Explainable AI, Multi-critera Decision Making, and Sustainable Software Engineering. You can read my publications on",
-  homeBlogPrefix: "I share ideas, lessons, and progress on",
-  homeBlogSuffix:
-    ", where I write practical notes and reflections on software engineering, applied research, and the evolving tech landscape.",
-  homeSocialParagraph:
-    "I enjoy meeting thoughtful people and hearing new perspectives. If you'd like to talk about technology, research, or possible collaboration, feel free to reach out using the contact details above.",
+    ", a studio building AI-powered products for businesses and startups. I enjoy creating systems that help teams move faster, make better decisions, and feel more confident using AI.",
   projectsPageDescription:
     "A selection of projects that bring applied AI research and software engineering together.",
   publicationsPageDescription:

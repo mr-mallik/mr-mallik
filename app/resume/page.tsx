@@ -14,6 +14,7 @@ import {
   SITE,
 } from "@/app/constants";
 import Header from "@/components/header";
+import { slugify } from "@/lib/utils";
 
 import achievementItems from "@/data/achievements.json";
 import educationItems from "@/data/education.json";
@@ -65,6 +66,7 @@ export default function ResumePage() {
   const [viewMode, setViewMode] = useState<ResumeViewMode>(
     RESUME_VIEW_MODES.summarised,
   );
+  const [downloadError, setDownloadError] = useState<string | null>(null);
   const items = workItems as WorkItem[];
   const achievements = achievementItems as AchievementItem[];
   const education = educationItems as EducationItem[];
@@ -72,6 +74,7 @@ export default function ResumePage() {
   const skills = skillsItems as SkillCategory[];
 
   const handleDownload = async () => {
+    setDownloadError(null);
     try {
       const response = await fetch("/api/resume");
       if (!response.ok) throw new Error("Failed to download resume");
@@ -85,6 +88,7 @@ export default function ResumePage() {
       URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Error downloading resume:", error);
+      setDownloadError("Couldn't download the resume. Please try again later.");
     }
   };
 
@@ -101,6 +105,11 @@ export default function ResumePage() {
               {LINK_LABELS.download}
             </button>
           </Header>
+          {downloadError ? (
+            <p role="alert" className="ui-meta-text mt-2 text-right">
+              {downloadError}
+            </p>
+          ) : null}
         </div>
       </div>
 
@@ -223,7 +232,7 @@ export default function ResumePage() {
         </div>
 
         {achievements.map((item) => (
-          <div id={item.title} key={`${item.title}-${item.date}`} className="resume-fade-in mt-6">
+          <div id={slugify(item.title)} key={`${item.title}-${item.date}`} className="resume-fade-in mt-6 scroll-mt-[var(--ui-nav-h)]">
             <p className="ui-item-title">{item.title}</p>
             <p className="ui-meta-text mt-1">
               {item.organization}{" "} &#8226; {" "} {item.date}

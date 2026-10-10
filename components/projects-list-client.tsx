@@ -265,7 +265,7 @@ export function ProjectsListClient({
         <p className="ui-meta-text">
           {canLoadMore && (activeTag || activeCategory)
             ? "No projects found for this filter."
-            : "No projects published yet - check back soon."}
+            : "No projects published yet – check back soon."}
         </p>
       )}
 

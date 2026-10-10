@@ -40,7 +40,7 @@ export async function BlogsSection({
           </h2>
           {showViewAllLink ? (
             <Link href={ROUTES.blogs} className="ui-view-all-link">
-              View all {LINK_LABELS.blogs}
+              {LINK_LABELS.viewAllPosts}
             </Link>
           ) : null}
         </div>
@@ -49,7 +49,7 @@ export async function BlogsSection({
       {error ? (
         <p className="ui-meta-text">{error}</p>
       ) : articles.length === 0 ? (
-        <p className="ui-meta-text">No posts published yet - check back soon.</p>
+        <p className="ui-meta-text">No posts published yet – check back soon.</p>
       ) : (
         <div className="divide-y divide-[var(--ui-border-subtle)]">
           {articles.map((article, index) => (

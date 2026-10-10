@@ -102,6 +102,15 @@ export default async function Page({
         </Reveal>
 
         <Reveal direction="right" delay={0.1}>
+          {/* The sidebar (and its h1) is hidden below md, so mobile gets its own heading. */}
+          <div className="mb-6 flex flex-col gap-1 md:hidden">
+            <h1 className="text-2xl font-semibold text-[var(--ui-text-primary)]">
+              Contact {SITE.ownerName}
+            </h1>
+            <p className="text-sm text-[var(--ui-text-secondary)]">
+              Software Engineer &amp; AI Researcher
+            </p>
+          </div>
           <ContactForm services={SERVICE_ITEMS} initialType={initialType} />
         </Reveal>
       </div>

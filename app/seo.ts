@@ -9,7 +9,7 @@ export const DEFAULT_OG_IMAGE_URL = new URL(DEFAULT_OG_IMAGE_PATH, SITE_URL).toS
 export const DEFAULT_OG_IMAGE_ALT = `${SITE.ownerName} portfolio, research, and software engineering profile`;
 
 export const SITE_DESCRIPTION =
-  "Portfolio of Gulger Mallik (mrmallik), a researcher at the University of Huddersfield and founding software engineer at Cosmokode Ltd, with projects, publications, experience, a resume, and a blog focused on applied AI, explainable AI, and software engineering.";
+  "Gulger Mallik (mrmallik) – PhD researcher at the University of Huddersfield and co-founder of Cosmokode Ltd, working on applied and explainable AI.";
 
 export const SITE_KEYWORDS = [
   "Gulger Mallik",
@@ -206,14 +206,14 @@ export function buildPersonJsonLd(): JsonLdValue {
     honorificPrefix: "Mr",
     alternateName: [SITE.brandName, "mrmallik", ...NAME_VARIANTS],
     description:
-      "Gulger Mallik is an AI researcher at the University of Huddersfield and founding software engineer at Cosmokode Ltd, working on explainable AI, multi-criteria decision making, and sustainable software engineering.",
+      "Gulger Mallik is a PhD researcher in artificial intelligence at the University of Huddersfield and co-founder of Cosmokode Ltd, working on explainable AI, multi-criteria decision making, and sustainable software engineering.",
     disambiguatingDescription:
       "AI researcher and software engineer based in Huddersfield, United Kingdom, also known online as mrmallik.",
     url: PROFILE.websiteUrl,
     image: absoluteUrl("/images/gulger-mallik@1x1.png"),
     email: `mailto:${PROFILE.primaryEmail}`,
     sameAs: PERSON_SAME_AS,
-    jobTitle: ["AI Researcher", "Software Engineer", "Founder and Director"],
+    jobTitle: ["PhD Researcher", "AI Researcher", "Software Engineer", "Co-founder"],
     homeLocation: {
       "@type": "Place",
       name: `${LOCATION.locality}, ${LOCATION.countryLabel}`,

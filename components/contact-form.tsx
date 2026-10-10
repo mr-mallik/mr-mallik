@@ -64,7 +64,7 @@ function validateFields(values: {
   if (!email) {
     errors.email = "Please enter your email so I can get back to you.";
   } else if (!EMAIL_PATTERN.test(email)) {
-    errors.email = "That email address doesn't look quite right - please double-check it.";
+    errors.email = "That email address doesn't look quite right – please double-check it.";
   }
 
   if (!values.service) {
@@ -75,7 +75,7 @@ function validateFields(values: {
   if (!message) {
     errors.message = "Please write a short message about what you'd like to discuss.";
   } else if (message.length < 10) {
-    errors.message = "Your message is a bit short - a sentence or two helps me understand what you need.";
+    errors.message = "Your message is a bit short – a sentence or two helps me understand what you need.";
   }
 
   return errors;
@@ -119,6 +119,8 @@ export function ContactForm({ services, initialType }: ContactFormProps) {
   const emailRef = useRef<HTMLInputElement>(null);
   const serviceTriggerRef = useRef<HTMLButtonElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
+
+  const serviceLabel = services.find((item) => item.value === service)?.label;
 
   const items = useMemo(
     () => [{ label: "Select a service", value: null }, ...services],
@@ -314,7 +316,7 @@ export function ContactForm({ services, initialType }: ContactFormProps) {
             setMessage(e.target.value);
             clearFieldError("message");
           }}
-          placeholder={`Hi Gulger, I'd like to talk about ${service ?? "your services"}...`}
+          placeholder={`Hi Gulger, I'd like to talk about ${serviceLabel?.toLowerCase() ?? "your services"}…`}
           rows={10}
           aria-label="Message"
           aria-invalid={Boolean(fieldErrors.message)}
@@ -337,11 +339,11 @@ export function ContactForm({ services, initialType }: ContactFormProps) {
         </motion.button>
         {status === "sent" ? (
           <span className="text-xs font-medium text-[var(--ui-accent)]" role="status">
-            Message sent - thank you! I&apos;ll get back to you soon.
+            Message sent – thank you! I&apos;ll get back to you soon.
           </span>
         ) : (
           <span className="text-xs text-[var(--ui-text-muted)]">
-            Every email is read and responded to personally. I aim to reply within 1-2 business days.
+            Every email is read and responded to personally. I aim to reply within 1–2 business days.
           </span>
         )}
         {error ? (

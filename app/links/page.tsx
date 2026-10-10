@@ -24,7 +24,7 @@ import {
 } from "@/app/seo";
 import { buildContactVcard } from "@/lib/vcard";
 
-const PAGE_DESCRIPTION = `Contact details and links for ${SITE.ownerName} - email, LinkedIn, YouTube, and website.`;
+const PAGE_DESCRIPTION = `Contact details and links for ${SITE.ownerName}: email, LinkedIn, YouTube, and website.`;
 
 export const metadata = createPageMetadata({
   title: "Links",
@@ -52,7 +52,7 @@ const links = [
     external: false,
   },
   {
-    label: "Work Email",
+    label: "Work email",
     detail: PROFILE.workEmail,
     href: `mailto:${PROFILE.workEmail}?${mailtoQuery}`,
     icon: Briefcase01Icon,
@@ -89,7 +89,7 @@ export default function LinksPage() {
         dangerouslySetInnerHTML={{
           __html: sanitizeJsonLd(
             buildWebPageJsonLd({
-              title: `Links - ${SITE.ownerName}`,
+              title: `Links – ${SITE.ownerName}`,
               description: PAGE_DESCRIPTION,
               path: ROUTES.links,
               image: DEFAULT_OG_IMAGE_PATH,
@@ -134,7 +134,7 @@ export default function LinksPage() {
             whileTap={{ scale: 0.98 }}
           >
             <HugeiconsIcon icon={UserAdd01Icon} className="h-4.5 w-4.5" aria-hidden="true" />
-            Save Contact
+            Save contact
           </MotionAnchor>
         </Reveal>
 

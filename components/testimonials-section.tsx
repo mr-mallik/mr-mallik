@@ -99,9 +99,8 @@ export default function TestimonialsSection() {
       <Reveal className="ui-container mb-12 flex flex-col items-center text-center">
         <h2 className="ui-section-title text-4xl md:text-5xl">{SECTION_TITLES.testimonials}</h2>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[var(--ui-text-muted)]">
-          Worked with me? I&apos;d be grateful for a short professional testimonial and impact
-          statement. It helps strengthen my profile as an international talent and, with your
-          permission, may be featured here.
+          Worked with me? I&apos;d love to hear about your experience. With your permission, it
+          may be featured here.
         </p>
         <MotionAnchor
           href={EXTERNAL_LINKS.testimonialForm}
