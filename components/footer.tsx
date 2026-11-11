@@ -29,6 +29,12 @@ export function Footer() {
             <span className="text-[var(--ui-text-muted)]">
               &copy; {new Date().getFullYear()} {SITE.ownerName}. {SITE.copyrightSuffix}
             </span>
+            <Link
+              href={ROUTES.incidentReports}
+              className="text-[var(--ui-text-muted)] underline-offset-4 transition-colors hover:text-[var(--ui-text-primary)] hover:underline"
+            >
+              Incidents
+            </Link>
             <span className="hidden sm:inline text-[var(--ui-border-soft)]">|</span>
             {SOCIAL_LINKS.map((s) => (
               <a

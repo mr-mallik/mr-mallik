@@ -58,6 +58,8 @@ export const ROUTES = {
   contact: "/contact",
   links: "/links",
   contactCard: "/links/contact.vcf",
+  incidentReports: "/incident-report",
+  incidentReport20261111: "/incident-report/20261111",
 } as const;
 
 // Shareable in-page anchors, e.g. mrmallik.com/#kind-words
